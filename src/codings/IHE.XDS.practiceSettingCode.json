@@ -1,0 +1,1091 @@
+{
+  "resourceType": "ValueSet",
+  "id": "1.2.276.0.76.11.37",
+  "url": "http://ihe-d.de/ValueSets/IHEXDSpracticeSettingCode",
+  "version": "v3",
+  "title": "IHE XDS practiceSettingCode",
+  "status": "active",
+  "date": "2019-05-17T13:46:31",
+  "publisher": "IHE Deutschland e.V.",
+  "compose": {
+    "include": [
+      {
+        "system": "1.3.6.1.4.1.19376.3.276.1.5.4",
+        "extension": [
+          {
+            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+            "valueString": "urn:pin:Ärztliche&#160;Fachrichtungen"
+          },
+          {
+            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+            "valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.4"
+          }
+        ],
+        "concept": [
+          {
+            "code": "ALLG",
+            "display": "Allgemeinmedizin",
+            "designation": [{ "language": "de-DE", "value": "Allgemeinmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "ANAE",
+            "display": "Anästhesiologie",
+            "designation": [{ "language": "de-DE", "value": "Anästhesiologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "ARBE",
+            "display": "Arbeitsmedizin",
+            "designation": [{ "language": "de-DE", "value": "Arbeitsmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "AUGE",
+            "display": "Augenheilkunde",
+            "designation": [{ "language": "de-DE", "value": "Augenheilkunde" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "CHIR",
+            "display": "Chirurgie",
+            "designation": [{ "language": "de-DE", "value": "Chirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "ALCH",
+            "display": "Allgemeinchirurgie",
+            "designation": [{ "language": "de-DE", "value": "Allgemeinchirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "GFCH",
+            "display": "Gefäßchirurgie",
+            "designation": [{ "language": "de-DE", "value": "Gefäßchirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "HZCH",
+            "display": "Herzchirurgie",
+            "designation": [{ "language": "de-DE", "value": "Herzchirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "KDCH",
+            "display": "Kinderchirurgie",
+            "designation": [{ "language": "de-DE", "value": "Kinderchirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "ORTH",
+            "display": "Orthopädie",
+            "designation": [{ "language": "de-DE", "value": "Orthopädie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "PLCH",
+            "display": "Plastische und Ästhetische Chirurgie",
+            "designation": [
+              { "language": "de-DE", "value": "Plastische und Ästhetische Chirurgie" }
+            ],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "THCH",
+            "display": "Thoraxchirurgie",
+            "designation": [{ "language": "de-DE", "value": "Thoraxchirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "UNFC",
+            "display": "Unfallchirurgie",
+            "designation": [{ "language": "de-DE", "value": "Unfallchirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "VICH",
+            "display": "Viszeralchirurgie",
+            "designation": [{ "language": "de-DE", "value": "Viszeralchirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "FRAU",
+            "display": "Frauenheilkunde und Geburtshilfe",
+            "designation": [{ "language": "de-DE", "value": "Frauenheilkunde und Geburtshilfe" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "GEND",
+            "display": "Gynäkologische Endokrinologie und Reproduktionsmedizin",
+            "designation": [
+              {
+                "language": "de-DE",
+                "value": "Gynäkologische Endokrinologie und Reproduktionsmedizin"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "GONK",
+            "display": "Gynäkologische Onkologie",
+            "designation": [{ "language": "de-DE", "value": "Gynäkologische Onkologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "PERI",
+            "display": "Perinatalmedizin",
+            "designation": [{ "language": "de-DE", "value": "Perinatalmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "GERI",
+            "display": "Geriatrie",
+            "designation": [{ "language": "de-DE", "value": "Geriatrie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "HNOH",
+            "display": "Hals-Nasen-Ohrenheilkunde",
+            "designation": [{ "language": "de-DE", "value": "Hals-Nasen-Ohrenheilkunde" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "HRST",
+            "display": "Sprach-, Stimm- und kindliche Hörstörungen",
+            "designation": [
+              { "language": "de-DE", "value": "Sprach-, Stimm- und kindliche Hörstörungen" }
+            ],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "HAUT",
+            "display": "Haut- und Geschlechtskrankheiten",
+            "designation": [{ "language": "de-DE", "value": "Haut- und Geschlechtskrankheiten" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "HIST",
+            "display": "obsolet",
+            "designation": [{ "language": "de-DE", "value": "Histologie / Zytologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "HUMA",
+            "display": "Humangenetik",
+            "designation": [{ "language": "de-DE", "value": "Humangenetik" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "HYGI",
+            "display": "Hygiene und Umweltmedizin",
+            "designation": [{ "language": "de-DE", "value": "Hygiene und Umweltmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "INNE",
+            "display": "Innere Medizin",
+            "designation": [{ "language": "de-DE", "value": "Innere Medizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "ANGI",
+            "display": "Angiologie",
+            "designation": [{ "language": "de-DE", "value": "Angiologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "ENDO",
+            "display": "Endokrinologie und Diabetologie",
+            "designation": [{ "language": "de-DE", "value": "Endokrinologie und Diabetologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "GAST",
+            "display": "Gastroenterologie",
+            "designation": [{ "language": "de-DE", "value": "Gastroenterologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "HAEM",
+            "display": "Hämatologie und internistische Onkologie",
+            "designation": [
+              { "language": "de-DE", "value": "Hämatologie und internistische Onkologie" }
+            ],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "KARD",
+            "display": "Kardiologie",
+            "designation": [{ "language": "de-DE", "value": "Kardiologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NEPH",
+            "display": "Nephrologie",
+            "designation": [{ "language": "de-DE", "value": "Nephrologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "PNEU",
+            "display": "Pneumologie",
+            "designation": [{ "language": "de-DE", "value": "Pneumologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "RHEU",
+            "display": "Rheumatologie",
+            "designation": [{ "language": "de-DE", "value": "Rheumatologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "INTM",
+            "display": "Intensivmedizin",
+            "designation": [{ "language": "de-DE", "value": "Intensivmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "INTZ",
+            "display": "Interdisziplinäre Zusammenarbeit",
+            "designation": [{ "language": "de-DE", "value": "Interdisziplinäre Zusammenarbeit" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "INTO",
+            "display": "Interdisziplinäre Onkologie",
+            "designation": [{ "language": "de-DE", "value": "Interdisziplinäre Onkologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "INTS",
+            "display": "Interdisziplinäre Schmerzmedizin",
+            "designation": [{ "language": "de-DE", "value": "Interdisziplinäre Schmerzmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "TRPL",
+            "display": "Transplantationsmedizin",
+            "designation": [{ "language": "de-DE", "value": "Transplantationsmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "SELT",
+            "display": "seltene Erkrankungen",
+            "designation": [{ "language": "de-DE", "value": "seltene Erkrankungen" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "KIJU",
+            "display": "Kinder- und Jugendmedizin",
+            "designation": [{ "language": "de-DE", "value": "Kinder- und Jugendmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "KONK",
+            "display": "Kinder-Hämatologie und -Onkologie",
+            "designation": [{ "language": "de-DE", "value": "Kinder-Hämatologie und -Onkologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "KKAR",
+            "display": "Kinder-Kardiologie",
+            "designation": [{ "language": "de-DE", "value": "Kinder-Kardiologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NNAT",
+            "display": "Neonatologie",
+            "designation": [{ "language": "de-DE", "value": "Neonatologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NPAE",
+            "display": "Neuropädiatrie",
+            "designation": [{ "language": "de-DE", "value": "Neuropädiatrie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "KPSY",
+            "display": "Kinder- und Jugendpsychiatrie und -psychotherapie",
+            "designation": [
+              { "language": "de-DE", "value": "Kinder- und Jugendpsychiatrie und -psychotherapie" }
+            ],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "LABO",
+            "display": "Laboratoriumsmedizin",
+            "designation": [{ "language": "de-DE", "value": "Laboratoriumsmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "MIKR",
+            "display": "Mikrobiologie, Virologie und Infektionsepidemiologie",
+            "designation": [
+              {
+                "language": "de-DE",
+                "value": "Mikrobiologie, Virologie und Infektionsepidemiologie"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "MKGC",
+            "display": "Mund-Kiefer-Gesichtschirurgie",
+            "designation": [{ "language": "de-DE", "value": "Mund-Kiefer-Gesichtschirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NATU",
+            "display": "Naturheilverfahren und alternative Heilmethoden",
+            "designation": [
+              { "language": "de-DE", "value": "Naturheilverfahren und alternative Heilmethoden" }
+            ],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NOTF",
+            "display": "Notfallmedizin",
+            "designation": [{ "language": "de-DE", "value": "Notfallmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NRCH",
+            "display": "Neurochirurgie",
+            "designation": [{ "language": "de-DE", "value": "Neurochirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NEUR",
+            "display": "Neurologie",
+            "designation": [{ "language": "de-DE", "value": "Neurologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NUKL",
+            "display": "Nuklearmedizin",
+            "designation": [{ "language": "de-DE", "value": "Nuklearmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "GESU",
+            "display": "Öffentliches Gesundheitswesen",
+            "designation": [{ "language": "de-DE", "value": "Öffentliches Gesundheitswesen" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "PALL",
+            "display": "Palliativmedizin",
+            "designation": [{ "language": "de-DE", "value": "Palliativmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "PATH",
+            "display": "Pathologie",
+            "designation": [{ "language": "de-DE", "value": "Pathologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NPAT",
+            "display": "Neuropathologie",
+            "designation": [{ "language": "de-DE", "value": "Neuropathologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "PHAR",
+            "display": "Pharmakologie",
+            "designation": [{ "language": "de-DE", "value": "Pharmakologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "TOXI",
+            "display": "Toxikologie",
+            "designation": [{ "language": "de-DE", "value": "Toxikologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "REHA",
+            "display": "Physikalische und Rehabilitative Medizin",
+            "designation": [
+              { "language": "de-DE", "value": "Physikalische und Rehabilitative Medizin" }
+            ],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "PSYC",
+            "display": "Psychiatrie und Psychotherapie",
+            "designation": [{ "language": "de-DE", "value": "Psychiatrie und Psychotherapie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "FPSY",
+            "display": "Forensische Psychiatrie",
+            "designation": [{ "language": "de-DE", "value": "Forensische Psychiatrie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "PSYM",
+            "display": "Psychosomatische Medizin und Psychotherapie",
+            "designation": [
+              { "language": "de-DE", "value": "Psychosomatische Medizin und Psychotherapie" }
+            ],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "RADI",
+            "display": "Radiologie",
+            "designation": [{ "language": "de-DE", "value": "Radiologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "KRAD",
+            "display": "Kinderradiologie",
+            "designation": [{ "language": "de-DE", "value": "Kinderradiologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "NRAD",
+            "display": "Neuroradiologie",
+            "designation": [{ "language": "de-DE", "value": "Neuroradiologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "RECH",
+            "display": "Rechtsmedizin",
+            "designation": [{ "language": "de-DE", "value": "Rechtsmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "SCHL",
+            "display": "Schlafmedizin",
+            "designation": [{ "language": "de-DE", "value": "Schlafmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "SPOR",
+            "display": "Sport- und Bewegungsmedizin",
+            "designation": [{ "language": "de-DE", "value": "Sport- und Bewegungsmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "STRA",
+            "display": "Strahlentherapie",
+            "designation": [{ "language": "de-DE", "value": "Strahlentherapie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "TRAN",
+            "display": "Transfusionsmedizin",
+            "designation": [{ "language": "de-DE", "value": "Transfusionsmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "TROP",
+            "display": "Tropen-/Reisemedizin",
+            "designation": [{ "language": "de-DE", "value": "Tropen-/Reisemedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "UROL",
+            "display": "Urologie",
+            "designation": [{ "language": "de-DE", "value": "Urologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "MZKH",
+            "display": "Zahnmedizin",
+            "designation": [{ "language": "de-DE", "value": "Zahnmedizin" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "ORAL",
+            "display": "Oralchirurgie",
+            "designation": [{ "language": "de-DE", "value": "Oralchirurgie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "KIEF",
+            "display": "Kieferorthopädie",
+            "designation": [{ "language": "de-DE", "value": "Kieferorthopädie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          },
+          {
+            "code": "PARO",
+            "display": "Parodontologie",
+            "designation": [{ "language": "de-DE", "value": "Parodontologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "system": "1.3.6.1.4.1.19376.3.276.1.5.5",
+        "extension": [
+          {
+            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+            "valueString": "urn:pin:Nicht-ärztliche&#160;Fachrichtungen"
+          },
+          {
+            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+            "valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.5"
+          }
+        ],
+        "concept": [
+          {
+            "code": "ERG",
+            "display": "Ergotherapie",
+            "designation": [{ "language": "de-DE", "value": "Ergotherapie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "ERN",
+            "display": "Ernährung und Diätetik",
+            "designation": [{ "language": "de-DE", "value": "Ernährung und Diätetik" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "FOR",
+            "display": "Forschung",
+            "designation": [{ "language": "de-DE", "value": "Forschung" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "PFL",
+            "display": "Pflege und Betreuung",
+            "designation": [{ "language": "de-DE", "value": "Pflege und Betreuung" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "ALT",
+            "display": "Altenpflege",
+            "designation": [{ "language": "de-DE", "value": "Altenpflege" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "KIN",
+            "display": "Kinderpflege",
+            "designation": [{ "language": "de-DE", "value": "Kinderpflege" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "PAT",
+            "display": "Patient außerhalb der Betreuung",
+            "designation": [{ "language": "de-DE", "value": "Patient außerhalb der Betreuung" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "PHZ",
+            "display": "Pharmazeutik",
+            "designation": [{ "language": "de-DE", "value": "Pharmazeutik" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "POD",
+            "display": "Podologie",
+            "designation": [{ "language": "de-DE", "value": "Podologie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "PRV",
+            "display": "Prävention",
+            "designation": [{ "language": "de-DE", "value": "Prävention" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "SOZ",
+            "display": "Sozialwesen",
+            "designation": [{ "language": "de-DE", "value": "Sozialwesen" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "SPR",
+            "display": "Sprachtherapie",
+            "designation": [{ "language": "de-DE", "value": "Sprachtherapie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "VKO",
+            "display": "Versorgungskoordination",
+            "designation": [{ "language": "de-DE", "value": "Versorgungskoordination" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "VER",
+            "display": "Verwaltung",
+            "designation": [{ "language": "de-DE", "value": "Verwaltung" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          },
+          {
+            "code": "PST",
+            "display": "Psychotherapie",
+            "designation": [{ "language": "de-DE", "value": "Psychotherapie" }],
+            "extension": [
+              {
+                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.5"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

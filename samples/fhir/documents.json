@@ -1,0 +1,4467 @@
+{
+	"resourceType": "Bundle",
+	"id": "7ba0f81d-33d9-4543-a854-41db8f7b531b",
+	"meta": {
+		"lastUpdated": "2024-08-15T13:38:35.948+02:00"
+	},
+	"type": "searchset",
+	"total": 30,
+	"link": [
+		{
+			"relation": "self",
+			"url": "https://fhir-server-domain.de/fhir/DocumentReference?_format=json&patient.identifier=%7Cme_"
+		}
+	],
+	"entry": [
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/67d5d954-e9db-463e-a3a7-86346652f394",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "67d5d954-e9db-463e-a3a7-86346652f394",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest9</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:3c749e17-6db2-3c7b-85f8-c9d5f58e620a"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:67d5d954-e9db-463e-a3a7-86346652f394"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BERI",
+							"display": "Arztberichte"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BIL",
+								"display": "Bilddaten"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-06-02T16:21:20.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Anamnesebogen",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.2462335761106168691901777158981741863434&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=B43AC765148FD887B3743F44168D09F68E18565FE685B5D48E9A4222C641F9FC7ADC605E0EACE9A7",
+							"size": 537031,
+							"hash": "8RwZjFtkA/tm+ExkectR3z2xmYw=",
+							"title": "Anamnesebogen"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/dab3b453-a342-46a0-ac37-5af9319948ca"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/90ed18a5-8f1e-4c96-af76-4c07534ff3cb",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "90ed18a5-8f1e-4c96-af76-4c07534ff3cb",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">MultiImageTest4</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:804ba644-ff3b-6b8e-703e-0c992496517d"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:90ed18a5-8f1e-4c96-af76-4c07534ff3cb"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "AUFN",
+							"display": "Einweisungs- und Aufnahmedokumente"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "ADM",
+								"display": "Administratives Dokument"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-07-02T15:52:41.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Aufnahmebericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.167249176136252144673516564168541077918077&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=8406E30B925E8BB78F45D08776DD69787B9C5893BFE7E324FCAC6C2B5E4FA4A08D42344EB56534D8",
+							"size": 352496,
+							"hash": "FtK3eUtgrTmow1u7yqQ0Af5lHi0=",
+							"title": "Aufnahmebericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/f7426f4a-1f95-4176-aa8c-313467be8a0a"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/0f97d13c-9902-4329-a2ae-320e49d7e9f2",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "0f97d13c-9902-4329-a2ae-320e49d7e9f2",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Test3</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:184c4e8c-7da6-98fd-06d0-3e7858fca7cd"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:0f97d13c-9902-4329-a2ae-320e49d7e9f2"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BERI",
+							"display": "Arztberichte"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BRI",
+								"display": "Brief"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-07-12T15:19:54.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Entlassungsbericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.802418118879191762341695031112173126199245&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=C18A04B043C4C1227D5947058413C449694D0E774418B36C772B485CBDF1B14FA53E3C4EC57F1422",
+							"size": 8792041,
+							"hash": "L/G7aQdAiBRWqwjRlX7aPKf3v+8=",
+							"title": "Entlassungsbericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "HEB",
+								"display": "Hebamme/Geburtshaus"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "ERG",
+								"display": "Ergotherapie"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/e24088a6-de15-48dc-ac4b-bd0a400d2711"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/a1c2aba8-2f43-41c5-a705-f42d489bed6f",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "a1c2aba8-2f43-41c5-a705-f42d489bed6f",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest12</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:0641291e-522f-fd30-77ca-a49c8c6936cc"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:a1c2aba8-2f43-41c5-a705-f42d489bed6f"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BERI",
+							"display": "Arztberichte"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BEF",
+								"display": "Befundbericht"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-07-05T13:32:33.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Arztbrief",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.83111254175205103781891692231141591232362188&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=514E14AEE9D65E5685B6F1CDEAAFD18F42FD02DE0D1DCA8FC53F17452CD457652A993A1D2C14D1A3",
+							"size": 214100,
+							"hash": "dEpTG/YhUmW9aGGI/WEsKukV1Gs=",
+							"title": "Arztbrief"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "BHR",
+								"display": "Gesundheitsbehörde"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "AUGE",
+								"display": "Augenheilkunde"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/d7703a3b-b08c-4324-b2e9-b7e0b8b5d09e"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/3b02fcae-7edf-4df2-9de7-e5f2da214c23",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "3b02fcae-7edf-4df2-9de7-e5f2da214c23",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest13</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:197ec6d6-e7dc-b203-a246-60eb18f3e647"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:3b02fcae-7edf-4df2-9de7-e5f2da214c23"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BEFU",
+							"display": "Ergebnisse Diagnostik"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BEF",
+								"display": "Befundbericht"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-02-05T13:40:08.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Befundbericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1432282371332472477145128138138288255133255&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=7444194155E867B2A9B62EA0F4DF90B1EB8ACD51E2D9133A3E6F5992FA197AF5E21B250D9C641AC1",
+							"size": 133553,
+							"hash": "cl4hH7MIPtDrQUxM+G+4rkvBiKI=",
+							"title": "Befundbericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "FOR",
+								"display": "Forschungseinrichtung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "AUGE",
+								"display": "Augenheilkunde"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/13bdf92e-7ef4-4850-87d7-db1345f69574"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/23eb9b8e-04eb-4f51-979e-eb2bdd34ad54",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "23eb9b8e-04eb-4f51-979e-eb2bdd34ad54",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Test Kamera</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Tomaszewski",
+								"given": ["Felicjan"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:16ab42d1-b33a-f7fa-6533-548b8cd7512d"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:23eb9b8e-04eb-4f51-979e-eb2bdd34ad54"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "OPDK",
+							"display": "OP-Dokumente"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "DUR",
+								"display": "Durchführungsprotokoll"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-03-14T15:43:23.000+01:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Operationsbericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.30132253923266516718914975971342242093&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=C765E7B9FE45720179F9477DAFAD1C8ED483873756F46D7F70A0892CD3B05E1E9F0E84C583528C03",
+							"size": 7704487,
+							"hash": "qdQ5k32f7mNx/Q015no621CwJp8=",
+							"title": "Operationsbericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/73456afb-3797-4a5d-a844-25e7bceef7b3"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/3849ace2-e00d-45e4-ab25-0be4ef47d2d5",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "3849ace2-e00d-45e4-ab25-0be4ef47d2d5",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Test</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Pisano",
+								"given": ["Tolomeo"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:45ceef99-50a5-2184-7b2b-e14a105105ba"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:3849ace2-e00d-45e4-ab25-0be4ef47d2d5"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "VIRO",
+							"display": "Ergebnisse Virologie"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "LAB",
+								"display": "Laborergebnisse"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-03-02T20:28:27.000+01:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Laborbericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.6217873809081672281322141485318915818938&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=8547BCED814FAC02F1C1186FD9B5DAA897AB45969F3DD3990EC91854AB9075BE5703DE198592A6FE",
+							"size": 2554817,
+							"hash": "M0P4rWxipFJQwhe1D5ye7myKc1g=",
+							"title": "Laborbericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/00b51095-03a5-4886-84a3-90ea57184a0e"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/6efa4ef9-d91a-44d7-a371-481192b8aa8f",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "6efa4ef9-d91a-44d7-a371-481192b8aa8f",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">MultiImageUploadTest6</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:6e6fcca5-2a0e-b40c-e57f-df9d0e01f2c1"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:6efa4ef9-d91a-44d7-a371-481192b8aa8f"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BILD",
+							"display": "Ergebnisse bildgebender Diagnostik"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BIL",
+								"display": "Bilddaten"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-05-02T16:06:15.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Röntgenbefund",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.215205251469217969126171155872112810521281&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2B138A4570BFFC7B33251287F5335515BC619F8726B6A26AFE674BAFD7C0D221CD1DCE9E0043286E",
+							"size": 1607700,
+							"hash": "bamifrxt02b9DLEvci7cpUrXDcA=",
+							"title": "Röntgenbefund"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/06e9312e-b950-436a-9561-4d8f09372282"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/801783de-eeba-4fd7-8571-80a0c0d4c45a",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "801783de-eeba-4fd7-8571-80a0c0d4c45a",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest7</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:0ab854f0-e124-22ba-9cfb-3746cf123dbb"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:801783de-eeba-4fd7-8571-80a0c0d4c45a"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BILD",
+							"display": "Ergebnisse bildgebender Diagnostik"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BIL",
+								"display": "Bilddaten"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-05-02T16:10:38.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "MRT-Befund",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.182501274123523866203157178201222227120242107&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=4C3FAF5E7D93D07CE1DF32EF3F50D5EE57CDCB39540615BD4BB3AE4B00A5E2183CC26B9504DE5EE6",
+							"size": 322843,
+							"hash": "Fl7yX9p0Ksrz1W2fZenc3h/uuDM=",
+							"title": "MRT-Befund"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/ef44cf44-22aa-4faa-bf04-664fe2072f35"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/2a356395-2af9-4b3a-8b34-66abe479ccb0",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "2a356395-2af9-4b3a-8b34-66abe479ccb0",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">PickedFileTest</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:6a2e6b15-eb1e-2ac2-5ce8-6834b9b23add"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:2a356395-2af9-4b3a-8b34-66abe479ccb0"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BILD",
+							"display": "Ergebnisse bildgebender Diagnostik"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BIL",
+								"display": "Bilddaten"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-01-12T23:46:10.000+01:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "CT-Befund",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.141139185163078135134362279313237228253&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=AF43186A3B316A68FB16B2E7BA4EF097C25EFE7D01834E1096E8DB038C44E21E70908E685BFDEC23",
+							"size": 3783,
+							"hash": "+errCuQyAPvjI7ZrRnSTVOKzTEM=",
+							"title": "CT-Befund"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/9dd7f9d0-8c9e-4a3c-ab8b-efb1d7fab605"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/cb02a809-90fe-426e-8017-0060ee747c60",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "cb02a809-90fe-426e-8017-0060ee747c60",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest14</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Wexler",
+								"given": ["Vanessa"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:af352351-a8c2-b4fb-ecf1-9115eda4f7bb"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:cb02a809-90fe-426e-8017-0060ee747c60"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BILD",
+							"display": "Ergebnisse bildgebender Diagnostik"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BIL",
+								"display": "Bilddaten"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-06-05T14:03:22.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Ultraschallbefund",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.131241602071911217216417742872144723113915&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=1C4687BFE53DE09310A8E508C34AD1D2E20BF5F3C1CD8F7FB6D79C72574AFD28236F0B5BDBDB606C",
+							"size": 197973,
+							"hash": "aZkTULMXfQaRQu9rFHmic/QllzM=",
+							"title": "Ultraschallbefund"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/49630194-9238-45f6-8adc-f2d00fa3cb58"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/4a39d07a-068c-476c-8a68-4617d4849abe",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "4a39d07a-068c-476c-8a68-4617d4849abe",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">test</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Zając",
+								"given": ["Danuta"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:9ed9c0db-ccc5-d0da-12af-8ee60ab1583a"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:4a39d07a-068c-476c-8a68-4617d4849abe"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "FUNK",
+							"display": "Ergebnisse Funktionsdiagnostik"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BEF",
+								"display": "Befundbericht"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-04-11T19:38:22.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "EKG-Befund",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1231995764152119734313911359235851114554&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=003B2511BD0028F2F1B7382C2DCC3BD84CD0AD774D91F361F2F537C335EF2DD6D0BF89276CD67034",
+							"size": 229630,
+							"hash": "CDzfBeCG38KUzm0E8I3hMkcrN1U=",
+							"title": "EKG-Befund"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/2edb49e0-4fe1-43f4-86e1-ba84cf532c80"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/7e050434-6b30-464a-8328-1dd07f4e684a",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "7e050434-6b30-464a-8328-1dd07f4e684a",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest15</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:31d5bd16-56d7-6668-078e-e2a90f68a6d2"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:7e050434-6b30-464a-8328-1dd07f4e684a"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "FUNK",
+							"display": "Ergebnisse Funktionsdiagnostik"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BEF",
+								"display": "Befundbericht"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-02-05T14:10:06.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "EEG-Befund",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1801521092445617865150138100917914424616658&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2EF5A9727BE8DCC21D95FFEAE5C5102F2051BA5F171B3A469EA92A9B6417628B8D4157DEED7EA072",
+							"size": 223278,
+							"hash": "ES3UX9/PNB4z7fad1FjrihVKf8w=",
+							"title": "EEG-Befund"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "BHR",
+								"display": "Gesundheitsbehörde"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "ALT",
+								"display": "Altenpflege"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/e3ab44f2-8c3b-497d-beb5-7046297ef39d"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/7e7346ac-2fac-48af-b153-7aaaf00b72b7",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "7e7346ac-2fac-48af-b153-7aaaf00b72b7",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Test Import</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "De Luca",
+								"given": ["Luciano"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:1749327d-7e23-328e-9558-dfaf03b113dc"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:7e7346ac-2fac-48af-b153-7aaaf00b72b7"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "PATH",
+							"display": "Pathologiebefundberichte"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BEF",
+								"display": "Befundbericht"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-03-14T15:45:06.000+01:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Pathologiebefund",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "image/jpeg",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.14322811716316179732211666587190134117340&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2E2D034BACED554C9548B9A4C9EAA33185E2EF29499B53733B8CFF1DF0ADCAF03B5357AF5C885400",
+							"size": 2723763,
+							"hash": "ooQ1HRuIshoTEQy7KK3AXndPo/U=",
+							"title": "Pathologiebefund"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/5c87052d-acc8-4d4d-8bfc-13c2cddec519"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/762fd208-d223-4486-a6c2-fc196da76bd2",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "762fd208-d223-4486-a6c2-fc196da76bd2",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">testing</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Christensen",
+								"given": ["Cecilie"]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:5ce3ca8f-ee2b-b4c4-d133-341ce83d93a0"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:762fd208-d223-4486-a6c2-fc196da76bd2"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "PATH",
+							"display": "Pathologiebefundberichte"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BEF",
+								"display": "Befundbericht"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-03-23T22:13:13.000+01:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Histologiebefund",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.4547142505421377138184249242117776184224&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2D01F9734CC8EA44228ABC12636651ED1B2D75BFD92097C8A529834F9D5CA9DC82257A88CA9944CC",
+							"size": 229804,
+							"hash": "RcY2KUC8tHZXEb6U4+3k5F5v4Ss=",
+							"title": "Histologiebefund"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/47a9ce71-23c9-4950-9e0a-c53749e5d769"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/b2bedb26-66b7-45b9-8e42-00045c28957f",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "b2bedb26-66b7-45b9-8e42-00045c28957f",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">MultiImageUploadTest5</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:b97cbefc-278d-0cf5-21e2-9f3b35cab948"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:b2bedb26-66b7-45b9-8e42-00045c28957f"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BESC",
+							"display": "Ärztliche Bescheinigungen"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "AUS",
+								"display": "Medizinischer Ausweis"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-06-02T16:02:11.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Allergiepass",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.9774461171452506814613514621250142124360&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=123B082617D199446F818BD8B6114F0DCF54F456214E171F641B58E28686AC0F4BD7B044E75184D8",
+							"size": 354185,
+							"hash": "tLkYRr5Bch6FXIavT6U44JREgoE=",
+							"title": "Allergiepass"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/29a211f0-0fa5-483c-8502-a74c872e9bd4"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/222a6307-a4e5-416e-a146-f8874416a4a8",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "222a6307-a4e5-416e-a146-f8874416a4a8",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">test 2</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Tester",
+								"given": ["Mike"]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:a65aba5a-23e4-75f4-2bde-505647d00adc"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:222a6307-a4e5-416e-a146-f8874416a4a8"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BESC",
+							"display": "Ärztliche Bescheinigungen"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "AUS",
+								"display": "Medizinischer Ausweis"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-04-13T10:02:06.000+01:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Impfausweis",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1582252401371147096188251698921718418140&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=71B7DF9678B79DBB21FBCBE7CC49F312FEEB0F12816788856FC2872AEB20557D9DA07CDB17F4C4D0",
+							"size": 229105,
+							"hash": "aCL/Aj0xU1T1uwwu56MRRUnmnrk=",
+							"title": "Impfausweis"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/2652eab0-a04c-4a39-9a4d-d7ccb7ea1cc3"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/468b44d3-0c82-4a1c-8713-64a2d0aebcbf",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "468b44d3-0c82-4a1c-8713-64a2d0aebcbf",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest3</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:7aced6a4-d10a-3965-6e56-4d08d2d5cbfe"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:468b44d3-0c82-4a1c-8713-64a2d0aebcbf"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "MEDI",
+							"display": "Medikamentöse Therapien"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "PLA",
+								"display": "Planungsdokument"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-07-02T15:41:08.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Medikamentenplan",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.0163239782132386472139382401213134130174&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=C2B67D97844F0AFAA72779F93A7151174C83CF63D0100381B7610A0CD658D6E21088C614AC5074EB",
+							"size": 117910,
+							"hash": "sk3V0zi5qsvbxTrj1imI3wjTswc=",
+							"title": "Medikamentenplan"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/d1effdd4-d5fb-439c-a927-5fe35fe46fc8"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/462947b5-06b9-4d4a-948c-2a201c9ee1b7",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "462947b5-06b9-4d4a-948c-2a201c9ee1b7",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTestingImage</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:91786424-8795-5f0f-08ee-d6ccf57c1b0a"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:462947b5-06b9-4d4a-948c-2a201c9ee1b7"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "FPRO",
+							"display": "Therapiedokumentation"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "PLA",
+								"display": "Planungsdokument"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-06-02T12:14:02.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Therapieplan",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.193363166146972251742199117112223210250&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=125171E1B4AA5018CAAF777356CC9ADECC7FA0405E5877D9D1C09ADE869D764EC0BCA8D964259E6D",
+							"size": 226369,
+							"hash": "xGQcjxXFr/rz1SD7WEYv6twNMtE=",
+							"title": "Therapieplan"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/4446c2f7-bd91-4d2a-a097-ba3c415e5ecd"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/a0e67782-64f1-4c87-8c32-efaa7c1e193f",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "a0e67782-64f1-4c87-8c32-efaa7c1e193f",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTestImage2</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Kohler",
+								"given": ["Yvonne"]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:11bb947f-9a7f-ef63-1be1-43d915176cc8"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:a0e67782-64f1-4c87-8c32-efaa7c1e193f"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "PFLG",
+							"display": "Pflegedokumentation"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "DUR",
+								"display": "Durchführungsprotokoll"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-06-02T12:24:03.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Pflegebericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.9211194754212641431441212171209024171208&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=DBC830F0938F12DB96BFE473EF08A70288F313D8E86016D8CD8CBB92D3E1334FF305FFE46F1971DD",
+							"size": 163212,
+							"hash": "OGZFEzfm2bxmcWqMrFoOuNaDK4g=",
+							"title": "Pflegebericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/2d7341ba-b583-41f2-b176-477087a070a9"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/ff75da3d-5781-4530-85f2-3cdd78f3b919",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "ff75da3d-5781-4530-85f2-3cdd78f3b919",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest8</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Kuster",
+								"given": ["Kristian"]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:6383e9b5-6b13-d280-73bc-082b3775473d"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:ff75da3d-5781-4530-85f2-3cdd78f3b919"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "FPRO",
+							"display": "Therapiedokumentation"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "DUR",
+								"display": "Durchführungsprotokoll"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-08-02T16:13:56.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Physiotherapiebericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.23952044187111741101902031592311540238141&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=B7BB94F8006C8DAA4900A5C36AA214A3E77AEFEE06DB741D50117A47C40500C4145AC3F35D55C926",
+							"size": 197027,
+							"hash": "3iEWs/G9BywhCiwohAeDWjl8zFs=",
+							"title": "Physiotherapiebericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/6660127d-ff6f-4507-a7f0-e9c3bc566f91"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/2667b9b1-1be9-412f-9426-54b1af407263",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "2667b9b1-1be9-412f-9426-54b1af407263",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">test</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Holm",
+								"given": ["Ella"]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:099fea6a-d953-1d51-b2bd-ab0e6217ac42"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:2667b9b1-1be9-412f-9426-54b1af407263"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "FPRO",
+							"display": "Therapiedokumentation"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "DUR",
+								"display": "Durchführungsprotokoll"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-05-05T10:29:22.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Ergotherapiebericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.3415617050921247122515669481261586951234&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=5EACEF05713B0592BEBAD6B258E737287FD1A96FA5EFED6015F6863421305D3CFEB53512F9989A67",
+							"size": 230292,
+							"hash": "nvU5TPgG50+QCMO+RXi2T6dp8P8=",
+							"title": "Ergotherapiebericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/76d76af8-b995-424b-af47-c75668097d3f"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/7dac5c32-ee69-4564-a96e-cfe94b22d4ce",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "7dac5c32-ee69-4564-a96e-cfe94b22d4ce",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest10</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Dietrich",
+								"given": ["Max"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:aaed88fc-783c-32bf-f152-0acd4ee9e3c1"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:7dac5c32-ee69-4564-a96e-cfe94b22d4ce"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "FPRO",
+							"display": "Therapiedokumentation"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "DUR",
+								"display": "Durchführungsprotokoll"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-08-05T13:20:11.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Logopädiebericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.227202112049322479150179178823314695105&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=D6449AF75524133BE9791C94FFE759E655D980AEAB0E1255B58060AAE8BFB752A1F3E469ACD1AAE9",
+							"size": 488454,
+							"hash": "EZIAbcpwwYr8BkWlcuN+FAjHQng=",
+							"title": "Logopädiebericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/ebd2957c-52cb-43d6-91da-77e706430b22"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/5cf2c463-72e6-4e84-97d1-ed4d9c43517c",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "5cf2c463-72e6-4e84-97d1-ed4d9c43517c",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest11</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Rothstein",
+								"given": ["Daniela"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:19ad7036-7700-c394-3e75-6f8cc465cc21"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:5cf2c463-72e6-4e84-97d1-ed4d9c43517c"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "BERI",
+							"display": "Arztberichte"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BEF",
+								"display": "Befundbericht"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-08-05T13:26:29.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Psychologischer Bericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.34131243196175446524515636236568087585&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=59C602456422FD75B6A91DAB022AABA6B6A68CBC821060146F85DBF1A05C4441839D85BD48983CB3",
+							"size": 620724,
+							"hash": "ZjccEDsBD+w+KBem1TIVN36OKHM=",
+							"title": "Psychologischer Bericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/13543f8d-8822-4585-8da2-f275f54e9cdf"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/636f5646-e06a-11ee-af7c-005056851784",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "636f5646-e06a-11ee-af7c-005056851784",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">fsdalöfads</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"identifier": [
+							{
+								"system": "urn:oid:2.16.840.1.113883.3.37.4.1.9.210",
+								"value": "abc1a2c0-b416-11ce-8a19-3700211c9a62"
+							}
+						],
+						"name": [
+							{
+								"use": "official",
+								"family": "Müller",
+								"given": ["Sophia"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3",
+						"identifier": [
+							{
+								"use": "usual",
+								"system": "http://org.openehealth/ipf/commons/ihe/fhir/0",
+								"value": "313735"
+							}
+						]
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:6366076f-e06a-11ee-af7c-005056851784"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:636f5646-e06a-11ee-af7c-005056851784"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "FALL",
+							"display": "Fallbesprechungen"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BRI",
+								"display": "Brief"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-03-12T13:16:43.000+01:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Konsiliarbericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "N"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "text/xml",
+							"language": "en-us",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.132123336702923361500682176719982237572&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=04AF742EBEC2C90ABAC094DFC907A69D0130812B79F66837883D3E595B95F03C913A8E774ECF1CD4",
+							"size": 2406,
+							"hash": "BRVrd9uD8goKfD/bDYyuaA4wZHs=",
+							"title": "Konsiliarbericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:bppc:2007",
+							"display": "urn:ihe:iti:bppc:2007"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Privacy%20Policies",
+									"code": "634f98fb-e06a-11ee-af7c-005056851784",
+									"display": "Privacy Policies"
+								}
+							]
+						}
+					],
+					"period": {
+						"start": "2024-03-12T13:16:43+01:00",
+						"end": "2024-04-09T14:16:43+02:00"
+					},
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:ISIS_HealthCareFacilityTypeCode",
+								"code": "KH",
+								"display": "KH"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:ISIS_PracticeSettingCode",
+								"code": "PS_Sonstige",
+								"display": "PS_Sonstige"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/636f5645-e06a-11ee-af7c-005056851784"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/d3787f0b-b538-42a3-8710-f8c887f35117",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "d3787f0b-b538-42a3-8710-f8c887f35117",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">UploadTest2</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Miller",
+								"given": ["Kim"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:6332ee89-3918-4921-38c5-7ade8fcb62ce"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:d3787f0b-b538-42a3-8710-f8c887f35117"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "PATD",
+							"display": "Patienteneigene Dokumente"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "ABRE",
+								"display": "Abrechnungsdokumente"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-01-16T01:04:46.000+01:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Überweisungsschein",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1594014464682186810213922413818814715880142&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=7DC9162FF3C58355AC4940111286CDA7CE745973E543AF129785B2F79AE3F7DCA291F7BDB55CE320",
+							"size": 3783,
+							"hash": "+errCuQyAPvjI7ZrRnSTVOKzTEM=",
+							"title": "Überweisungsschein"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/e7c05522-bcc6-4b60-b432-5f28e33161e8"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/e158d5f8-a927-4742-abf3-f05356b85e5b",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "e158d5f8-a927-4742-abf3-f05356b85e5b",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Test PDF Fixed VS</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Acula",
+								"given": ["Janina"],
+								"prefix": ["Dr."]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:10a4ecc5-9c72-b31c-0958-e992f22ec1b5"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:e158d5f8-a927-4742-abf3-f05356b85e5b"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "PATD",
+							"display": "Patienteneigene Dokumente"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "DOK",
+								"display": "Dokumente ohne besondere Form (Notizen)"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-04-06T16:56:26.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Rezept",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.22123986922391167698183182980911907253&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=3A4B258DF5AFB05AC639F2033B789A64F87E3277A0593E7FD45ACA94D264D11A9CD43E4B56FABEB5",
+							"size": 3028,
+							"hash": "v9AJ9QDAVxlf/eZvrmT5L6X1m3I=",
+							"title": "Rezept"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/aa9cdc14-f5f8-4158-97e6-d2b2c5e44f33"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/127c711e-a5a3-4e7c-83a2-8bd12b96ec5c",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "127c711e-a5a3-4e7c-83a2-8bd12b96ec5c",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Test</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Trommler",
+								"given": ["Lucas"]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:6c43016c-7227-beac-d355-8d1870077565"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:127c711e-a5a3-4e7c-83a2-8bd12b96ec5c"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "AUFN",
+							"display": "Einweisungs- und Aufnahmedokumente"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "ADM",
+								"display": "Administratives Dokument"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-03-09T16:22:04.000+01:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Krankenhauseinweisung",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.13755199213146211781116224154219254871397&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=95F6C5B35C76CF6A23398AEAB309E8C37F672EA85CA45A7B0F00254BCCEE2F317D4B53B09B50DF32",
+							"size": 11540,
+							"hash": "7xQhOcwSBE2OZYWiQxoAW6npt/g=",
+							"title": "Krankenhauseinweisung"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/e67959d2-96a2-4d15-8121-00b36582d5f5"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/6ea18f2c-f047-4f49-8928-3410c83905ad",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "6ea18f2c-f047-4f49-8928-3410c83905ad",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">CustomRequestUpload</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Meyer",
+								"given": ["Marina"],
+								"prefix": ["Dr"]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:0f684cde-0d64-5ffb-2b35-a80e99203727"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:6ea18f2c-f047-4f49-8928-3410c83905ad"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "RETT",
+							"display": "Rettungsdienstliche Dokumente"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "BEF",
+								"display": "Befundbericht"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-05-05T14:15:43.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Notfallbericht",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.24520810396173557336191232341793944123175&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=6DA249C99A9597928C3DA4D9C61096F4B2132C7EC9397DE4F677C3BE8098A934A4B4838A882715D2",
+							"size": 214100,
+							"hash": "8jVgDnmg31F17w/L7flI3VzMExg=",
+							"title": "Notfallbericht"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PRA",
+								"display": "Arztpraxis"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:IHEXDSpracticeSettingCode-codesystem-4",
+								"code": "ALLG",
+								"display": "Allgemeinmedizin"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/d5e8de0c-6557-4fef-9b85-27745ea43cc1"
+						}
+					]
+				}
+			}
+		},
+		{
+			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/2cc1da12-a36b-4434-8b9a-695a54ede088",
+			"resource": {
+				"resourceType": "DocumentReference",
+				"id": "2cc1da12-a36b-4434-8b9a-695a54ede088",
+				"meta": {
+					"versionId": "1"
+				},
+				"text": {
+					"status": "additional",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Pain</div>"
+				},
+				"contained": [
+					{
+						"resourceType": "PractitionerRole",
+						"id": "1",
+						"practitioner": {
+							"reference": "#2"
+						}
+					},
+					{
+						"resourceType": "Practitioner",
+						"id": "2",
+						"name": [
+							{
+								"use": "official",
+								"family": "Christian",
+								"given": ["Trini"]
+							}
+						]
+					},
+					{
+						"resourceType": "Patient",
+						"id": "3"
+					}
+				],
+				"masterIdentifier": {
+					"system": "urn:ietf:rfc:3986",
+					"value": "urn:uuid:dacb641c-63eb-08b1-24bf-ccc1b2940652"
+				},
+				"identifier": [
+					{
+						"use": "official",
+						"system": "urn:ietf:rfc:3986",
+						"value": "urn:uuid:2cc1da12-a36b-4434-8b9a-695a54ede088"
+					}
+				],
+				"status": "current",
+				"type": {
+					"coding": [
+						{
+							"system": "urn:pin:Dokumententypen",
+							"code": "PATD",
+							"display": "Patienteneigene Dokumente"
+						}
+					]
+				},
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "urn:pin:Dokumentenklassen",
+								"code": "DOK",
+								"display": "Dokumente ohne besondere Form (Notizen)"
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/313735"
+				},
+				"date": "2024-02-14T13:21:19.000+02:00",
+				"author": [
+					{
+						"reference": "#1"
+					}
+				],
+				"description": "Patientenverfügung",
+				"securityLabel": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+								"code": "N",
+								"display": "normal"
+							}
+						]
+					}
+				],
+				"content": [
+					{
+						"attachment": {
+							"contentType": "application/pdf",
+							"language": "de-DE",
+							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.24791158188141235669817613436229392795218&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=EEF4A4E73F6937B73D0BBF64E62FDE431FC663D3701DEBD64FC3E49F7C2CF091331F9EEEC2E63CC8",
+							"size": 98225,
+							"hash": "PYSIIvmR4eWiH8bGW0BebFTfiVc=",
+							"title": "Patientenverfügung"
+						},
+						"format": {
+							"system": "urn:pin:IHE%20Format%20Codes",
+							"code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+							"display": "MimeType sufficient"
+						}
+					}
+				],
+				"context": {
+					"event": [
+						{
+							"coding": [
+								{
+									"system": "urn:pin:Dokumenten-Warnhinweise",
+									"code": "H1",
+									"display": "vom Patienten mitgebracht"
+								}
+							]
+						}
+					],
+					"facilityType": {
+						"coding": [
+							{
+								"system": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"practiceSetting": {
+						"coding": [
+							{
+								"system": "urn:pin:Nicht-aerztliche%20Fachrichtungen",
+								"code": "PAT",
+								"display": "Patient außerhalb der Betreuung"
+							}
+						]
+					},
+					"sourcePatientInfo": {
+						"reference": "#3"
+					},
+					"related": [
+						{
+							"reference": "DocumentManifest/3efc3221-5c81-4f31-bc0b-52fbfba17f0f"
+						}
+					]
+				}
+			}
+		}
+	]
+}
