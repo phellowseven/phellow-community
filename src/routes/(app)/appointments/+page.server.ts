@@ -13,6 +13,8 @@ async function extractAppointments(response: Response): Promise<Appointment[]> {
 				.map((entry) => entry.resource as Appointment)
 				.sort((a, b) => (dayjs(a.start!).isAfter(b.start!) ? -1 : 1)) ?? [];
 		return entries;
+	} else {
+		console.error('Failed to fetch Appointments:', response);
 	}
 	return [];
 }

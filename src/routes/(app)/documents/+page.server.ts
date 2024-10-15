@@ -2,6 +2,7 @@ import { env } from '$env/dynamic/private';
 import { uploadDocumentSchema } from '$lib/document/form';
 import { addQueryParamsToUrl } from '$lib/util';
 import type { Bundle, DocumentReference } from 'fhir/r4';
+import { base64url } from 'oslo/encoding';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import type { PageServerLoad } from './$types';
@@ -15,11 +16,16 @@ async function extractDocumentReferences(response: Response): Promise<DocumentRe
 				.map((entry) => entry.resource as DocumentReference)
 				.map((entry) => {
 					if (entry.content[0].attachment.url) {
-						entry.content[0].attachment.url = `/documents/${Buffer.from(entry.content[0].attachment.url).toString('base64')}`;
+						const encoded = base64url.encode(
+							new TextEncoder().encode(entry.content[0].attachment.url)
+						);
+						entry.content[0].attachment.url = `/documents/${encoded}`;
 					}
 					return entry;
 				}) ?? [];
 		return entries;
+	} else {
+		console.error('Failed to fetch DocumentReferences:', response);
 	}
 	return [];
 }
