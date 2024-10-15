@@ -1,11 +1,16 @@
 import { encrypt, parseCryptoKeyFromJsonWebKeyString } from '$lib/encryption';
 import { i18n } from '$lib/i18n.js';
+import { connectOAuth2Client } from '$lib/server/auth/auth';
 import { auth } from '$lib/server/auth/lucia';
+import { connectDB } from '$lib/server/db/db';
 import { refreshAccessTokenIfNecessary } from '$lib/server_utils';
 import { redirect, type Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 
 const i18nHandler = i18n.handle();
+
+await connectDB(); // async call so prerendering during `pnpm run build` works without trying to connect to DB.
+await connectOAuth2Client(); // async call so prerendering during `pnpm run build` works without trying to connect to OAuth discovery endpoint.
 
 const authHandle: Handle = async ({ event, resolve }) => {
 	if (event.url.pathname === '/') redirect(307, '/dashboard');

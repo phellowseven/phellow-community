@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import { Issuer } from 'openid-client';
+import { Issuer, type Client } from 'openid-client';
 
 // IdP
 const idp_base_url = env.IDP_BASE_URL;
@@ -24,15 +24,18 @@ export function logoutURL(): URL {
 	return url;
 }
 
-const issuer = await Issuer.discover(idp_base_url);
+let oauth2Client: Client;
 
-const oauth2Client = new issuer.Client({
-	client_id,
-	client_secret,
-	redirect_uris,
-	response_types: ['code'],
-	id_token_signed_response_alg,
-	token_endpoint_auth_method: 'none'
-});
+async function connectOAuth2Client() {
+	const issuer = await Issuer.discover(idp_base_url);
+	oauth2Client = new issuer.Client({
+		client_id,
+		client_secret,
+		redirect_uris,
+		response_types: ['code'],
+		id_token_signed_response_alg,
+		token_endpoint_auth_method: 'none'
+	});
+}
 
-export { oauth2Client, redirect_uris };
+export { connectOAuth2Client, oauth2Client, redirect_uris };
