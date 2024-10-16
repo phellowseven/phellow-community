@@ -8,5 +8,8 @@
 		"prettier-plugin-organize-imports",
 		"prettier-plugin-tailwindcss"
 	],
-	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
+	"overrides": [
+		{ "files": "*.svelte", "options": { "parser": "svelte" } },
+		{ "files": "*.md", "options": { "proseWrap": "always" } }
+	]
 }

@@ -1,0 +1,482 @@
+{
+  "uuid": "4f5c6d8f-a05a-48bb-85b8-bccdeff49e67",
+  "lastMigration": 32,
+  "name": "phellow:community Mockoon",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "59189118-f2f3-4dad-8bac-3dee4f0d5133",
+      "name": "fhir",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "5bf02d93-4184-43f1-9d7e-9ef6c15159cf"
+        },
+        {
+          "type": "route",
+          "uuid": "c6769287-da83-4939-b791-73fa13b47f6d"
+        },
+        {
+          "type": "route",
+          "uuid": "3a08ed97-d9d2-49b1-a903-10fac819ef4d"
+        },
+        {
+          "type": "route",
+          "uuid": "3f9c22ee-8e4d-40be-913e-bdf304d66245"
+        },
+        {
+          "type": "route",
+          "uuid": "e541731b-b6ac-49dc-a028-49a4fa7c5f43"
+        }
+      ]
+    },
+    {
+      "uuid": "c550d923-91f9-4e0e-804b-064c353a9d6f",
+      "name": "OIDC",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "c56270e4-6254-4d63-9f14-6f30c36b204f"
+        },
+        {
+          "type": "route",
+          "uuid": "7bd3eec3-afe4-4712-9d3c-fb7b216e6fbb"
+        },
+        {
+          "type": "route",
+          "uuid": "ccf2a66a-2755-43ca-ae13-206754221249"
+        },
+        {
+          "type": "route",
+          "uuid": "e72d0371-8703-45cb-a60b-03446300f778"
+        },
+        {
+          "type": "route",
+          "uuid": "c87ef8c6-727b-4a9d-b71a-78ab1fd9b53b"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "5bf02d93-4184-43f1-9d7e-9ef6c15159cf",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/DocumentReference",
+      "responses": [
+        {
+          "uuid": "d1c053db-200b-430d-a737-7ec491a77aa9",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./fhir/documents.json",
+          "databucketID": "",
+          "sendFileAsBody": true,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "3a08ed97-d9d2-49b1-a903-10fac819ef4d",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/Appointment",
+      "responses": [
+        {
+          "uuid": "c716c8b1-a3dd-4e9e-b80a-82d509451d17",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./fhir/appointments.json",
+          "databucketID": "",
+          "sendFileAsBody": true,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c56270e4-6254-4d63-9f14-6f30c36b204f",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "auth/oidc/.well-known/openid-configuration",
+      "responses": [
+        {
+          "uuid": "2a2c2e59-45bb-41a8-9156-b670a413b18b",
+          "body": "{\n  \"authorization_endpoint\": \"http://localhost:3000/auth/oidc/authorize\",\n  \"token_endpoint\": \"http://mockoon:3000/auth/oidc/token\",\n  \"registration_endpoint\": \"http://mockoon:3000/auth/oidc/clients\",\n  \"introspection_endpoint\": \"http://mockoon:3000/auth/oidc/token/introspect\",\n  \"revocation_endpoint\": \"http://mockoon:3000/auth/oidc/token/revoke\",\n  \"pushed_authorization_request_endpoint\": \"http://localhost:3000/auth/oidc/par\",\n  \"issuer\": \"http://localhost:3000/auth/oidc\",\n  \"jwks_uri\": \"http://mockoon:3000/auth/oidc/jwks.json\",\n  \"scopes_supported\": [\n    \"openid\",\n    \"profile\",\n    \"email\",\n    \"offline_access\"\n  ],\n  \"response_types_supported\": [\n    \"code\",\n    \"token\",\n    \"id_token\",\n    \"id_token token\",\n    \"code id_token\",\n    \"code id_token token\"\n  ],\n  \"response_modes_supported\": [\n    \"query\",\n    \"fragment\"\n  ],\n  \"grant_types_supported\": [\n    \"implicit\",\n    \"authorization_code\",\n    \"refresh_token\",\n    \"password\",\n    \"client_credentials\",\n    \"urn:ietf:params:oauth:grant-type:jwt-bearer\"\n  ],\n  \"code_challenge_methods_supported\": [\n    \"S256\",\n    \"plain\"\n  ],\n  \"token_endpoint_auth_methods_supported\": [\n    \"client_secret_basic\",\n    \"client_secret_post\",\n    \"client_secret_jwt\",\n    \"private_key_jwt\",\n    \"self_signed_tls_client_auth\",\n    \"none\"\n  ],\n  \"token_endpoint_auth_signing_alg_values_supported\": [\n    \"HS256\",\n    \"HS384\",\n    \"HS512\",\n    \"RS256\",\n    \"RS384\",\n    \"RS512\",\n    \"PS256\",\n    \"PS384\",\n    \"PS512\",\n    \"ES256\",\n    \"ES384\",\n    \"ES512\"\n  ],\n  \"request_object_signing_alg_values_supported\": [\n    \"HS256\",\n    \"HS384\",\n    \"HS512\",\n    \"RS256\",\n    \"RS384\",\n    \"RS512\",\n    \"PS256\",\n    \"PS384\",\n    \"PS512\",\n    \"ES256\",\n    \"ES384\",\n    \"ES512\"\n  ],\n  \"request_object_encryption_alg_values_supported\": [\n    \"RSA-OAEP-256\",\n    \"ECDH-ES\",\n    \"ECDH-ES+A128KW\",\n    \"ECDH-ES+A192KW\",\n    \"ECDH-ES+A256KW\",\n    \"dir\"\n  ],\n  \"request_object_encryption_enc_values_supported\": [\n    \"A128CBC-HS256\",\n    \"A192CBC-HS384\",\n    \"A256CBC-HS512\",\n    \"A128GCM\",\n    \"A192GCM\",\n    \"A256GCM\"\n  ],\n  \"ui_locales_supported\": [\n    \"en\"\n  ],\n  \"request_parameter_supported\": true,\n  \"request_uri_parameter_supported\": true,\n  \"require_request_uri_registration\": true,\n  \"tls_client_certificate_bound_access_tokens\": true,\n  \"request_uri_quota\": 10,\n  \"subject_types_supported\": [\n    \"public\",\n    \"pairwise\"\n  ],\n  \"userinfo_endpoint\": \"http://localhost:3000/auth/oidc/userinfo\",\n  \"acr_values_supported\": [\n    \"http://idmanagement.gov/ns/assurance/loa/2\",\n    \"http://idmanagement.gov/ns/assurance/loa/3\"\n  ],\n  \"id_token_signing_alg_values_supported\": [\n    \"RS256\",\n    \"RS384\",\n    \"RS512\",\n    \"PS256\",\n    \"PS384\",\n    \"PS512\",\n    \"ES256\",\n    \"ES384\",\n    \"ES512\",\n    \"HS256\",\n    \"HS384\",\n    \"HS512\"\n  ],\n  \"id_token_encryption_alg_values_supported\": [\n    \"RSA-OAEP-256\",\n    \"ECDH-ES\",\n    \"ECDH-ES+A128KW\",\n    \"ECDH-ES+A192KW\",\n    \"ECDH-ES+A256KW\",\n    \"dir\",\n    \"A128KW\",\n    \"A192KW\",\n    \"A256KW\",\n    \"A128GCMKW\",\n    \"A192GCMKW\",\n    \"A256GCMKW\"\n  ],\n  \"id_token_encryption_enc_values_supported\": [\n    \"A128CBC-HS256\",\n    \"A192CBC-HS384\",\n    \"A256CBC-HS512\",\n    \"A128GCM\",\n    \"A192GCM\",\n    \"A256GCM\"\n  ],\n  \"userinfo_signing_alg_values_supported\": [\n    \"RS256\",\n    \"RS384\",\n    \"RS512\",\n    \"PS256\",\n    \"PS384\",\n    \"PS512\",\n    \"ES256\",\n    \"ES384\",\n    \"ES512\",\n    \"HS256\",\n    \"HS384\",\n    \"HS512\"\n  ],\n  \"userinfo_encryption_alg_values_supported\": [\n    \"RSA-OAEP-256\",\n    \"ECDH-ES\",\n    \"ECDH-ES+A128KW\",\n    \"ECDH-ES+A192KW\",\n    \"ECDH-ES+A256KW\",\n    \"dir\",\n    \"A128KW\",\n    \"A192KW\",\n    \"A256KW\",\n    \"A128GCMKW\",\n    \"A192GCMKW\",\n    \"A256GCMKW\"\n  ],\n  \"userinfo_encryption_enc_values_supported\": [\n    \"A128CBC-HS256\",\n    \"A192CBC-HS384\",\n    \"A256CBC-HS512\",\n    \"A128GCM\",\n    \"A192GCM\",\n    \"A256GCM\"\n  ],\n  \"display_values_supported\": [\n    \"page\"\n  ],\n  \"claim_types_supported\": [\n    \"normal\"\n  ],\n  \"claims_supported\": [\n    \"sub\",\n    \"iss\",\n    \"auth_time\",\n    \"acr\",\n    \"name\",\n    \"email\",\n    \"patientId\"\n  ],\n  \"claims_parameter_supported\": true,\n  \"frontchannel_logout_supported\": true,\n  \"frontchannel_logout_session_supported\": true,\n  \"backchannel_logout_supported\": true,\n  \"backchannel_logout_session_supported\": true\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./oauth/openid-configuration.json",
+          "databucketID": "",
+          "sendFileAsBody": true,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "7bd3eec3-afe4-4712-9d3c-fb7b216e6fbb",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "auth/oidc/authorize",
+      "responses": [
+        {
+          "uuid": "492fec2c-673a-45c2-823f-1843147a4c81",
+          "body": "",
+          "latency": 0,
+          "statusCode": 302,
+          "label": "",
+          "headers": [
+            {
+              "key": "Location",
+              "value": "http://127.0.0.1:8081/login/callback?code=zKzQJPtg-zWDJIC9PX2Qhg.huyFqMqVFQL2iz1j83i7ow"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "ccf2a66a-2755-43ca-ae13-206754221249",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "auth/oidc/token",
+      "responses": [
+        {
+          "uuid": "0fb1241e-8312-4a7d-8355-da44e79a1d37",
+          "body": "{\n  \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI0M2EzMmI1Yy0wYTZhLTQ5YTgtOGRkNi05YzY3NDlkNWNkZmEiLCJzY3AiOlsicGF0aWVudC9SZWNvcmRBc3NvY2lhdGlvbi5jb25maXJtIiwib3BlbmlkIiwicGF0aWVudC9RdWVzdGlvbm5haXJlLnJlYWQiLCJwYXRpZW50L0xvY2F0aW9uLnJlYWQiLCJwYXRpZW50L0FwcG9pbnRtZW50LnJlYWQiLCJvZmZsaW5lX2FjY2VzcyIsInBhdGllbnQvUXVlc3Rpb25uYWlyZVJlc3BvbnNlLndyaXRlIiwicGF0aWVudC9Eb2N1bWVudFJlZmVyZW5jZS5yZWFkIiwiZW1haWwiLCJwYXRpZW50L1JlY29yZEFzc29jaWF0aW9uLnJlYWQiLCJwYXRpZW50L0RvY3VtZW50TWFuaWZlc3Qud3JpdGUiLCJwYXRpZW50L09ic2VydmF0aW9uLndyaXRlIl0sImNsbSI6WyIhQnciXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwL2F1dGgvb2lkYyIsImV4cCI6MTgyNjY1NjY4MCwiaWF0IjoxNzI2NjU2NjgwLCJ1aXAiOnsicGF0aWVudElkIjoiMzEzNzM1Iiwic2lkIjoiSjBHLXRFQlhEX2stOG1VTkVxN2M1Zy5Pa1ZBc2ZON2tlVl91Uk5XenJlVWJBIiwiY2lkIjoibnRlazNhMmFscDJ1d3R1NWVxa20zdG1zdmkifSwianRpIjoiUU9WWHdrNTh5YkEiLCJjaWQiOiJudGVrM2EyYWxwMnV3dHU1ZXFrbTN0bXN2aSJ9.B0TQLls6AptgsM24r8HYVrNt4tESB_Aw56q4xVl_seEA4zNp6010gfr71o04rhk_H6dmK_zyVrBrq3C9m-pxULlV2-7XQRFzjKCA3B78qYIo6FMxngynk-BkhzZ38YrUAjV5_CqDI20hhuVe7sN8VNfL91juphBDx2M7xTb06kn_J41jT_k83zg5AO2xOydKCgvlzyc7kYSCEbXT0JhT-iPUf88P609HcpaJvXXNN0p3r9p_lRC_TRFfSxJAUfBmkbnHnYGtTOG7nO1cNlFwcfEy_jA51YWjOhVvR8hknpyexZ7bZCaIHSz4kAhjqGeSBFgOBp2CLhgBFcMfoWs5WA\",\n  \"refresh_token\": \"xttP_CyHcCZnffLTqH0Idp6Cts5NPZMtn6c_qdXksNvxd9VnrhcD7WPU9BNT16aqYkiIGRn6y3ScHgPCEYYp74zIIoojam0xjsRw7TBbrOifLSKKusmcXAPzonCbqSie5kqEGA.V3A0t6hNGzxGVNvXW1NcIg\",\n  \"scope\": \"patient/RecordAssociation.confirm openid patient/Questionnaire.read patient/Location.read patient/Appointment.read offline_access patient/QuestionnaireResponse.write patient/DocumentReference.read email patient/RecordAssociation.read patient/DocumentManifest.write patient/Observation.write\",\n  \"id_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI0M2EzMmI1Yy0wYTZhLTQ5YTgtOGRkNi05YzY3NDlkNWNkZmEiLCJhdWQiOiJudGVrM2EyYWxwMnV3dHU1ZXFrbTN0bXN2aSIsImFjciI6Imh0dHA6Ly9pZG1hbmFnZW1lbnQuZ292L25zL2Fzc3VyYW5jZS9sb2EvMiIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9hdXRoL29pZGMiLCJleHAiOjE4MjY2NTY2ODAsImlhdCI6MTcyNjY1NjY4MH0.TTpDNLgwxWl4kBaGn6KUMhd71iuy7pSAk9oPIVfFP8OP820aUVIhXgNMVj0Am9q94FEm7C-S7c4eweoK6L3-dZRJxkmLsH6ERUDNm3gAAXXP1-FMaOo-Ery2gHhJcxL2I24nQcABtU54dpYZZDWVWoA0gbAzJg8_6Nj1cPyDUWq1PNokoO-YyZ3Yj8WG9cEuynEIOmN9QTN8ZRtTPtgOl3IfRM0OL7erqMh20MwsGkPg1N4xa84UJW9csxUKni9udEWzTDIzrSXhm_kIgzWyNcF-0ARHBVptF9ON_0EDY5B_wP438aKLTowMTPK6SpuQEfaqmxJi9fFpEPzG_rqoJA\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 900\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "e72d0371-8703-45cb-a60b-03446300f778",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "auth/oidc/jwks.json",
+      "responses": [
+        {
+          "uuid": "fab1c32a-b3ca-476d-aaf0-8cf15601dc17",
+          "body": "{\n  \"keys\": [\n    {\n      \"kty\": \"RSA\",\n      \"n\": \"suBzqPVqXBkLjltbOHVu_Lkupog0C89dAEj4AnmZTQht6mVuoTw4lYsI5DMQB-_fZNogoyj9R-h0ieM50vCx_y6BJrt3KGRoJ16hYeEmLQXvhu34RQraKwyKFmvJz7SUp6k3strJSzLAWiZL5aE3VlCIk-UVEa0KU7eO1bD2sMb5BFAne4CJrgpi7i-q9r6WR87ozjawtxlckCW2WnOCuUI8Yv2YLNkLBnOo8NyAI4R7z7q9GixIG_Nd4HQzssQAEq-ZqLkS63IQlsCc2aFnEGm5KVUBSCBiYwOMx1B15i6Tgyb4_fsS6EPHHkFMRKIXGcmO0rt_WkiNQZDpwv6tWw\",\n      \"e\": \"AQAB\",\n      \"ext\": true,\n      \"kid\": \"O6zl\",\n      \"alg\": \"RS256\",\n      \"use\": \"sig\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c87ef8c6-727b-4a9d-b71a-78ab1fd9b53b",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "auth/oidc/logout",
+      "responses": [
+        {
+          "uuid": "5e370bb8-fd86-46ec-b07e-e1280400926d",
+          "body": "",
+          "latency": 0,
+          "statusCode": 302,
+          "label": "",
+          "headers": [
+            {
+              "key": "Location",
+              "value": "http://127.0.0.1:8081/login"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "3f9c22ee-8e4d-40be-913e-bdf304d66245",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/Location/:locationID",
+      "responses": [
+        {
+          "uuid": "e558f178-8cc1-45e8-8e05-d4f847a2b37e",
+          "body": "{\n  \"resourceType\": \"Location\",\n  \"id\": \"00371000\",\n  \"meta\": {\n    \"versionId\": \"1\",\n    \"lastUpdated\": \"2022-10-05T07:44:33.914+02:00\",\n    \"source\": \"#67as8kiii9pr88q5\"\n  },\n  \"identifier\": [\n    {\n      \"use\": \"official\",\n      \"value\": \"00371000\"\n    }\n  ],\n  \"status\": \"active\",\n  \"name\": \"Orthopädie\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "00371000",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "locationID",
+              "value": "00371000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "620a2c66-dcb4-4963-91fd-53eb55acd491",
+          "body": "{\n  \"resourceType\": \"Location\",\n  \"id\": \"00231000\",\n  \"meta\": {\n    \"versionId\": \"7\",\n    \"lastUpdated\": \"2023-02-02T09:57:40.809+01:00\",\n    \"source\": \"#qHYFCQ1Y4W8pIKNc\"\n  },\n  \"identifier\": [\n    {\n      \"use\": \"official\",\n      \"value\": \"00231000\"\n    }\n  ],\n  \"status\": \"active\",\n  \"name\": \"Klinik für Allgemein-, Viszeral- und Transplantationschirurgie\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "00231000",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "locationID",
+              "value": "00231000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "0171cc0a-0a18-42b3-881b-4c36d2c00a3e",
+          "body": "{\n  \"resourceType\": \"Location\",\n  \"id\": \"00281000\",\n  \"meta\": {\n    \"versionId\": \"6\",\n    \"lastUpdated\": \"2023-02-02T09:57:43.382+01:00\",\n    \"source\": \"#rthmA1pe1XFZa6WP\"\n  },\n  \"identifier\": [\n    {\n      \"use\": \"official\",\n      \"value\": \"00281000\"\n    }\n  ],\n  \"status\": \"active\",\n  \"name\": \"Klinik für Endokrinologie, Diabetologie, Stoffwechselkrankheiten und Klinische Chemie\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "00281000",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "locationID",
+              "value": "00281000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c6769287-da83-4939-b791-73fa13b47f6d",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "binary/document",
+      "responses": [
+        {
+          "uuid": "5c2e7f6f-8f13-4cd8-95f9-2112ff6fdbec",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./fhir/Document.pdf",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "e541731b-b6ac-49dc-a028-49a4fa7c5f43",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/Observation",
+      "responses": [
+        {
+          "uuid": "718e4e6d-c8cd-40ab-9967-832a0ef7b73a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./fhir/observations.json",
+          "databucketID": "",
+          "sendFileAsBody": true,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "59189118-f2f3-4dad-8bac-3dee4f0d5133"
+    },
+    {
+      "type": "folder",
+      "uuid": "c550d923-91f9-4e0e-804b-064c353a9d6f"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

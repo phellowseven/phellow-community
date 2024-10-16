@@ -21,5 +21,12 @@
 	"document": "Dokument",
 	"anamnese_title": "Anamnese",
 	"searchbar_placeholder": "Suche",
-	"anamnesis_title": "Anamnese"
+	"anamnesis_title": "Anamnese",
+	"structuredData_title": "Strukturierte Daten",
+	"observations_table_date_format": "DD.MM.YYYY",
+	"observation_table_header_value": "Wert",
+	"observation_table_header_unit": "Einheit",
+	"observation_table_header_date": "Datum",
+	"observation_group_hide": "Verstecken",
+	"observation_group_show": "Anzeigen"
 }

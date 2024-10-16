@@ -9,12 +9,12 @@
 	"link": [
 		{
 			"relation": "self",
-			"url": "https://fhir-server-domain.de/fhir/DocumentReference?_format=json&patient.identifier=%7Cme_"
+			"url": "http://{{hostname}}:3000/fhir/DocumentReference?_format=json"
 		}
 	],
 	"entry": [
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/67d5d954-e9db-463e-a3a7-86346652f394",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/67d5d954-e9db-463e-a3a7-86346652f394",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "67d5d954-e9db-463e-a3a7-86346652f394",
@@ -108,7 +108,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.2462335761106168691901777158981741863434&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=B43AC765148FD887B3743F44168D09F68E18565FE685B5D48E9A4222C641F9FC7ADC605E0EACE9A7",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.2462335761106168691901777158981741863434&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=B43AC765148FD887B3743F44168D09F68E18565FE685B5D48E9A4222C641F9FC7ADC605E0EACE9A7",
 							"size": 537031,
 							"hash": "8RwZjFtkA/tm+ExkectR3z2xmYw=",
 							"title": "Anamnesebogen"
@@ -162,7 +162,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/90ed18a5-8f1e-4c96-af76-4c07534ff3cb",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/90ed18a5-8f1e-4c96-af76-4c07534ff3cb",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "90ed18a5-8f1e-4c96-af76-4c07534ff3cb",
@@ -256,7 +256,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.167249176136252144673516564168541077918077&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=8406E30B925E8BB78F45D08776DD69787B9C5893BFE7E324FCAC6C2B5E4FA4A08D42344EB56534D8",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.167249176136252144673516564168541077918077&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=8406E30B925E8BB78F45D08776DD69787B9C5893BFE7E324FCAC6C2B5E4FA4A08D42344EB56534D8",
 							"size": 352496,
 							"hash": "FtK3eUtgrTmow1u7yqQ0Af5lHi0=",
 							"title": "Aufnahmebericht"
@@ -310,7 +310,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/0f97d13c-9902-4329-a2ae-320e49d7e9f2",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/0f97d13c-9902-4329-a2ae-320e49d7e9f2",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "0f97d13c-9902-4329-a2ae-320e49d7e9f2",
@@ -404,7 +404,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.802418118879191762341695031112173126199245&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=C18A04B043C4C1227D5947058413C449694D0E774418B36C772B485CBDF1B14FA53E3C4EC57F1422",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.802418118879191762341695031112173126199245&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=C18A04B043C4C1227D5947058413C449694D0E774418B36C772B485CBDF1B14FA53E3C4EC57F1422",
 							"size": 8792041,
 							"hash": "L/G7aQdAiBRWqwjRlX7aPKf3v+8=",
 							"title": "Entlassungsbericht"
@@ -458,7 +458,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/a1c2aba8-2f43-41c5-a705-f42d489bed6f",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/a1c2aba8-2f43-41c5-a705-f42d489bed6f",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "a1c2aba8-2f43-41c5-a705-f42d489bed6f",
@@ -552,7 +552,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.83111254175205103781891692231141591232362188&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=514E14AEE9D65E5685B6F1CDEAAFD18F42FD02DE0D1DCA8FC53F17452CD457652A993A1D2C14D1A3",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.83111254175205103781891692231141591232362188&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=514E14AEE9D65E5685B6F1CDEAAFD18F42FD02DE0D1DCA8FC53F17452CD457652A993A1D2C14D1A3",
 							"size": 214100,
 							"hash": "dEpTG/YhUmW9aGGI/WEsKukV1Gs=",
 							"title": "Arztbrief"
@@ -606,7 +606,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/3b02fcae-7edf-4df2-9de7-e5f2da214c23",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/3b02fcae-7edf-4df2-9de7-e5f2da214c23",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "3b02fcae-7edf-4df2-9de7-e5f2da214c23",
@@ -700,7 +700,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1432282371332472477145128138138288255133255&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=7444194155E867B2A9B62EA0F4DF90B1EB8ACD51E2D9133A3E6F5992FA197AF5E21B250D9C641AC1",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1432282371332472477145128138138288255133255&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=7444194155E867B2A9B62EA0F4DF90B1EB8ACD51E2D9133A3E6F5992FA197AF5E21B250D9C641AC1",
 							"size": 133553,
 							"hash": "cl4hH7MIPtDrQUxM+G+4rkvBiKI=",
 							"title": "Befundbericht"
@@ -754,7 +754,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/23eb9b8e-04eb-4f51-979e-eb2bdd34ad54",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/23eb9b8e-04eb-4f51-979e-eb2bdd34ad54",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "23eb9b8e-04eb-4f51-979e-eb2bdd34ad54",
@@ -848,7 +848,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.30132253923266516718914975971342242093&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=C765E7B9FE45720179F9477DAFAD1C8ED483873756F46D7F70A0892CD3B05E1E9F0E84C583528C03",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.30132253923266516718914975971342242093&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=C765E7B9FE45720179F9477DAFAD1C8ED483873756F46D7F70A0892CD3B05E1E9F0E84C583528C03",
 							"size": 7704487,
 							"hash": "qdQ5k32f7mNx/Q015no621CwJp8=",
 							"title": "Operationsbericht"
@@ -902,7 +902,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/3849ace2-e00d-45e4-ab25-0be4ef47d2d5",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/3849ace2-e00d-45e4-ab25-0be4ef47d2d5",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "3849ace2-e00d-45e4-ab25-0be4ef47d2d5",
@@ -996,7 +996,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.6217873809081672281322141485318915818938&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=8547BCED814FAC02F1C1186FD9B5DAA897AB45969F3DD3990EC91854AB9075BE5703DE198592A6FE",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.6217873809081672281322141485318915818938&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=8547BCED814FAC02F1C1186FD9B5DAA897AB45969F3DD3990EC91854AB9075BE5703DE198592A6FE",
 							"size": 2554817,
 							"hash": "M0P4rWxipFJQwhe1D5ye7myKc1g=",
 							"title": "Laborbericht"
@@ -1050,7 +1050,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/6efa4ef9-d91a-44d7-a371-481192b8aa8f",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/6efa4ef9-d91a-44d7-a371-481192b8aa8f",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "6efa4ef9-d91a-44d7-a371-481192b8aa8f",
@@ -1144,7 +1144,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.215205251469217969126171155872112810521281&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2B138A4570BFFC7B33251287F5335515BC619F8726B6A26AFE674BAFD7C0D221CD1DCE9E0043286E",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.215205251469217969126171155872112810521281&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2B138A4570BFFC7B33251287F5335515BC619F8726B6A26AFE674BAFD7C0D221CD1DCE9E0043286E",
 							"size": 1607700,
 							"hash": "bamifrxt02b9DLEvci7cpUrXDcA=",
 							"title": "Röntgenbefund"
@@ -1198,7 +1198,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/801783de-eeba-4fd7-8571-80a0c0d4c45a",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/801783de-eeba-4fd7-8571-80a0c0d4c45a",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "801783de-eeba-4fd7-8571-80a0c0d4c45a",
@@ -1292,7 +1292,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.182501274123523866203157178201222227120242107&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=4C3FAF5E7D93D07CE1DF32EF3F50D5EE57CDCB39540615BD4BB3AE4B00A5E2183CC26B9504DE5EE6",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.182501274123523866203157178201222227120242107&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=4C3FAF5E7D93D07CE1DF32EF3F50D5EE57CDCB39540615BD4BB3AE4B00A5E2183CC26B9504DE5EE6",
 							"size": 322843,
 							"hash": "Fl7yX9p0Ksrz1W2fZenc3h/uuDM=",
 							"title": "MRT-Befund"
@@ -1346,7 +1346,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/2a356395-2af9-4b3a-8b34-66abe479ccb0",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/2a356395-2af9-4b3a-8b34-66abe479ccb0",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "2a356395-2af9-4b3a-8b34-66abe479ccb0",
@@ -1440,7 +1440,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.141139185163078135134362279313237228253&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=AF43186A3B316A68FB16B2E7BA4EF097C25EFE7D01834E1096E8DB038C44E21E70908E685BFDEC23",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.141139185163078135134362279313237228253&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=AF43186A3B316A68FB16B2E7BA4EF097C25EFE7D01834E1096E8DB038C44E21E70908E685BFDEC23",
 							"size": 3783,
 							"hash": "+errCuQyAPvjI7ZrRnSTVOKzTEM=",
 							"title": "CT-Befund"
@@ -1494,7 +1494,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/cb02a809-90fe-426e-8017-0060ee747c60",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/cb02a809-90fe-426e-8017-0060ee747c60",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "cb02a809-90fe-426e-8017-0060ee747c60",
@@ -1588,7 +1588,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.131241602071911217216417742872144723113915&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=1C4687BFE53DE09310A8E508C34AD1D2E20BF5F3C1CD8F7FB6D79C72574AFD28236F0B5BDBDB606C",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.131241602071911217216417742872144723113915&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=1C4687BFE53DE09310A8E508C34AD1D2E20BF5F3C1CD8F7FB6D79C72574AFD28236F0B5BDBDB606C",
 							"size": 197973,
 							"hash": "aZkTULMXfQaRQu9rFHmic/QllzM=",
 							"title": "Ultraschallbefund"
@@ -1642,7 +1642,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/4a39d07a-068c-476c-8a68-4617d4849abe",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/4a39d07a-068c-476c-8a68-4617d4849abe",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "4a39d07a-068c-476c-8a68-4617d4849abe",
@@ -1736,7 +1736,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1231995764152119734313911359235851114554&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=003B2511BD0028F2F1B7382C2DCC3BD84CD0AD774D91F361F2F537C335EF2DD6D0BF89276CD67034",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1231995764152119734313911359235851114554&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=003B2511BD0028F2F1B7382C2DCC3BD84CD0AD774D91F361F2F537C335EF2DD6D0BF89276CD67034",
 							"size": 229630,
 							"hash": "CDzfBeCG38KUzm0E8I3hMkcrN1U=",
 							"title": "EKG-Befund"
@@ -1790,7 +1790,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/7e050434-6b30-464a-8328-1dd07f4e684a",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/7e050434-6b30-464a-8328-1dd07f4e684a",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "7e050434-6b30-464a-8328-1dd07f4e684a",
@@ -1884,7 +1884,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1801521092445617865150138100917914424616658&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2EF5A9727BE8DCC21D95FFEAE5C5102F2051BA5F171B3A469EA92A9B6417628B8D4157DEED7EA072",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1801521092445617865150138100917914424616658&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2EF5A9727BE8DCC21D95FFEAE5C5102F2051BA5F171B3A469EA92A9B6417628B8D4157DEED7EA072",
 							"size": 223278,
 							"hash": "ES3UX9/PNB4z7fad1FjrihVKf8w=",
 							"title": "EEG-Befund"
@@ -1938,7 +1938,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/7e7346ac-2fac-48af-b153-7aaaf00b72b7",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/7e7346ac-2fac-48af-b153-7aaaf00b72b7",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "7e7346ac-2fac-48af-b153-7aaaf00b72b7",
@@ -2032,7 +2032,7 @@
 						"attachment": {
 							"contentType": "image/jpeg",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.14322811716316179732211666587190134117340&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2E2D034BACED554C9548B9A4C9EAA33185E2EF29499B53733B8CFF1DF0ADCAF03B5357AF5C885400",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.14322811716316179732211666587190134117340&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2E2D034BACED554C9548B9A4C9EAA33185E2EF29499B53733B8CFF1DF0ADCAF03B5357AF5C885400",
 							"size": 2723763,
 							"hash": "ooQ1HRuIshoTEQy7KK3AXndPo/U=",
 							"title": "Pathologiebefund"
@@ -2086,7 +2086,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/762fd208-d223-4486-a6c2-fc196da76bd2",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/762fd208-d223-4486-a6c2-fc196da76bd2",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "762fd208-d223-4486-a6c2-fc196da76bd2",
@@ -2179,7 +2179,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.4547142505421377138184249242117776184224&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2D01F9734CC8EA44228ABC12636651ED1B2D75BFD92097C8A529834F9D5CA9DC82257A88CA9944CC",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.4547142505421377138184249242117776184224&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=2D01F9734CC8EA44228ABC12636651ED1B2D75BFD92097C8A529834F9D5CA9DC82257A88CA9944CC",
 							"size": 229804,
 							"hash": "RcY2KUC8tHZXEb6U4+3k5F5v4Ss=",
 							"title": "Histologiebefund"
@@ -2233,7 +2233,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/b2bedb26-66b7-45b9-8e42-00045c28957f",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/b2bedb26-66b7-45b9-8e42-00045c28957f",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "b2bedb26-66b7-45b9-8e42-00045c28957f",
@@ -2327,7 +2327,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.9774461171452506814613514621250142124360&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=123B082617D199446F818BD8B6114F0DCF54F456214E171F641B58E28686AC0F4BD7B044E75184D8",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.9774461171452506814613514621250142124360&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=123B082617D199446F818BD8B6114F0DCF54F456214E171F641B58E28686AC0F4BD7B044E75184D8",
 							"size": 354185,
 							"hash": "tLkYRr5Bch6FXIavT6U44JREgoE=",
 							"title": "Allergiepass"
@@ -2381,7 +2381,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/222a6307-a4e5-416e-a146-f8874416a4a8",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/222a6307-a4e5-416e-a146-f8874416a4a8",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "222a6307-a4e5-416e-a146-f8874416a4a8",
@@ -2474,7 +2474,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1582252401371147096188251698921718418140&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=71B7DF9678B79DBB21FBCBE7CC49F312FEEB0F12816788856FC2872AEB20557D9DA07CDB17F4C4D0",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1582252401371147096188251698921718418140&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=71B7DF9678B79DBB21FBCBE7CC49F312FEEB0F12816788856FC2872AEB20557D9DA07CDB17F4C4D0",
 							"size": 229105,
 							"hash": "aCL/Aj0xU1T1uwwu56MRRUnmnrk=",
 							"title": "Impfausweis"
@@ -2528,7 +2528,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/468b44d3-0c82-4a1c-8713-64a2d0aebcbf",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/468b44d3-0c82-4a1c-8713-64a2d0aebcbf",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "468b44d3-0c82-4a1c-8713-64a2d0aebcbf",
@@ -2622,7 +2622,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.0163239782132386472139382401213134130174&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=C2B67D97844F0AFAA72779F93A7151174C83CF63D0100381B7610A0CD658D6E21088C614AC5074EB",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.0163239782132386472139382401213134130174&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=C2B67D97844F0AFAA72779F93A7151174C83CF63D0100381B7610A0CD658D6E21088C614AC5074EB",
 							"size": 117910,
 							"hash": "sk3V0zi5qsvbxTrj1imI3wjTswc=",
 							"title": "Medikamentenplan"
@@ -2676,7 +2676,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/462947b5-06b9-4d4a-948c-2a201c9ee1b7",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/462947b5-06b9-4d4a-948c-2a201c9ee1b7",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "462947b5-06b9-4d4a-948c-2a201c9ee1b7",
@@ -2770,7 +2770,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.193363166146972251742199117112223210250&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=125171E1B4AA5018CAAF777356CC9ADECC7FA0405E5877D9D1C09ADE869D764EC0BCA8D964259E6D",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.193363166146972251742199117112223210250&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=125171E1B4AA5018CAAF777356CC9ADECC7FA0405E5877D9D1C09ADE869D764EC0BCA8D964259E6D",
 							"size": 226369,
 							"hash": "xGQcjxXFr/rz1SD7WEYv6twNMtE=",
 							"title": "Therapieplan"
@@ -2824,7 +2824,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/a0e67782-64f1-4c87-8c32-efaa7c1e193f",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/a0e67782-64f1-4c87-8c32-efaa7c1e193f",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "a0e67782-64f1-4c87-8c32-efaa7c1e193f",
@@ -2917,7 +2917,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.9211194754212641431441212171209024171208&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=DBC830F0938F12DB96BFE473EF08A70288F313D8E86016D8CD8CBB92D3E1334FF305FFE46F1971DD",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.9211194754212641431441212171209024171208&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=DBC830F0938F12DB96BFE473EF08A70288F313D8E86016D8CD8CBB92D3E1334FF305FFE46F1971DD",
 							"size": 163212,
 							"hash": "OGZFEzfm2bxmcWqMrFoOuNaDK4g=",
 							"title": "Pflegebericht"
@@ -2971,7 +2971,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/ff75da3d-5781-4530-85f2-3cdd78f3b919",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/ff75da3d-5781-4530-85f2-3cdd78f3b919",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "ff75da3d-5781-4530-85f2-3cdd78f3b919",
@@ -3064,7 +3064,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.23952044187111741101902031592311540238141&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=B7BB94F8006C8DAA4900A5C36AA214A3E77AEFEE06DB741D50117A47C40500C4145AC3F35D55C926",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.23952044187111741101902031592311540238141&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=B7BB94F8006C8DAA4900A5C36AA214A3E77AEFEE06DB741D50117A47C40500C4145AC3F35D55C926",
 							"size": 197027,
 							"hash": "3iEWs/G9BywhCiwohAeDWjl8zFs=",
 							"title": "Physiotherapiebericht"
@@ -3118,7 +3118,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/2667b9b1-1be9-412f-9426-54b1af407263",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/2667b9b1-1be9-412f-9426-54b1af407263",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "2667b9b1-1be9-412f-9426-54b1af407263",
@@ -3211,7 +3211,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.3415617050921247122515669481261586951234&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=5EACEF05713B0592BEBAD6B258E737287FD1A96FA5EFED6015F6863421305D3CFEB53512F9989A67",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.3415617050921247122515669481261586951234&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=5EACEF05713B0592BEBAD6B258E737287FD1A96FA5EFED6015F6863421305D3CFEB53512F9989A67",
 							"size": 230292,
 							"hash": "nvU5TPgG50+QCMO+RXi2T6dp8P8=",
 							"title": "Ergotherapiebericht"
@@ -3265,7 +3265,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/7dac5c32-ee69-4564-a96e-cfe94b22d4ce",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/7dac5c32-ee69-4564-a96e-cfe94b22d4ce",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "7dac5c32-ee69-4564-a96e-cfe94b22d4ce",
@@ -3359,7 +3359,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.227202112049322479150179178823314695105&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=D6449AF75524133BE9791C94FFE759E655D980AEAB0E1255B58060AAE8BFB752A1F3E469ACD1AAE9",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.227202112049322479150179178823314695105&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=D6449AF75524133BE9791C94FFE759E655D980AEAB0E1255B58060AAE8BFB752A1F3E469ACD1AAE9",
 							"size": 488454,
 							"hash": "EZIAbcpwwYr8BkWlcuN+FAjHQng=",
 							"title": "Logopädiebericht"
@@ -3413,7 +3413,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/5cf2c463-72e6-4e84-97d1-ed4d9c43517c",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/5cf2c463-72e6-4e84-97d1-ed4d9c43517c",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "5cf2c463-72e6-4e84-97d1-ed4d9c43517c",
@@ -3507,7 +3507,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.34131243196175446524515636236568087585&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=59C602456422FD75B6A91DAB022AABA6B6A68CBC821060146F85DBF1A05C4441839D85BD48983CB3",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.34131243196175446524515636236568087585&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=59C602456422FD75B6A91DAB022AABA6B6A68CBC821060146F85DBF1A05C4441839D85BD48983CB3",
 							"size": 620724,
 							"hash": "ZjccEDsBD+w+KBem1TIVN36OKHM=",
 							"title": "Psychologischer Bericht"
@@ -3561,7 +3561,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/636f5646-e06a-11ee-af7c-005056851784",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/636f5646-e06a-11ee-af7c-005056851784",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "636f5646-e06a-11ee-af7c-005056851784",
@@ -3668,7 +3668,7 @@
 						"attachment": {
 							"contentType": "text/xml",
 							"language": "en-us",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.132123336702923361500682176719982237572&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=04AF742EBEC2C90ABAC094DFC907A69D0130812B79F66837883D3E595B95F03C913A8E774ECF1CD4",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.132123336702923361500682176719982237572&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=04AF742EBEC2C90ABAC094DFC907A69D0130812B79F66837883D3E595B95F03C913A8E774ECF1CD4",
 							"size": 2406,
 							"hash": "BRVrd9uD8goKfD/bDYyuaA4wZHs=",
 							"title": "Konsiliarbericht"
@@ -3726,7 +3726,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/d3787f0b-b538-42a3-8710-f8c887f35117",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/d3787f0b-b538-42a3-8710-f8c887f35117",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "d3787f0b-b538-42a3-8710-f8c887f35117",
@@ -3820,7 +3820,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1594014464682186810213922413818814715880142&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=7DC9162FF3C58355AC4940111286CDA7CE745973E543AF129785B2F79AE3F7DCA291F7BDB55CE320",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.1594014464682186810213922413818814715880142&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=7DC9162FF3C58355AC4940111286CDA7CE745973E543AF129785B2F79AE3F7DCA291F7BDB55CE320",
 							"size": 3783,
 							"hash": "+errCuQyAPvjI7ZrRnSTVOKzTEM=",
 							"title": "Überweisungsschein"
@@ -3874,7 +3874,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/e158d5f8-a927-4742-abf3-f05356b85e5b",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/e158d5f8-a927-4742-abf3-f05356b85e5b",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "e158d5f8-a927-4742-abf3-f05356b85e5b",
@@ -3968,7 +3968,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.22123986922391167698183182980911907253&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=3A4B258DF5AFB05AC639F2033B789A64F87E3277A0593E7FD45ACA94D264D11A9CD43E4B56FABEB5",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.22123986922391167698183182980911907253&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=3A4B258DF5AFB05AC639F2033B789A64F87E3277A0593E7FD45ACA94D264D11A9CD43E4B56FABEB5",
 							"size": 3028,
 							"hash": "v9AJ9QDAVxlf/eZvrmT5L6X1m3I=",
 							"title": "Rezept"
@@ -4022,7 +4022,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/127c711e-a5a3-4e7c-83a2-8bd12b96ec5c",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/127c711e-a5a3-4e7c-83a2-8bd12b96ec5c",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "127c711e-a5a3-4e7c-83a2-8bd12b96ec5c",
@@ -4115,7 +4115,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.13755199213146211781116224154219254871397&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=95F6C5B35C76CF6A23398AEAB309E8C37F672EA85CA45A7B0F00254BCCEE2F317D4B53B09B50DF32",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.13755199213146211781116224154219254871397&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=95F6C5B35C76CF6A23398AEAB309E8C37F672EA85CA45A7B0F00254BCCEE2F317D4B53B09B50DF32",
 							"size": 11540,
 							"hash": "7xQhOcwSBE2OZYWiQxoAW6npt/g=",
 							"title": "Krankenhauseinweisung"
@@ -4169,7 +4169,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/6ea18f2c-f047-4f49-8928-3410c83905ad",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/6ea18f2c-f047-4f49-8928-3410c83905ad",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "6ea18f2c-f047-4f49-8928-3410c83905ad",
@@ -4263,7 +4263,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.24520810396173557336191232341793944123175&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=6DA249C99A9597928C3DA4D9C61096F4B2132C7EC9397DE4F677C3BE8098A934A4B4838A882715D2",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.24520810396173557336191232341793944123175&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=6DA249C99A9597928C3DA4D9C61096F4B2132C7EC9397DE4F677C3BE8098A934A4B4838A882715D2",
 							"size": 214100,
 							"hash": "8jVgDnmg31F17w/L7flI3VzMExg=",
 							"title": "Notfallbericht"
@@ -4317,7 +4317,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/DocumentReference/2cc1da12-a36b-4434-8b9a-695a54ede088",
+			"fullUrl": "http://{{hostname}}:3000/fhir/DocumentReference/2cc1da12-a36b-4434-8b9a-695a54ede088",
 			"resource": {
 				"resourceType": "DocumentReference",
 				"id": "2cc1da12-a36b-4434-8b9a-695a54ede088",
@@ -4410,7 +4410,7 @@
 						"attachment": {
 							"contentType": "application/pdf",
 							"language": "de-DE",
-							"url": "https://fhir-server-domain.de/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.24791158188141235669817613436229392795218&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=EEF4A4E73F6937B73D0BBF64E62FDE431FC663D3701DEBD64FC3E49F7C2CF091331F9EEEC2E63CC8",
+							"url": "http://{{hostname}}:3000/binary/document?repoId=1.2.276.0.76.4.15.1.1.10.1&docId=2.25.24791158188141235669817613436229392795218&status=Approved&hcId=urn%3Aoid%3A1.2.276.0.76.4.15&sid=EEF4A4E73F6937B73D0BBF64E62FDE431FC663D3701DEBD64FC3E49F7C2CF091331F9EEEC2E63CC8",
 							"size": 98225,
 							"hash": "PYSIIvmR4eWiH8bGW0BebFTfiVc=",
 							"title": "Patientenverfügung"

@@ -9,12 +9,12 @@
 	"link": [
 		{
 			"relation": "self",
-			"url": "https://fhir-server-domain.de/fhir/Appointment?_format=json&patient=Patient%2F313735"
+			"url": "http://localhost:3000/fhir/Appointment?_format=json&patient=Patient%2F313735"
 		}
 	],
 	"entry": [
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/Appointment/Testtermin",
+			"fullUrl": "http://localhost:3000/fhir/Appointment/Testtermin",
 			"resource": {
 				"resourceType": "Appointment",
 				"id": "Testtermin",
@@ -31,7 +31,7 @@
 				"participant": [
 					{
 						"actor": {
-							"reference": "Location/bc61bed3-44bd-4086-af04-b3b4874fd572"
+							"reference": "Location/00371000"
 						},
 						"status": "accepted"
 					},
@@ -48,7 +48,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/Appointment/Testtermin2",
+			"fullUrl": "http://localhost:3000/fhir/Appointment/Testtermin2",
 			"resource": {
 				"resourceType": "Appointment",
 				"id": "Testtermin2",
@@ -65,7 +65,7 @@
 				"participant": [
 					{
 						"actor": {
-							"reference": "Location/bc61bed3-44bd-4086-af04-b3b4874fd572"
+							"reference": "Location/00371000"
 						},
 						"status": "accepted"
 					},
@@ -82,7 +82,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/Appointment/0000015693",
+			"fullUrl": "http://localhost:3000/fhir/Appointment/0000015693",
 			"resource": {
 				"resourceType": "Appointment",
 				"id": "0000015693",
@@ -116,7 +116,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/Appointment/0000015700",
+			"fullUrl": "http://localhost:3000/fhir/Appointment/0000015700",
 			"resource": {
 				"resourceType": "Appointment",
 				"id": "0000015700",
@@ -150,7 +150,7 @@
 			}
 		},
 		{
-			"fullUrl": "https://fhir-server-domain.de/fhir/Appointment/0000015701",
+			"fullUrl": "http://localhost:3000/fhir/Appointment/0000015701",
 			"resource": {
 				"resourceType": "Appointment",
 				"id": "0000015701",
@@ -173,7 +173,7 @@
 					},
 					{
 						"actor": {
-							"reference": "Location/bc61bed3-44bd-4086-af04-b3b4874fd572"
+							"reference": "Location/00371000"
 						},
 						"status": "accepted"
 					}
