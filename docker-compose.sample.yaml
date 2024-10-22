@@ -10,9 +10,8 @@ services:
       - '3000:3000'
     restart: unless-stopped
     healthcheck:
-      test:
-        ['CMD', 'curl', '-f', 'http://localhost:3000/auth/oidc/.well-known/openid-configuration']
-      interval: 3s
+      test: ['CMD', 'curl', '-f', 'http://localhost:3000/health']
+      interval: 10s
       timeout: 10s
       retries: 5
   surrealdb:
@@ -23,7 +22,7 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ['CMD', '/surreal', 'is-ready']
-      interval: 3s
+      interval: 10s
       timeout: 10s
       retries: 5
   web:

@@ -1,5 +1,5 @@
 import { encrypt, generateKey } from '$lib/encryption';
-import { oauth2Client, redirect_uris } from '$lib/server/auth/auth';
+import { oauth2Client, redirectURIs } from '$lib/server/auth/auth';
 import { auth } from '$lib/server/auth/lucia';
 import { createUser } from '$lib/server/auth/user';
 import type { User } from '$lib/types/user';
@@ -12,7 +12,7 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		try {
 			const params = oauth2Client.callbackParams(formData.get('url')!.toString());
-			const tokenSet = await oauth2Client.callback(redirect_uris[0], params); // , { code_verifier }
+			const tokenSet = await oauth2Client.callback(redirectURIs()[0], params);
 			const idToken = tokenSet.claims();
 
 			const symmetricEncryptionKey = await generateKey();

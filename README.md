@@ -18,6 +18,21 @@ In order for this project to work as expected, you need to have:
 
 ### To simply see the application running
 
+#### Install volta to manage node
+
+Follow the volta guide [Getting started](https://docs.volta.sh/guide/getting-started) to install
+volta.
+
+#### Install pnpm
+
+After installing volta, install `pnpm`:
+
+```bash
+volta install pnpm
+```
+
+#### Run
+
 After cloning the repository, change into the project directory and install the dependencies:
 
 ```bash
@@ -33,7 +48,7 @@ pnpm run build
 Finally launch the sample docker-compose via:
 
 ```bash
-docker-compose -f docker-compose.sample.yaml up
+docker-compose -f docker-compose.sample.yaml up --build --force-recreate
 ```
 
 You can now visit [http://localhost:8081/login](http://localhost:8081/login) to see the login.
@@ -78,6 +93,8 @@ Launch the project in development mode and open the url printed by the command i
 pnpm run dev
 ```
 
+#### Mockoon
+
 ## Architecture
 
 _TODO: this section_
@@ -113,7 +130,7 @@ In order to deploy, you need two components:
 pnpm run build
 ```
 
-The outputs are location in the `build` directory. For more details, see
+The outputs are located in the `build` directory. For more details, see
 **[Building your app](https://kit.svelte.dev/docs/building-your-app)** in the SvelteKit
 documentation.
 
