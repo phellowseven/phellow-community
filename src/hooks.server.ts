@@ -80,10 +80,10 @@ const authHandle: Handle = async ({ event, resolve }) => {
 				});
 
 				await auth.invalidateSession(updatedSession.id);
-				await auth.createSession(updatedSession.userId, updatedSession, {
+				const newSession = await auth.createSession(updatedSession.userId, updatedSession, {
 					sessionId: updatedSession.id
 				});
-				event.locals.session = updatedSession;
+				event.locals.session = newSession;
 			}
 
 			return accessToken;

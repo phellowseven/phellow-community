@@ -31,4 +31,8 @@ function redirectURIs(): string[] {
 	return env.OAUTH_CALLBACK?.split(',') ?? [];
 }
 
-export { connectOAuth2Client, oauth2Client, redirectURIs };
+function scopes(): string {
+	return env.OAUTH_SCOPES ?? '';
+}
+
+export { connectOAuth2Client, oauth2Client, redirectURIs, scopes };

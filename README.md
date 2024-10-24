@@ -97,7 +97,12 @@ pnpm run dev
 
 ## Architecture
 
-_TODO: this section_
+The frontend relies on Server-Side-Rendering (SSR) through SvelteKit. For more details, read
+[architecture.md](docs/architecture.md).
+
+### Session security
+
+Read [session.md](docs/session.md).
 
 ### i18n
 

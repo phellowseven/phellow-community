@@ -23,9 +23,12 @@ export const load = (async ({ locals }) => {
 		Authorization: 'Bearer ' + accessToken,
 		'Content-Type': 'application/json; charset=utf-8'
 	};
-	let url = new URL(env.FHIR_OBSERVATION_URL);
+	let url = new URL(env.FHIR_OBSERVATION_URL!);
 	if (env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS) {
-		url = addQueryParamsToUrl(env.FHIR_OBSERVATION_URL, env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS);
+		url = addQueryParamsToUrl(
+			env.FHIR_OBSERVATION_URL!,
+			env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS
+		);
 	}
 	url.searchParams.set('_format', 'json');
 
