@@ -129,7 +129,7 @@
 					</svelte:fragment>
 				</SidebarItem>
 
-				<SidebarItem href="/logout" label={m.log_out_button()} data-sveltekit-preload-data="false">
+				<SidebarItem href="/logout" label={m.log_out_button()} data-sveltekit-preload-data="off">
 					<svelte:fragment slot="icon">
 						<i><Icon src={ArrowRightOnRectangle} class="h-6" variation="outline" /></i>
 					</svelte:fragment>
