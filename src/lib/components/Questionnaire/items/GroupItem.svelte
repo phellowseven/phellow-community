@@ -4,18 +4,22 @@
 
 	export let item: QuestionnaireItem;
 	export let formData: Record<string, any>;
+	export let errors: Record<string, string> = {};
+	export let required = false;
 
 	function formatLinkId(linkId: string): string {
 		return linkId.includes('.') ? linkId.split('.')[1].toUpperCase() : linkId;
 	}
 </script>
 
-// items/GroupItem.svelte
 <div class="py-4">
 	{#if item.text}
 		<fieldset class="mb-4 border-b border-gray-200 pb-4">
 			<legend class="mb-4 text-lg font-medium text-gray-900">
 				{item.text}
+				{#if required}
+					<span class="ml-1 text-red-500">*</span>
+				{/if}
 			</legend>
 
 			{#if item.item}
@@ -28,7 +32,7 @@
 								</div>
 							{/if}
 							<div class="flex-1">
-								<QuestionnaireItemRenderer item={subItem} {formData} on:change />
+								<QuestionnaireItemRenderer item={subItem} {formData} {errors} on:change />
 							</div>
 						</div>
 					{/each}

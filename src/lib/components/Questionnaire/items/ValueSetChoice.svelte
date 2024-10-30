@@ -4,6 +4,9 @@
 
 	export let item: QuestionnaireItem;
 	export let value: string | undefined = undefined;
+	export let required = false;
+	export let error: string | undefined = undefined;
+
 	const dispatch = createEventDispatcher();
 
 	// Extract the ValueSet from contained resources if it exists
@@ -47,6 +50,9 @@
 	<fieldset>
 		<legend class="mb-3 block text-sm font-medium text-gray-900">
 			{item.text}
+			{#if required}
+				<span class="ml-1 text-red-500">*</span>
+			{/if}
 		</legend>
 
 		<div class="space-y-3">
@@ -58,7 +64,10 @@
 						value={option.code}
 						checked={value === option.code}
 						on:change={() => handleChange(option.code)}
-						class="mt-1 h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
+						class="mt-1 h-4 w-4 {error
+							? 'border-red-300 text-red-600'
+							: 'border-gray-300 text-blue-600'} focus:ring-blue-500"
+						aria-describedby={error ? `${item.linkId}-error` : undefined}
 					/>
 					<span class="text-sm leading-tight text-gray-700">
 						{option.display}
@@ -66,5 +75,11 @@
 				</label>
 			{/each}
 		</div>
+
+		{#if error}
+			<p class="mt-1 text-sm text-red-600" id={`${item.linkId}-error`}>
+				{error}
+			</p>
+		{/if}
 	</fieldset>
 </div>

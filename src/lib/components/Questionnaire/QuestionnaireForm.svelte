@@ -4,12 +4,17 @@
 	import QuestionnaireItemRenderer from './QuestionnaireItemRenderer.svelte';
 	import { onMount } from 'svelte';
 	import QuestionnaireNavigation from './QuestionnaireNavigation.svelte';
+	import { validatePage } from '$lib/questionnaires/validation';
 
 	export let questionnaire: Questionnaire;
 
 	let currentPage = 0;
 	let formData: Record<string, any> = {};
 	let enabledPages: QuestionnaireItem[] = [];
+	let errors: Record<string, string> = {};
+
+	// Calculate if the next button should be disabled
+	$: isNextDisabled = !validatePage([currentItem], formData).isValid;
 
 	// Recursively inject questionnaire reference into all items
 	function injectQuestionnaireRef(items: QuestionnaireItem[]): QuestionnaireItem[] {
@@ -87,6 +92,16 @@
 	$: progress = ((currentPage + 1) / totalPages) * 100;
 
 	function handleNext() {
+		// Validate current page before proceeding
+		const validation = validatePage([currentItem], formData);
+
+		if (!validation.isValid) {
+			errors = validation.errors;
+			return;
+		}
+
+		errors = {};
+
 		if (currentPage < totalPages - 1) {
 			let nextPage = currentPage + 1;
 			while (nextPage < totalPages && !isItemEnabled(topLevelItems[nextPage])) {
@@ -172,7 +187,12 @@
 	<div class="mb-8 shrink">
 		<div class="rounded-lg bg-white p-6 shadow-md">
 			{#if currentItem}
-				<QuestionnaireItemRenderer item={currentItem} {formData} on:change={updateFormData} />
+				<QuestionnaireItemRenderer
+					item={currentItem}
+					{formData}
+					{errors}
+					on:change={updateFormData}
+				/>
 			{:else}
 				<p class="py-4 text-center text-gray-500">No more questions to display</p>
 			{/if}
@@ -184,6 +204,7 @@
 		{currentPage}
 		{totalPages}
 		{progress}
+		{isNextDisabled}
 		on:next={handleNext}
 		on:previous={handlePrevious}
 	/>

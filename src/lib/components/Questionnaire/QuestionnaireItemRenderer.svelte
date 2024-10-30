@@ -9,6 +9,7 @@
 
 	export let item: QuestionnaireItem;
 	export let formData: Record<string, any>;
+	export let errors: Record<string, string> = {};
 
 	// Determine if we should use ValueSetChoice or regular ChoiceItem
 	$: isValueSetChoice = item.type === 'choice' && item.answerValueSet;
@@ -62,7 +63,8 @@
 	// Function to get props based on component type
 	function getComponentProps(type: string) {
 		const baseProps = {
-			item
+			item,
+			required: !!item.required
 		};
 
 		switch (type) {
@@ -71,11 +73,13 @@
 			case 'group':
 				return {
 					...baseProps,
-					formData
+					formData,
+					errors
 				};
 			default:
 				return {
 					...baseProps,
+					error: errors[item.linkId],
 					value: formData[item.linkId]
 				};
 		}
@@ -141,16 +145,22 @@
 	}
 </script>
 
-{#if isItemEnabled(item)}
-	<div class="questionnaire-item">
+<div>
+	{#if isItemEnabled(item)}
 		<svelte:component this={getComponent(item.type)} {...getComponentProps(item.type)} on:change />
 
-		{#if item.item}
+		{#if errors[item.linkId]}
+			<p class="mt-1 text-sm text-red-600">
+				{errors[item.linkId]}
+			</p>
+		{/if}
+
+		<!-- {#if item.item}
 			{#each item.item as subItem (subItem.linkId)}
 				<div class="ml-6 mt-4">
-					<svelte:self item={subItem} {formData} on:change />
+					<svelte:self item={subItem} {formData} {errors} on:change />
 				</div>
 			{/each}
-		{/if}
-	</div>
-{/if}
+		{/if} -->
+	{/if}
+</div>
