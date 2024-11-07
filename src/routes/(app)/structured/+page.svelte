@@ -5,6 +5,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import LabResultsTable from '$components/Observations/LabResultsTable.svelte';
+	import { pageTitle } from '$lib/util';
 
 	export let data: PageData;
 
@@ -82,6 +83,10 @@
 		updateFilters({ searchTerm: value });
 	}, 300);
 </script>
+
+<svelte:head>
+	<title>{pageTitle(m.structuredData_title())}</title>
+</svelte:head>
 
 <div class="container mx-auto my-8">
 	<!-- Header -->
