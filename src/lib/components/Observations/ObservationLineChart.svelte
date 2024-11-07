@@ -138,11 +138,7 @@
 			{/if}
 			<div class="flex items-center gap-2">
 				<div class="h-2 w-2 rounded-full bg-blue-500" />
-				<span>{m.observation_in_range()}</span>
-			</div>
-			<div class="flex items-center gap-2">
-				<div class="h-2 w-2 rounded-full bg-red-500" />
-				<span>{m.observation_out_of_range()}</span>
+				<span>{m.observation_current_value()}</span>
 			</div>
 		</div>
 	</div>
