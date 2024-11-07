@@ -1,0 +1,1017 @@
+{
+	"resourceType": "Questionnaire",
+	"id": "template_komed_anamnese--0",
+	"language": "de-DE",
+	"url": "http://localhost:8080/MintFhirServer/r4/Questionnaire/template_komed_anamnese--0",
+	"version": "01/2016v2",
+	"title": "Anamnese Fragebogen (An02E Narkose)",
+	"status": "draft",
+	"subjectType": ["Patient"],
+	"item": [
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_instruction",
+			"text": "Bitte beantworten Sie die folgenden Fragen sorgfältig, damit wir etwaigen Risiken besser vorbeugen können. Zutreffendes bitte auswählen und ggf. ergänzen. Bei Bedarf helfen wir Ihnen gerne beim Ausfüllen.",
+			"type": "display"
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_alter",
+			"text": "Alter",
+			"type": "quantity",
+			"initial": [
+				{
+					"valueQuantity": {
+						"value": 0,
+						"unit": "Jahre"
+					}
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_size",
+			"text": "Größe",
+			"type": "quantity",
+			"initial": [
+				{
+					"valueQuantity": {
+						"value": 0,
+						"unit": "cm"
+					}
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_gewicht",
+			"text": "Gewicht",
+			"type": "quantity",
+			"initial": [
+				{
+					"valueQuantity": {
+						"value": 0,
+						"unit": "kg"
+					}
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_geschlecht",
+			"text": "Geschlecht",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "männlich",
+					"initialSelected": false
+				},
+				{
+					"valueString": "weiblich",
+					"initialSelected": false
+				},
+				{
+					"valueString": "divers",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_beruf",
+			"text": "Beruf",
+			"type": "text"
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_andere_behandlungen",
+			"text": "Ist in letzter Zeit eine andere ärztliche Behandlung erfolgt?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_andere_behandlungen_zusatz",
+			"text": "Wann und weswegen ist in letzter Zeit eine andere ärztliche Behandlung erfolgt?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_andere_behandlungen",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_infekt",
+			"text": "Besteht akut/Bestand in den letzten 4 Wochen ein Infekt (z.B. Erkältung, Fieber, Magen-Darm)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_infekt_zusatz",
+			"text": "Welcher Infekt besteht akut/bestand in den letzten 4 Wochen?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_infekt",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_infektionskrankheit",
+			"text": "Besteht/Bestand eine Infektionskrankheit (z.B. Hepatitis, Tuberkulose, HIV/AIDS)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_infektionskrankheit_zusatz",
+			"text": "Welche Infektionskrankheit besteht/bestand?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_infektionskrankheit",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_medikamente",
+			"text": "Werden regelmäßig oder derzeit Medikamente eingenommen (z.B. gerinnungshemmende Mittel [z.B. Marcumar®, Aspirin ®, Plavix®, Xarelto®, Pradaxa®, Eliquis®, Lixiana®, Heparin], Schmerzmittel, Herz-/Kreislauf-Medikamente, Hormonpräparate, Schlaf- oder Beruhigungsmittel, Antidiabetika [v.a. metforminhaltige])?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_medikamente_zusatz",
+			"text": "Welche Medikamente werden regelmäßig oder derzeit eingenommen?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_medikamente",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_pflanzliche_mittel",
+			"text": "Werden pflanzliche Mittel/Ergänzungspräperate eingenommen?(z.B. Johanniskraut, Gingko, Vitamine)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_pflanzliche_mittel_zusatz",
+			"text": "Welche pflanzlichen Mittel/Ergänzungspräperate werden eingenommen?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_pflanzliche_mittel",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_operation",
+			"text": "Wurde schon einmal eine Operation durchgeführt?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_operation_zusatz",
+			"text": "Welche Operationen wurden durchgeführt und wann?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_operation",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_narkose",
+			"text": "Wurde schon einmal eine Narkose/Regionalanästhesie oder örtliche Betäubung (z.B. beim Zahnarzt) durchgeführt?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_komplikationen",
+			"text": "Gab es bei der Narkose/Regionalanästhesie oder örtlichen Betäubung Komplikationen?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			],
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_narkose",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_komplikationen_zusatz",
+			"text": "Welche Komplikationen gab es bei der Narkose/Regionalanästhesie oder örtlichen Betäubung?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_komplikationen",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_erbrechen",
+			"text": "Besteht eine Neigung zu Übelkeit/Erbrechen?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_transfusion",
+			"text": "Ist schon einmal eine Übertragung von Blut/Blutbestandteilen (Transfusion) erfolgt?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_transfusion_komplikationen",
+			"text": "Gab es bei der Übertragung von Blut/Blutbestandteilen (Transfusion) Komplikationen?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			],
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_transfusion",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_transfusion_komplikationen_zusatz",
+			"text": "Welche Komplikationen gab es bei der Übertragung von Blut/Blutbestandteilen (Transfusion)?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_transfusion_komplikationen",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_eigenblut",
+			"text": "Wurde für den geplanten Eingriff Eigenblut gespendet?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_allergie",
+			"text": "Besteht eine Allergie wie Heuschnupfen oder allergisches Asthma oder eine Unverträglichkeit bestimmter Substanzen (z.B. Medikamente, Latex, Desinfektionsmittel,Betäubungsmittel, Röntgenkontrastmittel, Jod, Pflaster, Pollen)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_allergie_zusatz",
+			"text": "Welche Allergien oder Unverträglichkeiten bestehen?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_allergie",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_soja",
+			"text": "Besteht eine Sojaunverträglichkeit/-allergie?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_blutungsneigung",
+			"text": "Besteht bei Ihnen oder in Ihrer Blutsverwandtschaft eine erhöhte Blutungsneigung wie z.B. häufig Nasen-/Zahnfleischbluten, blaue Flecken, Nachbluten nach Operationen?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_gefaesserkrankung",
+			"text": "Besteht/Bestand eine Gefäßerkrankung (z.B. Durchblutungsstörung, Arteriosklerose, Aneurysma, Krampfadern)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_gefaesserkrankung_zusatz",
+			"text": "Welche Gefäßerkrankung(en) bestehen/bestanden?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_gefaesserkrankung",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_blutgerinnsel",
+			"text": "Kam es schon einmal zu einem Gefäßverschluss durch Blutgerinnsel (Thrombose/Embolie)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_herz_kreislauf",
+			"text": "Besteht/Bestand eine Herz-Kreislauf-Erkrankung (z.B. Herzfehler, Herzklappenfehler, Angina pectoris, Herzinfarkt, Schlaganfall, Rhythmusstörungen, Herzmuskelentzündung, hoher Blutdruck)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_herz_kreislauf_zusatz",
+			"text": "Welche Herz-Kreislauf-Erkrankung besteht/bestand?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_herz_kreislauf",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_lungenerkrankung",
+			"text": "Besteht/Bestand eine Atemwegs-/Lungenerkrankung (z.B. Asthma bronchiale, chronische Bronchitis, Lungenentzündung, Lungenblähung)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_lungenerkrankung_zusatz",
+			"text": "Welche Atemwegs-/Lungenerkrankung besteht/bestand?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_lungenerkrankung",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_schnarchen",
+			"text": "Tritt starkes Schnarchen auf, liegt eine Schlafapnoe vor oder besteht eine Stimmband-/Zwerchfelllähmung?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_schnarchen_zusatz",
+			"text": "Was davon liegt vor?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_schnarchen",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_verdauungssystem",
+			"text": "Besteht/Bestand eine Erkrankung des Verdauungssystems (z.B. Speiseröhre, Magen, Bauchspeicheldrüse, Darm)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_verdauungssystem_zusatz",
+			"text": "Welche Erkrankung des Verdauungssystems besteht/bestand?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_verdauungssystem",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_sodbrennen",
+			"text": "Tritt Sodbrennen auf oder besteht eine Refluxkrankheit?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_leber",
+			"text": "Besteht/Bestand eine Erkrankung der Leber, Gallenblase/-wege (z.B. Entzündung, Fettleber, Zirrhose, Gallensteine)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_leber_zusatz",
+			"text": "Welche Erkrankung der Leber, Gallenblase/-wege besteht/bestand?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_leber",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_niere",
+			"text": "Besteht/Bestand eine Erkrankung oder Fehlbildung der Nieren bzw. Harnorgane (z.B. Nierenfunktionsstörung, Nierenentzündung, Nierensteine, Blasenentleerungsstörung)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_niere_zusatz",
+			"text": "Welche Erkrankung oder Fehlbildung der Nieren bzw. Harnorgane besteht/bestand?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_niere",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_zucker",
+			"text": "Besteht eine Stoffwechselerkrankung (z.B. Zuckerkrankheit, Gicht)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_zucker_zusatz",
+			"text": "Welche Stoffwechselerkrankung besteht?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_zucker",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_schilddruese",
+			"text": "Besteht/Bestand eine Schilddrüsenerkrankung (z.B. Überfunktion, Unterfunktion, Kropf)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_schilddruese_zusatz",
+			"text": "Welche Schilddrüsenerkrankung besteht/bestand?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_schilddruese",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_muskel",
+			"text": "Besteht/Bestand eine Muskel- oder Skeletterkrankung (z.B. Muskelschwäche, Gelenkerkrankung, Osteoporose)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_muskel_zusatz",
+			"text": "Welche Muskel- oder Skeletterkrankung besteht/bestand?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_muskel",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_hyperthermie",
+			"text": "Besteht eine Veranlagung zur malignen Hyperthermie, auch bei Blutsverwandten?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_epilepsie",
+			"text": "Besteht/Bestand eine Erkrankung des Nervensystems (z.B. Lähmungen, Krampfleiden [Epilepsie], chronische Schmerzen)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_epilepsie-zusatz",
+			"text": "Welche Erkrankung des Nervensystems besteht/bestand?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_epilepsie",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_augenerkrankung",
+			"text": "Besteht eine Augenerkrankung (z.B. Grauer Star, Grüner Star/Glaukom)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_augenerkrankung_zusatz",
+			"text": "Welche Augenerkrankung besteht?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_augenerkrankung",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_weitere_erkrankungen",
+			"text": "Bestehen weitere Erkrankungen/Beeinträchtigungen (z.B. Wirbelsäulenschäden, Schulter-Arm-Syndrom, Multiple Sklerose, Restless-legs-Syndrom, häufige Kopfschmerzen, Depressionen, Hörschwäche)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_weitere_erkrankungen_zusatz",
+			"text": "Welche weiteren Erkrankungen/Beeinträchtigungen bestehen?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_weitere_erkrankungen",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_zahn",
+			"text": "Gibt es Besonderheiten beim Zustand der Zähne (z.B. Parodontose, lockere Zähne, Zahnfehlstellung [Zahnspange], Prothese, Brücke, Krone, Implantat)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_zahn_zusatz",
+			"text": "Welche Besonderheiten beim Zustand der Zähne gibt es?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_zahn",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_implantate",
+			"text": "Befinden sich Implantate im Körper (z.B. Schrittmacher/ Defibrillator, Gelenkendoprothese, Herzklappe, Stent, Metall, Kunststoffe, Silikon)?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_implantate_zusatz",
+			"text": "Welche Implantate befinden sich im Körper?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_implantate",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_rauchen",
+			"text": "Regelmäßiger Tabakkonsum?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_rauchen_zusatz",
+			"text": "Was und wie viel Tabak konsumieren Sie?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_rauchen",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_alk",
+			"text": "Regelmäßiger Alkoholkonsum?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_alk_zusatz",
+			"text": "Was und wie viel Alkohol konsumieren Sie?",
+			"type": "text",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_alk",
+					"operator": "=",
+					"answerString": "ja"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_drogen",
+			"text": "Werden Drogen genommen?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_unterlagen",
+			"text": "Liegt eine Patientenverfügung, Betreuungsverfügung und/oder Vorsorgevollmacht vor?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.gro.komed_anamnese_zusatz_frauen-v0",
+			"text": "Zusatzfragen bei Frauen",
+			"type": "display",
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_geschlecht",
+					"operator": "=",
+					"answerString": "weiblich"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_zusatz_frauen.komed_anamnese_zusatz_frauen_schwanger",
+			"text": "Könnten Sie schwanger sein?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			],
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_geschlecht",
+					"operator": "=",
+					"answerString": "weiblich"
+				}
+			]
+		},
+		{
+			"linkId": "doc.que.komed_anamnese_zusatz_frauen.komed_anamnese_zusatz_frauen_stillen",
+			"text": "Stillen Sie?",
+			"type": "choice",
+			"answerOption": [
+				{
+					"valueString": "nein",
+					"initialSelected": false
+				},
+				{
+					"valueString": "ja",
+					"initialSelected": false
+				}
+			],
+			"enableWhen": [
+				{
+					"question": "doc.que.komed_anamnese_allgemein.komed_anamnese_allgemein_geschlecht",
+					"operator": "=",
+					"answerString": "weiblich"
+				}
+			]
+		}
+	]
+}

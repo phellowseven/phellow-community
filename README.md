@@ -152,3 +152,27 @@ Our Sources.
 
 - FHIR Observations provided by
   [Polar Project](https://www.health-atlas.de/data_files/588?version=1) is greatly appreciated
+
+## Debug Server-Side SvelteKit
+
+Add a debugging script to `package.json`:
+
+```json
+"scripts": {
+  …
+  "debug": "NODE_OPTIONS='--inspect' vite dev",
+  …
+ },
+```
+
+Run the command:
+
+```bash
+pnpm run debug
+```
+
+### Attach your browser as debugging client
+
+Go to [arc://inspect](arc://inspect) and hit _Inspect_ in the process started in the previous step.
+
+Place the `debugger` statement in your server-side code and start debugging right from DevTools.
