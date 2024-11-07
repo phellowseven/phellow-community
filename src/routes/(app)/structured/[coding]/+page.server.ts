@@ -1,6 +1,7 @@
 // src/routes/structured/[coding]/+page.server.ts
 import { env } from '$env/dynamic/private';
 import { addQueryParamsToUrl } from '$lib/util';
+import dayjs from 'dayjs';
 import type { Bundle, Observation } from 'fhir/r4';
 import { base64url } from 'oslo/encoding';
 import type { PageServerLoad } from './$types';
@@ -53,5 +54,10 @@ export const load = (async ({ locals, params }) => {
 		observation.code?.coding?.some((coding) => coding.code === codingString)
 	);
 
-	return { title: params.coding, observations: matches };
+	return {
+		title: params.coding,
+		observations: matches.sort((a, b) =>
+			dayjs(a.effectiveDateTime || '').isAfter(b.effectiveDateTime || '') ? -1 : 1
+		)
+	};
 }) satisfies PageServerLoad;

@@ -20,6 +20,7 @@
 	export let sortOrder: 'asc' | 'desc';
 	export let onSort: (field: typeof sortBy) => void;
 	export let onTypeSelect: (type: string) => void;
+	export let isInteractive = true;
 
 	// Add state for selected observation
 	let selectedObservation: Observation | null = null;
@@ -79,9 +80,9 @@
 				{#each columns as column (column.label)}
 					<th
 						class="px-6 py-3 text-left text-xs font-medium tracking-wider text-white
-				{column.id ? 'cursor-pointer hover:bg-gray-200' : ''} 
+				{column.id && isInteractive ? 'cursor-pointer hover:bg-gray-200' : ''} 
 				select-none uppercase"
-						on:click={() => column.id && onSort(column.id)}
+						on:click={() => column.id && isInteractive && onSort(column.id)}
 					>
 						<span class="inline-flex items-center" title={column.tooltip && column.tooltip()}>
 							{#if column.tooltip}

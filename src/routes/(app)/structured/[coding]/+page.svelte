@@ -8,6 +8,7 @@
 	import { P } from 'flowbite-svelte';
 	import type { PageData } from './$types';
 	import ObservationLineChart from '$components/Observations/ObservationLineChart.svelte';
+	import LabResultsTable from '$components/Observations/LabResultsTable.svelte';
 
 	export let data: PageData;
 </script>
@@ -31,5 +32,17 @@
 	<!-- Chart -->
 	<div class="mt-6">
 		<ObservationLineChart observations={data.observations} />
+	</div>
+
+	<!-- Table -->
+	<div class="mt-6">
+		<LabResultsTable
+			observations={data.observations}
+			onSort={(_) => {}}
+			onTypeSelect={(_) => {}}
+			sortBy="date"
+			sortOrder="desc"
+			isInteractive={false}
+		/>
 	</div>
 </div>
