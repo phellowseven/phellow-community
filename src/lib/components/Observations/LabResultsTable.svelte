@@ -16,6 +16,7 @@
 	export let sortBy: 'date' | 'name' | 'value';
 	export let sortOrder: 'asc' | 'desc';
 	export let onSort: (field: typeof sortBy) => void;
+	export let onTypeSelect: (type: string) => void;
 
 	// Function to determine if a value is out of range
 	function isOutOfRange(observation: Observation): boolean {
@@ -100,10 +101,16 @@
 					)[0]?.valueQuantity?.value}
 				{@const trend = getTrend(value || 0, previousValue)}
 				{@const range = observation.referenceRange?.[0]}
+				{@const displayText = observation.code?.text || observation.code?.coding?.[0]?.display}
 
 				<tr class={outOfRange ? 'bg-red-50' : ''}>
 					<td class="px-6 py-4 text-sm text-gray-900">
-						{observation.code?.text || observation.code?.coding?.[0]?.display}
+						<button
+							type="button"
+							on:click={() => onTypeSelect(displayText ?? '')}
+							title={m.comp_obs_labresulttable_typeEntry_tooltip()}
+							class="hover:underline">{displayText}</button
+						>
 					</td>
 					<td class="px-6 py-4 text-sm">
 						{#if value}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Icon, MagnifyingGlass, Funnel } from 'svelte-hero-icons';
+	import { Icon, MagnifyingGlass, Funnel, XMark } from 'svelte-hero-icons';
 	import type { PageData } from './$types';
 	import * as m from '$lib/paraglide/messages';
 	import { goto } from '$app/navigation';
@@ -102,6 +102,14 @@
 					placeholder={m.sturcturedData_search_type()}
 					class="block w-full rounded-md border-gray-300 pl-10 focus:border-blue-500 focus:ring-blue-500"
 				/>
+				{#if filterState.searchTerm}
+					<button
+						class="absolute inset-y-0 right-0 flex items-center pr-3"
+						on:click={() => updateFilters({ searchTerm: undefined })}
+					>
+						<Icon src={XMark} class="h-5 w-5 text-gray-400" />
+					</button>
+				{/if}
 			</div>
 
 			<!-- Category Filter -->
@@ -143,5 +151,6 @@
 		sortBy={filterState.sortBy}
 		sortOrder={filterState.sortOrder}
 		onSort={handleSort}
+		onTypeSelect={(type) => updateFilters({ searchTerm: type })}
 	/>
 </div>

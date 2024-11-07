@@ -46,5 +46,6 @@
 	"lab_categories_therapy": "Therapy",
 	"lab_categories_activity": "Activity",
 	"lab_categories_all": "All Categories",
-	"sturcturedData_search_type": "Search for type..."
+	"sturcturedData_search_type": "Search for type...",
+	"comp_obs_labresulttable_typeEntry_tooltip": "Click to filter by this type"
 }
