@@ -80,14 +80,21 @@ export const load = (async ({ locals, url }) => {
 	fhirUrl.searchParams.set('_format', 'json');
 
 	// Add category filter to FHIR query if specified
-	if (filterParams.category !== 'all') {
-		fhirUrl.searchParams.set('category', filterParams.category);
-	}
+	// if (filterParams.category !== 'all') {
+	// 	fhirUrl.searchParams.set('category', filterParams.category);
+	// }
 
 	// Fetch and filter observations
 	let observations = await fetch(fhirUrl, { headers }).then((response) =>
 		extractObservations(response)
 	);
+
+	// Apply category filter
+	if (filterParams.category !== 'all') {
+		observations = observations.filter((obs) =>
+			obs.category?.find((cat) => cat.coding?.[0]?.code === filterParams.category)
+		);
+	}
 
 	// Apply text search filter
 	if (filterParams.searchTerm) {

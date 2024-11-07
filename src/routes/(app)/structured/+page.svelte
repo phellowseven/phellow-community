@@ -9,14 +9,22 @@
 	export let data: PageData;
 
 	// Lab categories with their display names
-	const LAB_CATEGORIES = {
-		hematology: 'Blood Count',
-		chemistry: 'Blood Chemistry',
-		coagulation: 'Coagulation',
-		immunology: 'Immunology',
-		microbiology: 'Microbiology',
-		urinalysis: 'Urinalysis',
-		other: 'Other Tests'
+	const LAB_CATEGORIES: Record<string, { code: string; display: () => string }> = {
+		socialHistory: { code: 'social-history', display: () => m.lab_categories_socialHistory() },
+		vitalSigns: { code: 'vital-signs', display: () => m.lab_categories_vitalSigns() },
+		imaging: { code: 'imaging', display: () => m.lab_categories_imaging() },
+		laboratory: { code: 'laboratory', display: () => m.lab_categories_laboratory() },
+		procedure: { code: 'procedure', display: () => m.lab_categories_procedure() },
+		survey: { code: 'survey', display: () => m.lab_categories_survey() },
+		exam: { code: 'exam', display: () => m.lab_categories_exam() },
+		therapy: { code: 'therapy', display: () => m.lab_categories_therapy() },
+		activity: { code: 'activity', display: () => m.lab_categories_activity() }
+	};
+
+	const DEFAULT_SORT_ORDER: Record<string, 'desc' | 'asc'> = {
+		date: 'desc',
+		name: 'asc',
+		value: 'asc'
 	};
 
 	// Initialize filter state from URL parameters
@@ -42,17 +50,16 @@
 
 	// Function to handle sort changes
 	function handleSort(sortField: typeof filterState.sortBy) {
-		console.log('Sorting by:', sortField);
 		if (filterState.sortBy === sortField) {
 			// Toggle order if clicking the same field
 			updateFilters({
 				sortOrder: filterState.sortOrder === 'asc' ? 'desc' : 'asc'
 			});
 		} else {
-			// Set new sort field with default desc order
+			// Set new sort field with default order for sortField type
 			updateFilters({
 				sortBy: sortField,
-				sortOrder: 'desc'
+				sortOrder: DEFAULT_SORT_ORDER[sortField] ?? 'asc'
 			});
 		}
 	}
@@ -92,7 +99,7 @@
 					type="text"
 					value={filterState.searchTerm}
 					on:input={(e) => handleSearch(e.currentTarget.value)}
-					placeholder="Search tests..."
+					placeholder={m.sturcturedData_search_type()}
 					class="block w-full rounded-md border-gray-300 pl-10 focus:border-blue-500 focus:ring-blue-500"
 				/>
 			</div>
@@ -107,9 +114,9 @@
 					on:change={(e) => updateFilters({ category: e.currentTarget.value })}
 					class="block w-full rounded-md border-gray-300 pl-10 focus:border-blue-500 focus:ring-blue-500"
 				>
-					<option value="all">All Categories</option>
-					{#each Object.entries(LAB_CATEGORIES) as [value, label]}
-						<option {value}>{label}</option>
+					<option value="all">{m.lab_categories_all()}</option>
+					{#each Object.entries(LAB_CATEGORIES) as [_, obj]}
+						<option value={obj.code}>{obj.display()}</option>
 					{/each}
 				</select>
 			</div>
@@ -123,7 +130,9 @@
 					id="outOfRange"
 					class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
 				/>
-				<label for="outOfRange" class="ml-2 text-sm text-gray-700"> Show Out of Range Only </label>
+				<label for="outOfRange" class="ml-2 text-sm text-gray-700">
+					{m.structuredData_filter_outofrange()}
+				</label>
 			</div>
 		</div>
 	</div>

@@ -1,8 +1,16 @@
 <script lang="ts">
-	import { Icon, ArrowDown, ArrowUp, Minus, ChevronUp, ChevronDown } from 'svelte-hero-icons';
+	import {
+		Icon,
+		ArrowDown,
+		ArrowUp,
+		Minus,
+		ChevronUp,
+		ChevronDown,
+		QuestionMarkCircle
+	} from 'svelte-hero-icons';
 	import type { Observation } from 'fhir/r4';
 	import dayjs from 'dayjs';
-	import { range } from 'lodash-es';
+	import * as m from '$lib/paraglide/messages';
 
 	export let observations: Observation[];
 	export let sortBy: 'date' | 'name' | 'value';
@@ -34,15 +42,18 @@
 
 	// Sortable column configuration
 	const columns = [
-		{ id: 'name' as const, label: 'Test Name' },
-		{ id: 'value' as const, label: 'Value' },
-		{ label: 'Range' }, // Not sortable
-		{ id: 'date' as const, label: 'Date' },
-		{ label: 'Trend' } // Not sortable
+		{ id: 'name' as const, label: () => m.comp_obs_labresulttable_column_name() },
+		{ id: 'value' as const, label: () => m.comp_obs_labresulttable_column_value() },
+		{ label: () => m.comp_obs_labresulttable_column_range() }, // Not sortable
+		{ id: 'date' as const, label: () => m.comp_obs_labresulttable_column_date() },
+		{
+			label: () => m.comp_obs_labresulttable_column_trend(),
+			tooltip: () => m.comp_obs_labresulttable_trend_tooltip()
+		} // Not sortable
 	];
 </script>
 
-<div class="overflow-hidden rounded-lg bg-white shadow">
+<div class="overflow-x-auto rounded-lg bg-white shadow">
 	<table class="min-w-full divide-y divide-gray-200">
 		<thead class="bg-gray-300">
 			<tr>
@@ -53,8 +64,15 @@
 				select-none uppercase"
 						on:click={() => column.id && onSort(column.id)}
 					>
-						<span class="inline-flex items-center">
-							{column.label}
+						<span class="inline-flex items-center" title={column.tooltip && column.tooltip()}>
+							{#if column.tooltip}
+								<Icon
+									src={QuestionMarkCircle}
+									solid
+									class="mr-1 inline-block h-4 w-4 cursor-pointer"
+								/>
+							{/if}
+							{column.label()}
 							{#if column.id && column.id === sortBy}
 								{#if sortOrder === 'asc'}
 									<Icon src={ChevronUp} class="ml-1 inline-block h-4 w-4" />
@@ -88,10 +106,14 @@
 						{observation.code?.text || observation.code?.coding?.[0]?.display}
 					</td>
 					<td class="px-6 py-4 text-sm">
-						<span class={outOfRange ? 'font-bold text-red-600' : 'text-gray-900'}>
-							{value}
-							{unit}
-						</span>
+						{#if value}
+							<span class={outOfRange ? 'font-bold text-red-600' : 'text-gray-900'}>
+								{value}
+								{unit}
+							</span>
+						{:else}
+							–
+						{/if}
 					</td>
 					<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
 						{#if range}
@@ -125,7 +147,7 @@
 			{:else}
 				<tr>
 					<td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">
-						No laboratory results found matching your criteria
+						{m.comp_obs_labresulttable_noresults()}
 					</td>
 				</tr>
 			{/each}
