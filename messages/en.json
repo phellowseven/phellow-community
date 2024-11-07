@@ -47,5 +47,21 @@
 	"lab_categories_activity": "Activity",
 	"lab_categories_all": "All Categories",
 	"sturcturedData_search_type": "Search for type...",
-	"comp_obs_labresulttable_typeEntry_tooltip": "Click to filter by this type"
+	"comp_obs_labresulttable_typeEntry_tooltip": "Click to filter by this type",
+	"observation_status_registered": "Registered",
+	"observation_status_preliminary": "Preliminary",
+	"observation_status_final": "Final",
+	"observation_status_amended": "Amended",
+	"observation_status_corrected": "Corrected",
+	"observation_status_cancelled": "Cancelled",
+	"observation_status_error": "Entered in Error",
+	"observation_status_unknown": "Unknown",
+	"observation_unknown": "Unknown",
+	"observation_current_value": "Current Value",
+	"observation_out_of_range": "Out of Range",
+	"observation_reference_range": "Reference Range",
+	"observation_status": "Status",
+	"observation_datetime": "Date & Time",
+	"observation_notes": "Notes",
+	"observation_method": "Method"
 }

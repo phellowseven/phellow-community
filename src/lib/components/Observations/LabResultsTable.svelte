@@ -11,12 +11,16 @@
 	import type { Observation } from 'fhir/r4';
 	import dayjs from 'dayjs';
 	import * as m from '$lib/paraglide/messages';
+	import ObservationDetailModal from './ObservationDetailModal.svelte';
 
 	export let observations: Observation[];
 	export let sortBy: 'date' | 'name' | 'value';
 	export let sortOrder: 'asc' | 'desc';
 	export let onSort: (field: typeof sortBy) => void;
 	export let onTypeSelect: (type: string) => void;
+
+	// Add state for selected observation
+	let selectedObservation: Observation | null = null;
 
 	// Function to determine if a value is out of range
 	function isOutOfRange(observation: Observation): boolean {
@@ -41,6 +45,11 @@
 		return diff > 0 ? 'up' : 'down';
 	}
 
+	// Function to handle row click
+	function handleRowClick(observation: Observation) {
+		selectedObservation = observation;
+	}
+
 	// Sortable column configuration
 	const columns = [
 		{ id: 'name' as const, label: () => m.comp_obs_labresulttable_column_name() },
@@ -53,6 +62,12 @@
 		} // Not sortable
 	];
 </script>
+
+<!-- Add modal component -->
+<ObservationDetailModal
+	observation={selectedObservation}
+	onClose={() => (selectedObservation = null)}
+/>
 
 <div class="overflow-x-auto rounded-lg bg-white shadow">
 	<table class="min-w-full divide-y divide-gray-200">
@@ -103,11 +118,14 @@
 				{@const range = observation.referenceRange?.[0]}
 				{@const displayText = observation.code?.text || observation.code?.coding?.[0]?.display}
 
-				<tr class={outOfRange ? 'bg-red-50' : ''}>
+				<tr
+					class={`${outOfRange ? 'bg-red-50' : ''} cursor-pointer hover:bg-gray-50`}
+					on:click={() => handleRowClick(observation)}
+				>
 					<td class="px-6 py-4 text-sm text-gray-900">
 						<button
 							type="button"
-							on:click={() => onTypeSelect(displayText ?? '')}
+							on:click|stopPropagation={() => onTypeSelect(displayText ?? '')}
 							title={m.comp_obs_labresulttable_typeEntry_tooltip()}
 							class="hover:underline">{displayText}</button
 						>
