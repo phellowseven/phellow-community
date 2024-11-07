@@ -1,3 +1,4 @@
+// src/routes/structured/+page.server.ts
 import { env } from '$env/dynamic/private';
 import { addQueryParamsToUrl } from '$lib/util';
 import dayjs from 'dayjs';

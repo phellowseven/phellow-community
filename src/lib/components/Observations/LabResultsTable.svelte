@@ -6,12 +6,14 @@
 		Minus,
 		ChevronUp,
 		ChevronDown,
-		QuestionMarkCircle
+		QuestionMarkCircle,
+		ChartBarSquare as Chart
 	} from 'svelte-hero-icons';
 	import type { Observation } from 'fhir/r4';
 	import dayjs from 'dayjs';
 	import * as m from '$lib/paraglide/messages';
 	import ObservationDetailModal from './ObservationDetailModal.svelte';
+	import { base64url } from 'oslo/encoding';
 
 	export let observations: Observation[];
 	export let sortBy: 'date' | 'name' | 'value';
@@ -59,7 +61,8 @@
 		{
 			label: () => m.comp_obs_labresulttable_column_trend(),
 			tooltip: () => m.comp_obs_labresulttable_trend_tooltip()
-		} // Not sortable
+		}, // Not sortable
+		{ label: () => 'Graph' }
 	];
 </script>
 
@@ -117,6 +120,7 @@
 				{@const trend = getTrend(value || 0, previousValue)}
 				{@const range = observation.referenceRange?.[0]}
 				{@const displayText = observation.code?.text || observation.code?.coding?.[0]?.display}
+				{@const code = observation.code?.coding?.find((c) => c.system === 'http://loinc.org')?.code}
 
 				<tr
 					class={`${outOfRange ? 'bg-red-50' : ''} cursor-pointer hover:bg-gray-50`}
@@ -166,6 +170,16 @@
 							<Icon src={ArrowDown} class="h-5 w-5 text-green-500" />
 						{:else}
 							<Icon src={Minus} class="h-5 w-5 text-gray-400" />
+						{/if}
+					</td>
+					<td class="whitespace-nowrap px-6 py-4 text-sm">
+						{#if code}
+							<a
+								href="/structured/{base64url.encode(new TextEncoder().encode(code))}"
+								on:click|stopPropagation
+							>
+								<Icon src={Chart} class="h-5 w-5 " /></a
+							>
 						{/if}
 					</td>
 				</tr>

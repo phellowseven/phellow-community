@@ -65,5 +65,7 @@
 	"observation_status": "Status",
 	"observation_datetime": "Datum und Uhrzeit",
 	"observation_notes": "Notizen",
-	"observation_method": "Methode"
+	"observation_method": "Methode",
+	"observation_no_data": "Keine Daten",
+	"observation_in_range": "Innerhalb des Referenzbereichs"
 }

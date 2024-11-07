@@ -63,5 +63,7 @@
 	"observation_status": "Status",
 	"observation_datetime": "Date & Time",
 	"observation_notes": "Notes",
-	"observation_method": "Method"
+	"observation_method": "Method",
+	"observation_no_data": "No Data",
+	"observation_in_range": "In Range"
 }

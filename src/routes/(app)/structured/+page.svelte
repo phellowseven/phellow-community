@@ -1,3 +1,4 @@
+<!-- src/routes/structured/+page.svelte -->
 <script lang="ts">
 	import { Icon, MagnifyingGlass, Funnel, XMark } from 'svelte-hero-icons';
 	import type { PageData } from './$types';
@@ -6,6 +7,9 @@
 	import { page } from '$app/stores';
 	import LabResultsTable from '$components/Observations/LabResultsTable.svelte';
 	import { pageTitle } from '$lib/util';
+	import StickyHeader from '$components/StickyHeader.svelte';
+	import { P } from 'flowbite-svelte';
+	import { blur } from 'svelte/transition';
 
 	export let data: PageData;
 
@@ -88,9 +92,13 @@
 	<title>{pageTitle(m.structuredData_title())}</title>
 </svelte:head>
 
-<div class="container mx-auto my-8">
+<div in:blur={{ duration: 200 }} class="my-8">
 	<!-- Header -->
-	<h1 class="mb-8 text-3xl font-bold text-gray-900">{m.structuredData_title()}</h1>
+	<StickyHeader>
+		<div class="flex items-start justify-between lg:flex-row">
+			<P class="text-3xl font-extrabold">{m.structuredData_title()}</P>
+		</div>
+	</StickyHeader>
 
 	<!-- Filters -->
 	<div class="mb-6 rounded-lg bg-white p-4 shadow">
