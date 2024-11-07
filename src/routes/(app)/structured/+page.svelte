@@ -1,60 +1,138 @@
-<script lang="ts" context="module">
-	// This is a context="module" script, so that the search survives navigation.
-	import { writable } from 'svelte/store';
-	let search = writable<string>('');
-</script>
-
 <script lang="ts">
-	import StickyHeader from '$components/StickyHeader.svelte';
-	import { pageTitle } from '$lib/util';
-	import { P, Search } from 'flowbite-svelte';
+	import { Icon, MagnifyingGlass, Funnel } from 'svelte-hero-icons';
 	import type { PageData } from './$types';
-	import { blur } from 'svelte/transition';
-	import { sortBy } from 'lodash-es';
 	import * as m from '$lib/paraglide/messages';
-	import { groupByCoding } from '$lib/observation';
-
-	import TableGroup from '$components/Observations/TableGroup.svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import LabResultsTable from '$components/Observations/LabResultsTable.svelte';
 
 	export let data: PageData;
 
-	$: groupedObservations = data.entries.then((observations) =>
-		sortBy(
-			Object.entries(
-				groupByCoding(
-					observations.filter((obs) => {
-						if ($search.length === 0) return true;
-						const codingText =
-							obs.code.text ?? obs.code.coding?.at(0)?.display ?? obs.code.coding?.at(0)?.code;
-						return codingText?.toLowerCase().includes($search.toLowerCase()) ?? true;
-					})
-				)
-			),
-			([key]) => key.toLowerCase()
-		)
-	);
+	// Lab categories with their display names
+	const LAB_CATEGORIES = {
+		hematology: 'Blood Count',
+		chemistry: 'Blood Chemistry',
+		coagulation: 'Coagulation',
+		immunology: 'Immunology',
+		microbiology: 'Microbiology',
+		urinalysis: 'Urinalysis',
+		other: 'Other Tests'
+	};
+
+	// Initialize filter state from URL parameters
+	$: filterState = data.filterParams;
+
+	// Function to update URL and trigger navigation
+	function updateFilters(updates: Partial<typeof filterState>) {
+		const newState = { ...filterState, ...updates };
+		const url = new URL($page.url);
+
+		// Update URL parameters
+		Object.entries(newState).forEach(([key, value]) => {
+			if (value !== undefined && value !== null && value !== '') {
+				url.searchParams.set(key, value.toString());
+			} else {
+				url.searchParams.delete(key);
+			}
+		});
+
+		// Navigate to new URL (this will trigger a page reload with new filters)
+		goto(url, { keepFocus: true });
+	}
+
+	// Function to handle sort changes
+	function handleSort(sortField: typeof filterState.sortBy) {
+		console.log('Sorting by:', sortField);
+		if (filterState.sortBy === sortField) {
+			// Toggle order if clicking the same field
+			updateFilters({
+				sortOrder: filterState.sortOrder === 'asc' ? 'desc' : 'asc'
+			});
+		} else {
+			// Set new sort field with default desc order
+			updateFilters({
+				sortBy: sortField,
+				sortOrder: 'desc'
+			});
+		}
+	}
+
+	// Debounce function for search input
+	function debounce(func: Function, wait: number) {
+		let timeout: NodeJS.Timeout;
+		return function executedFunction(...args: any[]) {
+			const later = () => {
+				clearTimeout(timeout);
+				func(...args);
+			};
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+		};
+	}
+
+	// Debounced search handler
+	const handleSearch = debounce((value: string) => {
+		updateFilters({ searchTerm: value });
+	}, 300);
 </script>
 
-<svelte:head>
-	<title>{pageTitle('Structured Data')}</title>
-</svelte:head>
+<div class="container mx-auto my-8">
+	<!-- Header -->
+	<h1 class="mb-8 text-3xl font-bold text-gray-900">{m.structuredData_title()}</h1>
 
-<div in:blur={{ duration: 200 }} class="my-8">
-	<StickyHeader>
-		<div class="flex flex-col items-start justify-between md:flex-row md:items-end">
-			<P class="text-3xl font-extrabold">{m.structuredData_title()}</P>
+	<!-- Filters -->
+	<div class="mb-6 rounded-lg bg-white p-4 shadow">
+		<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+			<!-- Search -->
+			<div class="relative">
+				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+					<Icon src={MagnifyingGlass} class="h-5 w-5 text-gray-400" />
+				</div>
+				<input
+					type="text"
+					value={filterState.searchTerm}
+					on:input={(e) => handleSearch(e.currentTarget.value)}
+					placeholder="Search tests..."
+					class="block w-full rounded-md border-gray-300 pl-10 focus:border-blue-500 focus:ring-blue-500"
+				/>
+			</div>
+
+			<!-- Category Filter -->
+			<div class="relative">
+				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+					<Icon src={Funnel} class="h-5 w-5 text-gray-400" />
+				</div>
+				<select
+					value={filterState.category}
+					on:change={(e) => updateFilters({ category: e.currentTarget.value })}
+					class="block w-full rounded-md border-gray-300 pl-10 focus:border-blue-500 focus:ring-blue-500"
+				>
+					<option value="all">All Categories</option>
+					{#each Object.entries(LAB_CATEGORIES) as [value, label]}
+						<option {value}>{label}</option>
+					{/each}
+				</select>
+			</div>
+
+			<!-- Out of Range Filter -->
+			<div class="flex items-center">
+				<input
+					type="checkbox"
+					checked={filterState.showOutOfRange}
+					on:change={(e) => updateFilters({ showOutOfRange: e.currentTarget.checked })}
+					id="outOfRange"
+					class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+				/>
+				<label for="outOfRange" class="ml-2 text-sm text-gray-700"> Show Out of Range Only </label>
+			</div>
 		</div>
-	</StickyHeader>
-
-	<Search bind:value={$search} class="z-0 mb-4" placeholder={m.searchbar_placeholder()} />
-
-	<div class="flex w-full flex-col items-start">
-		{#await groupedObservations}
-			<div>Loading…</div>
-		{:then entries}
-			{#each entries as [group, observations] (group)}
-				<TableGroup title={group} {observations} />
-			{/each}
-		{/await}
 	</div>
+
+	<!-- Results Table -->
+	<LabResultsTable
+		observations={data.entries}
+		sortBy={filterState.sortBy}
+		sortOrder={filterState.sortOrder}
+		onSort={handleSort}
+	/>
 </div>

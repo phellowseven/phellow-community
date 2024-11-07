@@ -22,11 +22,12 @@
 	"anamnese_title": "Anamnese",
 	"searchbar_placeholder": "Suche",
 	"anamnesis_title": "Anamnese",
-	"structuredData_title": "Strukturierte Daten",
+	"structuredData_title": "Laborwerte",
 	"observations_table_date_format": "DD.MM.YYYY",
 	"observation_table_header_value": "Wert",
 	"observation_table_header_unit": "Einheit",
 	"observation_table_header_date": "Datum",
 	"observation_group_hide": "Verstecken",
-	"observation_group_show": "Anzeigen"
+	"observation_group_show": "Anzeigen",
+	"structured_title": "Laborwerte"
 }

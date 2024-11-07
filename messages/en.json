@@ -22,9 +22,10 @@
 	"anamnese_title": "Anamnesis",
 	"searchbar_placeholder": "Search",
 	"anamnesis_title": "Anamnesis",
-	"structuredData_title": "Structured Data",
+	"structuredData_title": "Laboratory Values",
 	"observations_table_date_format": "DD.MM.YYYY",
 	"observation_table_header_value": "Value",
 	"observation_table_header_unit": "Unit",
-	"observation_table_header_date": "Date"
+	"observation_table_header_date": "Date",
+	"structured_title": "Laboratory"
 }
