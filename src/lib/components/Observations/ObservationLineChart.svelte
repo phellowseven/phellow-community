@@ -1,11 +1,24 @@
 <!-- src/components/Observations/ObservationLineChart.svelte -->
 <script lang="ts">
-	import { VisXYContainer, VisLine, VisAxis } from '@unovis/svelte';
-	import { CurveType, type LineConfigInterface } from '@unovis/ts';
+	import {
+		VisXYContainer,
+		VisLine,
+		VisAxis,
+		VisCrosshair,
+		VisScatter,
+		VisTooltip,
+		VisBrush
+	} from '@unovis/svelte';
+	import {
+		CurveType,
+		type LineConfigInterface,
+		Scatter,
+		Line,
+		type ScatterConfigInterface
+	} from '@unovis/ts';
 	import type { Observation } from 'fhir/r4';
 	import dayjs from 'dayjs';
 	import * as m from '$lib/paraglide/messages';
-	import { matches, max } from 'lodash-es';
 
 	export let observations: Observation[];
 
@@ -16,6 +29,9 @@
 		isOutOfRange: boolean;
 		unit: string | undefined;
 	};
+
+	let brushMin: number | undefined;
+	let brushMax: number | undefined;
 
 	// Transform observations for charting
 	$: chartData = observations
@@ -48,8 +64,13 @@
 	$: yDomainMin = minValue - diff * 0.1;
 	$: yDomainMax = maxValue + diff * 0.1;
 	$: xDomainDiff = chartData[chartData.length - 1].timestamp - chartData[0].timestamp;
-	$: xDomainMin = chartData[0].timestamp - xDomainDiff * 0.025;
-	$: xDomainMax = chartData[chartData.length - 1].timestamp + xDomainDiff * 0.025;
+	$: xDomainMinBrush = chartData[0].timestamp - xDomainDiff * 0.025;
+	$: xDomainMaxBrush = chartData[chartData.length - 1].timestamp + xDomainDiff * 0.025;
+	$: xDomainMin = Math.max(chartData[0].timestamp - xDomainDiff * 0.025, brushMin ?? -Infinity);
+	$: xDomainMax = Math.min(
+		chartData[chartData.length - 1].timestamp + xDomainDiff * 0.025,
+		brushMax ?? Infinity
+	);
 
 	// Helper function to determine if a value is out of range
 	function isOutOfRange(observation: Observation): boolean {
@@ -71,10 +92,13 @@
 		};
 	}
 
+	function onBrush(selection: [number, number]) {
+		[brushMin, brushMax] = selection;
+	}
+
 	// Chart configuration
 	const xConfig = {
-		tickFormat: (timestamp: number) => dayjs(timestamp).format('DD.MM.YYYY'),
-		label: 'Date'
+		tickFormat: (timestamp: number) => dayjs(timestamp).format('DD.MM.YYYY')
 	};
 
 	const yConfig = {
@@ -90,6 +114,11 @@
 		curveType: CurveType.Linear,
 		lineWidth: 2
 	};
+	const scatterConfig: ScatterConfigInterface<Datum> = {
+		x: (d) => d.timestamp,
+		y: (d) => d.value,
+		color: (d) => (d.isOutOfRange ? 'rgb(224 36 36)' : '#3b82f6')
+	};
 
 	// Reference range line configuration
 	const refLineConfig: Omit<LineConfigInterface<Datum>, 'x' | 'y'> = {
@@ -102,6 +131,11 @@
 	const containerConfig = {
 		// height: '100%'
 	};
+	const template = (d: Datum) =>
+		`${d.isOutOfRange ? "<span class='font-bold text-red-600'>" : '<span>'}<span>${d.value} ${d.unit}</span>`;
+	// const triggers = {
+	// 	[Scatter.selectors.point]:
+	// };
 </script>
 
 {#if chartData.length > 0}
@@ -137,11 +171,33 @@
 
 			<!-- Main data line -->
 			<VisLine data={chartData} {...lineConfig} />
+			<VisScatter data={chartData} {...scatterConfig} size={() => 5} />
 
 			<!-- Axes -->
-			<VisAxis type="x" {...xConfig} />
-			<VisAxis type="y" {...yConfig} />
+			<VisAxis type="x" {...xConfig} label="Date" />
+			<VisAxis type="y" {...yConfig} label={observations[0].valueQuantity?.unit || ''} />
+			<VisCrosshair x={lineConfig.x} y={lineConfig.y} color={() => '#15ce9e'} {template} />
+			<VisTooltip />
 		</VisXYContainer>
+
+		<div class="mb-4 mt-8">
+			<VisXYContainer
+				data={chartData}
+				xDomain={[xDomainMinBrush, xDomainMaxBrush]}
+				yDomain={[yDomainMin, yDomainMax]}
+				height={75}
+			>
+				<VisLine data={chartData} {...lineConfig} />
+				<VisScatter data={chartData} {...scatterConfig} size={() => 5} />
+				<VisAxis
+					type="x"
+					{...xConfig}
+					label="Die Griffe links & rechts bewegen, um den Wertebereich einzuschränken."
+				/>
+				<VisAxis type="y" {...yConfig} label=" " />
+				<VisBrush {onBrush} draggable={true} />
+			</VisXYContainer>
+		</div>
 
 		<!-- Legend -->
 		<div class="mt-4 flex items-center gap-4 text-sm">
