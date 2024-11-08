@@ -114,6 +114,8 @@
 		curveType: CurveType.Linear,
 		lineWidth: 2
 	};
+
+	// Config for scatter points
 	const scatterConfig: ScatterConfigInterface<Datum> = {
 		x: (d) => d.timestamp,
 		y: (d) => d.value,
@@ -123,19 +125,16 @@
 	// Reference range line configuration
 	const refLineConfig: Omit<LineConfigInterface<Datum>, 'x' | 'y'> = {
 		color: '#94a3b8',
-		lineWidth: 1,
+		lineWidth: 2,
 		lineDashArray: [5]
 	};
 
 	// Additional chart settings
-	const containerConfig = {
-		// height: '100%'
-	};
+	const containerConfig = {};
+
+	// Tooltip template
 	const template = (d: Datum) =>
-		`${d.isOutOfRange ? "<span class='font-bold text-red-600'>" : '<span>'}<span>${d.value} ${d.unit}</span>`;
-	// const triggers = {
-	// 	[Scatter.selectors.point]:
-	// };
+		`${d.isOutOfRange ? "<span class='font-bold text-red-600'>" : '<span>'}${d.value} ${d.unit}</span></br><span>${new Date(d.timestamp).toLocaleDateString()}</span>`;
 </script>
 
 {#if chartData.length > 0}

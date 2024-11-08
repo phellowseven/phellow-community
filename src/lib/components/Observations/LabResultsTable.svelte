@@ -18,7 +18,7 @@
 	export let observations: Observation[];
 	export let sortBy: 'date' | 'name' | 'value';
 	export let sortOrder: 'asc' | 'desc';
-	export let onSort: (field: typeof sortBy) => void;
+	export let onSort: (field: string) => void;
 	export let onTypeSelect: (type: string) => void;
 	export let isInteractive = true;
 
@@ -55,15 +55,17 @@
 
 	// Sortable column configuration
 	const columns = [
-		{ id: 'name' as const, label: () => m.comp_obs_labresulttable_column_name() },
-		{ id: 'value' as const, label: () => m.comp_obs_labresulttable_column_value() },
-		{ label: () => m.comp_obs_labresulttable_column_range() }, // Not sortable
-		{ id: 'date' as const, label: () => m.comp_obs_labresulttable_column_date() },
+		{ id: 'name' as const, sortable: true, label: m.comp_obs_labresulttable_column_name() },
+		{ id: 'value' as const, sortable: true, label: m.comp_obs_labresulttable_column_value() },
+		{ id: 'range' as const, sortable: false, label: m.comp_obs_labresulttable_column_range() }, // Not sortable
+		{ id: 'date' as const, sortable: true, label: m.comp_obs_labresulttable_column_date() },
 		{
-			label: () => m.comp_obs_labresulttable_column_trend(),
-			tooltip: () => m.comp_obs_labresulttable_trend_tooltip()
+			id: 'trend' as const,
+			sortable: false,
+			label: m.comp_obs_labresulttable_column_trend(),
+			tooltip: m.comp_obs_labresulttable_trend_tooltip()
 		}, // Not sortable
-		{ label: () => 'Graph' }
+		{ id: 'graph' as const, sortable: false, label: 'Graph' }
 	];
 </script>
 
@@ -78,30 +80,32 @@
 		<thead class="bg-gray-300">
 			<tr>
 				{#each columns as column (column.label)}
-					<th
-						class="px-6 py-3 text-left text-xs font-medium tracking-wider text-white
-				{column.id && isInteractive ? 'cursor-pointer hover:bg-gray-200' : ''} 
-				select-none uppercase"
-						on:click={() => column.id && isInteractive && onSort(column.id)}
-					>
-						<span class="inline-flex items-center" title={column.tooltip && column.tooltip()}>
-							{#if column.tooltip}
-								<Icon
-									src={QuestionMarkCircle}
-									solid
-									class="mr-1 inline-block h-4 w-4 cursor-pointer"
-								/>
-							{/if}
-							{column.label()}
-							{#if column.id && column.id === sortBy}
-								{#if sortOrder === 'asc'}
-									<Icon src={ChevronUp} class="ml-1 inline-block h-4 w-4" />
-								{:else}
-									<Icon src={ChevronDown} class="ml-1 inline-block h-4 w-4" />
+					{#if isInteractive || (!isInteractive && column.id !== 'graph')}
+						<th
+							class="px-6 py-3 text-left text-xs font-medium tracking-wider text-white
+						 {column.sortable && isInteractive ? 'cursor-pointer hover:bg-gray-200' : ''} 
+						 select-none uppercase"
+							on:click={() => isInteractive && column.sortable && onSort(column.id)}
+						>
+							<span class="inline-flex items-center" title={column.tooltip && column.tooltip}>
+								{#if column.tooltip}
+									<Icon
+										src={QuestionMarkCircle}
+										solid
+										class="mr-1 inline-block h-4 w-4 cursor-pointer"
+									/>
 								{/if}
-							{/if}
-						</span>
-					</th>
+								{column.label}
+								{#if column.sortable && column.id === sortBy}
+									{#if sortOrder === 'asc'}
+										<Icon src={ChevronUp} class="ml-1 inline-block h-4 w-4" />
+									{:else}
+										<Icon src={ChevronDown} class="ml-1 inline-block h-4 w-4" />
+									{/if}
+								{/if}
+							</span>
+						</th>
+					{/if}
 				{/each}
 			</tr>
 		</thead>
@@ -173,16 +177,18 @@
 							<Icon src={Minus} class="h-5 w-5 text-gray-400" />
 						{/if}
 					</td>
-					<td class="whitespace-nowrap px-6 py-4 text-sm">
-						{#if code}
-							<a
-								href="/structured/{base64url.encode(new TextEncoder().encode(code))}"
-								on:click|stopPropagation
-							>
-								<Icon src={Chart} class="h-5 w-5 " /></a
-							>
-						{/if}
-					</td>
+					{#if isInteractive}
+						<td class="whitespace-nowrap px-6 py-4 text-sm">
+							{#if code}
+								<a
+									href="/structured/{base64url.encode(new TextEncoder().encode(code))}"
+									on:click|stopPropagation
+								>
+									<Icon src={Chart} class="h-5 w-5 " /></a
+								>
+							{/if}
+						</td>
+					{/if}
 				</tr>
 			{:else}
 				<tr>
