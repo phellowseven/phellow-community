@@ -5,6 +5,7 @@
 	import type { Observation } from 'fhir/r4';
 	import dayjs from 'dayjs';
 	import * as m from '$lib/paraglide/messages';
+	import { matches, max } from 'lodash-es';
 
 	export let observations: Observation[];
 
@@ -33,6 +34,22 @@
 
 	// Get reference range for visualization
 	$: referenceRange = getReferenceRange(observations[0]);
+	$: minObsValue = observations.reduce(
+		(min, obs) => ((obs.valueQuantity?.value || 0) < min ? obs.valueQuantity?.value || 0 : min),
+		Infinity
+	);
+	$: maxObsValue = observations.reduce(
+		(max, obs) => ((obs.valueQuantity?.value || 0) > max ? obs.valueQuantity?.value || 0 : max),
+		-Infinity
+	);
+	$: minValue = Math.min(referenceRange?.low || minObsValue, minObsValue);
+	$: maxValue = Math.max(referenceRange?.high || maxObsValue, maxObsValue);
+	$: diff = maxValue - minValue;
+	$: yDomainMin = minValue - diff * 0.1;
+	$: yDomainMax = maxValue + diff * 0.1;
+	$: xDomainDiff = chartData[chartData.length - 1].timestamp - chartData[0].timestamp;
+	$: xDomainMin = chartData[0].timestamp - xDomainDiff * 0.025;
+	$: xDomainMax = chartData[chartData.length - 1].timestamp + xDomainDiff * 0.025;
 
 	// Helper function to determine if a value is out of range
 	function isOutOfRange(observation: Observation): boolean {
@@ -96,10 +113,8 @@
 		</h3> -->
 		<VisXYContainer
 			data={chartData}
-			xDomain={[
-				chartData[0].timestamp - 86400000 * 30,
-				chartData[chartData.length - 1].timestamp + 86400000 * 30
-			]}
+			xDomain={[xDomainMin, xDomainMax]}
+			yDomain={[yDomainMin, yDomainMax]}
 			{...containerConfig}
 		>
 			<!-- Reference range lines if available -->
