@@ -43,7 +43,7 @@
 </script>
 
 <svelte:head>
-	<title>{pageTitle('Documents')}</title>
+	<title>{pageTitle(m.documents_title())}</title>
 </svelte:head>
 
 <div in:blur={{ duration: 200 }} class="my-8">

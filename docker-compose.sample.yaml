@@ -1,0 +1,43 @@
+services:
+  mockoon:
+    image: mockoon/cli:latest
+    command: --data "/data/mockoon-config.json" --port 3000
+    volumes:
+      - ./samples/mockoon.json:/data/mockoon-config.json:ro
+      - ./samples/fhir:/data/fhir:ro
+      - ./samples/oauth-docker:/data/oauth:ro
+    ports:
+      - '3000:3000'
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3000/health']
+      interval: 10s
+      timeout: 10s
+      retries: 5
+  surrealdb:
+    image: surrealdb/surrealdb:v1.5.5-dev
+    command: start --user root --pass root -A
+    ports:
+      - '8800:8000'
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', '/surreal', 'is-ready']
+      interval: 10s
+      timeout: 10s
+      retries: 5
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      mockoon:
+        condition: service_healthy
+      surrealdb:
+        condition: service_healthy
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - .env.mockoon.docker
+    restart: unless-stopped
+    ports:
+      - 8081:3000

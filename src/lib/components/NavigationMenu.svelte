@@ -28,7 +28,8 @@
 		QuestionMarkCircle,
 		ArrowTopRightOnSquare,
 		QueueList,
-		DocumentPlus
+		DocumentPlus,
+		Beaker
 	} from 'svelte-hero-icons';
 	import { quadInOut } from 'svelte/easing';
 	import { blur } from 'svelte/transition';
@@ -110,6 +111,11 @@
 							<i><Icon solid src={DocumentPlus} color="currentColor" class="h-6" /></i>
 						</svelte:fragment>
 					</SidebarItem>
+					<SidebarItem href="/structured" label={m.structured_title()}>
+						<svelte:fragment slot="icon">
+							<i><Icon solid src={Beaker} color="currentColor" class="h-6" /></i>
+						</svelte:fragment>
+					</SidebarItem>
 				</SidebarGroup>
 			</div>
 
@@ -129,7 +135,7 @@
 					</svelte:fragment>
 				</SidebarItem>
 
-				<SidebarItem href="/logout" label={m.log_out_button()} data-sveltekit-preload-data="false">
+				<SidebarItem href="/logout" label={m.log_out_button()} data-sveltekit-preload-data="off">
 					<svelte:fragment slot="icon">
 						<i><Icon src={ArrowRightOnRectangle} class="h-6" variation="outline" /></i>
 					</svelte:fragment>

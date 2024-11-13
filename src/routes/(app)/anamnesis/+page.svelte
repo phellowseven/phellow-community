@@ -4,6 +4,10 @@
 	import { Heading, P, Secondary } from 'flowbite-svelte';
 	import { blur } from 'svelte/transition';
 	import * as m from '$lib/paraglide/messages';
+	import QuestionnaireForm from '$components/Questionnaire/QuestionnaireForm.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 </script>
 
 <svelte:head>
@@ -17,10 +21,11 @@
 		</div>
 	</StickyHeader>
 
-	<div class="mt-48 flex justify-center text-center">
-		<div>
+	<div class="flex justify-center text-center">
+		<!-- <div>
 			<Heading class="text-2xl font-bold">{m.no_content()}</Heading>
 			<Secondary class="text-xl font-medium">{m.no_content_description()}</Secondary>
-		</div>
+		</div> -->
+		<QuestionnaireForm questionnaire={data.questionnaire} />
 	</div>
 </div>

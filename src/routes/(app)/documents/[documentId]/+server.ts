@@ -1,3 +1,4 @@
+import { base64url } from 'oslo/encoding';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ params, fetch, locals }) => {
@@ -5,7 +6,7 @@ export const GET: RequestHandler = async ({ params, fetch, locals }) => {
 	const headers = {
 		Authorization: 'Bearer ' + accessToken
 	};
-	const documentURL = Buffer.from(params.documentId, 'base64').toString('utf-8');
+	const documentURL = new TextDecoder().decode(base64url.decode(params.documentId));
 	const response = await fetch(documentURL, {
 		method: 'GET',
 		headers
