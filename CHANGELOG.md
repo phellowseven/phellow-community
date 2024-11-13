@@ -11,6 +11,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Proper README with helpful instructions.
 - docker-compose file to quickly get a running instance for simply playing around.
+- View for structured data (FHIR Observations) with filtering, sorting, and graphing
+  - Graphs are created by gathering data with the same coding
 
 ### Changed
 

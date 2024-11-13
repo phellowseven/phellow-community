@@ -409,7 +409,7 @@
           "label": "",
           "headers": [],
           "bodyType": "FILE",
-          "filePath": "./fhir/observations.json",
+          "filePath": "./fhir/observations_200.json",
           "databucketID": "",
           "sendFileAsBody": true,
           "rules": [],
