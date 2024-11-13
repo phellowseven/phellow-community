@@ -1,6 +1,6 @@
 {
 	"name": "phellow-community-frontend",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"private": true,
 	"scripts": {
 		"dev": "curl http://127.0.0.1:8800/status && vite dev --port 8081 --host 127.0.0.1 || echo '\\033[1;34m!!! Launch DB Docker container first !!!\\033[0m'",

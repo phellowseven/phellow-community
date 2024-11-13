@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0.1] – 2024-11-13
 
 ### Added
 
@@ -13,6 +13,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - docker-compose file to quickly get a running instance for simply playing around.
 - View for structured data (FHIR Observations) with filtering, sorting, and graphing
   - Graphs are created by gathering data with the same coding
+- Questionnaire Renderer
+  - Can parse FHIR Questionnaires into stepped questions
+  - Supports some enableWhen fields
 
 ### Changed
 
