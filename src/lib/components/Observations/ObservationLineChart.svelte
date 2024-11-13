@@ -9,13 +9,7 @@
 		VisTooltip,
 		VisBrush
 	} from '@unovis/svelte';
-	import {
-		CurveType,
-		type LineConfigInterface,
-		Scatter,
-		Line,
-		type ScatterConfigInterface
-	} from '@unovis/ts';
+	import { CurveType, type LineConfigInterface, type ScatterConfigInterface } from '@unovis/ts';
 	import type { Observation } from 'fhir/r4';
 	import dayjs from 'dayjs';
 	import * as m from '$lib/paraglide/messages';

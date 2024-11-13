@@ -16,9 +16,9 @@
 	import { base64url } from 'oslo/encoding';
 
 	export let observations: Observation[];
-	export let sortBy: 'date' | 'name' | 'value';
+	export let sortBy: 'date' | 'name' | 'value' | 'range' | 'trend' | 'graph';
 	export let sortOrder: 'asc' | 'desc';
-	export let onSort: (field: string) => void;
+	export let onSort: (field: typeof sortBy) => void;
 	export let onTypeSelect: (type: string) => void;
 	export let isInteractive = true;
 

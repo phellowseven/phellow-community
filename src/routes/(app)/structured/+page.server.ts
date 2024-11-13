@@ -11,7 +11,7 @@ const FilterParamsSchema = z.object({
 	searchTerm: z.string(),
 	category: z.string(),
 	showOutOfRange: z.boolean(),
-	sortBy: z.enum(['date', 'name', 'value']),
+	sortBy: z.enum(['date', 'name', 'value', 'range', 'trend', 'graph']),
 	sortOrder: z.enum(['asc', 'desc'])
 });
 

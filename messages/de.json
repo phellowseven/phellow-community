@@ -27,8 +27,6 @@
 	"observation_table_header_value": "Wert",
 	"observation_table_header_unit": "Einheit",
 	"observation_table_header_date": "Datum",
-	"observation_group_hide": "Verstecken",
-	"observation_group_show": "Anzeigen",
 	"structured_title": "Laborwerte",
 	"comp_obs_labresulttable_column_name": "Art",
 	"comp_obs_labresulttable_column_value": "Wert",
