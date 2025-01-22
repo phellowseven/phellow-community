@@ -1,6 +1,6 @@
 {
   "uuid": "4f5c6d8f-a05a-48bb-85b8-bccdeff49e67",
-  "lastMigration": 32,
+  "lastMigration": 33,
   "name": "phellow:community Mockoon",
   "endpointPrefix": "",
   "latency": 0,
@@ -17,6 +17,14 @@
         },
         {
           "type": "route",
+          "uuid": "a6c51926-a4db-4c38-9e66-0c880ec82e2a"
+        },
+        {
+          "type": "route",
+          "uuid": "9a5d6153-0a7d-42b6-b64e-5125bb360de3"
+        },
+        {
+          "type": "route",
           "uuid": "c6769287-da83-4939-b791-73fa13b47f6d"
         },
         {
@@ -30,6 +38,14 @@
         {
           "type": "route",
           "uuid": "e541731b-b6ac-49dc-a028-49a4fa7c5f43"
+        },
+        {
+          "type": "route",
+          "uuid": "1b916380-9eda-4006-b5f9-afa2233791f8"
+        },
+        {
+          "type": "route",
+          "uuid": "9388924d-7ed8-4002-963f-668979f2ece8"
         }
       ]
     },
@@ -88,7 +104,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "3a08ed97-d9d2-49b1-a903-10fac819ef4d",
@@ -117,7 +135,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "c56270e4-6254-4d63-9f14-6f30c36b204f",
@@ -146,7 +166,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "7bd3eec3-afe4-4712-9d3c-fb7b216e6fbb",
@@ -180,7 +202,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "ccf2a66a-2755-43ca-ae13-206754221249",
@@ -209,7 +233,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "e72d0371-8703-45cb-a60b-03446300f778",
@@ -238,7 +264,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "c87ef8c6-727b-4a9d-b71a-78ab1fd9b53b",
@@ -272,7 +300,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "3f9c22ee-8e4d-40be-913e-bdf304d66245",
@@ -363,7 +393,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "c6769287-da83-4939-b791-73fa13b47f6d",
@@ -392,7 +424,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "e541731b-b6ac-49dc-a028-49a4fa7c5f43",
@@ -409,7 +443,7 @@
           "label": "",
           "headers": [],
           "bodyType": "FILE",
-          "filePath": "./fhir/observations_200.json",
+          "filePath": "./fhir/observations/observations_200.json",
           "databucketID": "",
           "sendFileAsBody": true,
           "rules": [],
@@ -421,7 +455,9 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     },
     {
       "uuid": "5a02da0c-450b-4c65-8e3f-67b0e24993a1",
@@ -450,7 +486,133 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "a6c51926-a4db-4c38-9e66-0c880ec82e2a",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/Questionnaire/:id",
+      "responses": [
+        {
+          "uuid": "a249d1eb-3d67-4d54-af91-4bb6932af384",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./fhir/questionnaires/{{urlParam 'id'}}.json",
+          "databucketID": "",
+          "sendFileAsBody": true,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "9a5d6153-0a7d-42b6-b64e-5125bb360de3",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/QuestionnaireResponse/:id",
+      "responses": [
+        {
+          "uuid": "f299e806-07c5-4f4e-97b0-092f675c4f51",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./fhir/questionnaires/{{urlParam 'id'}}-response.json",
+          "databucketID": "",
+          "sendFileAsBody": true,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "1b916380-9eda-4006-b5f9-afa2233791f8",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/Task",
+      "responses": [
+        {
+          "uuid": "58458479-976a-4cb5-8a36-4d8aeeb9fabf",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./fhir/tasks/tasks.json",
+          "databucketID": "",
+          "sendFileAsBody": true,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "9388924d-7ed8-4002-963f-668979f2ece8",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/Task/:id",
+      "responses": [
+        {
+          "uuid": "505f480b-3f78-473f-a9dd-4c777cd64b48",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./fhir/tasks/{{urlParam 'id'}}.json",
+          "databucketID": "",
+          "sendFileAsBody": true,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     }
   ],
   "rootChildren": [

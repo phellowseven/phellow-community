@@ -2,7 +2,7 @@
 	"resourceType": "Questionnaire",
 	"id": "template_komed_anamnese--0",
 	"language": "de-DE",
-	"url": "http://localhost:8080/MintFhirServer/r4/Questionnaire/template_komed_anamnese--0",
+	"url": "http://localhost:8080/fhir/r4/Questionnaire/template_komed_anamnese--0",
 	"version": "01/2016v2",
 	"title": "Anamnese Fragebogen (An02E Narkose)",
 	"status": "draft",

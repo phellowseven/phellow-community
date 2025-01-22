@@ -4,9 +4,9 @@
 	import QuestionnaireItemRenderer from './QuestionnaireItemRenderer.svelte';
 	import { onMount } from 'svelte';
 	import QuestionnaireNavigation from './QuestionnaireNavigation.svelte';
-	import { validatePage } from '$lib/questionnaires/validation';
+	import { validatePage } from '../../questionnaires/validation';
 
-	export let questionnaire: Questionnaire;
+	export let resource: Questionnaire;
 
 	let currentPage = 0;
 	let formData: Record<string, any> = {};
@@ -20,13 +20,13 @@
 	function injectQuestionnaireRef(items: QuestionnaireItem[]): QuestionnaireItem[] {
 		return items.map((item) => ({
 			...item,
-			_questionnaire: questionnaire,
+			_questionnaire: resource,
 			item: item.item ? injectQuestionnaireRef(item.item) : undefined
 		}));
 	}
 
 	// Process top level items with questionnaire reference
-	$: topLevelItems = questionnaire.item ? injectQuestionnaireRef(questionnaire.item) : [];
+	$: topLevelItems = resource.item ? injectQuestionnaireRef(resource.item) : [];
 
 	// Function to check if an item should be enabled based on conditions
 	function isItemEnabled(item: QuestionnaireItem): boolean {
@@ -135,16 +135,16 @@
 		};
 
 		// Debug logging
-		console.group('Form Data Update');
-		console.log('Updated linkId:', linkId);
-		console.log('New value:', value);
-		console.log('Current form data:', formData);
-		console.log(
-			'Enabled pages:',
-			enabledPages.map((p) => p.linkId)
-		);
-		console.log('Current page:', currentPage);
-		console.groupEnd();
+		// console.group('Form Data Update');
+		// console.log('Updated linkId:', linkId);
+		// console.log('New value:', value);
+		// console.log('Current form data:', formData);
+		// console.log(
+		// 	'Enabled pages:',
+		// 	enabledPages.map((p) => p.linkId)
+		// );
+		// console.log('Current page:', currentPage);
+		// console.groupEnd();
 	}
 
 	// Initialize form data with any default values
@@ -176,11 +176,11 @@
 	});
 </script>
 
-<div class="mx-auto max-w-4xl p-4">
-	<h1 class="mb-6 text-2xl font-bold">{questionnaire.title}</h1>
+<div class="w-full">
+	<h1 class="mb-6 text-2xl font-bold">{resource.title}</h1>
 
-	{#if questionnaire.description}
-		<p class="mb-6 text-gray-600">{questionnaire.description}</p>
+	{#if resource.description}
+		<p class="mb-6 text-gray-600">{resource.description}</p>
 	{/if}
 
 	<!-- Form content -->

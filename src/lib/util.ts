@@ -17,3 +17,17 @@ export function addQueryParamsToUrl(baseUrl: string, queryParams: string): URL {
 	// Return the updated URL as a string
 	return url;
 }
+
+export function addPathToUrl(baseUrl: string, path: string): URL {
+	const url = new URL(baseUrl);
+
+	// Ensure the path is properly formatted
+	if (!path.startsWith('/')) {
+		path = `/${path}`;
+	}
+
+	// Add the path to the URL, ensuring no duplicate slashes
+	url.pathname = url.pathname.replace(/\/+$/, '') + path;
+
+	return url;
+}

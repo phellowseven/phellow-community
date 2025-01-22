@@ -39,8 +39,8 @@
 			{#if locationReference}
 				{#await resolveLocationName(locationReference) then locationName}
 					<div class="mt-2 flex flex-row justify-start">
-						<Icon src={MapPin} class="mr-2 h-6 w-6 shrink-0" />
 						<span class="truncate text-wrap">{locationName}</span>
+						<Icon src={MapPin} class="ml-2 h-6 w-6 shrink-0" />
 					</div>
 				{/await}
 			{/if}
