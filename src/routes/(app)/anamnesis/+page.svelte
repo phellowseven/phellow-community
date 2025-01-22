@@ -21,11 +21,15 @@
 		</div>
 	</StickyHeader>
 
-	<div class="flex justify-center text-center">
+	<div class="flex">
 		<!-- <div>
 			<Heading class="text-2xl font-bold">{m.no_content()}</Heading>
 			<Secondary class="text-xl font-medium">{m.no_content_description()}</Secondary>
 		</div> -->
-		<QuestionnaireForm questionnaire={data.questionnaire} />
+		{#await data.questionnaire}
+			<p>Loading…</p>
+		{:then questionnaire}
+			<QuestionnaireForm resource={questionnaire} />
+		{/await}
 	</div>
 </div>

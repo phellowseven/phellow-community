@@ -106,11 +106,11 @@
 							<i><Icon solid src={QueueList} color="currentColor" class="h-6" /></i>
 						</svelte:fragment>
 					</SidebarItem>
-					<SidebarItem href="/anamnesis" label={m.anamnese_title()}>
+					<!-- <SidebarItem href="/anamnesis" label={m.anamnese_title()}>
 						<svelte:fragment slot="icon">
 							<i><Icon solid src={DocumentPlus} color="currentColor" class="h-6" /></i>
 						</svelte:fragment>
-					</SidebarItem>
+					</SidebarItem> -->
 					<SidebarItem href="/structured" label={m.structured_title()}>
 						<svelte:fragment slot="icon">
 							<i><Icon solid src={Beaker} color="currentColor" class="h-6" /></i>

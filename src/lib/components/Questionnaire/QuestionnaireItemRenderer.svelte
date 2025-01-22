@@ -133,16 +133,16 @@
 	}
 
 	// For debugging enableWhen conditions
-	$: {
-		if (item.enableWhen && item.enableWhen.length > 0) {
-			console.group(`EnableWhen debug for ${item.linkId}`);
-			console.log('Item:', item);
-			console.log('EnableWhen conditions:', item.enableWhen);
-			console.log('Current form data:', formData);
-			console.log('Is enabled:', isItemEnabled(item));
-			console.groupEnd();
-		}
-	}
+	// $: {
+	// 	if (item.enableWhen && item.enableWhen.length > 0) {
+	// 		console.group(`EnableWhen debug for ${item.linkId}`);
+	// 		console.log('Item:', item);
+	// 		console.log('EnableWhen conditions:', item.enableWhen);
+	// 		console.log('Current form data:', formData);
+	// 		console.log('Is enabled:', isItemEnabled(item));
+	// 		console.groupEnd();
+	// 	}
+	// }
 </script>
 
 <div>
