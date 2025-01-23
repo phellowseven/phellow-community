@@ -5,39 +5,58 @@ services:
     volumes:
       - ./samples/mockoon.json:/data/mockoon-config.json:ro
       - ./samples/fhir:/data/fhir:ro
-      - ./samples/oauth-docker:/data/oauth:ro
     ports:
-      - '3000:3000'
+      - 3000:3000
     restart: unless-stopped
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:3000/health']
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
       interval: 10s
       timeout: 10s
       retries: 5
-  surrealdb:
-    image: surrealdb/surrealdb:v1.5.5-dev
-    command: start --user root --pass root -A
+  # oidc-mock:
+  #   build:
+  #     context: ./samples/oidc-mock-server
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 8080:8080
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: wget --spider --server-response --quiet "http://127.0.0.1:8080/.well-known/openid-configuration" 2>&1 | grep -q "200 OK"
+  #     interval: 10s
+  #     timeout: 10s
+  #     retries: 5
+  db:
+    image: postgres:17
+    restart: always
     ports:
-      - '8800:8000'
-    restart: unless-stopped
+      - 5432:5432
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
     healthcheck:
-      test: ['CMD', '/surreal', 'is-ready']
-      interval: 10s
-      timeout: 10s
+      test: ["CMD-SHELL", "pg_isready", "-d", "local"]
+      interval: 30s
+      timeout: 60s
       retries: 5
+      start_period: 80s
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     depends_on:
       mockoon:
         condition: service_healthy
-      surrealdb:
+      # oidc-mock:
+      #   condition: service_healthy
+      db:
         condition: service_healthy
     environment:
       - NODE_ENV=development
+      - ORIGIN=http://localhost:5174
     env_file:
       - .env.mockoon.docker
     restart: unless-stopped
     ports:
-      - 8081:3000
+      - 5174:3000
+      - 8080:8080

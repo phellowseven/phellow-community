@@ -1,41 +1,13 @@
-import { env } from '$env/dynamic/private';
-import { uploadDocumentSchema } from '$lib/document/form';
-import { addQueryParamsToUrl } from '$lib/util';
-import type { Bundle, DocumentReference } from 'fhir/r4';
-import { base64url } from 'oslo/encoding';
-import { superValidate } from 'sveltekit-superforms';
-import { zod } from 'sveltekit-superforms/adapters';
-import type { PageServerLoad } from './$types';
-
-async function extractDocumentReferences(response: Response): Promise<DocumentReference[]> {
-	if (response.ok) {
-		const bundle = (await response.json()) as Bundle;
-		const entries =
-			bundle.entry
-				?.filter((entry) => entry.resource?.resourceType == 'DocumentReference')
-				.map((entry) => entry.resource as DocumentReference)
-				.map((entry) => {
-					if (entry.content[0].attachment.url) {
-						const encoded = base64url.encode(
-							new TextEncoder().encode(entry.content[0].attachment.url)
-						);
-						entry.content[0].attachment.url = `/documents/${encoded}`;
-					}
-					return entry;
-				}) ?? [];
-		return entries;
-	} else {
-		console.error('Failed to fetch DocumentReferences:', response);
-	}
-	return [];
-}
+import { env } from "$env/dynamic/private";
+import { extractDocumentReferences } from "$lib/fhir/document";
+import { uploadDocumentSchema } from "$lib/fhir/document/form";
+import { addQueryParamsToUrl } from "$lib/utils";
+import type { Bundle } from "fhir/r4";
+import { fail, message, superValidate } from "sveltekit-superforms";
+import { zod } from "sveltekit-superforms/adapters";
+import type { Actions, PageServerLoad } from "./$types";
 
 export const load = (async ({ locals }) => {
-	const accessToken = await locals.validAccessToken();
-	const headers = {
-		Authorization: 'Bearer ' + accessToken,
-		'Content-Type': 'application/json; charset=utf-8'
-	};
 	let url = new URL(env.FHIR_DOCUMENT_REFERENCE_URL);
 	if (env.FHIR_DOCUMENT_DEFAULT_SEARCH_PARAMS) {
 		url = addQueryParamsToUrl(
@@ -43,15 +15,34 @@ export const load = (async ({ locals }) => {
 			env.FHIR_DOCUMENT_DEFAULT_SEARCH_PARAMS
 		);
 	}
-	url.searchParams.set('_format', 'json');
+	url.searchParams.set("_format", "json");
 
 	const uploadDocumentForm = await superValidate(zod(uploadDocumentSchema));
+
+	const accessToken = await locals.validAccessToken();
+	const headers = {
+		Authorization: "Bearer " + accessToken,
+		"Content-Type": "application/json; charset=utf-8",
+	};
+	const asyncEntries = fetch(url, { headers }).then(async (response) =>
+		extractDocumentReferences((await response.json()) as Bundle)
+	);
 
 	// NOTE: This does NOT use the SvelteKit fetch adapter, since the automatic
 	// origin header can cause issues with some FHIR servers due to CORS policy
 	// implementations.
 	return {
-		entries: fetch(url, { headers }).then((response) => extractDocumentReferences(response)),
-		uploadDocumentForm
+		entries: asyncEntries,
+		uploadDocumentForm,
 	};
 }) satisfies PageServerLoad;
+
+export const actions: Actions = {
+	uploadDocument: async ({ request }) => {
+		const form = await superValidate(request, zod(uploadDocumentSchema));
+		if (!form.valid) {
+			return fail(400, { form });
+		}
+		return message(form, "Document uploaded successfully.");
+	},
+};

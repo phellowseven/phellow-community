@@ -1,0 +1,27 @@
+FROM node:20-alpine
+
+# RUN apk add --no-cache tini
+
+WORKDIR /app
+
+COPY ./build dist
+COPY ./package.json package.json
+COPY ./node_modules node_modules
+
+WORKDIR /oidc-mock
+
+COPY ./samples/oidc-mock-server/server.mjs server.mjs
+COPY ./samples/oidc-mock-server/package.json package.json
+
+RUN npm install
+
+
+WORKDIR /
+
+COPY ./samples/oidc-mock-server/start.sh start.sh
+
+EXPOSE 3000
+EXPOSE 8080
+
+# ENTRYPOINT ["/sbin/tini", "--"]
+CMD ./start.sh

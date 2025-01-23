@@ -1,8 +1,21 @@
-import type { LayoutServerLoad } from './$types';
+import { parseJWT } from "@oslojs/jwt";
+import type { LayoutServerLoad } from "./$types";
 
-export const load: LayoutServerLoad = async ({ locals }) => {
+export const load = (async ({ locals }) => {
+	let scopes: string[] = [];
+
+	const accessToken = await locals.validAccessToken();
+	const [, payload] = parseJWT(accessToken);
+	if ("scope" in payload) {
+		scopes = (payload.scope as string).split(" ");
+	}
 	return {
-		user: locals.user,
-		expiresAt: locals.session?.expiresAt.toISOString()
+		user: {
+			name: locals.user?.name ?? null,
+			email: locals.user?.email ?? null,
+			username: locals.user?.username ?? null,
+		},
+		expiresAt: locals.session?.expiresAt,
+		scopes,
 	};
-};
+}) satisfies LayoutServerLoad;

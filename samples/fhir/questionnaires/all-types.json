@@ -1,0 +1,204 @@
+{
+	"resourceType": "Questionnaire",
+	"id": "all-types",
+	"status": "active",
+	"title": "Example Questionnaire with All Item Types",
+	"item": [
+		{
+			"linkId": "display-item",
+			"text": "Display Item",
+			"type": "display",
+			"prefix": "1."
+		},
+		{
+			"linkId": "boolean-item",
+			"text": "Boolean Item",
+			"type": "boolean",
+			"required": true,
+			"prefix": "2."
+		},
+		{
+			"linkId": "decimal-item",
+			"text": "Decimal Item",
+			"type": "decimal",
+			"prefix": "3."
+		},
+		{
+			"linkId": "integer-item",
+			"text": "Integer Item",
+			"type": "integer",
+			"prefix": "4."
+		},
+		{
+			"linkId": "date-item",
+			"text": "Date Item",
+			"type": "date",
+			"prefix": "5."
+		},
+		{
+			"linkId": "dateTime-item",
+			"text": "DateTime Item",
+			"type": "dateTime",
+			"prefix": "6."
+		},
+		{
+			"linkId": "time-item",
+			"text": "Time Item",
+			"type": "time",
+			"prefix": "7."
+		},
+		{
+			"linkId": "string-item",
+			"text": "String Item",
+			"type": "string",
+			"prefix": "8."
+		},
+		{
+			"linkId": "text-item",
+			"text": "Text Item",
+			"type": "text",
+			"prefix": "9."
+		},
+		{
+			"linkId": "url-item",
+			"text": "URL Item",
+			"type": "url",
+			"prefix": "10."
+		},
+		{
+			"linkId": "choice-item",
+			"text": "Choice Item",
+			"type": "choice",
+			"answerOption": [{ "valueString": "Option 1" }, { "valueString": "Option 2" }],
+			"prefix": "11."
+		},
+		{
+			"linkId": "open-choice-item",
+			"text": "Open Choice Item",
+			"type": "open-choice",
+			"answerOption": [{ "valueString": "Option A" }, { "valueString": "Option B" }],
+			"prefix": "12."
+		},
+		{
+			"linkId": "attachment-item",
+			"text": "Attachment Item",
+			"type": "attachment",
+			"prefix": "13."
+		},
+		{
+			"linkId": "reference-item",
+			"text": "Reference Item",
+			"type": "reference",
+			"reference": { "reference": "Patient/example" },
+			"prefix": "14."
+		},
+		{
+			"linkId": "quantity-item",
+			"text": "Quantity Item",
+			"type": "quantity",
+			"prefix": "15."
+		},
+		{
+			"linkId": "group",
+			"text": "Group of Various Items",
+			"type": "group",
+			"prefix": "16.",
+			"item": [
+				{
+					"linkId": "group/display-item",
+					"text": "Description of Group",
+					"type": "display",
+					"prefix": "16.1"
+				},
+				{
+					"linkId": "group/boolean-item",
+					"text": "Boolean Item",
+					"type": "boolean",
+					"required": true,
+					"prefix": "16.2"
+				},
+				{
+					"linkId": "group/decimal-item",
+					"text": "Decimal Item",
+					"type": "decimal",
+					"prefix": "16.3"
+				},
+				{
+					"linkId": "group/integer-item",
+					"text": "Integer Item",
+					"type": "integer",
+					"prefix": "16.4"
+				},
+				{
+					"linkId": "group/date-item",
+					"text": "Date Item",
+					"type": "date",
+					"prefix": "16.5"
+				},
+				{
+					"linkId": "group/dateTime-item",
+					"text": "DateTime Item",
+					"type": "dateTime",
+					"prefix": "16.6"
+				},
+				{
+					"linkId": "group/time-item",
+					"text": "Time Item",
+					"type": "time",
+					"prefix": "16.7"
+				},
+				{
+					"linkId": "group/string-item",
+					"text": "String Item",
+					"type": "string",
+					"prefix": "16.8"
+				},
+				{
+					"linkId": "group/text-item",
+					"text": "Text Item",
+					"type": "text",
+					"prefix": "16.9"
+				},
+				{
+					"linkId": "group/url-item",
+					"text": "URL Item",
+					"type": "url",
+					"prefix": "16.10"
+				},
+				{
+					"linkId": "group/choice-item",
+					"text": "Choice Item",
+					"type": "choice",
+					"answerOption": [{ "valueString": "Option 1" }, { "valueString": "Option 2" }],
+					"prefix": "16.11"
+				},
+				{
+					"linkId": "group/open-choice-item",
+					"text": "Open Choice Item",
+					"type": "open-choice",
+					"answerOption": [{ "valueString": "Option A" }, { "valueString": "Option B" }],
+					"prefix": "16.12"
+				},
+				{
+					"linkId": "group/attachment-item",
+					"text": "Attachment Item",
+					"type": "attachment",
+					"prefix": "16.13"
+				},
+				{
+					"linkId": "group/reference-item",
+					"text": "Reference Item",
+					"type": "reference",
+					"reference": { "reference": "Patient/example" },
+					"prefix": "16.14"
+				},
+				{
+					"linkId": "group/quantity-item",
+					"text": "Quantity Item",
+					"type": "quantity",
+					"prefix": "16.15"
+				}
+			]
+		}
+	]
+}

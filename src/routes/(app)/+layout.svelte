@@ -1,36 +1,39 @@
 <script lang="ts">
-	import NavigationMenu, { toggle } from '$components/NavigationMenu.svelte';
-	import { Button, Footer, FooterCopyright, FooterLink, FooterLinkGroup } from 'flowbite-svelte';
-	import Drawer, { visible } from '$components/Drawer/Drawer.svelte';
-	import { blur } from 'svelte/transition';
-	import { quartInOut } from 'svelte/easing';
-	import { Icon, Bars3 } from 'svelte-hero-icons';
-	import { scrollY } from '$lib/scroll';
-	import { afterNavigate, goto } from '$app/navigation';
-	import { page } from '$app/stores';
-	import type { LayoutData } from './$types';
-	import { onDestroy, onMount } from 'svelte';
-	import dayjs from 'dayjs';
-	import * as m from '$lib/paraglide/messages';
+	import type { LayoutData } from "./$types";
 
-	export let data: LayoutData;
+	import { onDestroy, onMount, type Snippet } from "svelte";
+	import { goto } from "$app/navigation";
 
-	let overflow: HTMLDivElement;
-	let sessionInterval: NodeJS.Timeout;
+	import dayjs from "dayjs";
 
-	$: positionClasses = $visible ? 'md:scale-[90%]' : '';
+	import { sheet } from "./sheet.svelte";
+	import { sidebar } from "./sidebar.svelte";
 
-	function onScroll(_event: Event) {
-		$scrollY = overflow.scrollTop;
+	import * as Sidebar from "$ui/sidebar";
+	import { Separator } from "$ui/separator";
+
+	import ChevronUp from "lucide-svelte/icons/chevron-up";
+
+	import AppSidebar from "$components/AppSidebar.svelte";
+	import ScrollToTop from "$components/ScrollToTop.svelte";
+	// import Breadcrumb from "$components/Breadcrumb.svelte";
+
+	interface Props {
+		data: LayoutData;
+		svelteHead?: Snippet;
+		children: Snippet;
+		stickyHeader?: Snippet;
 	}
 
-	afterNavigate(() => {
-		overflow.scrollTop = $scrollY;
-	});
+	let { data, children }: Props = $props();
+
+	let sessionInterval: NodeJS.Timeout;
 
 	onMount(() => {
 		sessionInterval = setInterval(() => {
-			if (dayjs(data.expiresAt).isBefore(dayjs())) goto('/login');
+			if (dayjs(data.expiresAt).isBefore(dayjs())) {
+				goto("/logout");
+			}
 		}, 1000);
 	});
 
@@ -39,33 +42,31 @@
 	});
 </script>
 
-<Drawer />
-
-<div class="flex h-screen overflow-y-auto scroll-smooth transition-all {positionClasses}">
-	<div class="fixed left-0 right-0 top-0 z-40 !p-2 lg:hidden">
-		<Button on:click={toggle} outline class="m-2"><Icon src={Bars3} size="24" /></Button>
-	</div>
-
-	<NavigationMenu path={$page.url.pathname} user={data.user} />
-
-	<div
-		bind:this={overflow}
-		on:scroll={onScroll}
-		class="z-0 flex w-full grow flex-col overflow-y-auto bg-gray-50 lg:ml-[280px]"
-	>
-		<div
-			in:blur|local={{ duration: 200, easing: quartInOut }}
-			class="container relative mx-auto mt-16 max-w-5xl flex-grow px-4 sm:px-6 lg:mt-0 lg:px-8"
-		>
-			<slot />
-		</div>
-
-		<Footer class="flex w-full justify-between rounded-none bg-transparent p-4 shadow-none ">
-			<FooterCopyright by="phellow seven GmbH." year={new Date().getFullYear()} />
-			<FooterLinkGroup ulClass="flex flex-wrap items-center mt-3 text-sm text-gray-500 sm:mt-0">
-				<FooterLink href="/privacy">{m.footer_privacy()}</FooterLink>
-				<FooterLink href="/imprint">{m.footer_imprint()}</FooterLink>
-			</FooterLinkGroup>
-		</Footer>
-	</div>
+<div class={["scroll-smooth transition-all", sheet.open ? "md:scale-[95%]" : ""]}>
+	<Sidebar.Provider bind:open={sidebar.open} onOpenChange={(open) => (sidebar.open = open)}>
+		<AppSidebar user={data.user} scopes={data.scopes} />
+		<main class="m-4 flex w-full flex-col md:mx-6">
+			<div
+				class={[
+					"sticky top-4 z-10 flex items-center rounded-lg border border-sidebar-border bg-sidebar py-6 shadow transition-all ease-linear md:top-2 md:-mr-4 md:-mt-2",
+					sidebar.open ? "md:-ml-6" : "md:-ml-4",
+				]}
+			>
+				<Sidebar.Trigger class="ml-4 size-10" />
+				<Separator orientation="vertical" class="mx-2 self-stretch" />
+				<!-- Disable for now until hmr issue is resolved: -->
+				<!-- https://github.com/diericx/svelte-breadcrumbs/issues/17 -->
+				<!-- <Breadcrumb /> -->
+			</div>
+			<div class={["flex flex-1 flex-col", sidebar.open ? "md:-ml-2" : undefined]}>
+				{@render children?.()}
+			</div>
+			<ScrollToTop class="size-10">
+				{#snippet children()}
+					<span class="sr-only">Back to top</span>
+					<ChevronUp class="size-4" />
+				{/snippet}
+			</ScrollToTop>
+		</main>
+	</Sidebar.Provider>
 </div>

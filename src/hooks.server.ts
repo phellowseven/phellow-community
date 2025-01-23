@@ -1,60 +1,75 @@
-import { encrypt, parseCryptoKeyFromJsonWebKeyString } from '$lib/encryption';
-import { i18n } from '$lib/i18n.js';
-import { connectOAuth2Client } from '$lib/server/auth/auth';
-import { auth } from '$lib/server/auth/lucia';
-import { connectDB } from '$lib/server/db/db';
-import { refreshAccessTokenIfNecessary } from '$lib/server_utils';
-import { redirect, type Handle } from '@sveltejs/kit';
-import { sequence } from '@sveltejs/kit/hooks';
+import { dev } from "$app/environment";
+import { i18n } from "$lib/i18n";
+import { route } from "$lib/ROUTES";
+import {
+	sessionCookieName,
+	sessionEncryptionKeyName,
+	validateSessionToken,
+} from "$lib/server/auth/auth";
+import { connectOAuth2Client, refreshAccessTokenIfNecessary } from "$lib/server/auth/oauth";
+import type { Session } from "$lib/server/db/schema";
+import { encrypt, parseCryptoKeyFromJsonWebKeyString } from "$lib/server/encryption";
+import { logger } from "$lib/server/logger";
+import { SessionService } from "$lib/server/services/session_service";
+import { encodeBase64 } from "@oslojs/encoding";
+import { redirect, type Handle, type ServerInit } from "@sveltejs/kit";
+import { sequence } from "@sveltejs/kit/hooks";
 
-const i18nHandler = i18n.handle();
+const hooksLogger = logger.child({ module: "ServerHooks" });
 
-await connectDB(); // async call so prerendering during `pnpm run build` works without trying to connect to DB.
-await connectOAuth2Client(); // async call so prerendering during `pnpm run build` works without trying to connect to OAuth discovery endpoint.
+const handleParaglide: Handle = i18n.handle();
+
+// This is called once when the server starts
+export const init: ServerInit = async () => {
+	await connectOAuth2Client();
+};
 
 const authHandle: Handle = async ({ event, resolve }) => {
-	if (event.url.pathname === '/') redirect(307, '/dashboard');
-
-	const sessionId = event.cookies.get(auth.sessionCookieName);
+	if (dev) {
+		hooksLogger.trace({ route: event.route.id }, "handling auth");
+	}
+	const sessionId = event.cookies.get(sessionCookieName);
 
 	if (!sessionId) {
 		event.locals.user = null;
 		event.locals.session = null;
 	}
 
-	if (event.route.id?.indexOf('(app)') != -1 || event.route.id?.indexOf('(api)') != -1) {
-		if (!sessionId) throw redirect(307, '/login');
+	const authRequired =
+		(event.route.id?.indexOf("(app)") ?? -1) != -1 ||
+		(event.route.id?.indexOf("(api)") ?? -1) != -1 ||
+		(event.route.id?.indexOf("(auth)/logout") ?? -1) != -1;
 
-		const { session, user } = await auth.validateSession(sessionId);
-
-		if (session && session.fresh) {
-			const sessionCookie = auth.createSessionCookie(session.id);
-			// sveltekit types deviates from the de-facto standard
-			// you can use 'as any' too
-			event.cookies.set(sessionCookie.name, sessionCookie.value, {
-				path: '/',
-				...sessionCookie.attributes
-			});
+	if (authRequired) {
+		if (!sessionId) {
+			hooksLogger.trace("No session id found from cookies");
+			return redirect(307, route("/login"));
 		}
+
+		const { session, user } = await validateSessionToken(sessionId);
+
 		if (!session) {
-			const sessionCookie = auth.createBlankSessionCookie();
-			event.cookies.set(sessionCookie.name, sessionCookie.value, {
-				path: '/',
-				...sessionCookie.attributes
+			hooksLogger.trace("No session found returned from validateSessionToken");
+			event.cookies.delete(sessionCookieName, {
+				path: "/",
 			});
+			return redirect(307, route("/login"));
 		}
 
 		event.locals.user = user;
 		event.locals.session = session;
 
-		const symmetricEncryptionKey = event.cookies.get('enc_key')!;
+		const symmetricEncryptionKey = event.cookies.get(sessionEncryptionKeyName)!;
 		event.locals.encryptionKey = await parseCryptoKeyFromJsonWebKeyString(symmetricEncryptionKey);
 		event.locals.validAccessToken = async () => {
-			const { accessToken, refreshToken, wasRefreshed } = await refreshAccessTokenIfNecessary(
-				event.locals.encryptionKey!,
-				event.locals.session!.encryptedAccessToken!,
-				event.locals.session!.encryptedRefreshToken!
-			);
+			hooksLogger.trace("Checking if access token is valid");
+			const { accessToken, refreshToken, idToken, wasRefreshed } =
+				await refreshAccessTokenIfNecessary(
+					event.locals.encryptionKey!,
+					event.locals.session!.encryptedAccessToken!,
+					event.locals.session!.encryptedRefreshToken!,
+					event.locals.session!.encryptedIdToken!
+				);
 
 			if (wasRefreshed) {
 				// encrypt access token using symmetric key
@@ -68,22 +83,23 @@ const authHandle: Handle = async ({ event, resolve }) => {
 					new TextEncoder().encode(refreshToken)
 				);
 
+				const newEncryptedIdToken = await encrypt(
+					event.locals.encryptionKey!,
+					new TextEncoder().encode(idToken)
+				);
+
 				// convert to base64
-				const newEncryptedAccessTokenBase64 =
-					Buffer.from(newEncryptedAccessToken).toString('base64');
-				const newEncryptedRefreshTokenBase64 =
-					Buffer.from(newEncryptedRefreshToken).toString('base64');
+				const newEncryptedAccessTokenBase64 = encodeBase64(newEncryptedAccessToken);
+				const newEncryptedRefreshTokenBase64 = encodeBase64(newEncryptedRefreshToken);
+				const newEncryptedIdTokenBase64 = encodeBase64(newEncryptedIdToken);
 
-				const updatedSession = Object.assign({}, event.locals.session!, {
+				const updatedSession: Session = Object.assign({}, event.locals.session!, {
 					encryptedAccessToken: newEncryptedAccessTokenBase64,
-					encryptedRefreshToken: newEncryptedRefreshTokenBase64
+					encryptedRefreshToken: newEncryptedRefreshTokenBase64,
+					encryptedIdToken: newEncryptedIdTokenBase64,
 				});
 
-				await auth.invalidateSession(updatedSession.id);
-				const newSession = await auth.createSession(updatedSession.userId, updatedSession, {
-					sessionId: updatedSession.id
-				});
-				event.locals.session = newSession;
+				await SessionService.updateSession(updatedSession);
 			}
 
 			return accessToken;
@@ -93,4 +109,4 @@ const authHandle: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-export const handle = sequence(i18nHandler, authHandle);
+export const handle = sequence(handleParaglide, authHandle);

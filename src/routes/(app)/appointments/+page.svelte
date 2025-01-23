@@ -1,88 +1,112 @@
-<script lang="ts" context="module">
-	// This is a context="module" script, so that the search survives navigation.
-	import { writable } from 'svelte/store';
-	let search = writable<string>('');
+<script lang="ts" module>
+	export const pageTitle = m.appointments_title();
+
+	// On module level to survive navigation
+	let search: string = $state("");
 </script>
 
 <script lang="ts">
-	import { pageTitle } from '$lib/util';
-	import { P, Search } from 'flowbite-svelte';
-	import { blur } from 'svelte/transition';
-	import StickyHeader from '$components/StickyHeader.svelte';
-	import type { PageData } from './$types';
-	import Appointment from '$components/Appointments/Appointment.svelte';
-	import type { Location } from 'fhir/r4';
-	import dayjs from 'dayjs';
-	import * as m from '$lib/paraglide/messages';
-	import AppointmentPlaceholder from '$components/Appointments/AppointmentPlaceholder.svelte';
-	import { sortBy } from 'lodash-es';
-	import { groupByMonth } from '$components/Appointments';
-	import GroupHeadingPlaceholder from '$components/Placeholder/GroupHeadingPlaceholder.svelte';
+	import type { PageData } from "./$types";
+	import AppLayout from "../_appLayout.svelte";
 
-	export let data: PageData;
+	import { sortBy } from "lodash-es";
+	import dayjs from "dayjs";
+	import type { Location, Appointment } from "fhir/r4";
+	import { encodeBase64url } from "@oslojs/encoding";
 
-	$: groupedAppointments = data.entries.then((appointments) =>
-		sortBy(
+	import { route } from "$lib/ROUTES";
+
+	import { headPageTitle } from "$lib/utils";
+	import * as m from "$lib/paraglide/messages";
+
+	import { Skeleton } from "$ui/skeleton";
+
+	import AppointmentComponent from "$components/appointments/AppointmentComponent.svelte";
+	import { groupByMonth } from "$components/appointments";
+	import Searchbar from "$components/Searchbar.svelte";
+
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+
+	function filterBySearchTerm(appointments: Appointment[]) {
+		return sortBy(
 			Object.entries(
 				groupByMonth(
 					appointments.filter((appointment) => {
-						if ($search.length === 0) return true;
+						if (search.length === 0) return true;
 
-						return appointment.description?.toLowerCase().includes($search.toLowerCase());
+						return appointment.description?.toLowerCase().includes(search.toLowerCase());
 					})
 				)
 			),
 			([key]) => key
-		).reverse()
-	);
+		).reverse();
+	}
 
 	async function resolveLocationName(reference: string | undefined): Promise<string> {
 		return fetch(`/fhir/resolveReference?reference=${reference}`)
 			.then((response) => response.json() as Promise<Location>)
-			.then((data) => data.name ?? 'Unknown location');
+			.then((data) => data.name ?? "Unbekannter Ort");
 	}
 </script>
 
 <svelte:head>
-	<title>{pageTitle(m.appointments_title())}</title>
+	<title>{headPageTitle(m.appointments_title())}</title>
 </svelte:head>
 
-<div in:blur={{ duration: 200 }} class="my-8">
-	<StickyHeader>
-		<div class="flex items-start justify-between lg:flex-row">
-			<P class="text-3xl font-extrabold">{m.appointments_title()}</P>
-		</div>
-	</StickyHeader>
+<AppLayout>
+	{#snippet children()}
+		<Searchbar bind:value={search} class="" />
 
-	<Search bind:value={$search} class="z-0 mb-4" placeholder={m.searchbar_placeholder()} />
-
-	<div class="flex w-full flex-col items-start">
-		{#await groupedAppointments}
-			<GroupHeadingPlaceholder />
-			<AppointmentPlaceholder />
-		{:then entries}
-			{#each entries as [group, appointments] (group)}
-				<h2 class="mb-2 mt-8 rounded-lg bg-[#d0f5ec] p-2 text-lg font-bold text-[#109b77]">
-					{dayjs(group).format(m.documents_group_header_date_format())}
-				</h2>
-				<ul class="flex w-full flex-col space-y-2">
-					{#each appointments as appointment (appointment.id)}
-						<li>
-							<Appointment
-								title={appointment.description}
-								duration={appointment.minutesDuration}
-								startDate={appointment.start ? dayjs(appointment.start) : undefined}
-								endDate={appointment.end ? dayjs(appointment.end) : undefined}
-								status={appointment.status}
-								locationReference={appointment.participant.filter((p) =>
-									p.actor?.reference?.startsWith('Location/')
-								)[0]?.actor?.reference}
-								{resolveLocationName}
-							/>
-						</li>
+		<div class="flex w-full flex-col items-start space-y-4 md:space-y-8">
+			{#await data.entries}
+				{#each { length: 2 }}
+					<Skeleton class="h-10 w-32 rounded-lg bg-secondary" />
+					{#each { length: 3 }}
+						<Skeleton class="h-20 w-full rounded-lg bg-white" />
 					{/each}
-				</ul>
-			{/each}
-		{/await}
-	</div>
-</div>
+				{/each}
+			{:then entries}
+				{#each filterBySearchTerm(entries) as [group, appointments] (group)}
+					{@const month = dayjs(group)}
+					<section class="w-full" aria-describedby="month-grouping">
+						<h2
+							class="mb-2 inline-flex rounded-lg border border-secondary-foreground bg-secondary p-2 text-lg font-bold text-secondary-foreground md:mb-4"
+							id="month-grouping"
+						>
+							<time datetime={month.format("YYYY-MM")}>
+								{month.format(m.documents_group_header_date_format())}
+							</time>
+						</h2>
+						<ul class="flex w-full flex-col space-y-2 md:space-y-4">
+							{#each appointments as appointment (appointment.id)}
+								<li>
+									<AppointmentComponent
+										class="block rounded-lg bg-card/70 px-4 py-2 shadow hover:bg-card hover:shadow-lg md:px-6 md:py-6"
+										title={appointment.description}
+										duration={appointment.minutesDuration}
+										startDate={appointment.start ? dayjs(appointment.start) : undefined}
+										endDate={appointment.end ? dayjs(appointment.end) : undefined}
+										status={appointment.status}
+										locationReference={appointment.participant.filter((p) =>
+											p.actor?.reference?.startsWith("Location/")
+										)[0]?.actor?.reference}
+										{resolveLocationName}
+										href={appointment.id
+											? route("/appointments/[appointmentId]", {
+													appointmentId: encodeBase64url(new TextEncoder().encode(appointment.id!)),
+												})
+											: undefined}
+									/>
+								</li>
+							{/each}
+						</ul>
+					</section>
+				{/each}
+			{/await}
+		</div>
+	{/snippet}
+</AppLayout>

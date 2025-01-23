@@ -1,25 +1,19 @@
-import { paraglide } from '@inlang/paraglide-sveltekit/vite';
-import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { paraglide } from "@inlang/paraglide-sveltekit/vite";
+import { sveltekit } from "@sveltejs/kit/vite";
+import { kitRoutes } from "vite-plugin-kit-routes";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
 	plugins: [
+		sveltekit(),
 		paraglide({
-			//recommended
-			project: './project.inlang',
-			outdir: './src/lib/paraglide'
+			project: "./project.inlang",
+			outdir: "./src/lib/paraglide",
 		}),
-		sveltekit()
+		kitRoutes(),
 	],
-	optimizeDeps: {
-		exclude: ['@surrealdb/wasm', 'surrealql.wasm'],
-		esbuildOptions: {
-			target: 'esnext'
-		}
+
+	test: {
+		include: ["src/**/*.{test,spec}.{js,ts}"],
 	},
-	esbuild: {
-		supported: {
-			'top-level-await': true
-		}
-	}
 });

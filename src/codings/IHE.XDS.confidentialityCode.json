@@ -1,110 +1,110 @@
 {
-  "resourceType": "ValueSet",
-  "id": "1.2.276.0.76.11.33",
-  "url": "http://ihe-d.de/ValueSets/IHEXDSconfidentialityCode",
-  "version": "v3",
-  "title": "IHE XDS confidentialityCode",
-  "status": "active",
-  "date": "2021-07-06T21:17:27",
-  "publisher": "IHE Deutschland e.V.",
-  "compose": {
-    "include": [
-      {
-        "system": "1.3.6.1.4.1.19376.3.276.1.5.10",
-        "extension": [
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:pin:Betroffeneneinschätzung&#160;der&#160;Vertraulichkeitsstufe"
-          },
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.10"
-          }
-        ],
-        "concept": [
-          {
-            "code": "PV",
-            "display": "gesperrt",
-            "designation": [{ "language": "de-DE", "value": "gesperrt" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.10"
-              }
-            ]
-          },
-          {
-            "code": "PR",
-            "display": "erhöhte Vertraulichkeit",
-            "designation": [{ "language": "de-DE", "value": "erhöhte Vertraulichkeit" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.10"
-              }
-            ]
-          },
-          {
-            "code": "PN",
-            "display": "übliche Vertraulichkeit",
-            "designation": [{ "language": "de-DE", "value": "übliche Vertraulichkeit" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.10"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "system": "2.16.840.1.113883.5.25",
-        "extension": [
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:pin:Confidentiality"
-          },
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
-          }
-        ],
-        "concept": [
-          {
-            "code": "N",
-            "display": "normal",
-            "designation": [{ "language": "de-DE", "value": "normal" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "2.16.840.1.113883.5.25"
-              }
-            ]
-          },
-          {
-            "code": "R",
-            "display": "restricted",
-            "designation": [{ "language": "de-DE", "value": "restricted" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "2.16.840.1.113883.5.25"
-              }
-            ]
-          },
-          {
-            "code": "V",
-            "display": "very restricted",
-            "designation": [{ "language": "de-DE", "value": "very restricted" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "2.16.840.1.113883.5.25"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+	"resourceType": "ValueSet",
+	"id": "1.2.276.0.76.11.33",
+	"url": "http://ihe-d.de/ValueSets/IHEXDSconfidentialityCode",
+	"version": "v3",
+	"title": "IHE XDS confidentialityCode",
+	"status": "active",
+	"date": "2021-07-06T21:17:27",
+	"publisher": "IHE Deutschland e.V.",
+	"compose": {
+		"include": [
+			{
+				"system": "1.3.6.1.4.1.19376.3.276.1.5.10",
+				"extension": [
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "urn:pin:Betroffeneneinschätzung%20der%20Vertraulichkeitsstufe"
+					},
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.10"
+					}
+				],
+				"concept": [
+					{
+						"code": "PV",
+						"display": "gesperrt",
+						"designation": [{ "language": "de-DE", "value": "gesperrt" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.10"
+							}
+						]
+					},
+					{
+						"code": "PR",
+						"display": "erhöhte Vertraulichkeit",
+						"designation": [{ "language": "de-DE", "value": "erhöhte Vertraulichkeit" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.10"
+							}
+						]
+					},
+					{
+						"code": "PN",
+						"display": "übliche Vertraulichkeit",
+						"designation": [{ "language": "de-DE", "value": "übliche Vertraulichkeit" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.10"
+							}
+						]
+					}
+				]
+			},
+			{
+				"system": "2.16.840.1.113883.5.25",
+				"extension": [
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "urn:pin:Confidentiality"
+					},
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+					}
+				],
+				"concept": [
+					{
+						"code": "N",
+						"display": "normal",
+						"designation": [{ "language": "de-DE", "value": "normal" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "2.16.840.1.113883.5.25"
+							}
+						]
+					},
+					{
+						"code": "R",
+						"display": "restricted",
+						"designation": [{ "language": "de-DE", "value": "restricted" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "2.16.840.1.113883.5.25"
+							}
+						]
+					},
+					{
+						"code": "V",
+						"display": "very restricted",
+						"designation": [{ "language": "de-DE", "value": "very restricted" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "2.16.840.1.113883.5.25"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
 }

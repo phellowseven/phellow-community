@@ -1,20 +1,45 @@
+<script module lang="ts">
+	export function getPageTitle(data: PageData) {
+		return data.document.description ?? m.document();
+	}
+</script>
+
 <script lang="ts">
-	import { A, Button, Kbd, Spinner } from 'flowbite-svelte';
-	import { onDestroy, onMount } from 'svelte';
-	import type { PageData } from './$types';
-	import { blur } from 'svelte/transition';
-	import { goto, afterNavigate } from '$app/navigation';
-	import * as m from '$lib/paraglide/messages';
+	import type { PageData } from "./$types";
+	import AppLayout from "../../_appLayout.svelte";
 
-	let previousPage: string | undefined;
+	import { onDestroy, onMount } from "svelte";
 
-	let loading = true;
-	let objectURL: string | undefined;
+	import * as m from "$lib/paraglide/messages";
+	import { canShowPreviewForDocumentContent } from "$lib/fhir/document";
+
+	import { Button } from "$ui/button";
+
+	import Download from "lucide-svelte/icons/download";
+
+	import { Skeleton } from "$components/ui/skeleton";
+	import DocumentMetadataTable from "$components/document/DocumentMetadataTable.svelte";
+
+	let { data }: { data: PageData } = $props();
+
+	let loading = $state(true);
+	let objectURL: string | undefined = $state(undefined);
+	let contentType: string | undefined = $state(data.document.content[0].attachment.contentType);
 
 	onMount(async () => {
-		const response = await fetch('');
+		if (
+			data.document.content.length > 0 &&
+			canShowPreviewForDocumentContent(data.document.content[0])
+		) {
+			const attachmentURL = data.document.content[0].attachment.url;
+			if (!attachmentURL) {
+				loading = false;
+				return;
+			}
+			const response = await fetch(attachmentURL);
 
-		objectURL = URL.createObjectURL(await response.blob());
+			objectURL = URL.createObjectURL(await response.blob());
+		}
 
 		loading = false;
 	});
@@ -22,42 +47,38 @@
 	onDestroy(() => {
 		objectURL && URL.revokeObjectURL(objectURL);
 	});
-
-	afterNavigate(({ from }) => {
-		previousPage = from?.url.pathname;
-	});
-
-	function onKeydown(event: KeyboardEvent) {
-		if (event.key === 'Escape') {
-			goto(previousPage ?? `/documents`);
-		}
-	}
 </script>
 
-<svelte:window on:keydown={onKeydown} />
+<svelte:head>
+	<title>{data.document.description ?? m.document()}</title>
+</svelte:head>
 
-<section in:blur class="flex h-screen flex-col">
-	<nav
-		class="flex flex-row justify-between bg-gray-50 px-6 py-4 dark:border-b dark:border-gray-600 dark:bg-gray-900"
-	>
-		<A
-			href={previousPage ?? `/documents`}
-			color="black"
-			class="inline-flex items-center space-x-2 whitespace-nowrap text-lg font-medium dark:text-white"
+<AppLayout>
+	{#snippet stickyHeader()}
+		<Button
+			type="button"
+			download="{data.document.description}.pdf"
+			href={objectURL}
+			disabled={!objectURL}
 		>
-			<Kbd class="px-2 py-1.5">{m.documents_document_esc_button()}</Kbd>
-		</A>
-
-		<Button type="button" download="document.pdf" href={objectURL} disabled={!objectURL}>
-			{m.documents_document_download_button()}
+			<Download class="sr mr-2 h-4 w-4" />{m.documents_document_download_button()}
 		</Button>
-	</nav>
+	{/snippet}
+	{#snippet children()}
+		{#if loading}
+			<p>Loading…</p>
+		{:else}
+			<h1>{data.document.description}</h1>
 
-	{#if loading}
-		<div class="flex h-full w-full grow items-center justify-center bg-gray-800">
-			<Spinner color="blue" />
-		</div>
-	{:else}
-		<embed src={objectURL} type="application/pdf" class="h-full w-full grow" />
-	{/if}
-</section>
+			<DocumentMetadataTable document={data.document} />
+
+			{#if loading}
+				<Skeleton class="min-h-svh w-full bg-secondary" />
+			{:else if objectURL}
+				{#if contentType == "application/pdf"}
+					<embed src={objectURL} type="application/pdf" class="min-h-svh w-full grow" />
+				{/if}
+			{/if}
+		{/if}
+	{/snippet}
+</AppLayout>

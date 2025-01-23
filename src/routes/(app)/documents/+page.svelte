@@ -1,97 +1,183 @@
-<script lang="ts" context="module">
-	// This is a context="module" script, so that the search survives navigation.
-	import { writable } from 'svelte/store';
-	let search = writable<string>('');
+<script module lang="ts">
+	import * as m from "$lib/paraglide/messages";
+
+	import FileUp from "lucide-svelte/icons/file-up";
+	import { sheet } from "../sheet.svelte";
+
+	export const pageTitle = m.documents_title();
+
+	// On module level to survive navigation
+	let search: string = $state("");
+
+	const menuData = [
+		[
+			{
+				label: m.document_upload_button(),
+				icon: FileUp,
+				onclick: () => {
+					sheet.open = true;
+				},
+			},
+		],
+	];
 </script>
 
 <script lang="ts">
-	import { open } from '$lib/components/Drawer/Drawer.svelte';
-	import { pageTitle } from '$lib/util';
-	import { P, Search, Button, ButtonGroup } from 'flowbite-svelte';
-	import { blur } from 'svelte/transition';
-	import StickyHeader from '$components/StickyHeader.svelte';
-	import type { PageData } from './$types';
-	import { Icon, DocumentPlus } from 'svelte-hero-icons';
-	import Document from '$components/Document/Document.svelte';
-	import dayjs from 'dayjs';
+	import AppLayout from "../_appLayout.svelte";
+	import type { PageData } from "./$types";
+
+	import { sortBy } from "lodash-es";
+	import dayjs from "dayjs";
+	import type { DocumentReference } from "fhir/r4";
+	import { encodeBase64url } from "@oslojs/encoding";
+
+	import { route } from "$lib/ROUTES";
+
+	import { headPageTitle } from "$lib/utils";
 	import {
 		documentTypeStringForDocumentReference,
 		extractAuthorFullName,
-		groupByMonth
-	} from '$lib/document';
-	import { sortBy } from 'lodash-es';
-	import * as m from '$lib/paraglide/messages';
-	import GroupHeadingPlaceholder from '$components/Placeholder/GroupHeadingPlaceholder.svelte';
-	import DocumentPlaceholder from '$components/Document/DocumentPlaceholder.svelte';
+		groupByMonth,
+	} from "$lib/fhir/document";
 
-	export let data: PageData;
+	import { Button } from "$ui/button";
+	import { Skeleton } from "$ui/skeleton";
+	import * as Popover from "$ui/popover";
+	import * as Sidebar from "$ui/sidebar";
 
-	$: groupedDocuments = data.entries.then((documents) =>
-		sortBy(
+	import Ellipsis from "lucide-svelte/icons/ellipsis";
+
+	import Searchbar from "$components/Searchbar.svelte";
+	import Document from "$components/document/Document.svelte";
+	import UploadDocumentSheet from "$components/sheets/UploadDocumentSheet.svelte";
+
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+
+	let menuOpen = $state(false);
+
+	function filterBySearchTerm(documents: DocumentReference[]) {
+		return sortBy(
 			Object.entries(
 				groupByMonth(
 					documents.filter((document) => {
-						if ($search.length === 0) return true;
-
-						return document.description?.toLowerCase().includes($search.toLowerCase());
+						if (search.length === 0) return true;
+						return document.description?.toLowerCase().includes(search.toLowerCase());
 					})
 				)
 			),
 			([key]) => key
-		).reverse()
-	);
+		).reverse();
+	}
 </script>
 
 <svelte:head>
-	<title>{pageTitle(m.documents_title())}</title>
+	<title>{headPageTitle(m.documents_title())}</title>
 </svelte:head>
 
-<div in:blur={{ duration: 200 }} class="my-8">
-	<StickyHeader>
-		<div class="flex flex-col items-start justify-between md:flex-row md:items-end">
-			<P class="text-3xl font-extrabold">{m.documents_title()}</P>
-			<div class="mt-8 space-x-px align-top md:mt-0">
-				<ButtonGroup class="mt-8 space-x-px align-top md:mt-0">
-					<Button
-						on:click={() =>
-							open({
-								type: 'upload-document',
-								data: data.uploadDocumentForm
-							})}
-						class="align-center inline-flex justify-center"
-						color="primary"
-						><Icon src={DocumentPlus} class="mr-2" size="20" mini />Dokument hochladen</Button
-					>
-				</ButtonGroup>
-			</div>
+<AppLayout>
+	{#snippet portal()}
+		<UploadDocumentSheet validatedForm={data.uploadDocumentForm} />
+	{/snippet}
+
+	{#snippet stickyHeader()}
+		<Button
+			class="align-center hidden justify-center md:inline-flex "
+			color="primary"
+			onclick={() => (sheet.open = true)}
+			><FileUp class="mr-2 h-4 w-4" />{m.document_upload_button()}</Button
+		>
+		<div class="md:hidden">
+			<Popover.Root bind:open={menuOpen}>
+				<Popover.Trigger>
+					{#snippet child({ props })}
+						<Button
+							{...props}
+							variant="ghost"
+							size="icon"
+							class="h-7 w-7 data-[state=open]:bg-accent"
+						>
+							<Ellipsis />
+						</Button>
+					{/snippet}
+				</Popover.Trigger>
+				<Popover.Content class="w-56 overflow-hidden rounded-lg p-0" align="end">
+					<Sidebar.Root collapsible="none" class="bg-transparent">
+						<Sidebar.Content>
+							{#each menuData as group, index (index)}
+								<Sidebar.Group class="border-b last:border-none">
+									<Sidebar.GroupContent class="gap-0">
+										<Sidebar.Menu>
+											{#each group as item, index (index)}
+												<Sidebar.MenuItem>
+													<Sidebar.MenuButton
+														onclick={() => {
+															menuOpen = false;
+															item.onclick();
+														}}
+													>
+														<item.icon /> <span>{item.label}</span>
+													</Sidebar.MenuButton>
+												</Sidebar.MenuItem>
+											{/each}
+										</Sidebar.Menu>
+									</Sidebar.GroupContent>
+								</Sidebar.Group>
+							{/each}
+						</Sidebar.Content>
+					</Sidebar.Root>
+				</Popover.Content>
+			</Popover.Root>
 		</div>
-	</StickyHeader>
+	{/snippet}
 
-	<Search bind:value={$search} class="z-0 mb-4" placeholder={m.searchbar_placeholder()} />
+	{#snippet children()}
+		<Searchbar bind:value={search} class="" />
 
-	<div class="flex w-full flex-col items-start">
-		{#await groupedDocuments}
-			<GroupHeadingPlaceholder />
-			<DocumentPlaceholder />
-		{:then entries}
-			{#each entries as [group, documents] (group)}
-				<h2 class="mb-2 mt-8 rounded-lg bg-[#d0f5ec] p-2 text-lg font-bold text-[#109b77]">
-					{dayjs(group).format(m.documents_group_header_date_format())}
-				</h2>
-				<ul class="flex w-full flex-col space-y-2">
-					{#each documents as document (document.id)}
-						<li>
-							<Document
-								title={document.description}
-								createdAt={document.date ? dayjs(document.date) : undefined}
-								author={extractAuthorFullName(document) ?? undefined}
-								type={documentTypeStringForDocumentReference(document)}
-								href={document.content[0].attachment.url}
-							/>
-						</li>
+		<div class="flex w-full flex-col items-start space-y-4 md:space-y-8">
+			{#await data.entries}
+				{#each { length: 2 }}
+					<Skeleton class="h-10 w-32 rounded-lg bg-secondary" />
+					{#each { length: 3 }}
+						<Skeleton class="h-20 w-full rounded-lg bg-white" />
 					{/each}
-				</ul>
-			{/each}
-		{/await}
-	</div>
-</div>
+				{/each}
+			{:then entries}
+				{#each filterBySearchTerm(entries) as [group, documents] (group)}
+					{@const month = dayjs(group)}
+					<section class="w-full" aria-describedby="month-grouping">
+						<h2
+							class="mb-2 inline-flex rounded-lg border border-secondary-foreground bg-secondary p-2 text-lg font-bold text-secondary-foreground md:mb-4"
+							id="month-grouping"
+						>
+							<time datetime={month.format("YYYY-MM")}>
+								{month.format(m.documents_group_header_date_format())}
+							</time>
+						</h2>
+						<ul class="flex w-full flex-col space-y-2 md:space-y-4">
+							{#each documents as document (document.id)}
+								<li>
+									<Document
+										class="block rounded-lg bg-card/70 px-4 py-2 shadow hover:bg-card hover:shadow-lg md:px-6 md:py-6"
+										title={document.description}
+										createdAt={document.date ? dayjs(document.date) : undefined}
+										author={extractAuthorFullName(document) ?? undefined}
+										type={documentTypeStringForDocumentReference(document)}
+										href={document.id
+											? route("/documents/[documentId]", {
+													documentId: encodeBase64url(new TextEncoder().encode(document.id!)),
+												})
+											: undefined}
+									/>
+								</li>
+							{/each}
+						</ul>
+					</section>
+				{/each}
+			{/await}
+		</div>
+	{/snippet}
+</AppLayout>
