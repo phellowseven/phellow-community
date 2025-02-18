@@ -15,6 +15,8 @@
 	import dayjs from "dayjs";
 	import type { DocumentReference, Organization, Practitioner, PractitionerRole } from "fhir/r4";
 	import * as m from "$lib/paraglide/messages";
+	import type { MetadataEntry } from "$components/MetadataTable.svelte";
+	import MetadataTable from "$components/MetadataTable.svelte";
 
 	interface Props {
 		document: DocumentReference;
@@ -82,49 +84,50 @@
 	let eventString = $derived(documentEventStringForDocumentReference(document, currentLanguage));
 	let formatString = $derived(documentFormatStringForDocumentReference(document, currentLanguage));
 	let contentType = document.content?.[0]?.attachment?.contentType;
+
+	let metadata: MetadataEntry[] = $derived.by(
+		() =>
+			[
+				{
+					title: m.documents_document_details_date(),
+					value: formattedDate,
+				},
+				{
+					title: m.documents_document_details_author(),
+					value: authorName,
+				},
+				{
+					title: m.documents_document_details_category(),
+					value: categoryString,
+				},
+				{
+					title: m.documents_document_details_type(),
+					value: typeString,
+				},
+				{
+					title: m.documents_document_details_facility(),
+					value: facilityString,
+				},
+				{
+					title: m.documents_document_details_confidentiality(),
+					value: confidentialityString,
+				},
+				{
+					title: m.documents_document_details_event(),
+					value: eventString,
+				},
+				{
+					title: m.documents_document_details_content_format(),
+					value: formatString,
+				},
+				{
+					title: m.documents_document_details_content_type(),
+					value: contentType,
+				},
+			].filter((entry) => entry.value !== undefined) as MetadataEntry[]
+	);
 </script>
 
-<div class={cn("rounded-lg border border-sidebar-border bg-sidebar", classes)}>
-	<Table.Root>
-		<Table.Body>
-			<Table.Row>
-				<Table.Cell class="font-bold">{m.documents_document_details_date()}</Table.Cell>
-				<Table.Cell>{formattedDate}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell class="font-bold">{m.documents_document_details_author()}</Table.Cell>
-				<Table.Cell>{authorName}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell class="font-bold">{m.documents_document_details_category()}</Table.Cell>
-				<Table.Cell>{categoryString}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell class="font-bold">{m.documents_document_details_type()}</Table.Cell>
-				<Table.Cell>{typeString}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell class="font-bold">{m.documents_document_details_facility()}</Table.Cell>
-				<Table.Cell>{facilityString}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell class="font-bold">{m.documents_document_details_confidentiality()}</Table.Cell>
-				<Table.Cell>{confidentialityString}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell class="font-bold">{m.documents_document_details_event()}</Table.Cell>
-				<Table.Cell>{eventString}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell class="font-bold">{m.documents_document_details_content_format()}</Table.Cell>
-				<Table.Cell>{formatString}</Table.Cell>
-			</Table.Row>
-			{#if contentType}
-				<Table.Row>
-					<Table.Cell class="font-bold">{m.documents_document_details_content_type()}</Table.Cell>
-					<Table.Cell>{contentType}</Table.Cell>
-				</Table.Row>
-			{/if}
-		</Table.Body>
-	</Table.Root>
+<div class={cn("rounded-lg border border-border bg-card", classes)}>
+	<MetadataTable {metadata} />
 </div>

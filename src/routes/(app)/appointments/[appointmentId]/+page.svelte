@@ -27,6 +27,7 @@
 	import Users from "lucide-svelte/icons/users";
 
 	import { participantStatusColor, statusColor, statusText } from "$components/appointments";
+	import AppointmentMetadataTable from "$components/appointments/AppointmentMetadataTable.svelte";
 
 	interface Props {
 		data: PageData;
@@ -100,146 +101,34 @@
 				{appointment.description}
 			</h1>
 		{/if}
-		<div class="flex flex-1 flex-col gap-4 rounded-lg border border-border bg-card p-4 shadow">
-			<!-- DateTime -->
-			<InfoRow id="dateTime" value={dateString}>
-				{#snippet labelChild(id)}
-					<div class="inline-flex items-center gap-2">
-						<Calendar class="size-4" />
-						<Label {id}>Datum & Uhrzeit</Label>
-					</div>
-				{/snippet}
-			</InfoRow>
 
-			<!-- Status -->
-			<InfoRow id="status">
-				{#snippet labelChild(id)}
-					<div class="inline-flex items-center gap-2">
-						<StatusIcon class="size-4" />
-						<Label {id}>Status</Label>
-					</div>
-				{/snippet}
-				{#snippet valueChild(id)}
-					<span
-						{id}
-						class={[
-							"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
-							statusColor(appointment.status),
-						]}
-					>
-						{statusText(appointment.status)}
-					</span>
-				{/snippet}
-			</InfoRow>
-
-			<!-- Cancellation Reason -->
-			{#if appointment.status === "cancelled" && appointment.cancelationReason}
-				<InfoRow
-					id="cancelationReason"
-					label="Grund der Absage"
-					value={appointment.cancelationReason.coding?.[0]?.display || "Kein Grund angegeben"}
-				/>
-			{/if}
-
-			<!-- Duration -->
-			<InfoRow id="duration" value={`${duration} Minuten`}>
-				{#snippet labelChild(id)}
-					<div class="inline-flex items-center gap-2">
-						<Clock class="size-4" />
-						<Label {id}>Dauer</Label>
-					</div>
-				{/snippet}
-			</InfoRow>
-
-			<!-- Comment -->
-			{#if appointment.comment}
-				<InfoRow id="comment" label="Kommentar" value={appointment.comment} />
-			{/if}
-
-			<!-- Instructions -->
-			{#if appointment.patientInstruction}
-				<InfoRow id="instructions" value={appointment.patientInstruction}>
-					{#snippet labelChild(id)}
-						<div class="inline-flex items-center gap-2">
-							<ListTodo class="size-4" />
-							<Label {id}>Instruktionen</Label>
-						</div>
-					{/snippet}
-				</InfoRow>
-			{/if}
-
-			<!-- Appointment Type -->
-			{#if appointment.appointmentType}
-				<InfoRow
-					id="appointmentType"
-					value={appointment.appointmentType!.coding?.[0]?.display || "Unbekannt"}
-				>
-					{#snippet labelChild(id)}
-						<div class="inline-flex items-center sm:gap-2">
-							<Shapes class="size-4" />
-							<Label {id}>Terminart</Label>
-						</div>
-					{/snippet}
-				</InfoRow>
-			{/if}
-
-			{#if displayedParticipants.length > 0}
-				<InfoRow id="participants">
-					{#snippet labelChild(id)}
-						<div class="inline-flex items-center gap-2">
-							<Users class="mt-0.5 size-4" />
-							<Label {id}>Teilnehmende</Label>
-						</div>
-					{/snippet}
-					{#snippet valueChild(id)}
-						<div class="grid gap-3" {id}>
-							{#each displayedParticipants as participant}
-								<div class="flex items-center justify-between rounded-lg bg-muted p-3">
-									<div class="flex items-center gap-3">
-										<span>
-											{participant.actor?.display || participant.actor?.reference}
-										</span>
-										{#if participant.required}
-											<span>({participant.required})</span>
-										{/if}
-									</div>
-									<span
-										class={[
-											"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
-											participantStatusColor(participant.status),
-										]}
-									>
-										{participant.status}
-									</span>
-								</div>
-							{/each}
-						</div>
-					{/snippet}
-				</InfoRow>
-			{/if}
+		<div class="flex flex-1 flex-col gap-4">
+			<AppointmentMetadataTable {appointment} />
 
 			<!-- Location -->
-			{#await resolveLocation(appointment.participant.find( (p) => p.actor?.reference?.startsWith("Location/") )?.actor?.reference) then locationName}
-				{#if locationName}
-					<div class="inline-flex justify-start gap-2">
-						<MapPin class="size-4 shrink-0" />
-						<Label id="map">{locationName.name}</Label>
-					</div>
-					{#if locationName.position}
-						<div id="map" class="clip z-0 min-h-[300px] flex-1 overflow-hidden rounded-md">
-							<Map
-								options={{
-									center: [locationName.position.latitude, locationName.position.longitude],
-									zoom: 17,
-								}}
-							>
-								<TileLayer url={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
-								<Marker
-									latLng={[locationName.position.latitude, locationName.position.longitude]}
-								/>
-							</Map>
+			{#await resolveLocation(appointment.participant.find( (p) => p.actor?.reference?.startsWith("Location/") )?.actor?.reference) then location}
+				{#if location}
+					<div
+						class="flex flex-1 flex-col rounded-lg border border-sidebar-border bg-sidebar shadow"
+					>
+						<div class="inline-flex items-center gap-2 p-4 text-sm font-bold">
+							<MapPin class="size-4 shrink-0" />
+							{location.name}
 						</div>
-					{/if}
+						{#if location.position}
+							<div id="map" class="clip z-0 min-h-[300px] flex-1 overflow-hidden rounded-b-lg">
+								<Map
+									options={{
+										center: [location.position.latitude, location.position.longitude],
+										zoom: 17,
+									}}
+								>
+									<TileLayer url={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
+									<Marker latLng={[location.position.latitude, location.position.longitude]} />
+								</Map>
+							</div>
+						{/if}
+					</div>
 				{/if}
 			{/await}
 		</div>
