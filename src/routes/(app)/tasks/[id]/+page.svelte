@@ -1,5 +1,8 @@
-<script lang="ts" module>
-	export const pageTitle = m.tasks_title();
+<script module lang="ts">
+	export async function getPageTitle(data: PageData) {
+		const task = await data.task;
+		return task.task.focus?.display;
+	}
 </script>
 
 <script lang="ts">
@@ -9,8 +12,8 @@
 	import { headPageTitle } from "$lib/utils";
 	import * as m from "$lib/paraglide/messages";
 
-	import TaskItem from "$components/task/TaskItem.svelte";
 	import QuestionnaireForm from "$components/questionnaire/QuestionnaireForm.svelte";
+	import Spinner from "$components/Spinner.svelte";
 
 	interface Props {
 		data: PageData;
@@ -30,10 +33,8 @@
 <AppLayout>
 	{#snippet children()}
 		{#await data.task}
-			<p>Loading…</p>
+			<Spinner />
 		{:then task}
-			<!-- <TaskItem task={task.task} clickable={false} /> -->
-
 			{#if task.focus}
 				{@const SvelteComponent = componentMap[task.focus.resourceType]}
 				<div class="flex flex-1 flex-col">

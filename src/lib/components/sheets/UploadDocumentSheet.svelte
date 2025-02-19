@@ -37,9 +37,7 @@
 	let { validatedForm }: Props = $props();
 
 	const form = superForm(validatedForm, {
-		// id: "upload-document",
 		onResult({ result }) {
-			console.log(result);
 			if (result.type == "success") sheet.open = false;
 		},
 		resetForm: true,

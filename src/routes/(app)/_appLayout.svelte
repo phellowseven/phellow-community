@@ -4,12 +4,13 @@
 	import { blur } from "svelte/transition";
 
 	interface Props {
+		title?: string;
 		portal?: Snippet;
 		stickyHeader?: Snippet;
 		children?: Snippet;
 	}
 
-	let { portal, stickyHeader, children }: Props = $props();
+	let { title, portal, stickyHeader, children }: Props = $props();
 </script>
 
 {#if portal}
@@ -30,6 +31,9 @@
 		stickyHeader ? "mt-[36px] md:mt-[52px]" : "mt-4 md:mt-8",
 	]}
 >
+	{#if title}
+		<h1>{title}</h1>
+	{/if}
 	{#if children}
 		{@render children()}
 	{/if}

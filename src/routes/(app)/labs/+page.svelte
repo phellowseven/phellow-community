@@ -1,6 +1,8 @@
 <!-- src/routes/structured/+page.svelte -->
 <script lang="ts" module>
-	export const pageTitle = m.structuredData_title();
+	export function getPageTitle() {
+		return m.structuredData_title();
+	}
 </script>
 
 <script lang="ts">
@@ -109,7 +111,7 @@
 	<title>{headPageTitle(m.structuredData_title())}</title>
 </svelte:head>
 
-<AppLayout>
+<AppLayout title={getPageTitle()}>
 	{#snippet children()}
 		<!-- Filters -->
 		<div class="rounded-lg bg-card p-4 shadow">

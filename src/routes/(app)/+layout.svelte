@@ -6,6 +6,8 @@
 
 	import dayjs from "dayjs";
 
+	import * as m from "$lib/paraglide/messages";
+
 	import { sheet } from "./sheet.svelte";
 	import { sidebar } from "./sidebar.svelte";
 
@@ -16,7 +18,7 @@
 
 	import AppSidebar from "$components/AppSidebar.svelte";
 	import ScrollToTop from "$components/ScrollToTop.svelte";
-	// import Breadcrumb from "$components/Breadcrumb.svelte";
+	import Breadcrumb from "$components/Breadcrumb.svelte";
 
 	interface Props {
 		data: LayoutData;
@@ -56,14 +58,14 @@
 				<Separator orientation="vertical" class="mx-2 self-stretch" />
 				<!-- Disable for now until hmr issue is resolved: -->
 				<!-- https://github.com/diericx/svelte-breadcrumbs/issues/17 -->
-				<!-- <Breadcrumb /> -->
+				<Breadcrumb />
 			</div>
 			<div class={["flex flex-1 flex-col", sidebar.open ? "md:-ml-2" : undefined]}>
 				{@render children?.()}
 			</div>
 			<ScrollToTop class="size-10">
 				{#snippet children()}
-					<span class="sr-only">Back to top</span>
+					<span class="sr-only">{m.scroll_to_top()}</span>
 					<ChevronUp class="size-4" />
 				{/snippet}
 			</ScrollToTop>

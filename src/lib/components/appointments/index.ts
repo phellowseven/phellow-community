@@ -57,3 +57,18 @@ export function statusText(status: Appointment["status"]) {
 			return status;
 	}
 }
+
+export function participantStatusText(status: AppointmentParticipant["status"]) {
+	switch (status) {
+		case "accepted":
+			return m.appointment_participant_status_accepted();
+		case "declined":
+			return m.appointment_participant_status_declined();
+		case "tentative":
+			return m.appointment_participant_status_tentative();
+		case "needs-action":
+			return m.appointment_participant_status_needs_action();
+		default:
+			return status;
+	}
+}

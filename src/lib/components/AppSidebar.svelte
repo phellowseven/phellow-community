@@ -57,7 +57,7 @@
 	}[] = [
 		{
 			title: m.dashboard_title(),
-			url: route("/"),
+			url: route("/dashboard"),
 			icon: House,
 		},
 		{

@@ -1,5 +1,7 @@
 <script lang="ts" module>
-	export const pageTitle = m.appointments_title();
+	export function getPageTitle() {
+		return m.appointments_title();
+	}
 
 	// On module level to survive navigation
 	let search: string = $state("");
@@ -24,6 +26,7 @@
 	import AppointmentComponent from "$components/appointments/AppointmentComponent.svelte";
 	import { groupByMonth } from "$components/appointments";
 	import Searchbar from "$components/Searchbar.svelte";
+	import NoContent from "$components/NoContent.svelte";
 
 	interface Props {
 		data: PageData;
@@ -57,11 +60,11 @@
 	<title>{headPageTitle(m.appointments_title())}</title>
 </svelte:head>
 
-<AppLayout>
+<AppLayout title={getPageTitle()}>
 	{#snippet children()}
 		<Searchbar bind:value={search} class="" />
 
-		<div class="flex w-full flex-col items-start space-y-4 md:space-y-8">
+		<div class="flex flex-1 flex-col items-start space-y-4 md:space-y-8">
 			{#await data.entries}
 				{#each { length: 2 }}
 					<Skeleton class="h-10 w-32 rounded-lg bg-secondary" />
@@ -70,42 +73,50 @@
 					{/each}
 				{/each}
 			{:then entries}
-				{#each filterBySearchTerm(entries) as [group, appointments] (group)}
-					{@const month = dayjs(group)}
-					<section class="w-full" aria-describedby="month-grouping">
-						<h2
-							class="mb-2 inline-flex rounded-lg border border-secondary-foreground bg-secondary p-2 text-lg font-bold text-secondary-foreground md:mb-4"
-							id="month-grouping"
-						>
-							<time datetime={month.format("YYYY-MM")}>
-								{month.format(m.documents_group_header_date_format())}
-							</time>
-						</h2>
-						<ul class="flex w-full flex-col space-y-2 md:space-y-4">
-							{#each appointments as appointment (appointment.id)}
-								<li>
-									<AppointmentComponent
-										class="block rounded-lg bg-card/70 px-4 py-2 shadow hover:bg-card hover:shadow-lg md:px-6 md:py-6"
-										title={appointment.description}
-										duration={appointment.minutesDuration}
-										startDate={appointment.start ? dayjs(appointment.start) : undefined}
-										endDate={appointment.end ? dayjs(appointment.end) : undefined}
-										status={appointment.status}
-										locationReference={appointment.participant.filter((p) =>
-											p.actor?.reference?.startsWith("Location/")
-										)[0]?.actor?.reference}
-										{resolveLocationName}
-										href={appointment.id
-											? route("/appointments/[appointmentId]", {
-													appointmentId: encodeBase64url(new TextEncoder().encode(appointment.id!)),
-												})
-											: undefined}
-									/>
-								</li>
-							{/each}
-						</ul>
-					</section>
-				{/each}
+				{@const filtered = filterBySearchTerm(entries)}
+
+				{#if filtered.length === 0}
+					<NoContent class="w-full flex-1" />
+				{:else}
+					{#each filtered as [group, appointments] (group)}
+						{@const month = dayjs(group)}
+						<section class="w-full" aria-describedby="month-grouping">
+							<h2
+								class="mb-2 inline-flex rounded-lg border border-secondary-foreground bg-secondary p-2 text-lg font-bold text-secondary-foreground md:mb-4"
+								id="month-grouping"
+							>
+								<time datetime={month.format("YYYY-MM")}>
+									{month.format(m.documents_group_header_date_format())}
+								</time>
+							</h2>
+							<ul class="flex w-full flex-col space-y-2 md:space-y-4">
+								{#each appointments as appointment (appointment.id)}
+									<li>
+										<AppointmentComponent
+											class="block rounded-lg bg-card/70 px-4 py-2 shadow hover:bg-card hover:shadow-lg md:px-6 md:py-6"
+											title={appointment.description}
+											duration={appointment.minutesDuration}
+											startDate={appointment.start ? dayjs(appointment.start) : undefined}
+											endDate={appointment.end ? dayjs(appointment.end) : undefined}
+											status={appointment.status}
+											locationReference={appointment.participant.filter((p) =>
+												p.actor?.reference?.startsWith("Location/")
+											)[0]?.actor?.reference}
+											{resolveLocationName}
+											href={appointment.id
+												? route("/appointments/[appointmentId]", {
+														appointmentId: encodeBase64url(
+															new TextEncoder().encode(appointment.id!)
+														),
+													})
+												: undefined}
+										/>
+									</li>
+								{/each}
+							</ul>
+						</section>
+					{/each}
+				{/if}
 			{/await}
 		</div>
 	{/snippet}

@@ -1,8 +1,9 @@
 // src/routes/structured/+page.server.ts
+import { extractObservations } from "$components/observations";
 import { env } from "$env/dynamic/private";
 import { addQueryParamsToUrl } from "$lib/utils";
 import dayjs from "dayjs";
-import type { Bundle, Observation } from "fhir/r4";
+import type { Observation } from "fhir/r4";
 import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
@@ -25,20 +26,6 @@ const DEFAULT_FILTERS: FilterParams = {
 	sortBy: "date",
 	sortOrder: "desc",
 };
-
-async function extractObservations(response: Response): Promise<Observation[]> {
-	if (response.ok) {
-		const bundle = (await response.json()) as Bundle;
-		const entries = bundle.entry
-			?.filter((entry) => entry.resource?.resourceType == "Observation")
-			.map((entry) => entry.resource as Observation);
-
-		return entries ?? [];
-	} else {
-		console.error("Failed to fetch Observations:", response);
-	}
-	return [];
-}
 
 // Function to determine if a value is out of range
 function isOutOfRange(observation: Observation): boolean {

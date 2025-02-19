@@ -11,12 +11,10 @@
 
 <script lang="ts">
 	import type { PageData } from "./$types";
-	import { blur } from "svelte/transition";
 
 	import * as m from "$lib/paraglide/messages";
 	import { headPageTitle } from "$lib/utils";
 
-	import StickyHeader from "$components/StickyHeader.svelte";
 	import ObservationLineChart from "$components/observations/ObservationLineChart.svelte";
 	import LabResultsTable from "$components/observations/LabResultsTable.svelte";
 	import AppLayout from "../../_appLayout.svelte";

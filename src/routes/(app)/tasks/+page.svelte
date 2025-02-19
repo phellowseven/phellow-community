@@ -1,5 +1,7 @@
 <script lang="ts" module>
-	export const pageTitle = m.tasks_title();
+	export function getPageTitle() {
+		return m.tasks_title();
+	}
 </script>
 
 <script lang="ts">
@@ -11,6 +13,7 @@
 
 	import NoContent from "$components/NoContent.svelte";
 	import TaskList from "$components/task/TaskList.svelte";
+	import Spinner from "$components/Spinner.svelte";
 
 	interface Props {
 		data: PageData;
@@ -23,10 +26,10 @@
 	<title>{headPageTitle(m.tasks_title())}</title>
 </svelte:head>
 
-<AppLayout>
+<AppLayout title={getPageTitle()}>
 	{#snippet children()}
 		{#await data.tasks}
-			<p>Loading…</p>
+			<Spinner />
 		{:then tasks}
 			{#if Object.keys(tasks).length === 0}
 				<NoContent />
@@ -34,7 +37,7 @@
 				<div class="flex flex-col gap-8">
 					{#each Object.keys(tasks) as key (key)}
 						<section>
-							<h2 class="">{key}</h2>
+							<h2>{key}</h2>
 							<TaskList tasks={tasks[key]} />
 						</section>
 					{/each}

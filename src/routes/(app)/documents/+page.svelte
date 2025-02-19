@@ -4,7 +4,9 @@
 	import FileUp from "lucide-svelte/icons/file-up";
 	import { sheet } from "../sheet.svelte";
 
-	export const pageTitle = m.documents_title();
+	export function getPageTitle() {
+		return m.documents_title();
+	}
 
 	// On module level to survive navigation
 	let search: string = $state("");
@@ -50,6 +52,7 @@
 	import Searchbar from "$components/Searchbar.svelte";
 	import Document from "$components/document/Document.svelte";
 	import UploadDocumentSheet from "$components/sheets/UploadDocumentSheet.svelte";
+	import NoContent from "$components/NoContent.svelte";
 
 	interface Props {
 		data: PageData;
@@ -78,7 +81,7 @@
 	<title>{headPageTitle(m.documents_title())}</title>
 </svelte:head>
 
-<AppLayout>
+<AppLayout title={getPageTitle()}>
 	{#snippet portal()}
 		<UploadDocumentSheet validatedForm={data.uploadDocumentForm} />
 	{/snippet}
@@ -135,9 +138,9 @@
 	{/snippet}
 
 	{#snippet children()}
-		<Searchbar bind:value={search} class="" />
+		<Searchbar bind:value={search} />
 
-		<div class="flex w-full flex-col items-start space-y-4 md:space-y-8">
+		<div class="flex flex-1 flex-col items-start space-y-4 md:space-y-8">
 			{#await data.entries}
 				{#each { length: 2 }}
 					<Skeleton class="h-10 w-32 rounded-lg bg-secondary" />
@@ -146,37 +149,42 @@
 					{/each}
 				{/each}
 			{:then entries}
-				{#each filterBySearchTerm(entries) as [group, documents] (group)}
-					{@const month = dayjs(group)}
-					<section class="w-full" aria-describedby="month-grouping">
-						<h2
-							class="mb-2 inline-flex rounded-lg border border-secondary-foreground bg-secondary p-2 text-lg font-bold text-secondary-foreground md:mb-4"
-							id="month-grouping"
-						>
-							<time datetime={month.format("YYYY-MM")}>
-								{month.format(m.documents_group_header_date_format())}
-							</time>
-						</h2>
-						<ul class="flex w-full flex-col space-y-2 md:space-y-4">
-							{#each documents as document (document.id)}
-								<li>
-									<Document
-										class="block rounded-lg bg-card/70 px-4 py-2 shadow hover:bg-card hover:shadow-lg md:px-6 md:py-6"
-										title={document.description}
-										createdAt={document.date ? dayjs(document.date) : undefined}
-										author={extractAuthorFullName(document) ?? undefined}
-										type={documentTypeStringForDocumentReference(document)}
-										href={document.id
-											? route("/documents/[documentId]", {
-													documentId: encodeBase64url(new TextEncoder().encode(document.id!)),
-												})
-											: undefined}
-									/>
-								</li>
-							{/each}
-						</ul>
-					</section>
-				{/each}
+				{@const filtered = filterBySearchTerm(entries)}
+				{#if filtered.length === 0}
+					<NoContent class="flex-1" />
+				{:else}
+					{#each filtered as [group, documents] (group)}
+						{@const month = dayjs(group)}
+						<section class="w-full" aria-describedby="month-grouping">
+							<h2
+								class="mb-2 inline-flex rounded-lg border border-secondary-foreground bg-secondary p-2 text-lg font-bold text-secondary-foreground md:mb-4"
+								id="month-grouping"
+							>
+								<time datetime={month.format("YYYY-MM")}>
+									{month.format(m.documents_group_header_date_format())}
+								</time>
+							</h2>
+							<ul class="flex w-full flex-col space-y-2 md:space-y-4">
+								{#each documents as document (document.id)}
+									<li>
+										<Document
+											class="block rounded-lg bg-card/70 px-4 py-2 shadow hover:bg-card hover:shadow-lg md:px-6 md:py-6"
+											title={document.description}
+											createdAt={document.date ? dayjs(document.date) : undefined}
+											author={extractAuthorFullName(document) ?? undefined}
+											type={documentTypeStringForDocumentReference(document)}
+											href={document.id
+												? route("/documents/[documentId]", {
+														documentId: encodeBase64url(new TextEncoder().encode(document.id!)),
+													})
+												: undefined}
+										/>
+									</li>
+								{/each}
+							</ul>
+						</section>
+					{/each}
+				{/if}
 			{/await}
 		</div>
 	{/snippet}

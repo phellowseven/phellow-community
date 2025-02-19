@@ -4,7 +4,9 @@
 
 	import { cn } from "$lib/utils";
 
-	import { participantStatusColor, statusColor, statusText } from ".";
+	import * as m from "$lib/paraglide/messages";
+
+	import { participantStatusColor, participantStatusText, statusColor, statusText } from ".";
 
 	import * as Table from "$ui/table";
 
@@ -84,7 +86,7 @@
 				<Table.Cell class="font-bold">
 					<div class="flex items-center justify-start gap-2">
 						<Calendar class="size-4" />
-						Datum & Uhrzeit
+						{m.appointment_metadata_dateTime()}
 					</div>
 				</Table.Cell>
 				<Table.Cell>{dateString}</Table.Cell>
@@ -94,7 +96,7 @@
 				<Table.Cell class="font-bold">
 					<div class="flex items-center justify-start gap-2">
 						<StatusIcon class="size-4" />
-						Status
+						{m.appointment_metadata_status()}
 					</div>
 				</Table.Cell>
 				<Table.Cell
@@ -111,10 +113,10 @@
 			<!-- Cancellation Reason -->
 			{#if appointment.status === "cancelled" && appointment.cancelationReason}
 				<Table.Row>
-					<Table.Cell class="font-bold">Grund der Absage</Table.Cell>
+					<Table.Cell class="font-bold">{m.appointment_metadata_cancellation_reason()}</Table.Cell>
 					<Table.Cell
 						>{appointment.cancelationReason.coding?.[0]?.display ||
-							"Kein Grund angegeben"}</Table.Cell
+							m.appointment_metadata_cancellation_no_reason()}</Table.Cell
 					>
 				</Table.Row>
 			{/if}
@@ -123,10 +125,12 @@
 				<Table.Cell class="font-bold">
 					<div class="flex items-center justify-start gap-2">
 						<Clock class="size-4" />
-						Dauer
+						{m.appointment_metadata_duration()}
 					</div>
 				</Table.Cell>
-				<Table.Cell>{`${duration} Minuten`}</Table.Cell>
+				<Table.Cell
+					>{m.appointment_metadata_duration_minutes({ duration: `${duration}` })}
+				</Table.Cell>
 			</Table.Row>
 			<!-- Comment -->
 			{#if appointment.comment}
@@ -134,7 +138,7 @@
 					<Table.Cell class="font-bold">
 						<div class="flex items-center justify-start gap-2">
 							<MessageCircle class="size-4" />
-							Kommentar
+							{m.appointment_metadata_comment()}
 						</div>
 					</Table.Cell>
 					<Table.Cell>{appointment.comment}</Table.Cell>
@@ -146,7 +150,7 @@
 					<Table.Cell class="font-bold">
 						<div class="flex items-center justify-start gap-2">
 							<ListTodo class="size-4" />
-							Instruktionen
+							{m.appointment_metadata_patient_instructions()}
 						</div>
 					</Table.Cell>
 					<Table.Cell>{appointment.patientInstruction}</Table.Cell>
@@ -158,10 +162,10 @@
 					<Table.Cell class="font-bold">
 						<div class="flex items-center justify-start gap-2">
 							<Shapes class="size-4" />
-							Terminart
+							{m.appointment_metadata_appointment_type()}
 						</div>
 					</Table.Cell>
-					<Table.Cell>{appointment.appointmentType!.coding?.[0]?.display || "Unbekannt"}</Table.Cell
+					<Table.Cell>{appointment.appointmentType!.coding?.[0]?.display || m.unknown()}</Table.Cell
 					>
 				</Table.Row>
 			{/if}
@@ -171,14 +175,14 @@
 					<Table.Cell class="font-bold">
 						<div class="flex items-center justify-start gap-2">
 							<Users class="size-4" />
-							Teilnehmende
+							{m.appointment_metadata_participants()}
 						</div>
 					</Table.Cell>
 					<Table.Cell>
 						<div class="grid gap-3">
 							{#each displayedParticipants as participant}
-								<div class="flex items-center justify-between">
-									<div class="flex items-center gap-3">
+								<div class="flex items-center justify-start gap-2">
+									<div class="flex items-center gap-2">
 										<span>
 											{participant.actor?.display || participant.actor?.reference}
 										</span>
@@ -192,7 +196,7 @@
 											participantStatusColor(participant.status),
 										]}
 									>
-										{participant.status}
+										{participantStatusText(participant.status)}
 									</span>
 								</div>
 							{/each}

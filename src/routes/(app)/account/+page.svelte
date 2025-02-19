@@ -1,6 +1,8 @@
 <script module lang="ts">
 	import * as m from "$lib/paraglide/messages";
-	export const pageTitle = m.account_title();
+	export function getPageTitle() {
+		return m.account_title();
+	}
 </script>
 
 <script lang="ts">

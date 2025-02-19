@@ -29,7 +29,6 @@
 	$effect(() => (customValue.trim() ? handleCustomValueSubmit() : undefined));
 
 	function handleCustomValueSubmit() {
-		console.log(customValue);
 		if (customValue.trim()) {
 			onAnswer({
 				code: `phellow-community:customOpenChoice`,

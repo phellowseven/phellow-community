@@ -21,7 +21,7 @@
 			id="search"
 			bind:value
 			placeholder="Search"
-			class="block w-full p-4 ps-10 "
+			class="block w-full bg-card p-4 ps-10"
 		/>
 	</div>
 </div>
