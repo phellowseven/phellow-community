@@ -1,27 +1,15 @@
 <script lang="ts">
-	import { route } from "$lib/ROUTES";
 	import { encodeBase64url } from "@oslojs/encoding";
 	import type { Task } from "fhir/r4";
+
+	import { route } from "$lib/ROUTES";
+	import * as m from "$lib/paraglide/messages";
+
 	import ChevronRight from "lucide-svelte/icons/chevron-right";
+	import { statusColor, statusText } from ".";
 
 	export let task: Task;
 	export let clickable: boolean = true;
-
-	// Map status to color
-	function statusColor(status: string) {
-		switch (status) {
-			case "requested":
-				return "bg-blue-100 text-blue-800";
-			case "completed":
-				return "bg-green-100 text-green-800";
-			case "cancelled":
-				return "bg-gray-100 text-gray-800";
-			case "failed":
-				return "bg-red-100 text-red-800";
-			default:
-				return "bg-gray-100 text-gray-800";
-		}
-	}
 </script>
 
 <svelte:element
@@ -40,18 +28,20 @@
 				{task.description}
 			</p>
 			<span class={["rounded-full px-2 py-0.5 text-xs", statusColor(task.status)]}>
-				{task.status}
+				{statusText(task.status)}
 			</span>
 			{#if task.priority === "urgent"}
-				<span class="rounded-full bg-red-100 px-2 py-0.5 text-xs text-red-800">urgent</span>
+				<span class="rounded-full bg-red-100 px-2 py-0.5 text-xs text-red-800"
+					>{m.task_item_status_urgent()}</span
+				>
 			{/if}
 		</div>
-		<div class="mt-1 flex flex-col gap-1 text-sm text-gray-500">
+		<div class="mt-1 flex flex-col gap-1 text-sm text-muted-foreground">
 			{#if task.requester?.display}
-				<span>Requested by: {task.requester.display}</span>
+				<span>{m.task_item_requested_by_name({ name: task.requester.display })}</span>
 			{/if}
 			{#if task.focus?.display}
-				<span>Item to complete: {task.focus?.display}</span>
+				<span>{m.task_item_focus({ name: task.focus?.display })}</span>
 			{/if}
 		</div>
 	</div>

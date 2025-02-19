@@ -1,8 +1,11 @@
 <!-- src/lib/components/questionnaire/QuestionnaireRenderer.svelte -->
 <script lang="ts">
-	import { createQuestionnaireState } from "$lib/stores/questionnaireStore.svelte";
 	import type { Questionnaire } from "fhir/r4";
-	import QuestionComponent from "$components/questionnaire/QuestionComponent.svelte";
+
+	import * as m from "$lib/paraglide/messages";
+
+	import { createQuestionnaireState } from "$lib/stores/questionnaireStore.svelte";
+
 	import QuestionnaireNavigation from "./QuestionnaireNavigation.svelte";
 	import QuestionGroup from "./QuestionGroup.svelte";
 	import QuestionnaireProgress from "./QuestionnaireProgress.svelte";
@@ -49,7 +52,7 @@
 
 		{#if state.errors.size > 0}
 			<div class="mt-4 rounded-lg border border-destructive-foreground bg-destructive p-4">
-				<p class="font-medium text-destructive-foreground">Please fix the following errors:</p>
+				<p class="font-medium text-destructive-foreground">{m.questionnaire_please_fix_errors()}</p>
 				<ul class="mt-2 list-inside list-disc">
 					{#each [...state.errors] as [linkId, message]}
 						<li class="text-destructive-foreground">{message}</li>

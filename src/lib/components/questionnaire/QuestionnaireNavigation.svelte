@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
+
+	import * as m from "$lib/paraglide/messages";
+
 	import Button from "$ui/button/button.svelte";
 
 	import ArrowLeft from "lucide-svelte/icons/arrow-left";
@@ -19,11 +22,11 @@
 <div class={cn("flex items-start justify-between", classes)}>
 	<Button variant="outline" disabled={previousDisabled} onclick={previous}>
 		<ArrowLeft class="h-4 w-4" />
-		Previous
+		{m.questionnaire_previous()}
 	</Button>
 
 	<Button variant="default" disabled={nextDisabled} onclick={next}>
-		Next
+		{m.questionnaire_next()}
 		<ArrowRight class="h-4 w-4" />
 	</Button>
 </div>

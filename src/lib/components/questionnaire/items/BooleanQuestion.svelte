@@ -1,7 +1,9 @@
 <!-- src/lib/components/questionnaire/items/BooleanQuestion.svelte -->
 <script lang="ts">
-	import { Button } from "$ui/button";
+	import * as m from "$lib/paraglide/messages";
+
 	import type { ItemComponentInterface } from "./itemComponentInterface";
+	import { Button } from "$ui/button";
 
 	interface Props extends ItemComponentInterface<boolean> {}
 
@@ -17,7 +19,7 @@
 		]}
 		onclick={() => onAnswer(true)}
 	>
-		Yes
+		{m.questionnaire_boolean_yes()}
 	</Button>
 	<Button
 		class={[
@@ -27,6 +29,6 @@
 		]}
 		onclick={() => onAnswer(false)}
 	>
-		No
+		{m.questionnaire_boolean_no()}
 	</Button>
 </div>

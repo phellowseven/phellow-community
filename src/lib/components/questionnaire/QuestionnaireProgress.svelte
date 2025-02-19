@@ -1,8 +1,8 @@
 <!-- src/lib/components/ProgressIndicator.svelte -->
 <script lang="ts">
-	import { Progress } from "$ui/progress";
+	import * as m from "$lib/paraglide/messages";
 
-	import CheckCircle from "lucide-svelte/icons/check-circle";
+	import { Progress } from "$ui/progress";
 
 	interface Props {
 		currentIndex: number;
@@ -25,11 +25,7 @@
 	<!-- Step counter -->
 	<div class="mb-2 flex items-center justify-between text-muted-foreground">
 		<div class="text-sm">
-			Step {currentIndex + 1} of {totalSteps}
-		</div>
-		<div class="flex items-center gap-2 text-sm">
-			<!-- <CheckCircle class="h-4 w-4 text-primary" />
-			{completedSteps} of {totalSteps} completed -->
+			{m.questionnaire_progress_steps({ current: currentIndex + 1, total: totalSteps })}
 		</div>
 	</div>
 

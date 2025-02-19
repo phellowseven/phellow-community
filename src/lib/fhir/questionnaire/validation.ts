@@ -1,5 +1,7 @@
 import type { QuestionnaireItem } from "fhir/r4";
 
+import * as m from "$lib/paraglide/messages";
+
 export interface ValidationResult {
 	isValid: boolean;
 	message?: string;
@@ -14,7 +16,7 @@ export function validateRequired(value: any): ValidationResult {
 	const isValid = value !== null && value !== undefined && value !== "";
 	return {
 		isValid,
-		message: isValid ? undefined : "This field is required",
+		message: isValid ? undefined : m.questionnaire_validation_required(),
 	};
 }
 
@@ -22,9 +24,9 @@ export function validateMaxLength(maxLength: number): ValidationRule {
 	return {
 		validate: (value: string) => ({
 			isValid: !value || value.length <= maxLength,
-			message: `Maximum length is ${maxLength} characters`,
+			message: m.questionnaire_validation_max_characters({ max: maxLength }),
 		}),
-		message: `Maximum length is ${maxLength} characters`,
+		message: m.questionnaire_validation_max_characters({ max: maxLength }),
 	};
 }
 
@@ -36,7 +38,7 @@ export function validateInteger(value: any): ValidationResult {
 	const isValid = Number.isInteger(Number(value));
 	return {
 		isValid,
-		message: isValid ? undefined : "Please enter a valid whole number",
+		message: isValid ? undefined : m.questionnaire_validation_integer(),
 	};
 }
 
@@ -47,7 +49,7 @@ export function validateDate(value: string): ValidationResult {
 	const isValid = !isNaN(date.getTime());
 	return {
 		isValid,
-		message: isValid ? undefined : "Please enter a valid date",
+		message: isValid ? undefined : m.questionnaire_validation_date(),
 	};
 }
 
@@ -60,7 +62,7 @@ export function validateURL(value: string): ValidationResult {
 	} catch (err) {
 		return {
 			isValid: false,
-			message: "Please enter a valid URL",
+			message: m.questionnaire_validation_url(),
 		};
 	}
 }

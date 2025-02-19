@@ -1,6 +1,9 @@
 <script lang="ts">
-	import Search from "lucide-svelte/icons/search";
+	import * as m from "$lib/paraglide/messages";
+
 	import { Input } from "$ui/input";
+
+	import Search from "lucide-svelte/icons/search";
 
 	interface Props {
 		value: string;
@@ -11,7 +14,7 @@
 </script>
 
 <div {...props} class={classes}>
-	<label for="search" class="sr-only">Search</label>
+	<label for="search" class="sr-only">{m.searchbar_search()}</label>
 	<div class="relative">
 		<div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
 			<Search class="h-4 w-4" aria-hidden="true" />
@@ -20,7 +23,7 @@
 			type="search"
 			id="search"
 			bind:value
-			placeholder="Search"
+			placeholder={m.searchbar_search()}
 			class="block w-full bg-card p-4 ps-10"
 		/>
 	</div>
