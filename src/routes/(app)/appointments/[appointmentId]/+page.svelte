@@ -16,6 +16,7 @@
 	import MapPin from "lucide-svelte/icons/map-pin";
 
 	import AppointmentMetadataTable from "$components/appointments/AppointmentMetadataTable.svelte";
+	import { browser } from "$app/environment";
 
 	interface Props {
 		data: PageData;
@@ -57,7 +58,7 @@
 							<MapPin class="size-4 shrink-0" />
 							{location.name}
 						</div>
-						{#if location.position}
+						{#if location.position && browser}
 							<div id="map" class="clip z-0 min-h-[300px] flex-1 overflow-hidden rounded-b-lg">
 								<Map
 									options={{
