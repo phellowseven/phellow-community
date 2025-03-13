@@ -9,7 +9,7 @@ import {
 import { connectOAuth2Client, refreshAccessTokenIfNecessary } from "$lib/server/auth/oauth";
 import type { Session } from "$lib/server/db/schema";
 import { encrypt, parseCryptoKeyFromJsonWebKeyString } from "$lib/server/encryption";
-import { accessLogger, logger } from "$lib/server/logger";
+import { logger } from "$lib/server/logger";
 import { SessionService } from "$lib/server/services/session_service";
 import { encodeBase64 } from "@oslojs/encoding";
 import { redirect, type Handle, type ServerInit } from "@sveltejs/kit";
@@ -58,8 +58,6 @@ const authHandle: Handle = async ({ event, resolve }) => {
 
 		event.locals.user = user;
 		event.locals.session = session;
-
-		accessLogger.info({ route: event.route.id, userID: user.sub }, "User accessed route");
 
 		const symmetricEncryptionKey = event.cookies.get(sessionEncryptionKeyName)!;
 		event.locals.encryptionKey = await parseCryptoKeyFromJsonWebKeyString(symmetricEncryptionKey);

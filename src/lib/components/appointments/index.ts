@@ -24,8 +24,6 @@ export function statusColor(status: Appointment["status"]) {
 			return "bg-green-200 text-green-800";
 		case "proposed":
 			return "bg-blue-100 text-blue-800";
-		case "pending":
-			return "bg-yellow-100 text-yellow-800";
 		default:
 			return "";
 	}

@@ -19,5 +19,3 @@ export const logger: Logger = pino({
 
 	redact: [], // prevent logging of sensitive data
 });
-
-export const accessLogger: Logger = logger.child({ module: "Access" });
