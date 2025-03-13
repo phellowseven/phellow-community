@@ -9,14 +9,13 @@
 	import AppLayout from "../../_appLayout.svelte";
 
 	import type { Location } from "fhir/r4";
-	import { Map, TileLayer, Marker } from "sveaflet";
 
 	import * as m from "$lib/paraglide/messages";
 
 	import MapPin from "lucide-svelte/icons/map-pin";
 
 	import AppointmentMetadataTable from "$components/appointments/AppointmentMetadataTable.svelte";
-	import { browser } from "$app/environment";
+	import ClientSideMap from "./ClientSideMap.svelte";
 
 	interface Props {
 		data: PageData;
@@ -58,18 +57,8 @@
 							<MapPin class="size-4 shrink-0" />
 							{location.name}
 						</div>
-						{#if location.position && browser}
-							<div id="map" class="clip z-0 min-h-[300px] flex-1 overflow-hidden rounded-b-lg">
-								<Map
-									options={{
-										center: [location.position.latitude, location.position.longitude],
-										zoom: 17,
-									}}
-								>
-									<TileLayer url={"https://tile.openstreetmap.org/{z}/{x}/{y}.png"} />
-									<Marker latLng={[location.position.latitude, location.position.longitude]} />
-								</Map>
-							</div>
+						{#if location.position}
+							<ClientSideMap {location} />
 						{/if}
 					</div>
 				{/if}
