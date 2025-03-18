@@ -29,6 +29,16 @@ export function createQuestionnaireState(questionnaire: Questionnaire) {
 		errors: new SvelteMap(),
 	});
 
+	// Get all items in the questionnaire (flattened)
+	function getAllItems(): QuestionnaireItem[] {
+		const items: QuestionnaireItem[] = [];
+		state.flattenedGroups.forEach((group) => {
+			items.push(group.parentItem);
+			items.push(...group.children);
+		});
+		return items;
+	}
+
 	function validateCurrentGroup(): boolean {
 		const currentGroup = state.flattenedGroups[state.currentIndex];
 		if (!currentGroup) return true;
@@ -39,6 +49,27 @@ export function createQuestionnaireState(questionnaire: Questionnaire) {
 		state.errors.clear();
 
 		for (const item of itemsToValidate) {
+			const answer = state.answers.get(item.linkId)?.value;
+			const validationResult = validateQuestionnaireItem(item, answer);
+
+			if (!validationResult.isValid) {
+				state.errors.set(item.linkId, validationResult.message);
+				isValid = false;
+			}
+		}
+
+		return isValid;
+	}
+
+	function validateAllItems(): boolean {
+		const allItems = getAllItems();
+		let isValid = true;
+		state.errors.clear();
+
+		for (const item of allItems) {
+			// Skip non-required display items
+			if (item.type === "display" || !item.required) continue;
+
 			const answer = state.answers.get(item.linkId)?.value;
 			const validationResult = validateQuestionnaireItem(item, answer);
 
@@ -94,6 +125,8 @@ export function createQuestionnaireState(questionnaire: Questionnaire) {
 				state.currentIndex--;
 			}
 		},
+		validateAllItems,
+		validateCurrentGroup,
 	};
 }
 
