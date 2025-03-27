@@ -106,6 +106,7 @@
 		{/if}
 
 		{#if questionnaireState.errors.size > 0}
+			<!-- The class `border-destructive-foreground` is used as query selector to scroll the first error into view -->
 			<div class="mt-4 rounded-lg border border-destructive-foreground bg-destructive p-4">
 				<p class="font-medium text-destructive-foreground">{m.questionnaire_please_fix_errors()}</p>
 				<ul class="mt-2 list-inside list-disc">

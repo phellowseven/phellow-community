@@ -13,18 +13,6 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
-  # oidc-mock:
-  #   build:
-  #     context: ./samples/oidc-mock-server
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - 8080:8080
-  #   restart: unless-stopped
-  #   healthcheck:
-  #     test: wget --spider --server-response --quiet "http://127.0.0.1:8080/.well-known/openid-configuration" 2>&1 | grep -q "200 OK"
-  #     interval: 10s
-  #     timeout: 10s
-  #     retries: 5
   db:
     image: postgres:17
     restart: always

@@ -2,3 +2,13 @@
 pnpm-lock.yaml
 package-lock.json
 yarn.lock
+src/lib/components/ui
+utilities/
+svelte.config.js
+tailwind.config.ts
+samples
+src/codings
+.eslintrc.cjs
+.vscode
+drizzle/meta
+postcss.config.js
