@@ -14,30 +14,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint-typecheck-test-build:
-    name: Lint, Type Check, Test, and Build
+  setup:
+    name: Setup
     runs-on: ubuntu-latest
-
-    env:
-      POSTGRES_URL: postgresql://postgres:postgres@localhost:5432/test
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: test
-
-    # services:
-    #   postgres:
-    #     image: postgres:17
-    #     env:
-    #       POSTGRES_USER: postgres
-    #       POSTGRES_PASSWORD: postgres
-    #       POSTGRES_DB: test
-    #     ports:
-    #       - 5432:5432
-    #     options: >-
-    #       --health-cmd pg_isready
-    #       --health-interval 10s
-    #       --health-timeout 5s
-    #       --health-retries 5
+    outputs:
+      cache-hit: ${{ steps.pnpm-cache.outputs.cache-hit }}
 
     steps:
       - name: Checkout code
@@ -61,6 +42,7 @@ jobs:
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
+        id: cache
         uses: actions/cache@v3
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
@@ -74,14 +56,162 @@ jobs:
       - name: Run Paraglide compile (i18n)
         run: pnpm exec paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
 
+      - name: Cache node_modules and paraglide output
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+  lint:
+    name: Linting
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
       - name: Run Prettier check
         run: pnpm run lint
+
+  type-check:
+    name: Type Checking
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Run TypeScript check
         run: pnpm run check
 
+  test:
+    name: Tests
+    needs: [lint, type-check]
+    runs-on: ubuntu-latest
+
+    # env:
+    #   POSTGRES_URL: postgresql://postgres:postgres@localhost:5432/test
+    #   POSTGRES_USER: postgres
+    #   POSTGRES_PASSWORD: postgres
+    #   POSTGRES_DB: test
+
+    # services:
+    #   postgres:
+    #     image: postgres:17
+    #     env:
+    #       POSTGRES_USER: postgres
+    #       POSTGRES_PASSWORD: postgres
+    #       POSTGRES_DB: test
+    #     ports:
+    #       - 5432:5432
+    #     options: >-
+    #       --health-cmd pg_isready
+    #       --health-interval 10s
+    #       --health-timeout 5s
+    #       --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
       - name: Run tests
         run: pnpm run test
 
+  build:
+    name: Build
+    needs: [test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
       - name: Build application
         run: pnpm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: build
+          retention-days: 1
