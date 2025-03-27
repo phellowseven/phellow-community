@@ -131,27 +131,6 @@ jobs:
     needs: [lint, type-check]
     runs-on: ubuntu-latest
 
-    # env:
-    #   POSTGRES_URL: postgresql://postgres:postgres@localhost:5432/test
-    #   POSTGRES_USER: postgres
-    #   POSTGRES_PASSWORD: postgres
-    #   POSTGRES_DB: test
-
-    # services:
-    #   postgres:
-    #     image: postgres:17
-    #     env:
-    #       POSTGRES_USER: postgres
-    #       POSTGRES_PASSWORD: postgres
-    #       POSTGRES_DB: test
-    #     ports:
-    #       - 5432:5432
-    #     options: >-
-    #       --health-cmd pg_isready
-    #       --health-interval 10s
-    #       --health-timeout 5s
-    #       --health-retries 5
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -215,3 +194,122 @@ jobs:
           name: build-output
           path: build
           retention-days: 1
+
+  screenshots:
+    name: Screenshots
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    env:
+      POSTGRES_URL: postgresql://postgres:postgres@localhost:5432/test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test
+      IDP_BASE_URL: "http://localhost:8080/"
+      OAUTH_CLIENT_ID: "ntek3a2alp2uwtu5eqkm3tmsvi"
+      OAUTH_CLIENT_SECRET: ""
+      OAUTH_CODE_CHALLENGE_METHOD: "S256"
+      OAUTH_CALLBACK: "http://localhost:5173/login/callback"
+      OAUTH_LOGOUT_REDIRECT_URI: "http://localhost:5173/login"
+      OAUTH_SCOPES: "openid email"
+      FHIR_BASE_URL: "http://localhost:3000/fhir"
+      FHIR_DOCUMENT_REFERENCE_URL: "http://localhost:3000/fhir/DocumentReference"
+      FHIR_DOCUMENT_DEFAULT_SEARCH_PARAMS: ""
+      FHIR_APPOINTMENT_URL: "http://localhost:3000/fhir/Appointment"
+      FHIR_APPOINTMENT_DEFAULT_SEARCH_PARAMS: ""
+      FHIR_OBSERVATION_URL: "http://localhost:3000/fhir/Observation"
+      FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS: ""
+      FHIR_QUESTIONNAIRE_URL: "http://localhost:3000/fhir/Questionnaire"
+      FHIR_QUESTIONNAIRE_DEFAULT_SEARCH_PARAMS: ""
+      FHIR_TASK_URL: "http://localhost:3000/fhir/Task"
+      FHIR_TASK_DEFAULT_SEARCH_PARAMS: ""
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: build
+
+      - name: Initialize the DB
+        run: pnpm run db:migrate
+
+      - name: Run the Mock OIDC Server
+        run: cd samples/oidc-mock-server && pnpm i && cd ../.. && pnpm run oidc-mock-server &
+
+      # Set up Mockoon
+      - name: Install Mockoon CLI
+        run: npm install -g @mockoon/cli
+
+      - name: Prepare Mockoon configuration directory
+        run: |
+          mkdir -p /tmp/mockoon-data/fhir
+          cp ./samples/mockoon.json /tmp/mockoon-data/
+          cp -r ./samples/fhir/* /tmp/mockoon-data/fhir/
+
+      - name: Start Mockoon
+        run: mockoon-cli start --data /tmp/mockoon-data/mockoon.json --port 3000 &
+
+      - name: Wait for Mockoon
+        run: |
+          echo "Waiting for Mockoon to start..."
+          timeout 30 bash -c 'until curl -s http://localhost:3000/health > /dev/null; do sleep 1; done' || echo "Mockoon may not be ready, but continuing anyway"
+
+      # Playwright
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Start the app
+        run: npx vite preview --port 5173 &
+
+      - name: Wait for app to start
+        run: |
+          echo "Waiting for app to start..."
+          timeout 30 bash -c 'until curl -s http://localhost:5173 > /dev/null; do sleep 1; done'
+
+      - name: Generate screenshots
+        run: pnpm run screenshots:ci
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: screenshots
+          retention-days: 14
