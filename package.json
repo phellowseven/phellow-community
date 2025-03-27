@@ -19,7 +19,9 @@
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"db:studio": "drizzle-kit studio",
-		"postinstall": "[ \"$NODE_ENV\" = production ] && exit 0; paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide"
+		"postinstall": "[ \"$NODE_ENV\" = production ] && exit 0; paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide",
+		"screenshots": "playwright test --config=playwright-screenshots.config.ts",
+		"screenshots:ci": "PLAYWRIGHT_BASE_URL=http://localhost:5173 playwright test --config=playwright-screenshots.config.ts"
 	},
 	"devDependencies": {
 		"@inlang/paraglide-js": "1.11.8",
@@ -27,6 +29,7 @@
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@oslojs/jwt": "^0.3.0",
+		"@playwright/test": "^1.51.1",
 		"@sveltejs/adapter-node": "^5.2.12",
 		"@sveltejs/kit": "^2.16.1",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
