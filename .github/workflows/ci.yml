@@ -272,7 +272,7 @@ jobs:
         run: pnpm run db:migrate
 
       - name: Run the Mock OIDC Server
-        run: cd samples/oidc-mock-server && pnpm i && cd ../.. && pnpm run oidc-mock-server &
+        run: cd samples/oidc-mock-server && pnpm i && cd ../.. && pnpm run mock:oidc &
 
       # Set up Mockoon
       - name: Install Mockoon CLI
