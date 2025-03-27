@@ -77,8 +77,8 @@ jobs:
       - name: Run Prettier check
         run: pnpm run lint
 
-      # - name: Run TypeScript check
-      #   run: pnpm run check
+      - name: Run TypeScript check
+        run: pnpm run check
 
       - name: Run tests
         run: pnpm run test
