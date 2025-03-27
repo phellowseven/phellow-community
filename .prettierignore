@@ -1,14 +1,15 @@
 # Ignore files for PNPM, NPM and YARN
-pnpm-lock.yaml
-package-lock.json
-yarn.lock
-src/lib/components/ui
-utilities/
-svelte.config.js
-tailwind.config.ts
-samples
-src/codings
 .eslintrc.cjs
 .vscode
 drizzle/meta
+package-lock.json
+pnpm-lock.yaml
 postcss.config.js
+samples
+src/codings
+src/lib/components/ui
+src/lib/ROUTES.ts
+svelte.config.js
+tailwind.config.ts
+utilities/
+yarn.lock
