@@ -28,3 +28,4 @@ src/lib/paraglide
 
 # Screenshots
 /screenshots
+/.auth-state.json
