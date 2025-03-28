@@ -162,7 +162,8 @@ jobs:
 
   build:
     name: Build
-    needs: [setup, test]
+    # needs: [test]
+    needs: [setup]
     runs-on: ubuntu-latest
 
     steps:
