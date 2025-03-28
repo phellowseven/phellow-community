@@ -304,7 +304,10 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Start the app
-        run: cd build && node index.js &
+        run: |
+          export ORIGIN=http://localhost:5173
+          export NODE_ENV=development
+          cd build && node index.js &
 
       - name: Wait for app to start
         run: |
