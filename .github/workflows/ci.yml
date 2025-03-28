@@ -272,13 +272,6 @@ jobs:
           name: build-output
           path: build
 
-      - name: List build directory structure
-        run: |
-          echo "Build directory structure:"
-          ls -la build
-          ls -la build || echo "build directory not found"
-          ls -la .svelte-kit || echo ".svelte-kit directory not found"
-
       - name: Initialize the DB
         run: pnpm run db:migrate
 
@@ -304,7 +297,17 @@ jobs:
           timeout 30 bash -c 'until curl -s http://localhost:3001/health > /dev/null; do sleep 1; done' || echo "Mockoon may not be ready, but continuing anyway"
 
       # Playwright
+      - name: Restore Playwright browsers cache
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
       - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
 
       - name: Start the app

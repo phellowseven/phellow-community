@@ -21,7 +21,7 @@
 		"db:studio": "drizzle-kit studio",
 		"postinstall": "[ \"$NODE_ENV\" = production ] && exit 0; paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide",
 		"screenshots": "playwright test --config=playwright-screenshots.config.ts",
-		"screenshots:ci": "PLAYWRIGHT_BASE_URL=http://localhost:5173 playwright test --config=playwright-screenshots.config.ts"
+		"screenshots:ci": "PLAYWRIGHT_BASE_URL=http://localhost:3000 playwright test --config=playwright-screenshots.config.ts"
 	},
 	"devDependencies": {
 		"@inlang/paraglide-js": "1.11.8",

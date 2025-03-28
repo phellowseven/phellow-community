@@ -9,7 +9,7 @@ test.describe("Capture screenshots of pages", () => {
 
 		// Take screenshot
 		await browserPage.screenshot({
-			path: `./screenshots/${testInfo.project.name}-login.png`,
+			path: `./screenshots/${testInfo.project.name}/01_login.png`,
 			fullPage: false,
 		});
 
@@ -18,7 +18,7 @@ test.describe("Capture screenshots of pages", () => {
 		await browserPage.waitForTimeout(2000);
 
 		await browserPage.screenshot({
-			path: `./screenshots/${testInfo.project.name}/dashboard.png`,
+			path: `./screenshots/${testInfo.project.name}/02_dashboard.png`,
 			fullPage: false,
 		});
 	});

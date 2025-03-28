@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
 	snapshotPathTemplate: "snapshots/{arg}{ext}",
 	timeout: 30000,
 	use: {
-		baseURL: "http://localhost:3000",
+		baseURL: process.env.PLAYWRIGHT_BASE_URL || "http://localhost:5173",
 		screenshot: "off",
 		trace: "off",
 	},
