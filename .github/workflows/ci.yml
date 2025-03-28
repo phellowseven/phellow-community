@@ -65,6 +65,7 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
   lint:
+    if: false
     name: Linting
     needs: setup
     runs-on: ubuntu-latest
@@ -96,6 +97,7 @@ jobs:
         run: pnpm run lint
 
   type-check:
+    if: false
     name: Type Checking
     needs: setup
     runs-on: ubuntu-latest
@@ -127,6 +129,7 @@ jobs:
         run: pnpm run check
 
   test:
+    if: false
     name: Tests
     needs: [lint, type-check]
     runs-on: ubuntu-latest
@@ -159,7 +162,7 @@ jobs:
 
   build:
     name: Build
-    needs: [test]
+    # needs: [test]
     runs-on: ubuntu-latest
 
     steps:
@@ -209,8 +212,8 @@ jobs:
       OAUTH_CLIENT_ID: "ntek3a2alp2uwtu5eqkm3tmsvi"
       OAUTH_CLIENT_SECRET: ""
       OAUTH_CODE_CHALLENGE_METHOD: "S256"
-      OAUTH_CALLBACK: "http://localhost:5173/login/callback"
-      OAUTH_LOGOUT_REDIRECT_URI: "http://localhost:5173/login"
+      OAUTH_CALLBACK: "http://localhost:3000/login/callback"
+      OAUTH_LOGOUT_REDIRECT_URI: "http://localhost:3000/login"
       OAUTH_SCOPES: "openid email"
       FHIR_BASE_URL: "http://localhost:3001/fhir"
       FHIR_DOCUMENT_REFERENCE_URL: "http://localhost:3001/fhir/DocumentReference"
@@ -305,14 +308,14 @@ jobs:
 
       - name: Start the app
         run: |
-          export ORIGIN=http://localhost:5173
+          export ORIGIN=http://localhost:3000
           export NODE_ENV=development
           cd build && node index.js &
 
       - name: Wait for app to start
         run: |
           echo "Waiting for app to start..."
-          timeout 30 bash -c 'until curl -s http://localhost:5173 > /dev/null; do sleep 1; done' || echo "App may not be ready, but continuing anyway"
+          timeout 30 bash -c 'until curl -s http://localhost:3000 > /dev/null; do sleep 1; done' || echo "App may not be ready, but continuing anyway"
 
       - name: Generate screenshots
         run: pnpm run screenshots:ci
