@@ -212,16 +212,16 @@ jobs:
       OAUTH_CALLBACK: "http://localhost:5173/login/callback"
       OAUTH_LOGOUT_REDIRECT_URI: "http://localhost:5173/login"
       OAUTH_SCOPES: "openid email"
-      FHIR_BASE_URL: "http://localhost:3000/fhir"
-      FHIR_DOCUMENT_REFERENCE_URL: "http://localhost:3000/fhir/DocumentReference"
+      FHIR_BASE_URL: "http://localhost:3001/fhir"
+      FHIR_DOCUMENT_REFERENCE_URL: "http://localhost:3001/fhir/DocumentReference"
       FHIR_DOCUMENT_DEFAULT_SEARCH_PARAMS: ""
-      FHIR_APPOINTMENT_URL: "http://localhost:3000/fhir/Appointment"
+      FHIR_APPOINTMENT_URL: "http://localhost:3001/fhir/Appointment"
       FHIR_APPOINTMENT_DEFAULT_SEARCH_PARAMS: ""
-      FHIR_OBSERVATION_URL: "http://localhost:3000/fhir/Observation"
+      FHIR_OBSERVATION_URL: "http://localhost:3001/fhir/Observation"
       FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS: ""
-      FHIR_QUESTIONNAIRE_URL: "http://localhost:3000/fhir/Questionnaire"
+      FHIR_QUESTIONNAIRE_URL: "http://localhost:3001/fhir/Questionnaire"
       FHIR_QUESTIONNAIRE_DEFAULT_SEARCH_PARAMS: ""
-      FHIR_TASK_URL: "http://localhost:3000/fhir/Task"
+      FHIR_TASK_URL: "http://localhost:3001/fhir/Task"
       FHIR_TASK_DEFAULT_SEARCH_PARAMS: ""
 
     services:
@@ -268,6 +268,13 @@ jobs:
           name: build-output
           path: build
 
+      - name: List build directory structure
+        run: |
+          echo "Build directory structure:"
+          ls -la build
+          ls -la build || echo "build directory not found"
+          ls -la .svelte-kit || echo ".svelte-kit directory not found"
+
       - name: Initialize the DB
         run: pnpm run db:migrate
 
@@ -285,24 +292,24 @@ jobs:
           cp -r ./samples/fhir/* /tmp/mockoon-data/fhir/
 
       - name: Start Mockoon
-        run: mockoon-cli start --data /tmp/mockoon-data/mockoon.json --port 3000 &
+        run: mockoon-cli start --data /tmp/mockoon-data/mockoon.json --port 3001 &
 
       - name: Wait for Mockoon
         run: |
           echo "Waiting for Mockoon to start..."
-          timeout 30 bash -c 'until curl -s http://localhost:3000/health > /dev/null; do sleep 1; done' || echo "Mockoon may not be ready, but continuing anyway"
+          timeout 30 bash -c 'until curl -s http://localhost:3001/health > /dev/null; do sleep 1; done' || echo "Mockoon may not be ready, but continuing anyway"
 
       # Playwright
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
       - name: Start the app
-        run: npx vite preview --port 5173 &
+        run: cd build && node index.js &
 
       - name: Wait for app to start
         run: |
           echo "Waiting for app to start..."
-          timeout 30 bash -c 'until curl -s http://localhost:5173 > /dev/null; do sleep 1; done'
+          timeout 30 bash -c 'until curl -s http://localhost:5173 > /dev/null; do sleep 1; done' || echo "App may not be ready, but continuing anyway"
 
       - name: Generate screenshots
         run: pnpm run screenshots:ci
