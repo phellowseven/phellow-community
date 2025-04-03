@@ -7,6 +7,7 @@
 
 	import ChevronRight from "lucide-svelte/icons/chevron-right";
 	import { statusColor, statusText } from ".";
+	import { localizeHref } from "$lib/paraglide/runtime";
 
 	export let task: Task;
 	export let clickable: boolean = true;
@@ -19,7 +20,7 @@
 		clickable ? "cursor-pointer bg-card/70 hover:bg-card hover:shadow-lg" : "bg-card",
 	]}
 	href={clickable && task.id
-		? route("/tasks/[id]", { id: encodeBase64url(new TextEncoder().encode(task.id)) })
+		? localizeHref(route("/tasks/[id]", { id: encodeBase64url(new TextEncoder().encode(task.id)) }))
 		: undefined}
 >
 	<div class="flex-1">

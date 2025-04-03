@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from "$app/state";
-	import { i18n } from "$lib/i18n";
+	import { deLocalizeHref, localizeHref } from "$lib/paraglide/runtime";
 	import * as Breadcrumb from "$ui/breadcrumb";
 	import { onMount } from "svelte";
 	import { Breadcrumbs } from "svelte-breadcrumbs";
@@ -15,7 +15,7 @@
 
 	function removeLanguageTagFromURL(pathname: string): URL {
 		const url = new URL(page.url.toString());
-		url.pathname = i18n.route(pathname);
+		url.pathname = deLocalizeHref(pathname);
 		return url;
 	}
 </script>
@@ -34,11 +34,13 @@
 					{#each resolvedCrumbs as crumb, i}
 						{#if i == resolvedCrumbs.length - 1}
 							<Breadcrumb.Item>
-								<Breadcrumb.Link href={crumb.url}>{crumb.title}</Breadcrumb.Link>
+								<Breadcrumb.Link href={localizeHref(crumb.url || "")}>{crumb.title}</Breadcrumb.Link
+								>
 							</Breadcrumb.Item>
 						{:else}
 							<Breadcrumb.Item>
-								<Breadcrumb.Link href={crumb.url}>{crumb.title}</Breadcrumb.Link>
+								<Breadcrumb.Link href={localizeHref(crumb.url || "")}>{crumb.title}</Breadcrumb.Link
+								>
 							</Breadcrumb.Item>
 							<Breadcrumb.Separator />
 						{/if}

@@ -27,6 +27,7 @@
 	import { groupByMonth } from "$components/appointments";
 	import Searchbar from "$components/Searchbar.svelte";
 	import NoContent from "$components/NoContent.svelte";
+	import { localizeHref } from "$lib/paraglide/runtime";
 
 	interface Props {
 		data: PageData;
@@ -104,11 +105,13 @@
 											)[0]?.actor?.reference}
 											{resolveLocationName}
 											href={appointment.id
-												? route("/appointments/[appointmentId]", {
-														appointmentId: encodeBase64url(
-															new TextEncoder().encode(appointment.id!)
-														),
-													})
+												? localizeHref(
+														route("/appointments/[appointmentId]", {
+															appointmentId: encodeBase64url(
+																new TextEncoder().encode(appointment.id!)
+															),
+														})
+													)
 												: undefined}
 										/>
 									</li>

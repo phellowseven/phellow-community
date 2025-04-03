@@ -5,8 +5,6 @@
 
 	import type { User } from "$lib/server/db/schema";
 	import * as m from "$lib/paraglide/messages";
-	import { i18n } from "$lib/i18n";
-	import { availableLanguageTags, languageTag } from "$lib/paraglide/runtime";
 
 	import { Switch } from "$ui/switch";
 	import { Button } from "$ui/button";
@@ -30,6 +28,8 @@
 	import PhellowCommunityText from "./logo/phellow_community_text.svelte";
 	import PhellowCommunityTextLight from "./logo/phellow_community_text_light.svelte";
 	import { route } from "$lib/ROUTES";
+	import { getLocale, locales, localizeHref, setLocale } from "$lib/paraglide/runtime";
+	import { goto } from "$app/navigation";
 
 	interface Props {
 		user: Omit<User, "id" | "sub"> | null;
@@ -47,8 +47,6 @@
 		}
 	});
 
-	let currentPathWithoutLanguage: string = $derived(i18n.route(page.url.pathname));
-
 	// Menu items.
 	const applicationItems: {
 		title: string;
@@ -57,27 +55,27 @@
 	}[] = [
 		{
 			title: m.dashboard_title(),
-			url: route("/dashboard"),
+			url: localizeHref(route("/dashboard")),
 			icon: House,
 		},
 		{
 			title: m.documents_title(),
-			url: route("/documents"),
+			url: localizeHref(route("/documents")),
 			icon: File,
 		},
 		{
 			title: m.appointments_title(),
-			url: route("/appointments"),
+			url: localizeHref(route("/appointments")),
 			icon: Calendar,
 		},
 		{
 			title: m.tasks_title(),
-			url: route("/tasks"),
+			url: localizeHref(route("/tasks")),
 			icon: ListTodo,
 		},
 		{
 			title: m.structured_title(),
-			url: route("/labs"),
+			url: localizeHref(route("/labs")),
 			icon: FlaskConical,
 		},
 	];
@@ -90,7 +88,7 @@
 		scopes.includes("module_onco")
 			? {
 					title: m.module_oncology(),
-					url: route("/module/oncology"),
+					url: localizeHref(route("/module/oncology")),
 					icon: Shell,
 				}
 			: null,
@@ -169,20 +167,23 @@
 								<span>{m.language()}</span>
 							</DropdownMenu.SubTrigger>
 							<DropdownMenu.SubContent>
-								{#each availableLanguageTags as lang}
-									<DropdownMenu.Item disabled={lang === languageTag()}>
+								{#each locales as locale (locale)}
+									<DropdownMenu.Item
+										disabled={locale === getLocale()}
+										onclick={() => {
+											setLocale(locale);
+											const targetURL = localizeHref(page.url.pathname);
+											console.log(targetURL);
+											goto(targetURL); // { replaceState: true }
+										}}
+									>
 										{#snippet child({ props })}
-											<a
-												href={currentPathWithoutLanguage}
-												hreflang={lang}
-												class="w-full"
-												{...props}
-											>
-												{new Intl.DisplayNames([lang], { type: "language" }).of(lang) ?? lang}
-												{#if lang === languageTag()}
+											<button class="w-full" {...props}>
+												{new Intl.DisplayNames([locale], { type: "language" }).of(locale) ?? locale}
+												{#if locale === getLocale()}
 													<Check />
 												{/if}
-											</a>
+											</button>
 										{/snippet}
 									</DropdownMenu.Item>
 								{/each}
@@ -190,7 +191,7 @@
 						</DropdownMenu.Sub>
 						<DropdownMenu.Item>
 							{#snippet child({ props })}
-								<a href={route("/account")} class="w-full" {...props}
+								<a href={localizeHref(route("/account"))} class="w-full" {...props}
 									><span class="h-4 w-4" aria-hidden="true"><UserIcon /></span
 									>{m.account_title()}</a
 								>

@@ -16,6 +16,7 @@
 	import ObservationDetailModal from "./ObservationDetailModal.svelte";
 	import { encodeBase64url } from "@oslojs/encoding";
 	import { route } from "$lib/ROUTES";
+	import { localizeHref } from "$lib/paraglide/runtime";
 
 	interface Props {
 		observations: Observation[];
@@ -194,9 +195,11 @@
 						<td class="whitespace-nowrap px-6 py-4 text-sm">
 							{#if code}
 								<a
-									href={route("/labs/[coding]", {
-										coding: encodeBase64url(new TextEncoder().encode(code)),
-									})}
+									href={localizeHref(
+										route("/labs/[coding]", {
+											coding: encodeBase64url(new TextEncoder().encode(code)),
+										})
+									)}
 									onclick={stopPropagation(bubble("click"))}
 								>
 									<Chart class="h-5 w-5 " /></a

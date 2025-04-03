@@ -3,6 +3,7 @@
 	import { Button } from "$components/ui/button";
 	import { route } from "$lib/ROUTES";
 	import * as m from "$lib/paraglide/messages";
+	import { localizeHref } from "$lib/paraglide/runtime";
 </script>
 
 <main class=" flex min-h-screen flex-col items-center justify-center px-6 py-24 sm:py-32 lg:px-8">
@@ -17,7 +18,7 @@
 			<h2 class="border-b-0">{page.error?.message}</h2>
 		{/if}
 		<div class="flex flex-col items-center justify-center space-y-6">
-			<Button href={route("/dashboard")} class="">{m.error_go_home()}</Button>
+			<Button href={localizeHref(route("/dashboard"))} class="">{m.error_go_home()}</Button>
 			<a href="/" class="text-sm font-semibold"
 				>{m.error_contact_support()} &nbsp;<span aria-hidden="true">&rarr;</span></a
 			>

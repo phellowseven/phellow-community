@@ -1,5 +1,5 @@
 import { dev } from "$app/environment";
-import { i18n } from "$lib/i18n";
+import { paraglideMiddleware } from "$lib/paraglide/server";
 import { route } from "$lib/ROUTES";
 import {
 	sessionCookieName,
@@ -17,7 +17,15 @@ import { sequence } from "@sveltejs/kit/hooks";
 
 const hooksLogger = logger.child({ module: "ServerHooks" });
 
-const handleParaglide: Handle = i18n.handle();
+const paraglideHandle: Handle = ({ event, resolve }) =>
+	paraglideMiddleware(event.request, ({ request: localizedRequest, locale }) => {
+		event.request = localizedRequest;
+		return resolve(event, {
+			transformPageChunk: ({ html }) => {
+				return html.replace("%lang%", locale);
+			},
+		});
+	});
 
 // This is called once when the server starts
 export const init: ServerInit = async () => {
@@ -109,4 +117,4 @@ const authHandle: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-export const handle = sequence(handleParaglide, authHandle);
+export const handle = sequence(authHandle, paraglideHandle);

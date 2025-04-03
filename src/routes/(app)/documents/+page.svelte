@@ -53,6 +53,7 @@
 	import Document from "$components/document/Document.svelte";
 	import UploadDocumentSheet from "$components/sheets/UploadDocumentSheet.svelte";
 	import NoContent from "$components/NoContent.svelte";
+	import { localizeHref } from "$lib/paraglide/runtime";
 
 	interface Props {
 		data: PageData;
@@ -174,9 +175,11 @@
 											author={extractAuthorFullName(document) ?? undefined}
 											type={documentTypeStringForDocumentReference(document)}
 											href={document.id
-												? route("/documents/[documentId]", {
-														documentId: encodeBase64url(new TextEncoder().encode(document.id!)),
-													})
+												? localizeHref(
+														route("/documents/[documentId]", {
+															documentId: encodeBase64url(new TextEncoder().encode(document.id!)),
+														})
+													)
 												: undefined}
 										/>
 									</li>

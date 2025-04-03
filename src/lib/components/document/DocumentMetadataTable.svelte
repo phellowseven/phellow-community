@@ -9,7 +9,6 @@
 	} from "$lib/fhir/document";
 	import { isResourceOfType, resolveContainedReference } from "$lib/fhir/resolveReferences";
 	import { getFullNameFromHumanName } from "$lib/fhir/utility";
-	import { languageTag } from "$lib/paraglide/runtime";
 	import { cn } from "$lib/utils";
 	import * as Table from "$ui/table";
 	import dayjs from "dayjs";
@@ -17,6 +16,7 @@
 	import * as m from "$lib/paraglide/messages";
 	import type { MetadataEntry } from "$components/MetadataTable.svelte";
 	import MetadataTable from "$components/MetadataTable.svelte";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	interface Props {
 		document: DocumentReference;
@@ -70,7 +70,7 @@
 		return undefined;
 	});
 
-	let currentLanguage = $state(languageTag());
+	let currentLanguage = $state(getLocale());
 	// Create a reactive formatted date that updates when language changes
 	let formattedDate = $derived(dayjs(document.date).locale(currentLanguage).format("L"));
 	let categoryString = $derived(documentClassStringForDocumentReference(document, currentLanguage));

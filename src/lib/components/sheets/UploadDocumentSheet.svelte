@@ -27,8 +27,8 @@
 	import { UploadCategory } from "$lib/fhir/document/uploadMappings";
 	import * as m from "$lib/paraglide/messages";
 	import { cn } from "$lib/utils";
-	import { languageTag } from "$lib/paraglide/runtime";
 	import { route } from "$lib/ROUTES";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	interface Props {
 		validatedForm: SuperValidated<Infer<UploadDocumentSchema>>;
@@ -54,7 +54,7 @@
 		.sort((a, b) => a.name.localeCompare(b.name));
 
 	// Date
-	const df = new DateFormatter(languageTag(), {
+	const df = new DateFormatter(getLocale(), {
 		dateStyle: "long",
 	});
 	let dateValue: DateValue | undefined = $state(undefined);
@@ -132,7 +132,7 @@
 							</Popover.Trigger>
 							<Popover.Content class="w-auto p-0" side="top">
 								<CalendarYearMonth
-									locale={languageTag()}
+									locale={getLocale()}
 									type="single"
 									value={dateValue as DateValue}
 									bind:placeholder={datePlaceholder}

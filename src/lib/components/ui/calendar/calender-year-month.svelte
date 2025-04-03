@@ -8,7 +8,7 @@
 	import * as Calendar from "$ui/calendar";
 	import * as Select from "$ui/select";
 	import { cn } from "$lib/utils.js";
-	import { languageTag } from "$lib/paraglide/runtime";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	let {
 		value = $bindable(),
@@ -65,7 +65,7 @@
 	class={cn("rounded-md border p-3", className)}
 	bind:value={value as never}
 	bind:placeholder
-	locale={languageTag()}
+	locale={getLocale()}
 	{...restProps}
 >
 	{#snippet children({ months, weekdays })}

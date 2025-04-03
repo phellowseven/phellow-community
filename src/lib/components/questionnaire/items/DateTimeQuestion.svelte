@@ -11,7 +11,6 @@
 	} from "@internationalized/date";
 
 	import { cn } from "$lib/utils";
-	import { languageTag } from "$lib/paraglide/runtime";
 
 	import { buttonVariants } from "$ui/button";
 	import { Calendar } from "$ui/calendar";
@@ -19,6 +18,7 @@
 
 	import CalendarIcon from "lucide-svelte/icons/calendar";
 	import TimePicker from "$components/ui/time-picker/time-picker.svelte";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	let {
 		item,
@@ -26,7 +26,7 @@
 		onAnswer,
 	}: ItemComponentInterface<DateValue | undefined> = $props();
 
-	const df = new DateFormatter(languageTag(), {
+	const df = new DateFormatter(getLocale(), {
 		dateStyle: "long",
 		timeStyle: "medium",
 	});

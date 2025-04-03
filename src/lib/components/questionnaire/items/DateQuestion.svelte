@@ -10,13 +10,13 @@
 	} from "@internationalized/date";
 
 	import { cn } from "$lib/utils";
-	import { languageTag } from "$lib/paraglide/runtime";
 
 	import { buttonVariants } from "$ui/button";
 	import { Calendar } from "$ui/calendar";
 	import * as Popover from "$ui/popover";
 
 	import CalendarIcon from "lucide-svelte/icons/calendar";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	let {
 		item,
@@ -24,7 +24,7 @@
 		onAnswer,
 	}: ItemComponentInterface<CalendarDate | undefined> = $props();
 
-	const df = new DateFormatter(languageTag(), {
+	const df = new DateFormatter(getLocale(), {
 		dateStyle: "long",
 	});
 

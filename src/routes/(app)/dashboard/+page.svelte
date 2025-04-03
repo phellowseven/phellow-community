@@ -19,6 +19,7 @@
 	import Calendar from "lucide-svelte/icons/calendar";
 	import Todo from "lucide-svelte/icons/list-todo";
 	import Flask from "lucide-svelte/icons/flask-conical";
+	import { localizeHref } from "$lib/paraglide/runtime";
 
 	interface Props {
 		data: PageData;
@@ -42,7 +43,7 @@
 			<OverviewCard
 				count={data.documentReferenceBundleResponse}
 				description={m.dashboard_number_documents()}
-				href={route("/documents")}
+				href={localizeHref(route("/documents"))}
 			>
 				{#snippet icon()}
 					<File class="size-6 text-white" />
@@ -51,7 +52,7 @@
 			<OverviewCard
 				count={data.appointmentBundleResponse}
 				description={m.dashboard_number_appointments()}
-				href={route("/appointments")}
+				href={localizeHref(route("/appointments"))}
 			>
 				{#snippet icon()}
 					<Calendar class="size-6 text-white" />
@@ -60,7 +61,7 @@
 			<OverviewCard
 				count={data.taskBundleResponse}
 				description={m.dashboard_number_tasks()}
-				href={route("/tasks")}
+				href={localizeHref(route("/tasks"))}
 			>
 				{#snippet icon()}
 					<Todo class="size-6 text-white" />
@@ -69,7 +70,7 @@
 			<OverviewCard
 				count={data.observationBundleResponse}
 				description={m.dashboard_number_observations()}
-				href={route("/labs")}
+				href={localizeHref(route("/labs"))}
 			>
 				{#snippet icon()}
 					<Flask class="size-6 text-white" />
