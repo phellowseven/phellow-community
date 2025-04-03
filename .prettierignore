@@ -13,3 +13,4 @@ svelte.config.js
 tailwind.config.ts
 utilities/
 yarn.lock
+node_modules/

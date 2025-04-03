@@ -29,7 +29,9 @@
 	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
 		<form class="" method="POST" {action} use:enhance>
 			<div>
-				<Button type="submit" class="w-full">{m.login_sign_in_button()}</Button>
+				<Button data-testid="login_button" type="submit" class="w-full"
+					>{m.login_sign_in_button()}</Button
+				>
 			</div>
 		</form>
 	</div>

@@ -31,7 +31,12 @@ export class SessionService {
 
 	static async updateSession(session: Session): Promise<Session> {
 		sessionServiceLogger.trace({ session }, "Updating session");
-		const [updated] = await db.update(sessions).set(session).returning();
+		const { id, ...updateData } = session;
+		const [updated] = await db
+			.update(sessions)
+			.set(updateData)
+			.where(eq(sessions.id, id))
+			.returning();
 		return updated;
 	}
 
