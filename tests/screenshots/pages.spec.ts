@@ -94,7 +94,7 @@ test("Capture 03 documents page", async ({ authenticatedPage }, testInfo) => {
 
 	await authenticatedPage.getByRole("link", { name: "Psychologischer Bericht" }).click();
 	await authenticatedPage.locator("td", { hasText: "Erstellt am" }).waitFor();
-	await authenticatedPage.waitForTimeout(500); // Wait for fade-in
+	await authenticatedPage.waitForTimeout(2000); // Wait for fade-in
 
 	await authenticatedPage.screenshot({
 		path: `./screenshots/${testInfo.project.name}/light/03.3_document.png`,

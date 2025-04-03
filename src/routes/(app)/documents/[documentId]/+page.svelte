@@ -19,6 +19,7 @@
 
 	import { Skeleton } from "$components/ui/skeleton";
 	import DocumentMetadataTable from "$components/document/DocumentMetadataTable.svelte";
+	import PdfViewer from "$components/PDFViewer.svelte";
 
 	let { data }: { data: PageData } = $props();
 
@@ -76,7 +77,9 @@
 				<Skeleton class="min-h-svh w-full bg-secondary" />
 			{:else if objectURL}
 				{#if contentType == "application/pdf"}
-					<embed src={objectURL} type="application/pdf" class="min-h-svh w-full grow" />
+					<div class="relative flex min-h-svh">
+						<PdfViewer url={objectURL} />
+					</div>
 				{/if}
 			{/if}
 		{/if}
