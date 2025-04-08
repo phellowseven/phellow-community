@@ -8,7 +8,7 @@ Welcome to **phellow•community**, an open-source patient portal designed to st
 frontend for your healthcare project needs. This project aims to provide a user-friendly interface
 for managing appointments and accessing medical records using HL7 FHIR.
 
----
+![phellow•community Documents view](/docs/images/02_phellow.community_Dokumente_CPU.png)
 
 ## Table of Contents
 
@@ -31,7 +31,8 @@ for managing appointments and accessing medical records using HL7 FHIR.
 
 The Patient Portal is a modern, open-source solution for healthcare providers and patients. It is
 built with a focus on accessibility, security, and ease of use. The project leverages cutting-edge
-web technologies like **Svelte**, **TailwindCSS**, and **Vite** to deliver a seamless experience.
+web technologies like **Svelte**, **SvelteKit**, **TailwindCSS**, and **Vite** to deliver a seamless
+experience.
 
 ---
 
