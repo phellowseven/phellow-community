@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - "dev/*"
+      - "feature/*"
   pull_request:
     branches: [main]
 
@@ -196,6 +197,7 @@ jobs:
           retention-days: 1
 
   screenshots:
+    if: github.ref == 'refs/heads/main'
     name: Screenshots
     needs: [build]
     runs-on: ubuntu-latest
