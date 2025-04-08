@@ -1,31 +1,37 @@
 <script lang="ts">
-	import { Button, P } from 'flowbite-svelte';
-	import Logo from '$components/logo/phellow community_white-vertical.svelte';
-	import { enhance } from '$app/forms';
+	import LogoDark from "$components/logo/phellow_community_white-vertical.svelte";
+	import LogoLight from "$components/logo/phellow_community_vertical.svelte";
+	import { mode } from "mode-watcher";
+	import { enhance } from "$app/forms";
 
-	import * as m from '$lib/paraglide/messages';
+	import * as m from "$lib/paraglide/messages";
+	import { Button } from "$ui/button";
+	import { route } from "$lib/ROUTES";
+	import { headPageTitle } from "$lib/utils";
+	const action = route("login /login");
 </script>
 
-<div class="flex min-h-full flex-col justify-center bg-gray-800 px-6 py-12 lg:px-8">
+<svelte:head>
+	<title>{headPageTitle(m.title_login())}</title>
+</svelte:head>
+
+<div class="flex min-h-full flex-col justify-center bg-background px-6 py-12 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
 		<div class="flex justify-center">
-			<Logo class="" />
+			{#if $mode === "light"}
+				<LogoLight class="" />
+			{:else}
+				<LogoDark class="" />
+			{/if}
 		</div>
-		<!-- <P tag="h4" class="mt-12 text-center text-2xl font-bold leading-tight" color="text-white">
-			<span class="font-normal">{m.login_sign_in_to()}</span>
-			<span class="logo-text">
-				<span>phellow</span>
-			</span>
-			<span class="text-gray-400">community</span>
-		</P> -->
 	</div>
 
 	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
-		<form class="" method="POST" action="?/login" use:enhance>
-			<input type="hidden" value="fusion-auth" />
-
+		<form class="" method="POST" {action} use:enhance>
 			<div>
-				<Button type="submit" class="w-full">{m.login_sign_in_button()}</Button>
+				<Button data-testid="login_button" type="submit" class="w-full"
+					>{m.login_sign_in_button()}</Button
+				>
 			</div>
 		</form>
 	</div>

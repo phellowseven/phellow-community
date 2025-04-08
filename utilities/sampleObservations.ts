@@ -1,12 +1,12 @@
 // types/fhir.ts
-import type { Bundle, CodeableConcept, Observation, Quantity } from 'fhir/r4';
+import type { Bundle, CodeableConcept, Observation, Quantity } from "fhir/r4";
 
 type ObservationEntry = {
 	resource: Observation;
 	fullUrl: string;
 };
 
-type ObservationBundle = Omit<Bundle, 'entry'> & {
+type ObservationBundle = Omit<Bundle, "entry"> & {
 	entry: ObservationEntry[];
 };
 
@@ -26,80 +26,80 @@ interface ReferenceRange {
 // Common reference ranges by LOINC code or observation text
 const REFERENCE_RANGES: Record<string, ReferenceRange> = {
 	// Laboratory Values
-	'26464-8': {
+	"26464-8": {
 		// Leukocytes
-		low: { value: 4.0, unit: '10*9/L', system: 'http://unitsofmeasure.org' },
-		high: { value: 10.0, unit: '10*9/L', system: 'http://unitsofmeasure.org' }
+		low: { value: 4.0, unit: "10*9/L", system: "http://unitsofmeasure.org" },
+		high: { value: 10.0, unit: "10*9/L", system: "http://unitsofmeasure.org" },
 	},
-	'59260-0': {
+	"59260-0": {
 		// Hemoglobin
-		low: { value: 13.5, unit: 'g/dL', system: 'http://unitsofmeasure.org' },
-		high: { value: 17.5, unit: 'g/dL', system: 'http://unitsofmeasure.org' }
+		low: { value: 13.5, unit: "g/dL", system: "http://unitsofmeasure.org" },
+		high: { value: 17.5, unit: "g/dL", system: "http://unitsofmeasure.org" },
 	},
-	'20570-8': {
+	"20570-8": {
 		// Hematocrit
-		low: { value: 35, unit: '%', system: 'http://unitsofmeasure.org' },
-		high: { value: 45, unit: '%', system: 'http://unitsofmeasure.org' }
+		low: { value: 35, unit: "%", system: "http://unitsofmeasure.org" },
+		high: { value: 45, unit: "%", system: "http://unitsofmeasure.org" },
 	},
-	'26515-7': {
+	"26515-7": {
 		// Platelets
-		low: { value: 150, unit: '10*9/L', system: 'http://unitsofmeasure.org' },
-		high: { value: 450, unit: '10*9/L', system: 'http://unitsofmeasure.org' }
+		low: { value: 150, unit: "10*9/L", system: "http://unitsofmeasure.org" },
+		high: { value: 450, unit: "10*9/L", system: "http://unitsofmeasure.org" },
 	},
-	'2947-0': {
+	"2947-0": {
 		// Sodium
-		low: { value: 135, unit: 'mmol/L', system: 'http://unitsofmeasure.org' },
-		high: { value: 145, unit: 'mmol/L', system: 'http://unitsofmeasure.org' }
+		low: { value: 135, unit: "mmol/L", system: "http://unitsofmeasure.org" },
+		high: { value: 145, unit: "mmol/L", system: "http://unitsofmeasure.org" },
 	},
-	'6298-4': {
+	"6298-4": {
 		// Potassium
-		low: { value: 3.5, unit: 'mmol/L', system: 'http://unitsofmeasure.org' },
-		high: { value: 5.1, unit: 'mmol/L', system: 'http://unitsofmeasure.org' }
+		low: { value: 3.5, unit: "mmol/L", system: "http://unitsofmeasure.org" },
+		high: { value: 5.1, unit: "mmol/L", system: "http://unitsofmeasure.org" },
 	},
-	'2160-0': {
+	"2160-0": {
 		// Creatinine
-		low: { value: 0.7, unit: 'mg/dL', system: 'http://unitsofmeasure.org' },
-		high: { value: 1.2, unit: 'mg/dL', system: 'http://unitsofmeasure.org' }
+		low: { value: 0.7, unit: "mg/dL", system: "http://unitsofmeasure.org" },
+		high: { value: 1.2, unit: "mg/dL", system: "http://unitsofmeasure.org" },
 	},
-	'1920-8': {
+	"1920-8": {
 		// AST
-		high: { value: 40, unit: 'U/L', system: 'http://unitsofmeasure.org' }
+		high: { value: 40, unit: "U/L", system: "http://unitsofmeasure.org" },
 	},
-	'1742-6': {
+	"1742-6": {
 		// ALT
-		high: { value: 41, unit: 'U/L', system: 'http://unitsofmeasure.org' }
+		high: { value: 41, unit: "U/L", system: "http://unitsofmeasure.org" },
 	},
-	'2324-2': {
+	"2324-2": {
 		// GGT
-		high: { value: 60, unit: 'U/L', system: 'http://unitsofmeasure.org' }
+		high: { value: 60, unit: "U/L", system: "http://unitsofmeasure.org" },
 	},
-	'1996-8': {
+	"1996-8": {
 		// Calcium
-		low: { value: 8.5, unit: 'mg/dL', system: 'http://unitsofmeasure.org' },
-		high: { value: 10.2, unit: 'mg/dL', system: 'http://unitsofmeasure.org' }
+		low: { value: 8.5, unit: "mg/dL", system: "http://unitsofmeasure.org" },
+		high: { value: 10.2, unit: "mg/dL", system: "http://unitsofmeasure.org" },
 	},
 
 	// Vital Signs
-	'8480-6': {
+	"8480-6": {
 		// Systolic Blood Pressure
-		low: { value: 90, unit: 'mm[Hg]', system: 'http://unitsofmeasure.org' },
-		high: { value: 140, unit: 'mm[Hg]', system: 'http://unitsofmeasure.org' }
+		low: { value: 90, unit: "mm[Hg]", system: "http://unitsofmeasure.org" },
+		high: { value: 140, unit: "mm[Hg]", system: "http://unitsofmeasure.org" },
 	},
-	'8462-4': {
+	"8462-4": {
 		// Diastolic Blood Pressure
-		low: { value: 60, unit: 'mm[Hg]', system: 'http://unitsofmeasure.org' },
-		high: { value: 90, unit: 'mm[Hg]', system: 'http://unitsofmeasure.org' }
+		low: { value: 60, unit: "mm[Hg]", system: "http://unitsofmeasure.org" },
+		high: { value: 90, unit: "mm[Hg]", system: "http://unitsofmeasure.org" },
 	},
-	'8867-4': {
+	"8867-4": {
 		// Heart Rate
-		low: { value: 60, unit: '/min', system: 'http://unitsofmeasure.org' },
-		high: { value: 100, unit: '/min', system: 'http://unitsofmeasure.org' }
+		low: { value: 60, unit: "/min", system: "http://unitsofmeasure.org" },
+		high: { value: 100, unit: "/min", system: "http://unitsofmeasure.org" },
 	},
-	'8310-5': {
+	"8310-5": {
 		// Body Temperature
-		low: { value: 36.5, unit: 'Cel', system: 'http://unitsofmeasure.org' },
-		high: { value: 37.5, unit: 'Cel', system: 'http://unitsofmeasure.org' }
-	}
+		low: { value: 36.5, unit: "Cel", system: "http://unitsofmeasure.org" },
+		high: { value: 37.5, unit: "Cel", system: "http://unitsofmeasure.org" },
+	},
 };
 
 interface CategoryMapping {
@@ -109,149 +109,149 @@ interface CategoryMapping {
 // Detailed category mappings by LOINC code
 const CATEGORY_MAPPINGS: Record<string, CategoryMapping> = {
 	// Hematology
-	'26464-8': {
+	"26464-8": {
 		// Leukocytes
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'laboratory',
-						display: 'Laboratory'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "laboratory",
+						display: "Laboratory",
+					},
 				],
-				text: 'Laboratory'
-			}
-		]
+				text: "Laboratory",
+			},
+		],
 	},
-	'59260-0': {
+	"59260-0": {
 		// Hemoglobin
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'laboratory',
-						display: 'Laboratory'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "laboratory",
+						display: "Laboratory",
+					},
 				],
-				text: 'Laboratory'
-			}
-		]
+				text: "Laboratory",
+			},
+		],
 	},
 
 	// Chemistry
-	'2947-0': {
+	"2947-0": {
 		// Sodium
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'laboratory',
-						display: 'Laboratory'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "laboratory",
+						display: "Laboratory",
+					},
 				],
-				text: 'Laboratory'
-			}
-		]
+				text: "Laboratory",
+			},
+		],
 	},
-	'6298-4': {
+	"6298-4": {
 		// Potassium
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'laboratory',
-						display: 'Laboratory'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "laboratory",
+						display: "Laboratory",
+					},
 				],
-				text: 'Laboratory'
-			}
-		]
+				text: "Laboratory",
+			},
+		],
 	},
 
 	// Liver Function
-	'1920-8': {
+	"1920-8": {
 		// AST
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'laboratory',
-						display: 'Laboratory'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "laboratory",
+						display: "Laboratory",
+					},
 				],
-				text: 'Laboratory'
-			}
-		]
+				text: "Laboratory",
+			},
+		],
 	},
-	'1742-6': {
+	"1742-6": {
 		// ALT
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'laboratory',
-						display: 'Laboratory'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "laboratory",
+						display: "Laboratory",
+					},
 				],
-				text: 'Laboratory'
-			}
-		]
+				text: "Laboratory",
+			},
+		],
 	},
 
 	// Vital Signs
-	'8480-6': {
+	"8480-6": {
 		// Systolic BP
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'vital-signs',
-						display: 'Vital Signs'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "vital-signs",
+						display: "Vital Signs",
+					},
 				],
-				text: 'Vital Signs'
-			}
-		]
+				text: "Vital Signs",
+			},
+		],
 	},
-	'8867-4': {
+	"8867-4": {
 		// Heart Rate
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'vital-signs',
-						display: 'Vital Signs'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "vital-signs",
+						display: "Vital Signs",
+					},
 				],
-				text: 'Vital Signs'
-			}
-		]
+				text: "Vital Signs",
+			},
+		],
 	},
 
 	// Coagulation
-	'5902-2': {
+	"5902-2": {
 		// PT
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'laboratory',
-						display: 'Laboratory'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "laboratory",
+						display: "Laboratory",
+					},
 				],
-				text: 'Laboratory'
-			}
-		]
-	}
+				text: "Laboratory",
+			},
+		],
+	},
 };
 
 // Text-based category mapping for observations without LOINC codes
@@ -261,29 +261,29 @@ const TEXT_BASED_CATEGORIES: Record<string, CategoryMapping> = {
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'vital-signs',
-						display: 'Vital Signs'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "vital-signs",
+						display: "Vital Signs",
+					},
 				],
-				text: 'Vital Signs'
-			}
-		]
+				text: "Vital Signs",
+			},
+		],
 	},
 	Körpertemperatur: {
 		category: [
 			{
 				coding: [
 					{
-						system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-						code: 'vital-signs',
-						display: 'Vital Signs'
-					}
+						system: "http://terminology.hl7.org/CodeSystem/observation-category",
+						code: "vital-signs",
+						display: "Vital Signs",
+					},
 				],
-				text: 'Vital Signs'
-			}
-		]
-	}
+				text: "Vital Signs",
+			},
+		],
+	},
 };
 
 /**
@@ -299,7 +299,7 @@ export function addCategories(bundle: ObservationBundle): ObservationBundle {
 
 		// Get LOINC code if available
 		const loincCode = observation.code?.coding?.find(
-			(coding) => coding.system === 'http://loinc.org'
+			(coding) => coding.system === "http://loinc.org"
 		)?.code;
 
 		// Try to find category mapping by LOINC code first, then by text
@@ -339,13 +339,13 @@ function addReferenceRanges(bundle: ObservationBundle): ObservationBundle {
 
 		// Get LOINC code if available
 		const loincCode = observation.code?.coding?.find(
-			(coding) => coding.system === 'http://loinc.org'
+			(coding) => coding.system === "http://loinc.org"
 		)?.code;
 
 		// Get reference range based on LOINC code or observation text
 		const range = loincCode
 			? REFERENCE_RANGES[loincCode]
-			: REFERENCE_RANGES[observation.code?.text || ''];
+			: REFERENCE_RANGES[observation.code?.text || ""];
 
 		if (range && observation.valueQuantity) {
 			observation.referenceRange = [
@@ -355,14 +355,14 @@ function addReferenceRanges(bundle: ObservationBundle): ObservationBundle {
 					type: range.type || {
 						coding: [
 							{
-								system: 'http://terminology.hl7.org/CodeSystem/referencerange-meaning',
-								code: 'normal',
-								display: 'Normal Range'
-							}
+								system: "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+								code: "normal",
+								display: "Normal Range",
+							},
 						],
-						text: 'Normal Range'
-					}
-				}
+						text: "Normal Range",
+					},
+				},
 			];
 		}
 
@@ -390,7 +390,7 @@ function handleObservations(originalBundle: ObservationBundle) {
 			const value = obs.valueQuantity.value;
 			const range = {
 				low: obs.referenceRange[0].low,
-				high: obs.referenceRange[0].high
+				high: obs.referenceRange[0].high,
 			};
 
 			if (!value || !range.low || !range.high) {
@@ -403,12 +403,12 @@ function handleObservations(originalBundle: ObservationBundle) {
 					{
 						coding: [
 							{
-								system: 'http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation',
-								code: value < (range.low?.value || 0) ? 'L' : 'H',
-								display: value < (range.low?.value || 0) ? 'Low' : 'High'
-							}
-						]
-					}
+								system: "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+								code: value < (range.low?.value || 0) ? "L" : "H",
+								display: value < (range.low?.value || 0) ? "Low" : "High",
+							},
+						],
+					},
 				];
 			}
 		}
@@ -426,11 +426,11 @@ function handleObservations(originalBundle: ObservationBundle) {
  */
 export function sampleObservations(bundle: ObservationBundle, n: number): ObservationBundle {
 	if (!bundle.entry || bundle.entry.length === 0) {
-		throw new Error('Bundle contains no entries');
+		throw new Error("Bundle contains no entries");
 	}
 
 	if (n < 0) {
-		throw new Error('Sample size must be positive');
+		throw new Error("Sample size must be positive");
 	}
 
 	if (n > bundle.entry.length) {
@@ -455,8 +455,8 @@ export function sampleObservations(bundle: ObservationBundle, n: number): Observ
 	return newBundle;
 }
 
-import fs from 'fs';
-import bundleJson from '../samples/fhir/observations.json';
+import fs from "fs";
+import bundleJson from "../samples/fhir/observations.json";
 
 const bundle: ObservationBundle = bundleJson as ObservationBundle;
 
@@ -466,12 +466,12 @@ const sampled400 = handleObservations(sampleObservations(bundle, 400));
 const sampled1000 = handleObservations(sampleObservations(bundle, 1000));
 
 // Write the sampled observations to a file
-fs.writeFileSync('observations_100.json', JSON.stringify(sampled100, null, 2), 'utf-8');
-fs.writeFileSync('observations_200.json', JSON.stringify(sampled200, null, 2), 'utf-8');
-fs.writeFileSync('observations_400.json', JSON.stringify(sampled400, null, 2), 'utf-8');
-fs.writeFileSync('observations_1000.json', JSON.stringify(sampled1000, null, 2), 'utf-8');
+fs.writeFileSync("observations_100.json", JSON.stringify(sampled100, null, 2), "utf-8");
+fs.writeFileSync("observations_200.json", JSON.stringify(sampled200, null, 2), "utf-8");
+fs.writeFileSync("observations_400.json", JSON.stringify(sampled400, null, 2), "utf-8");
+fs.writeFileSync("observations_1000.json", JSON.stringify(sampled1000, null, 2), "utf-8");
 
-console.log('Sampled observations written to sampledObservations.json');
+console.log("Sampled observations written to sampledObservations.json");
 
 // RUN WITH:
 // npx tsc sampleObservations.ts --resolveJsonModule --esModuleInterop

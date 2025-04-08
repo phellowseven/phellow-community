@@ -1,0 +1,13 @@
+{
+	"name": "oidc-mock-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.mjs",
+	"scripts": {},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"oauth2-mock-server": "^7.2.0"
+	}
+}

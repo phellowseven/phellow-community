@@ -1,0 +1,278 @@
+diff --git a/dist/components/Breadcrumbs.svelte b/dist/components/Breadcrumbs.svelte
+index 654b1385be0db18cab30c8f65db20274f72e9270..9a4bf1db20febd06f9b81a27ea850df05a202220 100644
+--- a/dist/components/Breadcrumbs.svelte
++++ b/dist/components/Breadcrumbs.svelte
+@@ -1,135 +1,131 @@
+ <script lang="ts" generics="Metadata = any">
+-  import type { Crumb, ModuleData } from "../types.js";
+-  import { type Snippet, onMount } from "svelte";
++	import type { Crumb, ModuleData } from "../types.js";
++	import { type Snippet, onMount } from "svelte";
+ 
+-  export function titleSanitizer(title: string) {
+-    return title
+-      .replace(/([A-Z])/g, " $1")
+-      .replace(/^./, (str) => str.toUpperCase());
+-  }
++	export function titleSanitizer(title: string) {
++		return title.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase());
++	}
+ 
+-  interface Props {
+-    // Relative path to the routes folder for the glob import
+-    relPathToRoutes?: string;
+-    // The route from the routers perspective, e.g. $page.route.id
+-    routeId: string | null;
+-    url: URL;
+-    crumbs?: Crumb<Metadata>[];
+-    routeModules?: Record<string, ModuleData>;
+-    pageData: any;
+-    children?: Snippet<[any]>;
+-    skipRoutesWithNoPage: boolean;
+-  }
++	interface Props {
++		// Relative path to the routes folder for the glob import
++		relPathToRoutes?: string;
++		// The route from the routers perspective, e.g. $page.route.id
++		routeId: string | null;
++		url: URL;
++		crumbs?: Promise<Crumb<Metadata>[]>;
++		routeModules?: Record<string, ModuleData>;
++		pageData: any;
++		children?: Snippet<[any]>;
++		skipRoutesWithNoPage: boolean;
++	}
+ 
+-  let {
+-    relPathToRoutes = "/src/routes/",
+-    routeId,
+-    url,
+-    crumbs = undefined,
+-    routeModules = $bindable(undefined),
+-    pageData,
+-    skipRoutesWithNoPage,
+-    children,
+-  }: Props = $props();
++	let {
++		relPathToRoutes = "/src/routes/",
++		routeId,
++		url,
++		crumbs = undefined,
++		routeModules = $bindable(undefined),
++		pageData,
++		skipRoutesWithNoPage,
++		children,
++	}: Props = $props();
+ 
+-  onMount(async () => {
+-    // If nothing is passed to routeModules, populate it
+-    if (routeModules === undefined) {
+-      routeModules = import.meta.glob("/src/routes/**/*.svelte", {
+-        eager: true,
+-      });
+-    }
+-  });
++	onMount(async () => {
++		// If nothing is passed to routeModules, populate it
++		if (routeModules === undefined) {
++			// routeModules = import.meta.glob("/src/routes/**/*.svelte", {
++			//   eager: true,
++			// });
++		}
++	});
+ 
+-  // Given a module and a crumb, determine the page title
+-  function getPageTitleFromModule(module: ModuleData | undefined) {
+-    if (module?.pageTitle) {
+-      return module.pageTitle;
+-    }
+-    // Fall back to crumb title if the function returns undefined
+-    if (module?.getPageTitle) {
+-      return module.getPageTitle(pageData);
+-    }
+-    return undefined;
+-  }
++	// Given a module and a crumb, determine the page title
++	async function getPageTitleFromModule(module: ModuleData | undefined) {
++		if (module?.pageTitle) {
++			return module.pageTitle;
++		}
++		// Fall back to crumb title if the function returns undefined
++		if (module?.getPageTitle) {
++			return module.getPageTitle(pageData);
++		}
++		return undefined;
++	}
+ 
+-  let _crumbs = $derived.by(() => {
+-    let tmpCrumbs = [] as Crumb<Metadata>[];
+-    if (crumbs != undefined) {
+-      // If crumbs array is passed in always use that with highest priority
+-      return crumbs;
+-    } else if (routeId) {
+-      // If there is routing info, use it to find the page modules and
+-      // subsequently the page titles for each route leading up to the
+-      // current page.
+-      let completeUrl = "";
+-      let completeRoute =
+-        relPathToRoutes + (relPathToRoutes.slice(-1) == "/" ? "" : "/");
+-      // Split the route ID on every forward slash, but if there is a group route include that in the
+-      // following route. This accounts for the fact that (group) routes do not show up in the path.
+-      // For Example:
+-      // routeId: test/(group1)/test2/test3
+-      // routes: ["test", "(group1)/test2", "test3"]
+-      const routes = routeId.split(/(?<!\))\//).filter((p) => p != "");
+-      const paths = url.pathname.split("/").filter((p) => p != "");
++	let _crumbs = $derived.by(async () => {
++		let tmpCrumbs = [] as Crumb<Metadata>[];
++		if (crumbs != undefined) {
++			// If crumbs array is passed in always use that with highest priority
++			return crumbs;
++		} else if (routeId) {
++			// If there is routing info, use it to find the page modules and
++			// subsequently the page titles for each route leading up to the
++			// current page.
++			let completeUrl = "";
++			let completeRoute = relPathToRoutes + (relPathToRoutes.slice(-1) == "/" ? "" : "/");
++			// Split the route ID on every forward slash, but if there is a group route include that in the
++			// following route. This accounts for the fact that (group) routes do not show up in the path.
++			// For Example:
++			// routeId: test/(group1)/test2/test3
++			// routes: ["test", "(group1)/test2", "test3"]
++			const routes = routeId.split(/(?<!\))\//).filter((p) => p != "");
++			const paths = url.pathname.split("/").filter((p) => p != "");
+ 
+-      // Loop over each directory in the path and generate a crumb
+-      // for each one.
+-      for (let i = 0; i < paths.length; i++) {
+-        let path = paths[i];
+-        let route = routes[i];
+-        completeUrl += `/${path}`;
++			// Loop over each directory in the path and generate a crumb
++			// for each one.
++			for (let i = 0; i < paths.length; i++) {
++				let path = paths[i];
++				let route = routes[i];
++				completeUrl += `/${path}`;
+ 
+-        // Note: the slash is trailing here because the prefix always exists as the provided
+-        // relative path to the routes folder, and we are appending another path to
+-        // the end later
+-        completeRoute += `${route}/`;
++				// Note: the slash is trailing here because the prefix always exists as the provided
++				// relative path to the routes folder, and we are appending another path to
++				// the end later
++				completeRoute += `${route}/`;
+ 
+-        // routeModules type is technically undefined so we can detect when a value
+-        // is passed in or not, but will always be generated in the onMount as a
+-        // fallback.
+-        const routeModule =
+-          routeModules === undefined
+-            ? undefined
+-            : routeModules[`${completeRoute}+page.svelte`];
++				// routeModules type is technically undefined so we can detect when a value
++				// is passed in or not, but will always be generated in the onMount as a
++				// fallback.
++				const routeModule =
++					routeModules === undefined ? undefined : routeModules[`${completeRoute}+page.svelte`];
+ 
+-        let url: string | undefined = completeUrl;
++				let url: string | undefined = completeUrl;
+ 
+-        // Don't show a link for the breadcrumb representing the current page
+-        if (i == paths.length - 1) {
+-          url = undefined;
+-        }
++				// Don't show a link for the breadcrumb representing the current page
++				if (i == paths.length - 1) {
++					url = undefined;
++				}
+ 
+-        // Don't show a breadcrumb if there is no page for the route
+-        if (routeModule == undefined) {
+-          url = undefined;
+-          if (skipRoutesWithNoPage) {
+-            continue;
+-          }
+-        }
++				// Don't show a breadcrumb if there is no page for the route
++				if (routeModule == undefined) {
++					url = undefined;
++					if (skipRoutesWithNoPage) {
++						continue;
++					}
++				}
+ 
+-        tmpCrumbs.push({
+-          // Last crumb gets no url as it is the current page
+-          url,
+-          title: getPageTitleFromModule(routeModule) || titleSanitizer(path),
+-        });
+-      }
+-    } else {
+-      // And if there is no route info, simply generate breadcrumbs from the url
+-      // path
+-      let completeUrl = "";
+-      const paths = url.pathname.split("/").filter((p) => p != "");
+-      for (let i = 0; i < paths.length; i++) {
+-        let path = paths[i];
+-        completeUrl += `/${path}`;
+-        tmpCrumbs.push({
+-          title: titleSanitizer(path),
+-          url: i == paths.length - 1 ? undefined : completeUrl,
+-        });
+-      }
+-    }
+-    return tmpCrumbs;
+-  });
++				const title = (await getPageTitleFromModule(routeModule)) || titleSanitizer(path);
++				tmpCrumbs.push({
++					// Last crumb gets no url as it is the current page
++					url,
++					title,
++				});
++			}
++		} else {
++			// And if there is no route info, simply generate breadcrumbs from the url
++			// path
++			let completeUrl = "";
++			const paths = url.pathname.split("/").filter((p) => p != "");
++			for (let i = 0; i < paths.length; i++) {
++				let path = paths[i];
++				completeUrl += `/${path}`;
++				tmpCrumbs.push({
++					title: titleSanitizer(path),
++					url: i == paths.length - 1 ? undefined : completeUrl,
++				});
++			}
++		}
++		return tmpCrumbs;
++	});
+ </script>
+ 
+ {@render children?.({ crumbs: _crumbs, routeModules })}
+diff --git a/dist/components/Breadcrumbs.svelte.d.ts b/dist/components/Breadcrumbs.svelte.d.ts
+index 78a0ec1503d38cea1e5f2baae0df55930a70938f..0130010240ab4e2f5e57c339ab77e5e9f3ce7d15 100644
+--- a/dist/components/Breadcrumbs.svelte.d.ts
++++ b/dist/components/Breadcrumbs.svelte.d.ts
+@@ -5,7 +5,7 @@ declare class __sveltets_Render<Metadata = any> {
+         relPathToRoutes?: string;
+         routeId: string | null;
+         url: URL;
+-        crumbs?: Crumb<Metadata>[] | undefined;
++        crumbs?: Promise<Crumb<Metadata>[] | undefined>;
+         routeModules?: Record<string, ModuleData>;
+         pageData: any;
+         children?: Snippet<[any]>;
+diff --git a/dist/types.d.ts b/dist/types.d.ts
+index 347935439a0bd258414236f737af3483609ce4a8..d284ef884dd51138b7572866ddc6f4efc8fa3440 100644
+--- a/dist/types.d.ts
++++ b/dist/types.d.ts
+@@ -5,5 +5,5 @@ export type Crumb<M = any> = {
+ };
+ export type ModuleData = {
+     pageTitle?: string;
+-    getPageTitle?: (data: any) => string;
++    getPageTitle?: (data: any) => Promise<string>;
+ };

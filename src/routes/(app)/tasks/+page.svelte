@@ -1,26 +1,48 @@
+<script lang="ts" module>
+	export function getPageTitle() {
+		return m.tasks_title();
+	}
+</script>
+
 <script lang="ts">
-	import StickyHeader from '$components/StickyHeader.svelte';
-	import { pageTitle } from '$lib/util';
-	import { Heading, P, Secondary } from 'flowbite-svelte';
-	import { blur } from 'svelte/transition';
-	import * as m from '$lib/paraglide/messages';
+	import type { PageData } from "./$types";
+	import AppLayout from "../_appLayout.svelte";
+
+	import * as m from "$lib/paraglide/messages";
+	import { headPageTitle } from "$lib/utils";
+
+	import NoContent from "$components/NoContent.svelte";
+	import TaskList from "$components/task/TaskList.svelte";
+	import Spinner from "$components/Spinner.svelte";
+
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
-	<title>{pageTitle(m.tasks_title())}</title>
+	<title>{headPageTitle(m.tasks_title())}</title>
 </svelte:head>
 
-<div in:blur={{ duration: 200 }} class="my-8">
-	<StickyHeader>
-		<div class="flex items-start justify-between lg:flex-row">
-			<P class="text-3xl font-extrabold">{m.tasks_title()}</P>
-		</div>
-	</StickyHeader>
-
-	<div class="mt-48 flex justify-center text-center">
-		<div>
-			<Heading class="text-2xl font-bold">{m.no_content()}</Heading>
-			<Secondary class="text-xl font-medium">{m.no_content_description()}</Secondary>
-		</div>
-	</div>
-</div>
+<AppLayout title={getPageTitle()}>
+	{#snippet children()}
+		{#await data.tasks}
+			<Spinner />
+		{:then tasks}
+			{#if Object.keys(tasks).length === 0}
+				<NoContent />
+			{:else}
+				<div class="flex flex-col gap-8">
+					{#each Object.keys(tasks) as key (key)}
+						<section>
+							<h2>{key}</h2>
+							<TaskList tasks={tasks[key]} />
+						</section>
+					{/each}
+				</div>
+			{/if}
+		{/await}
+	{/snippet}
+</AppLayout>

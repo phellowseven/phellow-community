@@ -1,4 +1,16 @@
 # Ignore files for PNPM, NPM and YARN
-pnpm-lock.yaml
+.eslintrc.cjs
+.vscode
+drizzle/meta
 package-lock.json
+pnpm-lock.yaml
+postcss.config.js
+samples
+src/codings
+src/lib/components/ui
+src/lib/ROUTES.ts
+svelte.config.js
+tailwind.config.ts
+utilities/
 yarn.lock
+node_modules/
