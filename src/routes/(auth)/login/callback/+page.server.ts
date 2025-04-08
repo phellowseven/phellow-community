@@ -1,74 +1,93 @@
-import { encrypt, generateKey } from '$lib/encryption';
-import { oauth2Client, redirectURIs } from '$lib/server/auth/auth';
-import { auth } from '$lib/server/auth/lucia';
-import { createUser } from '$lib/server/auth/user';
-import type { User } from '$lib/types/user';
-import { redirect } from '@sveltejs/kit';
-import crypto from 'crypto';
-import type { Actions } from './$types';
+import { dev } from "$app/environment";
+import {
+	createSession,
+	createUser,
+	generateSessionToken,
+	sessionEncryptionKeyName,
+	setSessionTokenCookie,
+} from "$lib/server/auth/auth";
+import { config } from "$lib/server/auth/oauth";
+import type { NewUser } from "$lib/server/db/schema";
+import { encrypt, generateKey } from "$lib/server/encryption";
+import { encodeBase64 } from "@oslojs/encoding";
+import { redirect } from "@sveltejs/kit";
+import * as client from "openid-client";
+import type { Actions } from "./$types";
 
 export const actions: Actions = {
 	login: async ({ request, cookies }) => {
 		const formData = await request.formData();
+		const currentURL = formData.get("url") as string;
+
 		try {
-			const params = oauth2Client.callbackParams(formData.get('url')!.toString());
-			const tokenSet = await oauth2Client.callback(redirectURIs()[0], params);
-			const idToken = tokenSet.claims();
+			const code_verifier = cookies.get("code_verifier");
+			cookies.delete("code_verifier", { path: "/" });
+			const nonce = cookies.get("nonce");
+			cookies.delete("nonce", { path: "/" });
+
+			let tokens = await client.authorizationCodeGrant(config, new URL(currentURL), {
+				pkceCodeVerifier: code_verifier,
+				expectedNonce: nonce,
+				idTokenExpected: true,
+			});
+
+			let { access_token, refresh_token, id_token } = tokens;
+			let idToken = tokens.claims();
 
 			const symmetricEncryptionKey = await generateKey();
 
 			// encrypt access token using symmetric key
 			const encryptedAccessToken = await encrypt(
 				symmetricEncryptionKey,
-				new TextEncoder().encode(tokenSet.access_token)
+				new TextEncoder().encode(access_token)
 			);
 			const encryptedRefreshToken = await encrypt(
 				symmetricEncryptionKey,
-				new TextEncoder().encode(tokenSet.refresh_token)
+				new TextEncoder().encode(refresh_token)
+			);
+			const encryptedIdToken = await encrypt(
+				symmetricEncryptionKey,
+				new TextEncoder().encode(id_token)
 			);
 
 			// convert to base64
-			const encryptedAccessTokenBase64 = Buffer.from(encryptedAccessToken).toString('base64');
-			const encryptedRefreshTokenBase64 = Buffer.from(encryptedRefreshToken).toString('base64');
+			const encryptedAccessTokenBase64 = encodeBase64(encryptedAccessToken);
+			const encryptedRefreshTokenBase64 = encodeBase64(encryptedRefreshToken);
+			const encryptedIdTokenBase64 = encodeBase64(encryptedIdToken);
 
-			const user: Omit<User, 'id'> = {
-				email: idToken.email,
-				username: idToken.preferred_username,
-				sub: idToken.sub
+			const user: NewUser = {
+				email: idToken && (idToken["email"] as string),
+				username: idToken && (idToken["preferred_username"] as string),
+				name: idToken && (idToken["name"] as string),
+				sub: idToken!.sub,
 			};
 
 			const dbUser = await createUser(user);
 			if (dbUser) {
-				const session = await auth.createSession(dbUser.id, {
-					email: idToken.email,
-					username: idToken.preferred_username,
-					encryptedAccessToken: encryptedAccessTokenBase64,
-					encryptedRefreshToken: encryptedRefreshTokenBase64
-				});
-				const luciaCookie = auth.createSessionCookie(session.id);
-				cookies.set(luciaCookie.name, luciaCookie.value, {
-					path: '/',
-					...luciaCookie.attributes
-				});
+				const sessionToken = generateSessionToken();
+				const session = await createSession(
+					sessionToken,
+					dbUser.id,
+					encryptedAccessTokenBase64,
+					encryptedRefreshTokenBase64,
+					encryptedIdTokenBase64
+				);
+
+				setSessionTokenCookie(cookies, sessionToken, session.expiresAt);
 
 				// store symmetric key in cookie
-				const keyData = await crypto.subtle.exportKey('jwk', symmetricEncryptionKey);
-				cookies.set('enc_key', JSON.stringify(keyData), {
-					path: '/',
-					secure: true,
+				const keyData = await crypto.subtle.exportKey("jwk", symmetricEncryptionKey);
+				cookies.set(sessionEncryptionKeyName, JSON.stringify(keyData), {
+					path: "/",
+					secure: !dev,
 					httpOnly: true,
-					sameSite: 'strict'
+					sameSite: "strict",
 				});
 			}
-		} catch (e) {
-			// if (e instanceof OAuth2RequestError) {
-			//     // see https://www.rfc-editor.org/rfc/rfc6749#section-5.2
-			//     const { request, message, description } = e;
-			// }
-			// unknown error
-			console.error(e);
+		} catch (error) {
+			console.error(error);
 		}
 
-		redirect(302, '/dashboard');
-	}
+		redirect(302, "/");
+	},
 };

@@ -1,13 +1,20 @@
 <script lang="ts">
-	import { scrollY } from '$lib/scroll';
-	$: border = $scrollY > 70 ? 'border-b' : 'border-none';
+	import type { Snippet } from "svelte";
+
+	interface Props {
+		class?: string;
+		children: Snippet;
+	}
+
+	let { children, class: classes }: Props = $props();
 </script>
 
 <div
-	id="sticky"
-	class="sticky top-0 z-20 -mx-4 my-12 transition-all ease-linear sm:-mx-6 lg:-mx-8 {border} border-gray-200/70 bg-transparent px-4 py-6 backdrop-blur-md sm:px-6 lg:px-8"
+	class={[
+		"sticky top-4 z-20 ml-auto w-fit py-6 pr-4 transition-all ease-linear md:top-2",
+		"-mt-[110px] h-[90px]",
+		classes,
+	]}
 >
-	<div class="ml-24 lg:ml-0">
-		<slot />
-	</div>
+	{@render children()}
 </div>

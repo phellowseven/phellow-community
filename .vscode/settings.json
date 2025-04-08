@@ -1,0 +1,30 @@
+{
+	"workbench.editor.customLabels.patterns": {
+		// The main content for the whole website
+		"**/src/routes/+page.svelte": "Main Page", // The home route page skeleton
+		"**/src/routes/+page.[tj]s": "Main Page Script (c)", // The script for it
+		"**/src/routes/+page.server.[tj]s": "Main Page Script (s)", // The server script for it
+		// Root layouts
+		"**/src/routes/+layout.svelte": "Root Layout", // The main (root) layout for the website
+		"**/src/routes/+layout.[tj]s": "Root Layout Script (c)", // The client script associated with the whole website
+		"**/src/routes/+layout.server.[tj]s": "Root Layout Script (s)", // The server script associated with the whole website
+		// Root error pages
+		"**/src/routes/+error.svelte": "Root (error)", // The root error-page skeleton for the whole website
+		"**/src/error.html": "Fallback (error)", // The fallback error-page skeleton for the whole website
+		// Nested pages content
+		"**/src/routes/?*/**/+page.svelte": "/${dirname}", // A nested page skeleton
+		"**/src/routes/?*/**/+page.[tj]s": "/${dirname} Script (c)", // A nested page script
+		"**/src/routes/?*/**/+page.server.[tj]s": "/${dirname} Script (s)", // A nested page script (only runs on server)
+		// Nested layouts
+		"**/src/routes/?*/**/+layout.svelte": "/${dirname} Layout", // A nested layout markup file
+		"**/src/routes/?*/**/+layout.server.[tj]s": "/${dirname} Layout Script (s)", // A nested layout script that only runs on the server
+		"**/src/routes/?*/**/+layout.[tj]s": "/${dirname} Layout Script (c)", // A nested layout script that runs on the server and the client
+		// Nested error pages
+		"**/src/routes/?*/**/+error.svelte": "/${dirname} (error)", // A nested error page
+		// Endpoint Scripts (APIs)
+		"**/src/routes/**/+server.[tj]s": "/${dirname} Endpoint", // An API endpoint script (server only)
+		// ANY Svelte component anywhere
+		"**/src/**/[!+]*.svelte": "${filename}" // A normal svelte component, in a route folder or a '/components' folder.
+	},
+	"typescript.tsserver.experimental.enableProjectDiagnostics": true
+}

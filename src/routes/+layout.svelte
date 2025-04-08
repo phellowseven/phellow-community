@@ -1,21 +1,35 @@
 <script lang="ts">
-	import '../app.postcss';
-	// import '$lib/theme';
-	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
-	import { i18n } from '$lib/i18n.js';
-	import { onSetLanguageTag } from '$lib/paraglide/runtime';
-	import dayjs from 'dayjs';
+	import "../app.css";
+	import dayjs from "dayjs";
+	import localizedFormat from "dayjs/plugin/localizedFormat";
+	import { ModeWatcher } from "mode-watcher";
+	import { browser } from "$app/environment";
+	import { getLocale, overwriteGetLocale, overwriteSetLocale } from "$lib/paraglide/runtime";
 
-	const locales: Record<string, () => Promise<any>> = {
-		de: () => import('dayjs/locale/de'),
-		en: () => import('dayjs/locale/en')
+	let { children } = $props();
+
+	let locale = $state(getLocale());
+
+	const dayJsFormats: Record<string, () => Promise<any>> = {
+		de: () => import("dayjs/locale/de"),
+		en: () => import("dayjs/locale/en"),
 	};
 
-	onSetLanguageTag((newLanguageTag) => {
-		locales[newLanguageTag]().then(() => dayjs.locale(newLanguageTag));
+	dayjs.extend(localizedFormat);
+
+	overwriteGetLocale(() => locale);
+	overwriteSetLocale((newLocale) => {
+		if (browser) {
+			dayJsFormats[newLocale]().then(() => {
+				dayjs.locale(newLocale);
+			});
+		}
+		locale = newLocale;
 	});
 </script>
 
-<ParaglideJS {i18n}>
-	<slot />
-</ParaglideJS>
+<ModeWatcher />
+
+{#key locale}
+	{@render children()}
+{/key}

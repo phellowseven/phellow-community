@@ -1,178 +1,141 @@
-# phellow.community Frontend
+# phellow•community
 
-[![version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/phellowseven/phellow-community)
+**Your open source patient portal using FHIR.**
 
-Frontend for phellow.community – an open source patient portal respecting KHZG requirements.
+[![version](https://img.shields.io/badge/version-2.0.0-green.svg)](https://github.com/phellowseven/phellow-community)
 
-![Screenshot of Documents page](/docs/images/02_phellow.community_Dokumente_CPU.jpeg 'Dokumenten Ansicht')
+Welcome to **phellow•community**, an open-source patient portal designed to streamline creating a
+frontend for your healthcare project needs. This project aims to provide a user-friendly interface
+for managing appointments and accessing medical records using HL7 FHIR.
 
-## Getting started
+![phellow•community Documents view](/docs/images/02_phellow.community_Dokumente_CPU.png)
 
-### Requirements
+## Table of Contents
 
-In order for this project to work as expected, you need to have:
+- [phellow•community](#phellowcommunity)
+  - [Table of Contents](#table-of-contents)
+  - [About the Project](#about-the-project)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Launch a demo](#launch-a-demo)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [Documentation](#documentation)
+  - [License](#license)
 
-- a [SurrealDB](https://surrealdb.com/) Instance running and accessible
-- an Identity Provider (IdP) with OAuth2
-- a working FHIR Server
+---
 
-### To simply see the application running
+## About the Project
 
-#### Install volta to manage node
+The Patient Portal is a modern, open-source solution for healthcare providers and patients. It is
+built with a focus on accessibility, security, and ease of use. The project leverages cutting-edge
+web technologies like **Svelte**, **SvelteKit**, **TailwindCSS**, and **Vite** to deliver a seamless
+experience.
 
-Follow the volta guide [Getting started](https://docs.volta.sh/guide/getting-started) to install
-volta.
+---
 
-#### Install pnpm
+## Features
 
-After installing volta, install `pnpm`:
+- **Appointment Management**: See scheduled appointments.
+- **Medical Records Access**: View and download medical records securely.
+- **Laboratory Values**: Display patients lab values and graph them.
+- **Multi-Language Support**: Built-in support for multiple languages.
+- **Responsive Design**: Fully optimized for desktop and mobile devices.
 
-```bash
-volta install pnpm
-```
+---
 
-#### Run
+## Getting Started
 
-After cloning the repository, change into the project directory and install the dependencies:
+### Prerequisites
 
-```bash
-pnpm i
-```
+Ensure you have the following installed:
 
-Then build the web app:
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [pnpm](https://pnpm.io/) (preferred package manager)
+- Docker (optional, for containerized deployment)
 
-```bash
-pnpm run build
-```
+### Installation
 
-Finally launch the sample docker-compose via:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/phellowseven/phellow-community.git
+   cd phellow-community
+   ```
+2. Install dependencies
+   ```bash
+   pnpm install
+   ```
+3. Set up environment variables:
+   - Copy `.env.example` to `.env` and configure the variables as needed.
+4. Start the development server:
+   ```bash
+   pnpm run dev
+   ```
 
-```bash
-docker-compose -f docker-compose.sample.yaml up --build --force-recreate
-```
+### Launch a demo
 
-You can now visit [http://localhost:8081/login](http://localhost:8081/login) to see the login.
-Simply press login and you will be redirected to the dashboard. For this demo app instance, the
-login mechanism is handled in the background.
+If you don't have an OAuth Provider or data repository available, you can use the mock services
+provided.
 
-To stop running, press `Ctrl-C`.
-
-### To start building on top
-
-#### Install dependencies
-
-After cloning the repository, install the dependencies:
-
-```bash
-pnpm i
-```
-
-#### .env file
-
-Then configure your endpoints in a `.env` file (You can use the `.env.mockoon.local` file, if you
-want to run a demo environment using the provided [Mockoon](https://mockoon.com/) config. To do so
-quickly, symlink the file: `ln -s .env.mockoon .env`).
-
-When using your own endpoints, it's easiest to copy the contents of `.env.example` for all the
-configurable variables and customize the values for your system.
-
-#### SurrealDB
-
-In order for sessions to work, you need have a running [SurrealDB](https://surrealdb.com/) instance
-the backend can connect to. You can launch one in a [Docker](https://www.docker.com/) container with
-the following command (`--user` and `-pass` have to match the `SURREALDB_USER` & `SURREALDB_PASS`
-values in your `.env` file):
+To launch a mock OIDC Provider, run:
 
 ```bash
-docker run --name surrealdb -d -p 8800:8000 surrealdb/surrealdb:latest start --user qlUwnyAXd --pass ig7x0lm9s9Vq4Qy -A
+pnpm run mock:oidc
 ```
 
-Launch the project in development mode and open the url printed by the command in your browser:
+To provide sample FHIR data to the application, you can launch [Mockoon](https://mockoon.com/) with
+the config at `samples/mockooon.json`.
+
+You can use one of the `.env.mockoon.*` files for the environment variables, depending on how you
+launch the demo (either locally or via docker).
+
+Then start the development server:
 
 ```bash
 pnpm run dev
 ```
 
-#### Mockoon
-
-## Architecture
-
-The frontend relies on Server-Side-Rendering (SSR) through SvelteKit. For more details, read
-[architecture.md](docs/architecture.md).
-
-### Session security
-
-Read [session.md](docs/session.md).
-
-### i18n
-
-This project uses [Paraglide JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs). It is
-highly recommended to use the VS Code extension
-[Sherlock](https://marketplace.visualstudio.com/items?itemName=inlang.vs-code-extension).
-
-## Roadmap
-
-- Structured Data
-  - Patients can view structured data in the form of FHIR Observations.
-- Anamnesis
-  - Patients can submit their anamnesis documents in the form of a FHIR QuestionnaireResponse.
-- PROM/PREM
-  - Patient Reported Outcome Measures (PROM) & Patient Reported Experience Measures (PREM) can be
-    collected.
-- Schedule Appointments
-  - Patients can schedule an appointment with your institution.
-
-## Deploying
-
-In order to deploy, you need two components:
-
-1. The built SvelteKit application
-2. A surrealDB instance
-
-### Building the SvelteKit application
+If you have Docker available on your system, you can use `docker-compose` with the
+`docker-compose.sample.yaml` config to quickly launch a demo system:
 
 ```bash
-pnpm run build
+docker-compose -f docker-compose.sample.yaml up -d
 ```
 
-The outputs are located in the `build` directory. For more details, see
-**[Building your app](https://kit.svelte.dev/docs/building-your-app)** in the SvelteKit
-documentation.
+## Usage
 
-### Using Docker to deploy the web app
+- Access the application in your browser at `http://localhost:5173` (default Vite port).
+- Patients can log in to view their data
 
-First build the app as shown in the previous section, then you can use the Dockerfile. For an
-example on how to deploy multiple services, see `docker-compose.sample.yaml`.
+For detailed usage instructions, refer to the [docs](/docs/) directory.
 
-## Sources
+## Contributing
 
-Our Sources.
+We welcome contributions from the community! To contribute:
 
-### Sample data
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your changes and push the branch:
+   ```bash
+   git commit -m "Add your feature description"
+    git push origin feature/your-feature-name
+   ```
+4. Open a pull request.
 
-- FHIR Observations provided by
-  [Polar Project](https://www.health-atlas.de/data_files/588?version=1) is greatly appreciated
+Thank you for contributing to phellow•community! Together, we can make healthcare more accessible
+and efficient.
 
-## Debug Server-Side SvelteKit
+## Documentation
 
-Add a debugging script to `package.json`:
+For more detailed documentation, including API references, deployment guides, and architecture
+overviews, visit the [docs](/docs/) directory.
 
-```json
-"scripts": {
-  …
-  "debug": "NODE_OPTIONS='--inspect' vite dev",
-  …
- },
-```
+## License
 
-Run the command:
-
-```bash
-pnpm run debug
-```
-
-### Attach your browser as debugging client
-
-Go to [arc://inspect](arc://inspect) and hit _Inspect_ in the process started in the previous step.
-
-Place the `debugger` statement in your server-side code and start debugging right from DevTools.
+This project is licensed under the Apache License Version 2.0 License. Feel free to use, modify, and
+distribute it as per the terms of the license.

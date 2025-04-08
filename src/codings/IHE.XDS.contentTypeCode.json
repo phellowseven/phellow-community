@@ -1,150 +1,150 @@
 {
-  "resourceType": "ValueSet",
-  "id": "1.2.276.0.76.11.39",
-  "url": "http://ihe-d.de/ValueSets/IHEXDScontentTypeCode",
-  "version": "v3",
-  "title": "IHE XDS contentTypeCode",
-  "status": "active",
-  "date": "2021-07-06T21:18:31",
-  "publisher": "IHE Deutschland e.V.",
-  "compose": {
-    "include": [
-      {
-        "system": "1.3.6.1.4.1.19376.3.276.1.5.12",
-        "extension": [
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:pin:Grund&#160;der&#160;Übermittlung"
-          },
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.12"
-          }
-        ],
-        "concept": [
-          {
-            "code": "1",
-            "display": "Patientenkontakt",
-            "designation": [{ "language": "de-DE", "value": "Patientenkontakt" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "2",
-            "display": "Verlegung",
-            "designation": [{ "language": "de-DE", "value": "Verlegung" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "3",
-            "display": "Entlassung",
-            "designation": [{ "language": "de-DE", "value": "Entlassung" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "4",
-            "display": "Überweisung/Einweisung",
-            "designation": [{ "language": "de-DE", "value": "Überweisung/Einweisung" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "5",
-            "display": "Aufnahme",
-            "designation": [{ "language": "de-DE", "value": "Aufnahme" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "6",
-            "display": "Anforderung",
-            "designation": [{ "language": "de-DE", "value": "Anforderung" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "7",
-            "display": "Auf Anfrage",
-            "designation": [{ "language": "de-DE", "value": "Auf Anfrage" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "8",
-            "display": "Veranlassung durch Patient",
-            "designation": [{ "language": "de-DE", "value": "Veranlassung durch Patient" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "9",
-            "display": "Konsil/Zweitmeinung",
-            "designation": [{ "language": "de-DE", "value": "Konsil/Zweitmeinung" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "10",
-            "display": "Systemwechsel/Archivierung",
-            "designation": [{ "language": "de-DE", "value": "Systemwechsel/Archivierung" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          },
-          {
-            "code": "11",
-            "display": "Monitoring",
-            "designation": [{ "language": "de-DE", "value": "Monitoring" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+	"resourceType": "ValueSet",
+	"id": "1.2.276.0.76.11.39",
+	"url": "http://ihe-d.de/ValueSets/IHEXDScontentTypeCode",
+	"version": "v3",
+	"title": "IHE XDS contentTypeCode",
+	"status": "active",
+	"date": "2021-07-06T21:18:31",
+	"publisher": "IHE Deutschland e.V.",
+	"compose": {
+		"include": [
+			{
+				"system": "1.3.6.1.4.1.19376.3.276.1.5.12",
+				"extension": [
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "urn:pin:Grund%20der%20Übermittlung"
+					},
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.12"
+					}
+				],
+				"concept": [
+					{
+						"code": "1",
+						"display": "Patientenkontakt",
+						"designation": [{ "language": "de-DE", "value": "Patientenkontakt" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "2",
+						"display": "Verlegung",
+						"designation": [{ "language": "de-DE", "value": "Verlegung" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "3",
+						"display": "Entlassung",
+						"designation": [{ "language": "de-DE", "value": "Entlassung" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "4",
+						"display": "Überweisung/Einweisung",
+						"designation": [{ "language": "de-DE", "value": "Überweisung/Einweisung" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "5",
+						"display": "Aufnahme",
+						"designation": [{ "language": "de-DE", "value": "Aufnahme" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "6",
+						"display": "Anforderung",
+						"designation": [{ "language": "de-DE", "value": "Anforderung" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "7",
+						"display": "Auf Anfrage",
+						"designation": [{ "language": "de-DE", "value": "Auf Anfrage" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "8",
+						"display": "Veranlassung durch Patient",
+						"designation": [{ "language": "de-DE", "value": "Veranlassung durch Patient" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "9",
+						"display": "Konsil/Zweitmeinung",
+						"designation": [{ "language": "de-DE", "value": "Konsil/Zweitmeinung" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "10",
+						"display": "Systemwechsel/Archivierung",
+						"designation": [{ "language": "de-DE", "value": "Systemwechsel/Archivierung" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					},
+					{
+						"code": "11",
+						"display": "Monitoring",
+						"designation": [{ "language": "de-DE", "value": "Monitoring" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.12"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
 }

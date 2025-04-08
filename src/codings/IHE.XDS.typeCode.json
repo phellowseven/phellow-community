@@ -449,7 +449,7 @@
         "extension": [
           {
             "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:pin:Logical&#160;Observation&#160;Identifier&#160;Names&#160;and&#160;Codes"
+            "valueString": "urn:pin:Logical%20Observation%20Identifier%20Names%20and%20Codes"
           },
           {
             "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",

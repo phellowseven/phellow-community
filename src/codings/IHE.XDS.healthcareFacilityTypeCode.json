@@ -1,310 +1,310 @@
 {
-  "resourceType": "ValueSet",
-  "id": "1.2.276.0.76.11.36",
-  "url": "http://ihe-d.de/ValueSets/IHEXDShealthcareFacilityTypeCode",
-  "version": "v3",
-  "title": "IHE XDS healthcareFacilityTypeCode",
-  "status": "active",
-  "date": "2021-07-06T21:23:52",
-  "publisher": "IHE Deutschland e.V.",
-  "compose": {
-    "include": [
-      {
-        "system": "1.3.6.1.4.1.19376.3.276.1.5.2",
-        "extension": [
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:pin:Einrichtungsarten&#160;der&#160;patientenbezogenen&#160;Gesundheitsversorgung"
-          },
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.2"
-          }
-        ],
-        "concept": [
-          {
-            "code": "APD",
-            "display": "Ambulanter Pflegedienst",
-            "designation": [{ "language": "de-DE", "value": "Ambulanter Pflegedienst" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "APO",
-            "display": "Apotheke",
-            "designation": [{ "language": "de-DE", "value": "Apotheke" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "BER",
-            "display": "Ärztlicher Bereitschaftsdienst",
-            "designation": [{ "language": "de-DE", "value": "Ärztlicher Bereitschaftsdienst" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "PRA",
-            "display": "Arztpraxis",
-            "designation": [{ "language": "de-DE", "value": "Arztpraxis" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "BAA",
-            "display": "Betriebsärztliche Abteilung",
-            "designation": [{ "language": "de-DE", "value": "Betriebsärztliche Abteilung" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "BHR",
-            "display": "Gesundheitsbehörde",
-            "designation": [{ "language": "de-DE", "value": "Gesundheitsbehörde" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "HEB",
-            "display": "Hebamme/Geburtshaus",
-            "designation": [{ "language": "de-DE", "value": "Hebamme/Geburtshaus" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "HOS",
-            "display": "Hospiz",
-            "designation": [{ "language": "de-DE", "value": "Hospiz" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "KHS",
-            "display": "Krankenhaus",
-            "designation": [{ "language": "de-DE", "value": "Krankenhaus" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "MVZ",
-            "display": "Medizinisches Versorgungszentrum",
-            "designation": [{ "language": "de-DE", "value": "Medizinisches Versorgungszentrum" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "HAN",
-            "display": "Medizinisch-technisches Handwerk",
-            "designation": [{ "language": "de-DE", "value": "Medizinisch-technisches Handwerk" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "REH",
-            "display": "Medizinische Rehabilitation",
-            "designation": [{ "language": "de-DE", "value": "Medizinische Rehabilitation" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "HEI",
-            "display": "Nicht-ärztliche Heilberufs-Praxis",
-            "designation": [{ "language": "de-DE", "value": "Nicht-ärztliche Heilberufs-Praxis" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "PFL",
-            "display": "Pflegeheim",
-            "designation": [{ "language": "de-DE", "value": "Pflegeheim" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "RTN",
-            "display": "Rettungsdienst",
-            "designation": [{ "language": "de-DE", "value": "Rettungsdienst" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "SEL",
-            "display": "Selbsthilfe",
-            "designation": [{ "language": "de-DE", "value": "Selbsthilfe" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          },
-          {
-            "code": "TMZ",
-            "display": "Telemedizinisches Zentrum ",
-            "designation": [{ "language": "de-DE", "value": "Telemedizinisches Zentrum " }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "system": "1.3.6.1.4.1.19376.3.276.1.5.3",
-        "extension": [
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:pin:Einrichtungsarten&#160;ausserhalb&#160;der&#160;patientenbezogenen&#160;Gesundheitsversorgung"
-          },
-          {
-            "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
-            "valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.3"
-          }
-        ],
-        "concept": [
-          {
-            "code": "BIL",
-            "display": "Bildungseinrichtung",
-            "designation": [{ "language": "de-DE", "value": "Bildungseinrichtung" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
-              }
-            ]
-          },
-          {
-            "code": "FOR",
-            "display": "Forschungseinrichtung",
-            "designation": [{ "language": "de-DE", "value": "Forschungseinrichtung" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
-              }
-            ]
-          },
-          {
-            "code": "GEN",
-            "display": "Gen-Analysedienste",
-            "designation": [{ "language": "de-DE", "value": "Gen-Analysedienste" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
-              }
-            ]
-          },
-          {
-            "code": "MDK",
-            "display": "Medizinischer Dienst der Krankenversicherung",
-            "designation": [
-              { "language": "de-DE", "value": "Medizinischer Dienst der Krankenversicherung" }
-            ],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
-              }
-            ]
-          },
-          {
-            "code": "PAT",
-            "display": "Patient außerhalb der Betreuung ",
-            "designation": [{ "language": "de-DE", "value": "Patient außerhalb der Betreuung " }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
-              }
-            ]
-          },
-          {
-            "code": "SPE",
-            "display": "Spendedienste",
-            "designation": [{ "language": "de-DE", "value": "Spendedienste" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
-              }
-            ]
-          },
-          {
-            "code": "VER",
-            "display": "Versicherungsträger",
-            "designation": [{ "language": "de-DE", "value": "Versicherungsträger" }],
-            "extension": [
-              {
-                "url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
-                "valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+	"resourceType": "ValueSet",
+	"id": "1.2.276.0.76.11.36",
+	"url": "http://ihe-d.de/ValueSets/IHEXDShealthcareFacilityTypeCode",
+	"version": "v3",
+	"title": "IHE XDS healthcareFacilityTypeCode",
+	"status": "active",
+	"date": "2021-07-06T21:23:52",
+	"publisher": "IHE Deutschland e.V.",
+	"compose": {
+		"include": [
+			{
+				"system": "1.3.6.1.4.1.19376.3.276.1.5.2",
+				"extension": [
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "urn:pin:Einrichtungsarten%20der%20patientenbezogenen%20Gesundheitsversorgung"
+					},
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.2"
+					}
+				],
+				"concept": [
+					{
+						"code": "APD",
+						"display": "Ambulanter Pflegedienst",
+						"designation": [{ "language": "de-DE", "value": "Ambulanter Pflegedienst" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "APO",
+						"display": "Apotheke",
+						"designation": [{ "language": "de-DE", "value": "Apotheke" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "BER",
+						"display": "Ärztlicher Bereitschaftsdienst",
+						"designation": [{ "language": "de-DE", "value": "Ärztlicher Bereitschaftsdienst" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "PRA",
+						"display": "Arztpraxis",
+						"designation": [{ "language": "de-DE", "value": "Arztpraxis" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "BAA",
+						"display": "Betriebsärztliche Abteilung",
+						"designation": [{ "language": "de-DE", "value": "Betriebsärztliche Abteilung" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "BHR",
+						"display": "Gesundheitsbehörde",
+						"designation": [{ "language": "de-DE", "value": "Gesundheitsbehörde" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "HEB",
+						"display": "Hebamme/Geburtshaus",
+						"designation": [{ "language": "de-DE", "value": "Hebamme/Geburtshaus" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "HOS",
+						"display": "Hospiz",
+						"designation": [{ "language": "de-DE", "value": "Hospiz" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "KHS",
+						"display": "Krankenhaus",
+						"designation": [{ "language": "de-DE", "value": "Krankenhaus" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "MVZ",
+						"display": "Medizinisches Versorgungszentrum",
+						"designation": [{ "language": "de-DE", "value": "Medizinisches Versorgungszentrum" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "HAN",
+						"display": "Medizinisch-technisches Handwerk",
+						"designation": [{ "language": "de-DE", "value": "Medizinisch-technisches Handwerk" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "REH",
+						"display": "Medizinische Rehabilitation",
+						"designation": [{ "language": "de-DE", "value": "Medizinische Rehabilitation" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "HEI",
+						"display": "Nicht-ärztliche Heilberufs-Praxis",
+						"designation": [{ "language": "de-DE", "value": "Nicht-ärztliche Heilberufs-Praxis" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "PFL",
+						"display": "Pflegeheim",
+						"designation": [{ "language": "de-DE", "value": "Pflegeheim" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "RTN",
+						"display": "Rettungsdienst",
+						"designation": [{ "language": "de-DE", "value": "Rettungsdienst" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "SEL",
+						"display": "Selbsthilfe",
+						"designation": [{ "language": "de-DE", "value": "Selbsthilfe" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					},
+					{
+						"code": "TMZ",
+						"display": "Telemedizinisches Zentrum ",
+						"designation": [{ "language": "de-DE", "value": "Telemedizinisches Zentrum " }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.2"
+							}
+						]
+					}
+				]
+			},
+			{
+				"system": "1.3.6.1.4.1.19376.3.276.1.5.3",
+				"extension": [
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "urn:pin:Einrichtungsarten%20ausserhalb%20der%20patientenbezogenen%20Gesundheitsversorgung"
+					},
+					{
+						"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-AlternateName",
+						"valueString": "urn:oid:1.3.6.1.4.1.19376.3.276.1.5.3"
+					}
+				],
+				"concept": [
+					{
+						"code": "BIL",
+						"display": "Bildungseinrichtung",
+						"designation": [{ "language": "de-DE", "value": "Bildungseinrichtung" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
+							}
+						]
+					},
+					{
+						"code": "FOR",
+						"display": "Forschungseinrichtung",
+						"designation": [{ "language": "de-DE", "value": "Forschungseinrichtung" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
+							}
+						]
+					},
+					{
+						"code": "GEN",
+						"display": "Gen-Analysedienste",
+						"designation": [{ "language": "de-DE", "value": "Gen-Analysedienste" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
+							}
+						]
+					},
+					{
+						"code": "MDK",
+						"display": "Medizinischer Dienst der Krankenversicherung",
+						"designation": [
+							{ "language": "de-DE", "value": "Medizinischer Dienst der Krankenversicherung" }
+						],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
+							}
+						]
+					},
+					{
+						"code": "PAT",
+						"display": "Patient außerhalb der Betreuung ",
+						"designation": [{ "language": "de-DE", "value": "Patient außerhalb der Betreuung " }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
+							}
+						]
+					},
+					{
+						"code": "SPE",
+						"display": "Spendedienste",
+						"designation": [{ "language": "de-DE", "value": "Spendedienste" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
+							}
+						]
+					},
+					{
+						"code": "VER",
+						"display": "Versicherungsträger",
+						"designation": [{ "language": "de-DE", "value": "Versicherungsträger" }],
+						"extension": [
+							{
+								"url": "http://api.phellowseven.com/fhir/StructureDefinition/ValueSet-Code-System",
+								"valueString": "1.3.6.1.4.1.19376.3.276.1.5.3"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
 }

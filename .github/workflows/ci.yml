@@ -1,0 +1,330 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - "dev/*"
+      - "feature/*"
+  pull_request:
+    branches: [main]
+
+# Ensure only one workflow runs per ref/PR at a time
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.pnpm-cache.outputs.cache-hit }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2" # Using version from volta config
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4" # Using version from packageManager field
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Paraglide compile (i18n)
+        run: pnpm exec paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
+
+      - name: Cache node_modules and paraglide output
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+  lint:
+    name: Linting
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Run Prettier check
+        run: pnpm run lint
+
+  type-check:
+    name: Type Checking
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Run TypeScript check
+        run: pnpm run check
+
+  test:
+    name: Tests
+    needs: [lint, type-check]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Run tests
+        run: pnpm run test
+
+  build:
+    name: Build
+    needs: [test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Build application
+        run: pnpm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: build
+          retention-days: 1
+
+  screenshots:
+    if: github.ref == 'refs/heads/main'
+    name: Screenshots
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    env:
+      POSTGRES_URL: postgresql://postgres:postgres@localhost:5432/test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test
+      IDP_BASE_URL: "http://localhost:8080/"
+      OAUTH_CLIENT_ID: "ntek3a2alp2uwtu5eqkm3tmsvi"
+      OAUTH_CLIENT_SECRET: ""
+      OAUTH_CODE_CHALLENGE_METHOD: "S256"
+      OAUTH_CALLBACK: "http://localhost:3000/login/callback"
+      OAUTH_LOGOUT_REDIRECT_URI: "http://localhost:3000/login"
+      OAUTH_SCOPES: "openid email"
+      FHIR_BASE_URL: "http://localhost:3001/fhir"
+      FHIR_DOCUMENT_REFERENCE_URL: "http://localhost:3001/fhir/DocumentReference"
+      FHIR_DOCUMENT_DEFAULT_SEARCH_PARAMS: ""
+      FHIR_APPOINTMENT_URL: "http://localhost:3001/fhir/Appointment"
+      FHIR_APPOINTMENT_DEFAULT_SEARCH_PARAMS: ""
+      FHIR_OBSERVATION_URL: "http://localhost:3001/fhir/Observation"
+      FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS: ""
+      FHIR_QUESTIONNAIRE_URL: "http://localhost:3001/fhir/Questionnaire"
+      FHIR_QUESTIONNAIRE_DEFAULT_SEARCH_PARAMS: ""
+      FHIR_TASK_URL: "http://localhost:3001/fhir/Task"
+      FHIR_TASK_DEFAULT_SEARCH_PARAMS: ""
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.18.2"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.15.4"
+          run_install: false
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            src/lib/paraglide
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: build
+
+      - name: Initialize the DB
+        run: pnpm run db:migrate
+
+      - name: Run the Mock OIDC Server
+        run: cd samples/oidc-mock-server && pnpm i && cd ../.. && pnpm run mock:oidc &
+
+      # Set up Mockoon
+      - name: Install Mockoon CLI
+        run: npm install -g @mockoon/cli
+
+      - name: Prepare Mockoon configuration directory
+        run: |
+          mkdir -p /tmp/mockoon-data/fhir
+          cp ./samples/mockoon.json /tmp/mockoon-data/
+          cp -r ./samples/fhir/* /tmp/mockoon-data/fhir/
+
+      - name: Start Mockoon
+        run: mockoon-cli start --data /tmp/mockoon-data/mockoon.json --port 3001 &
+
+      - name: Wait for Mockoon
+        run: |
+          echo "Waiting for Mockoon to start..."
+          timeout 30 bash -c 'until curl -s http://localhost:3001/health > /dev/null; do sleep 1; done' || echo "Mockoon may not be ready, but continuing anyway"
+
+      # Playwright
+      - name: Restore Playwright browsers cache
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Start the app
+        run: |
+          export ORIGIN=http://localhost:3000
+          export NODE_ENV=development
+          cd build && node index.js &
+
+      - name: Wait for app to start
+        run: |
+          echo "Waiting for app to start..."
+          timeout 30 bash -c 'until curl -s http://localhost:3000 > /dev/null; do sleep 1; done' || echo "App may not be ready, but continuing anyway"
+
+      - name: Generate screenshots
+        run: pnpm run screenshots:ci
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: screenshots
+          retention-days: 14
