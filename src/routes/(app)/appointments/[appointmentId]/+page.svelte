@@ -51,7 +51,7 @@
 			{#await resolveLocation(appointment.participant.find( (p) => p.actor?.reference?.startsWith("Location/") )?.actor?.reference) then location}
 				{#if location}
 					<div
-						class="flex flex-1 flex-col rounded-lg border border-sidebar-border bg-sidebar shadow-sm"
+						class="border-sidebar-border bg-sidebar flex flex-1 flex-col rounded-lg border shadow-sm"
 					>
 						<div class="inline-flex items-center gap-2 p-4 text-sm font-bold">
 							<MapPin class="size-4 shrink-0" />

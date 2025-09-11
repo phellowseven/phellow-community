@@ -57,7 +57,7 @@ export const load = (async ({ locals, url }) => {
 	};
 
 	// Construct FHIR URL with search parameters
-	let fhirUrl = new URL(env.FHIR_OBSERVATION_URL ?? `${env.FHIR_BASE_URL}/Observation`);
+	let fhirUrl = new URL(env.FHIR_OBSERVATION_URL ?? `${env.FHIR_BASE_URL!}/Observation`);
 	if (env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS) {
 		fhirUrl = addQueryParamsToUrl(fhirUrl.href, env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS);
 	}

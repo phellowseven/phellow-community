@@ -58,7 +58,7 @@
 				<Button type="submit" id="logoutEverywhere" variant="destructive"
 					>{m.account_logout_everywhere()}</Button
 				>
-				<p class="text-sm text-muted-foreground">
+				<p class="text-muted-foreground text-sm">
 					{m.account_logout_description()}
 				</p>
 			</form>

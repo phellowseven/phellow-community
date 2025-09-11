@@ -8,7 +8,7 @@ import { zod } from "sveltekit-superforms/adapters";
 import type { Actions, PageServerLoad } from "./$types";
 
 export const load = (async ({ locals }) => {
-	let url = new URL(env.FHIR_DOCUMENT_REFERENCE_URL ?? `${env.FHIR_BASE_URL}/DocumentReference`);
+	let url = new URL(env.FHIR_DOCUMENT_REFERENCE_URL ?? `${env.FHIR_BASE_URL!}/DocumentReference`);
 	if (env.FHIR_DOCUMENT_DEFAULT_SEARCH_PARAMS) {
 		url = addQueryParamsToUrl(url.href, env.FHIR_DOCUMENT_DEFAULT_SEARCH_PARAMS);
 	}

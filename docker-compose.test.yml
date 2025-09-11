@@ -11,7 +11,7 @@ services:
     image: postgres:17
     restart: no
     ports:
-      - "5433:5432"  # Different port for testing
+      - "5433:5432" # Different port for testing
     environment:
       POSTGRES_USER: test_user
       POSTGRES_PASSWORD: test_password

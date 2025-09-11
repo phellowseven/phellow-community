@@ -9,7 +9,7 @@ export const load = (async ({ locals }) => {
 		Authorization: "Bearer " + accessToken,
 		"Content-Type": "application/json; charset=utf-8",
 	};
-	let url = new URL(env.FHIR_TASK_URL ?? `${env.FHIR_BASE_URL}/Task`);
+	let url = new URL(env.FHIR_TASK_URL ?? `${env.FHIR_BASE_URL!}/Task`);
 	if (env.FHIR_TASK_DEFAULT_SEARCH_PARAMS) {
 		url = addQueryParamsToUrl(url.href, env.FHIR_TASK_DEFAULT_SEARCH_PARAMS);
 	}

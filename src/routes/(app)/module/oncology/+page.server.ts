@@ -1,6 +1,5 @@
 import { parseFHIRBundle } from "$components/oncology/parseBundle";
 import { env } from "$env/dynamic/private";
-import { logger } from "$lib/server/logger";
 import { parseJWT } from "@oslojs/jwt";
 import { error } from "@sveltejs/kit";
 import type { Bundle } from "fhir/r4";
@@ -12,8 +11,7 @@ export const load = (async ({ locals }) => {
 	if ("scope" in payload) {
 		const scope = payload.scope as string;
 		if (scope.includes("module_onco")) {
-			logger.trace(`Fetching oncology data from ${env.FHIR_ONCOLOGY_URL}`);
-			let url = new URL(env.FHIR_ONCOLOGY_URL ?? `${env.FHIR_BASE_URL}/Patient/$oncology`);
+			let url = new URL(env.FHIR_ONCOLOGY_URL ?? `${env.FHIR_BASE_URL!}/Patient/$oncology`);
 			const accessToken = await locals.validAccessToken();
 			const headers = {
 				Authorization: "Bearer " + accessToken,

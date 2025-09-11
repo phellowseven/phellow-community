@@ -99,7 +99,11 @@ export function validateQuantity(value: any): ValidationResult {
 	return { isValid: true };
 }
 
-export function validateQuestionnaireItem(item: QuestionnaireItem, value: any, isEnabled: boolean = true): ValidationResult {
+export function validateQuestionnaireItem(
+	item: QuestionnaireItem,
+	value: any,
+	isEnabled: boolean = true
+): ValidationResult {
 	// Check required first, but only if the item is enabled
 	if (item.required && isEnabled) {
 		const requiredResult = validateRequired(value);

@@ -25,7 +25,7 @@ export const load = (async ({ locals }) => {
 		Authorization: "Bearer " + accessToken,
 		"Content-Type": "application/json; charset=utf-8",
 	};
-	let url = new URL(env.FHIR_APPOINTMENT_URL ?? `${env.FHIR_BASE_URL}/Appointment`);
+	let url = new URL(env.FHIR_APPOINTMENT_URL ?? `${env.FHIR_BASE_URL!}/Appointment`);
 	if (env.FHIR_APPOINTMENT_DEFAULT_SEARCH_PARAMS) {
 		url = addQueryParamsToUrl(url.href, env.FHIR_APPOINTMENT_DEFAULT_SEARCH_PARAMS);
 	}

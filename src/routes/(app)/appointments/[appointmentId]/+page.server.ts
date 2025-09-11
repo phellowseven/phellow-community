@@ -13,7 +13,7 @@ export const load = (async ({ locals, params }) => {
 	};
 
 	const appointmentURL = appendPathToUrl(
-		new URL(env.FHIR_APPOINTMENT_URL ?? `${env.FHIR_BASE_URL}/Appointment`),
+		new URL(env.FHIR_APPOINTMENT_URL ?? `${env.FHIR_BASE_URL!}/Appointment`),
 		appointmentId
 	);
 	const response = await fetch(appointmentURL, {

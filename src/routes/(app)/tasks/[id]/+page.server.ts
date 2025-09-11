@@ -25,7 +25,7 @@ export const load = (async ({ locals, params }) => {
 			if (task.focus?.reference) {
 				const resourceType = task.focus.reference.split("/")[0];
 				const response = await fetch(
-					appendPathToUrl(new URL(env.FHIR_BASE_URL), task.focus.reference),
+					appendPathToUrl(new URL(env.FHIR_BASE_URL!), task.focus.reference),
 					{
 						headers,
 					}

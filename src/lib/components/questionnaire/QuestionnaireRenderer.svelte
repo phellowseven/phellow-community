@@ -106,7 +106,6 @@
 				</Button>
 			</div>
 		{/if}
-
 	</div>
 	<QuestionnaireProgress
 		currentIndex={questionnaireState.currentIndex}

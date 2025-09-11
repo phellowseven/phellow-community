@@ -11,7 +11,7 @@
 		<h1>{page.status}</h1>
 		{#if page.status === 404}
 			<h2 class="border-b-0">{m.error_404_heading()}</h2>
-			<p class="text-xl text-muted-foreground">
+			<p class="text-muted-foreground text-xl">
 				{m.error_404_body()}
 			</p>
 		{:else if page.error}

@@ -25,6 +25,6 @@
 <div class="flex flex-col gap-2">
 	<Input type="number" value={value ?? ""} oninput={handleInput} step={0.1} />
 	{#if error}
-		<span class="text-sm text-destructive-foreground">{error}</span>
+		<span class="text-destructive-foreground text-sm">{error}</span>
 	{/if}
 </div>

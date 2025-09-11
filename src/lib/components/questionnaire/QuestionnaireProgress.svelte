@@ -23,7 +23,7 @@
 
 <div>
 	<!-- Step counter -->
-	<div class="mb-2 flex items-center justify-between text-muted-foreground">
+	<div class="text-muted-foreground mb-2 flex items-center justify-between">
 		<div class="text-sm">
 			{m.questionnaire_progress_steps({ current: currentIndex + 1, total: totalSteps })}
 		</div>

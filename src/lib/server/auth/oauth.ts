@@ -9,10 +9,26 @@ const oauthLogger = logger.child({ module: "OAuth" });
 
 export let config: client.Configuration;
 
+function checkForEnvVariables() {
+	const requiredEnvVars = [
+		"OAUTH_CLIENT_ID",
+		"OAUTH_CALLBACK",
+		"IDP_BASE_URL",
+		"OAUTH_LOGOUT_REDIRECT_URI",
+	];
+	for (const varName of requiredEnvVars) {
+		if (!env[varName]) {
+			throw new Error(`Missing required environment variable: ${varName}`);
+		}
+	}
+}
+
+checkForEnvVariables();
+
 export async function connectOAuth2Client() {
 	config = await client.discovery(
-		new URL(env.IDP_BASE_URL),
-		env.OAUTH_CLIENT_ID,
+		new URL(env.IDP_BASE_URL!),
+		env.OAUTH_CLIENT_ID!,
 		env.OAUTH_CLIENT_SECRET,
 		undefined,
 		{
@@ -24,7 +40,7 @@ export async function connectOAuth2Client() {
 }
 
 export function redirectURI(): string {
-	return env.OAUTH_CALLBACK;
+	return env.OAUTH_CALLBACK!;
 }
 
 export function scopes(): string {
@@ -43,7 +59,7 @@ export async function logoutURL(encryptionKey: CryptoKey, encryptedIdToken: stri
 	const decryptedIdToken = await decrypt(encryptionKey, decodeBase64(encryptedIdToken));
 	const idToken = new TextDecoder().decode(decryptedIdToken);
 	const url = client.buildEndSessionUrl(config, {
-		post_logout_redirect_uri: env.OAUTH_LOGOUT_REDIRECT_URI,
+		post_logout_redirect_uri: env.OAUTH_LOGOUT_REDIRECT_URI!,
 		id_token_hint: idToken,
 	});
 	return url;
