@@ -162,8 +162,15 @@ jobs:
     name: Build
     needs: [test]
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+      POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
 
     steps:
+      - name: Check env vars
+        run: |
+          : "${POSTGRES_URL:?POSTGRES_URL is not set}"
+          : "${NODE_ENV:?NODE_ENV is not set}"
       - name: Checkout code
         uses: actions/checkout@v4
 
