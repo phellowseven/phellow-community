@@ -165,12 +165,14 @@ jobs:
     env:
       NODE_ENV: production
       POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+      OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
 
     steps:
       - name: Check env vars
         run: |
           : "${POSTGRES_URL:?POSTGRES_URL is not set}"
           : "${NODE_ENV:?NODE_ENV is not set}"
+          : "${OAUTH_CLIENT_ID:?OAUTH_CLIENT_ID is not set}"
       - name: Checkout code
         uses: actions/checkout@v4
 
