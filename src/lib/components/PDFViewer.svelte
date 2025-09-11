@@ -3,7 +3,7 @@
 
 	import type { PDFSlick } from "@pdfslick/core";
 	import { onMount, onDestroy } from "svelte";
-	import { ZoomOut, ChevronLeft, ChevronRight, ZoomIn } from "lucide-svelte/icons";
+	import { ZoomOut, ChevronLeft, ChevronRight, ZoomIn } from "@lucide/svelte/icons";
 	import Button from "$lib/components/ui/button/button.svelte";
 	import { onClickOutside, useResizeObserver } from "runed";
 	import * as m from "$lib/paraglide/messages";
@@ -101,9 +101,9 @@
 		</div>
 	</div>
 
-	<div class="absolute bottom-0 right-0 z-50 mb-8 h-12 w-full">
+	<div class="absolute right-0 bottom-0 z-50 mb-8 h-12 w-full">
 		<div class="flex justify-center">
-			<div class="flex gap-2 rounded-xl bg-muted/70 shadow-sm backdrop-blur-lg">
+			<div class="bg-muted/70 flex gap-2 rounded-xl shadow-xs backdrop-blur-lg">
 				<Button
 					onclick={onGotoPrevious}
 					size="icon"
@@ -113,15 +113,15 @@
 					class="group"
 				>
 					<span class="sr-only">Vorherige Seite</span>
-					<ChevronLeft class="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+					<ChevronLeft class="size-5 transition-transform duration-200 group-hover:scale-110" />
 				</Button>
 				<Button onclick={zoomOut} size="icon" variant="ghost" type="button" class="group">
 					<span class="sr-only">verkleinern</span>
-					<ZoomOut class="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+					<ZoomOut class="size-5 transition-transform duration-200 group-hover:scale-110" />
 				</Button>
 				<Button onclick={zoomIn} size="icon" variant="ghost" type="button" class="group">
 					<span class="sr-only">vergrößern</span>
-					<ZoomIn class="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+					<ZoomIn class="size-5 transition-transform duration-200 group-hover:scale-110" />
 				</Button>
 				<Button
 					onclick={onGotoNext}
@@ -132,7 +132,7 @@
 					class="group"
 				>
 					<span class="sr-only">Nächste Seite</span>
-					<ChevronRight class="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+					<ChevronRight class="size-5 transition-transform duration-200 group-hover:scale-110" />
 				</Button>
 			</div>
 		</div>

@@ -4,10 +4,10 @@
 	import { onMount } from "svelte";
 	import * as m from "$lib/paraglide/messages";
 
-	let form: HTMLFormElement;
+	let form: HTMLFormElement | undefined = $state(undefined);
 
 	onMount(() => {
-		form.submit();
+		form?.submit();
 	});
 </script>
 

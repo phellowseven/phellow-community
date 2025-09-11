@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Dayjs } from "dayjs";
 	import * as m from "$lib/paraglide/messages";
-	import File from "lucide-svelte/icons/file";
+	import File from "@lucide/svelte/icons/file";
 
 	interface Props {
 		title?: string;
@@ -17,7 +17,7 @@
 
 <a {href} class={classes} {...props}>
 	<div class="flex w-full flex-row items-center">
-		<File class="mr-4 h-4 w-4 shrink-0 sm:mr-6 sm:h-6 sm:w-6" />
+		<File class="mr-4 size-4 shrink-0 sm:mr-6 sm:h-6 sm:w-6" />
 		<div class="flex flex-col">
 			<p class="flex flex-col items-baseline sm:flex-row">
 				<span class="font-semibold">
@@ -27,7 +27,7 @@
 					<span class="ml-0 text-sm sm:ml-2">({type})</span>
 				{/if}
 			</p>
-			<div class="flex flex-col text-muted-foreground sm:flex-row">
+			<div class="text-muted-foreground flex flex-col sm:flex-row">
 				{#if createdAt}
 					<time datetime={createdAt?.format("YYYY-MM-DD")}>
 						{createdAt?.format(m.document_createdDate_format())}

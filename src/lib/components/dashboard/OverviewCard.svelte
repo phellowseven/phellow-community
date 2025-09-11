@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Skeleton } from "$components/ui/skeleton";
-	import ArrowRight from "lucide-svelte/icons/arrow-right";
+	import ArrowRight from "@lucide/svelte/icons/arrow-right";
 	import type { Snippet } from "svelte";
 	import * as m from "$lib/paraglide/messages";
 
@@ -14,10 +14,10 @@
 	let { count, description, href, icon: Icon }: Props = $props();
 </script>
 
-<div class="relative overflow-hidden rounded-lg bg-card px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
+<div class="relative overflow-hidden rounded-lg bg-card px-4 pb-12 pt-5 shadow-sm sm:px-6 sm:pt-6">
 	<dt>
 		<div class="absolute transform rounded-md bg-primary p-3 transition-transform hover:scale-105">
-			<Icon />
+			{@render Icon()}
 		</div>
 		<p class="ml-16 truncate text-sm font-medium text-muted-foreground">{description}</p>
 	</dt>

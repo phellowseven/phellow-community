@@ -11,19 +11,19 @@
 	import * as Sidebar from "$ui/sidebar";
 	import * as DropdownMenu from "$ui/dropdown-menu";
 
-	import Calendar from "lucide-svelte/icons/calendar";
-	import ChevronUp from "lucide-svelte/icons/chevron-up";
-	import File from "lucide-svelte/icons/file";
-	import Globe from "lucide-svelte/icons/globe";
-	import House from "lucide-svelte/icons/house";
-	import Shell from "lucide-svelte/icons/shell";
-	import ListTodo from "lucide-svelte/icons/list-todo";
-	import Logout from "lucide-svelte/icons/log-out";
-	import Moon from "lucide-svelte/icons/moon";
-	import Sun from "lucide-svelte/icons/sun";
-	import Check from "lucide-svelte/icons/check";
-	import UserIcon from "lucide-svelte/icons/user";
-	import FlaskConical from "lucide-svelte/icons/flask-conical";
+	import Calendar from "@lucide/svelte/icons/calendar";
+	import ChevronUp from "@lucide/svelte/icons/chevron-up";
+	import File from "@lucide/svelte/icons/file";
+	import Globe from "@lucide/svelte/icons/globe";
+	import House from "@lucide/svelte/icons/house";
+	import Shell from "@lucide/svelte/icons/shell";
+	import ListTodo from "@lucide/svelte/icons/list-todo";
+	import Logout from "@lucide/svelte/icons/log-out";
+	import Moon from "@lucide/svelte/icons/moon";
+	import Sun from "@lucide/svelte/icons/sun";
+	import Check from "@lucide/svelte/icons/check";
+	import UserIcon from "@lucide/svelte/icons/user";
+	import FlaskConical from "@lucide/svelte/icons/flask-conical";
 
 	import PhellowCommunityText from "./logo/phellow_community_text.svelte";
 	import PhellowCommunityTextLight from "./logo/phellow_community_text_light.svelte";
@@ -38,9 +38,9 @@
 
 	let { user, scopes }: Props = $props();
 
-	let checked: boolean = $state($mode === "dark");
+	let checked: boolean = $state(mode.current === "dark");
 	$effect(() => {
-		if ($mode === "dark") {
+		if (mode.current === "dark") {
 			checked = true;
 		} else {
 			checked = false;
@@ -97,7 +97,7 @@
 
 <Sidebar.Root variant="floating" class="">
 	<Sidebar.Header aria-hidden>
-		{#if $mode === "dark"}
+		{#if mode.current === "dark"}
 			<PhellowCommunityTextLight />
 		{:else}
 			<PhellowCommunityText />
@@ -160,10 +160,10 @@
 							</Sidebar.MenuButton>
 						{/snippet}
 					</DropdownMenu.Trigger>
-					<DropdownMenu.Content side="top" class="w-[--bits-dropdown-menu-anchor-width]">
+					<DropdownMenu.Content side="top" class="w-(--bits-dropdown-menu-anchor-width)">
 						<DropdownMenu.Sub>
 							<DropdownMenu.SubTrigger>
-								<Globe class="h-4 w-4" />
+								<Globe class="size-4" />
 								<span>{m.language()}</span>
 							</DropdownMenu.SubTrigger>
 							<DropdownMenu.SubContent>
@@ -173,7 +173,6 @@
 										onclick={() => {
 											setLocale(locale);
 											const targetURL = localizeHref(page.url.pathname);
-											console.log(targetURL);
 											goto(targetURL); // { replaceState: true }
 										}}
 									>
@@ -192,24 +191,23 @@
 						<DropdownMenu.Item>
 							{#snippet child({ props })}
 								<a href={localizeHref(route("/account"))} class="w-full" {...props}
-									><span class="h-4 w-4" aria-hidden="true"><UserIcon /></span
-									>{m.account_title()}</a
+									><span class="size-4" aria-hidden="true"><UserIcon /></span>{m.account_title()}</a
 								>
 							{/snippet}
 						</DropdownMenu.Item>
 						<DropdownMenu.Item>
 							{#snippet child({ props })}
 								<a data-sveltekit-preload-data="off" href="/logout" class="w-full" {...props}
-									><span class="h-4 w-4" aria-hidden="true"><Logout /></span>{m.log_out_button()}</a
+									><span class="size-4" aria-hidden="true"><Logout /></span>{m.log_out_button()}</a
 								>
 							{/snippet}
 						</DropdownMenu.Item>
 						<DropdownMenu.Item closeOnSelect={false} class="flex items-center">
-							<Sun class="h-4 w-4" />
+							<Sun class="size-4" />
 							<Switch bind:checked onclick={toggleMode} />
-							<Moon class="h-4 w-4" />
+							<Moon class="size-4" />
 							<span class="sr-only">{m.toggle_theme()}</span>
-							{#if $userPrefersMode !== "system"}
+							{#if userPrefersMode.current !== "system"}
 								<Button onclick={resetMode}>Reset</Button>
 							{/if}
 						</DropdownMenu.Item>

@@ -54,6 +54,10 @@
         {
           "type": "route",
           "uuid": "9388924d-7ed8-4002-963f-668979f2ece8"
+        },
+        {
+          "type": "route",
+          "uuid": "d15f03e1-fabc-45bc-92c9-e826b4e7a3c0"
         }
       ]
     }
@@ -440,6 +444,92 @@
       "responseMode": null,
       "streamingMode": null,
       "streamingInterval": 0
+    },
+    {
+      "uuid": "d15f03e1-fabc-45bc-92c9-e826b4e7a3c0",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/Patient/[$]oncology",
+      "responses": [
+        {
+          "uuid": "d92b5c79-c6d3-412e-bdeb-4bf6c6e0eb35",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "FILE",
+          "filePath": "./fhir/inkapp/test-bundles/InKaPP_Lunge_C34.json",
+          "databucketID": "uqrm",
+          "sendFileAsBody": true,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "9ce5d7a1-16ed-4737-ba4b-5197776cc883",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "fhir/Patient/$oncology",
+      "responses": [
+        {
+          "uuid": "9690a256-6f9d-4102-890a-be69754bfce1",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [
+            {
+              "key": "access-control-allow-headers",
+              "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+            },
+            {
+              "key": "access-control-allow-methods",
+              "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'none'"
+            },
+            {
+              "key": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
     }
   ],
   "rootChildren": [
@@ -450,6 +540,10 @@
     {
       "type": "route",
       "uuid": "5a02da0c-450b-4c65-8e3f-67b0e24993a1"
+    },
+    {
+      "type": "route",
+      "uuid": "9ce5d7a1-16ed-4737-ba4b-5197776cc883"
     }
   ],
   "proxyMode": false,
@@ -508,14 +602,14 @@
       "id": "s9cl",
       "name": "FHIR Appointment Bundle",
       "documentation": "",
-      "value": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"{{uuid}}\",\n  \"meta\": {\n    \"lastUpdated\": \"{{now}}\"\n  },\n  \"type\": \"searchset\",\n  \"total\": 4,\n  \"link\": [\n    {\n      \"relation\": \"self\",\n      \"url\": \"http://{{hostname}}:3000/fhir/Appointment?_format=json\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/Testtermin\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"Testtermin\",\n        \"meta\": {\n          \"versionId\": \"1\",\n          \"lastUpdated\": \"2022-10-05T15:46:16.541+02:00\",\n          \"source\": \"#icKYz0RLqKaJmRDQ\"\n        },\n        \"status\": \"booked\",\n        \"description\": \"Knie-OP\",\n        \"start\": \"2024-07-04T10:00:00Z\",\n        \"end\": \"2024-07-04T14:00:00Z\",\n        \"minutesDuration\": 240,\n        \"serviceCategory\": {\n          \"coding\": [{ \"code\": \"35\", \"display\": \"Krankenhaus\" }]\n        },\n        \"serviceType\": {\n          \"coding\": [{ \"code\": \"218\", \"display\": \"Orthopädische Chirurgie\" }]\n        },\n        \"appointmentType\": {\n          \"coding\": [{ \"code\": \"ROUTINE\", \"display\": \"Routine\" }]\n        },\n        \"patientInstruction\": \"Bitte kommen Sie 2 Stunden vor der Operation.\",\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Location/00371000\"\n            },\n            \"status\": \"accepted\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    },\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/Testtermin2\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"Testtermin2\",\n        \"meta\": {\n          \"versionId\": \"1\",\n          \"lastUpdated\": \"2024-08-20T15:46:16.541+02:00\",\n          \"source\": \"#icKYz0RLqKaJmRDQ\"\n        },\n        \"status\": \"booked\",\n        \"description\": \"Anamnesegespräch\",\n        \"start\": \"2024-07-03T14:00:00Z\",\n        \"end\": \"2024-07-03T14:30:00Z\",\n        \"minutesDuration\": 30,\n        \"serviceCategory\": {\n          \"coding\": [{ \"code\": \"35\", \"display\": \"Hospital\" }]\n        },\n        \"serviceType\": {\n          \"coding\": [{ \"code\": \"252\", \"display\": \"Assessment\" }]\n        },\n        \"appointmentType\": {\n          \"coding\": [{ \"code\": \"INITIAL\", \"display\": \"Erstgespräch\" }]\n        },\n        \"patientInstruction\": \"Bitte bringen Sie Ihre medizinischen Unterlagen mit.\",\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Location/00371000\"\n            },\n            \"status\": \"accepted\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    },\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/0000015693\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"0000015693\",\n        \"meta\": {\n          \"versionId\": \"3\",\n          \"lastUpdated\": \"2024-01-11T07:20:36.861+01:00\",\n          \"source\": \"#UKgYfDjQK0yPBkyi\"\n        },\n        \"status\": \"cancelled\",\n        \"description\": \"Anamnesegespräch\",\n        \"start\": \"2024-06-11T12:00:00.000Z\",\n        \"end\": \"2024-06-11T12:30:00.000Z\",\n        \"minutesDuration\": 30,\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\"\n            },\n            \"status\": \"accepted\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Location/00231000\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    },\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/0000015700\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"0000015700\",\n        \"meta\": {\n          \"versionId\": \"1\",\n          \"lastUpdated\": \"2024-01-30T10:30:00.053+01:00\",\n          \"source\": \"#1iEewkvfJUizrXUy\"\n        },\n        \"status\": \"booked\",\n        \"description\": \"Routineuntersuchung Phenylketonurie\",\n        \"start\": \"2024-08-08T09:00:00.000Z\",\n        \"end\": \"2024-08-08T09:20:00.000Z\",\n        \"minutesDuration\": 20,\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\"\n            },\n            \"status\": \"accepted\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Location/00281000\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    },\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/0000015701\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"0000015701\",\n        \"meta\": {\n          \"versionId\": \"1\",\n          \"lastUpdated\": \"2024-01-30T10:31:26.496+01:00\",\n          \"source\": \"#cUFdWLq0IWrYfhUH\"\n        },\n        \"status\": \"booked\",\n        \"description\": \"Nachuntersuchung\",\n        \"start\": \"2024-08-01T10:00:00.000Z\",\n        \"end\": \"2024-08-01T12:00:00.000Z\",\n        \"minutesDuration\": 120,\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\"\n            },\n            \"status\": \"accepted\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Location/00371000\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    }\n  ]\n}\n"
+      "value": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"{{uuid}}\",\n  \"meta\": {\n    \"lastUpdated\": \"{{now}}\"\n  },\n  \"type\": \"searchset\",\n  \"total\": 4,\n  \"link\": [\n    {\n      \"relation\": \"self\",\n      \"url\": \"http://{{hostname}}:3000/fhir/Appointment?_format=json\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/Testtermin\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"Testtermin\",\n        \"meta\": {\n          \"versionId\": \"1\",\n          \"lastUpdated\": \"2022-10-05T15:46:16.541+02:00\",\n          \"source\": \"#icKYz0RLqKaJmRDQ\"\n        },\n        \"status\": \"booked\",\n        \"description\": \"Knie-OP\",\n        \"start\": \"2024-07-04T10:00:00Z\",\n        \"end\": \"2024-07-04T14:00:00Z\",\n        \"minutesDuration\": 240,\n        \"serviceCategory\": {\n          \"coding\": [{ \"code\": \"35\", \"display\": \"Krankenhaus\" }]\n        },\n        \"serviceType\": {\n          \"coding\": [{ \"code\": \"218\", \"display\": \"Orthopädische Chirurgie\" }]\n        },\n        \"appointmentType\": {\n          \"coding\": [{ \"code\": \"ROUTINE\", \"display\": \"Routine\" }]\n        },\n        \"patientInstruction\": \"Bitte kommen Sie 2 Stunden vor der Operation.\",\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Location/00371000\"\n            },\n            \"status\": \"accepted\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\",\n              \"display\": \"Willie Bahringer\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    },\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/Testtermin2\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"Testtermin2\",\n        \"meta\": {\n          \"versionId\": \"1\",\n          \"lastUpdated\": \"2024-08-20T15:46:16.541+02:00\",\n          \"source\": \"#icKYz0RLqKaJmRDQ\"\n        },\n        \"status\": \"booked\",\n        \"description\": \"Anamnesegespräch\",\n        \"start\": \"2024-07-03T14:00:00Z\",\n        \"end\": \"2024-07-03T14:30:00Z\",\n        \"minutesDuration\": 30,\n        \"serviceCategory\": {\n          \"coding\": [{ \"code\": \"35\", \"display\": \"Hospital\" }]\n        },\n        \"serviceType\": {\n          \"coding\": [{ \"code\": \"252\", \"display\": \"Assessment\" }]\n        },\n        \"appointmentType\": {\n          \"coding\": [{ \"code\": \"INITIAL\", \"display\": \"Erstgespräch\" }]\n        },\n        \"patientInstruction\": \"Bitte bringen Sie Ihre medizinischen Unterlagen mit.\",\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Location/00371000\"\n            },\n            \"status\": \"accepted\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\",\n              \"display\": \"Willie Bahringer\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    },\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/0000015693\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"0000015693\",\n        \"meta\": {\n          \"versionId\": \"3\",\n          \"lastUpdated\": \"2024-01-11T07:20:36.861+01:00\",\n          \"source\": \"#UKgYfDjQK0yPBkyi\"\n        },\n        \"status\": \"cancelled\",\n        \"description\": \"Anamnesegespräch\",\n        \"start\": \"2024-06-11T12:00:00.000Z\",\n        \"end\": \"2024-06-11T12:30:00.000Z\",\n        \"minutesDuration\": 30,\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\"\n            },\n            \"status\": \"accepted\",\n            \"display\": \"Willie Bahringer\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Location/00231000\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    },\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/0000015700\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"0000015700\",\n        \"meta\": {\n          \"versionId\": \"1\",\n          \"lastUpdated\": \"2024-01-30T10:30:00.053+01:00\",\n          \"source\": \"#1iEewkvfJUizrXUy\"\n        },\n        \"status\": \"booked\",\n        \"description\": \"Routineuntersuchung Phenylketonurie\",\n        \"start\": \"2024-08-08T09:00:00.000Z\",\n        \"end\": \"2024-08-08T09:20:00.000Z\",\n        \"minutesDuration\": 20,\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\",\n              \"display\": \"Willie Bahringer\"\n            },\n            \"status\": \"accepted\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Location/00281000\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    },\n    {\n      \"fullUrl\": \"http://localhost:3000/fhir/Appointment/0000015701\",\n      \"resource\": {\n        \"resourceType\": \"Appointment\",\n        \"id\": \"0000015701\",\n        \"meta\": {\n          \"versionId\": \"1\",\n          \"lastUpdated\": \"2024-01-30T10:31:26.496+01:00\",\n          \"source\": \"#cUFdWLq0IWrYfhUH\"\n        },\n        \"status\": \"booked\",\n        \"description\": \"Nachuntersuchung\",\n        \"start\": \"2024-08-01T10:00:00.000Z\",\n        \"end\": \"2024-08-01T12:00:00.000Z\",\n        \"minutesDuration\": 120,\n        \"participant\": [\n          {\n            \"actor\": {\n              \"reference\": \"Patient/313735\",\n              \"display\": \"Willie Bahringer\"\n            },\n            \"status\": \"accepted\"\n          },\n          {\n            \"actor\": {\n              \"reference\": \"Location/00371000\"\n            },\n            \"status\": \"accepted\"\n          }\n        ]\n      }\n    }\n  ]\n}\n"
     },
     {
       "uuid": "fac1fd87-334c-426e-8f19-5f0bf9123576",
       "id": "qkcm",
       "name": "FHIR Task Bundle",
       "documentation": "",
-      "value": "{\n\t\"resourceType\": \"Bundle\",\n\t\"id\": \"{{uuid}}\",\n\t\"meta\": {\n\t\t\"lastUpdated\": \"{{now}}\"\n\t},\n\t\"type\": \"searchset\",\n\t\"total\": 3,\n\t\"link\": [\n\t\t{\n\t\t\t\"relation\": \"self\",\n\t\t\t\"url\": \"http://{{hostname}}:3000/fhir/Task?_format=json\"\n\t\t}\n\t],\n\t\"entry\": [\n\t\t{\n\t\t\t\"fullUrl\": \"http://{{hostname}}:3000/fhir/Task/4d4ec376-e1e1-45b7-87ea-e45333a64106\",\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Task\",\n\t\t\t\t\"id\": \"4d4ec376-e1e1-45b7-87ea-e45333a64106\",\n\t\t\t\t\"status\": \"requested\",\n\t\t\t\t\"intent\": \"order\",\n\t\t\t\t\"priority\": \"urgent\",\n\t\t\t\t\"code\": {\n\t\t\t\t\t\"coding\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"system\": \"http://phellow.community/task-codes\",\n\t\t\t\t\t\t\t\"code\": \"anamnesis\",\n\t\t\t\t\t\t\t\"display\": \"Anamnesis\"\n\t\t\t\t\t\t}\n\t\t\t\t\t],\n\t\t\t\t\t\"text\": \"Anamnesis\"\n\t\t\t\t},\n\t\t\t\t\"description\": \"Please fill out this questionnaire to the best of your ability.\",\n\t\t\t\t\"for\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"owner\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"requester\": {\n\t\t\t\t\t\"reference\": \"Practitioner/56789\",\n\t\t\t\t\t\"display\": \"Dr. Jane Smith\"\n\t\t\t\t},\n\t\t\t\t\"authoredOn\": \"2024-11-20T10:00:00Z\",\n\t\t\t\t\"executionPeriod\": {\n\t\t\t\t\t\"start\": \"2024-11-21T00:00:00Z\",\n\t\t\t\t\t\"end\": \"2025-11-30T23:59:59Z\"\n\t\t\t\t},\n\t\t\t\t\"focus\": {\n\t\t\t\t\t\"reference\": \"Questionnaire/gcs\",\n\t\t\t\t\t\"display\": \"Glasgow Coma Score Questionnaire\"\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"fullUrl\": \"http://{{hostname}}:3000/fhir/Task/f14888e3-e50b-40e6-b41b-b24d4fecc4a2\",\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Task\",\n\t\t\t\t\"id\": \"f14888e3-e50b-40e6-b41b-b24d4fecc4a2\",\n\t\t\t\t\"status\": \"requested\",\n\t\t\t\t\"intent\": \"order\",\n\t\t\t\t\"priority\": \"routine\",\n\t\t\t\t\"code\": {\n\t\t\t\t\t\"coding\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"system\": \"http://phellow.community/task-codes\",\n\t\t\t\t\t\t\t\"code\": \"prom\",\n\t\t\t\t\t\t\t\"display\": \"Patient Reported Outcome Measurement (PROM)\"\n\t\t\t\t\t\t}\n\t\t\t\t\t],\n\t\t\t\t\t\"text\": \"PROM\"\n\t\t\t\t},\n\t\t\t\t\"description\": \"Please fill out this questionnaire to the best of your ability.\",\n\t\t\t\t\"for\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"owner\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"requester\": {\n\t\t\t\t\t\"reference\": \"Practitioner/56789\",\n\t\t\t\t\t\"display\": \"Dr. Jane Smith\"\n\t\t\t\t},\n\t\t\t\t\"authoredOn\": \"2024-11-20T10:00:00Z\",\n\t\t\t\t\"executionPeriod\": {\n\t\t\t\t\t\"start\": \"2024-11-21T00:00:00Z\",\n\t\t\t\t\t\"end\": \"2025-11-30T23:59:59Z\"\n\t\t\t\t},\n\t\t\t\t\"focus\": {\n\t\t\t\t\t\"reference\": \"Questionnaire/an02e\",\n\t\t\t\t\t\"display\": \"Anamnese Fragebogen (An02E Narkose)\"\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"fullUrl\": \"http://{{hostname}}:3000/fhir/Task/cf4e9ce2-75a5-484b-a0d3-afd09728ad77\",\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Task\",\n\t\t\t\t\"id\": \"cf4e9ce2-75a5-484b-a0d3-afd09728ad77\",\n\t\t\t\t\"status\": \"requested\",\n\t\t\t\t\"intent\": \"order\",\n\t\t\t\t\"priority\": \"routine\",\n\t\t\t\t\"code\": {\n\t\t\t\t\t\"coding\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"system\": \"http://phellow.community/task-codes\",\n\t\t\t\t\t\t\t\"code\": \"prom\",\n\t\t\t\t\t\t\t\"display\": \"Patient Reported Outcome Measurement (PROM)\"\n\t\t\t\t\t\t}\n\t\t\t\t\t],\n\t\t\t\t\t\"text\": \"PROM\"\n\t\t\t\t},\n\t\t\t\t\"description\": \"Beispiel Fragebogen mit allen Input typen.\",\n\t\t\t\t\"for\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"owner\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"requester\": {\n\t\t\t\t\t\"reference\": \"Organisation/56789\",\n\t\t\t\t\t\"display\": \"phellow seven GmbH\"\n\t\t\t\t},\n\t\t\t\t\"authoredOn\": \"2025-02-11T10:00:00Z\",\n\t\t\t\t\"executionPeriod\": {\n\t\t\t\t\t\"start\": \"2025-02-01T00:00:00Z\",\n\t\t\t\t\t\"end\": \"2025-12-31T23:59:59Z\"\n\t\t\t\t},\n\t\t\t\t\"focus\": {\n\t\t\t\t\t\"reference\": \"Questionnaire/all-types\",\n\t\t\t\t\t\"display\": \"Beispiel Fragebogen\"\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t]\n}\n"
+      "value": "{\n\t\"resourceType\": \"Bundle\",\n\t\"id\": \"{{uuid}}\",\n\t\"meta\": {\n\t\t\"lastUpdated\": \"{{now}}\"\n\t},\n\t\"type\": \"searchset\",\n\t\"total\": 3,\n\t\"link\": [\n\t\t{\n\t\t\t\"relation\": \"self\",\n\t\t\t\"url\": \"http://{{hostname}}:3000/fhir/Task?_format=json\"\n\t\t}\n\t],\n\t\"entry\": [\n\t\t{\n\t\t\t\"fullUrl\": \"http://{{hostname}}:3000/fhir/Task/4d4ec376-e1e1-45b7-87ea-e45333a64106\",\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Task\",\n\t\t\t\t\"id\": \"4d4ec376-e1e1-45b7-87ea-e45333a64106\",\n\t\t\t\t\"status\": \"requested\",\n\t\t\t\t\"intent\": \"order\",\n\t\t\t\t\"priority\": \"urgent\",\n\t\t\t\t\"code\": {\n\t\t\t\t\t\"coding\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"system\": \"http://phellow.community/task-codes\",\n\t\t\t\t\t\t\t\"code\": \"anamnesis\",\n\t\t\t\t\t\t\t\"display\": \"Anamnese\"\n\t\t\t\t\t\t}\n\t\t\t\t\t],\n\t\t\t\t\t\"text\": \"Anamnese\"\n\t\t\t\t},\n\t\t\t\t\"description\": \"Bitte füllen Sie diesen Fragebogen vor Ihrem Termin aus.\",\n\t\t\t\t\"for\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"owner\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"requester\": {\n\t\t\t\t\t\"reference\": \"Practitioner/56789\",\n\t\t\t\t\t\"display\": \"Dr. Jana Schmitt\"\n\t\t\t\t},\n\t\t\t\t\"authoredOn\": \"2024-11-20T10:00:00Z\",\n\t\t\t\t\"executionPeriod\": {\n\t\t\t\t\t\"start\": \"2024-11-21T00:00:00Z\",\n\t\t\t\t\t\"end\": \"2025-11-30T23:59:59Z\"\n\t\t\t\t},\n\t\t\t\t\"focus\": {\n\t\t\t\t\t\"reference\": \"Questionnaire/anamnese\",\n\t\t\t\t\t\"display\": \"Standardisierte Anamneseerhebung\"\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"fullUrl\": \"http://{{hostname}}:3000/fhir/Task/f14888e3-e50b-40e6-b41b-b24d4fecc4a2\",\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Task\",\n\t\t\t\t\"id\": \"f14888e3-e50b-40e6-b41b-b24d4fecc4a2\",\n\t\t\t\t\"status\": \"requested\",\n\t\t\t\t\"intent\": \"order\",\n\t\t\t\t\"priority\": \"routine\",\n\t\t\t\t\"code\": {\n\t\t\t\t\t\"coding\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"system\": \"http://phellow.community/task-codes\",\n\t\t\t\t\t\t\t\"code\": \"prom\",\n\t\t\t\t\t\t\t\"display\": \"Patient Reported Outcome Measurement (PROM)\"\n\t\t\t\t\t\t}\n\t\t\t\t\t],\n\t\t\t\t\t\"text\": \"PROM\"\n\t\t\t\t},\n\t\t\t\t\"description\": \"Bitte füllen Sie diesen Fragebogen möglichst vollständig aus.\",\n\t\t\t\t\"for\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"owner\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"requester\": {\n\t\t\t\t\t\"reference\": \"Practitioner/56789\",\n\t\t\t\t\t\"display\": \"Dr. Jane Smith\"\n\t\t\t\t},\n\t\t\t\t\"authoredOn\": \"2024-11-20T10:00:00Z\",\n\t\t\t\t\"executionPeriod\": {\n\t\t\t\t\t\"start\": \"2024-11-21T00:00:00Z\",\n\t\t\t\t\t\"end\": \"2025-11-30T23:59:59Z\"\n\t\t\t\t},\n\t\t\t\t\"focus\": {\n\t\t\t\t\t\"reference\": \"Questionnaire/an02e\",\n\t\t\t\t\t\"display\": \"Anamnese Fragebogen (An02E Narkose)\"\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"fullUrl\": \"http://{{hostname}}:3000/fhir/Task/cf4e9ce2-75a5-484b-a0d3-afd09728ad77\",\n\t\t\t\"resource\": {\n\t\t\t\t\"resourceType\": \"Task\",\n\t\t\t\t\"id\": \"cf4e9ce2-75a5-484b-a0d3-afd09728ad77\",\n\t\t\t\t\"status\": \"requested\",\n\t\t\t\t\"intent\": \"order\",\n\t\t\t\t\"priority\": \"routine\",\n\t\t\t\t\"code\": {\n\t\t\t\t\t\"coding\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"system\": \"http://phellow.community/task-codes\",\n\t\t\t\t\t\t\t\"code\": \"prom\",\n\t\t\t\t\t\t\t\"display\": \"Patient Reported Outcome Measurement (PROM)\"\n\t\t\t\t\t\t}\n\t\t\t\t\t],\n\t\t\t\t\t\"text\": \"PROM\"\n\t\t\t\t},\n\t\t\t\t\"description\": \"Fragebogen mit allen Input typen.\",\n\t\t\t\t\"for\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"owner\": {\n\t\t\t\t\t\"reference\": \"Patient/12345\",\n\t\t\t\t\t\"display\": \"John Doe\"\n\t\t\t\t},\n\t\t\t\t\"requester\": {\n\t\t\t\t\t\"reference\": \"Organisation/56789\",\n\t\t\t\t\t\"display\": \"phellow seven GmbH\"\n\t\t\t\t},\n\t\t\t\t\"authoredOn\": \"2025-02-11T10:00:00Z\",\n\t\t\t\t\"executionPeriod\": {\n\t\t\t\t\t\"start\": \"2025-02-01T00:00:00Z\",\n\t\t\t\t\t\"end\": \"2025-12-31T23:59:59Z\"\n\t\t\t\t},\n\t\t\t\t\"focus\": {\n\t\t\t\t\t\"reference\": \"Questionnaire/all-types\",\n\t\t\t\t\t\"display\": \"Beispiel Fragebogen\"\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t]\n}\n"
     },
     {
       "uuid": "389542ca-8f18-4c90-baed-511f61c0f688",

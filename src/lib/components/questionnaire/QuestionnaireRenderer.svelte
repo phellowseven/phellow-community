@@ -9,7 +9,7 @@
 
 	import { Button } from "$components/ui/button";
 
-	import CheckCircle from "lucide-svelte/icons/check-circle";
+	import CheckCircle from "@lucide/svelte/icons/check-circle";
 
 	import QuestionnaireNavigation from "./QuestionnaireNavigation.svelte";
 	import QuestionGroup from "./QuestionGroup.svelte";
@@ -30,7 +30,7 @@
 	});
 
 	let isLastPage = $derived(
-		questionnaireState.currentIndex === questionnaireState.flattenedGroups.length - 1
+		questionnaireState.currentIndex === questionnaireState.enabledGroups.length - 1
 	);
 	let isValid = $derived(questionnaireState.errors.size === 0);
 	let submitting = $state(false);
@@ -38,7 +38,7 @@
 	function handleNext() {
 		questionnaireState.nextQuestion();
 		if (questionnaireState.errors.size > 0) {
-			// Scroll to first error
+			// Scroll to first error field
 			const firstErrorElement = document.querySelector(".border-destructive-foreground");
 			firstErrorElement?.scrollIntoView({ behavior: "smooth", block: "center" });
 		}
@@ -73,7 +73,7 @@
 	<QuestionnaireNavigation
 		previousDisabled={questionnaireState.currentIndex === 0}
 		previous={questionnaireState.previousQuestion}
-		nextDisabled={questionnaireState.currentIndex === questionnaireState.flattenedGroups.length - 1}
+		nextDisabled={questionnaireState.currentIndex === questionnaireState.enabledGroups.length - 1}
 		next={handleNext}
 	/>
 	<div class="h-full">
@@ -83,12 +83,14 @@
 				items={currentGroup.children}
 				answers={questionnaireState.answers}
 				onAnswer={(linkId, value) => questionnaireState.setAnswer(linkId, value)}
+				isItemEnabled={questionnaireState.isItemEnabled}
+				errors={questionnaireState.errors}
 			/>
 		{/if}
 
 		{#if isLastPage}
 			<div class="mt-6 flex flex-col items-center justify-center gap-4">
-				<p class="text-center text-muted-foreground">
+				<p class="text-muted-foreground text-center">
 					{m.questionnaire_review_answers()}
 				</p>
 
@@ -99,27 +101,16 @@
 					onclick={handleSubmit}
 					class="px-8"
 				>
-					<CheckCircle class="mr-2 h-5 w-5" />
+					<CheckCircle class="mr-2 size-5" />
 					{submitting ? m.questionnaire_submitting() : m.questionnaire_submit()}
 				</Button>
 			</div>
 		{/if}
 
-		{#if questionnaireState.errors.size > 0}
-			<!-- The class `border-destructive-foreground` is used as query selector to scroll the first error into view -->
-			<div class="mt-4 rounded-lg border border-destructive-foreground bg-destructive p-4">
-				<p class="font-medium text-destructive-foreground">{m.questionnaire_please_fix_errors()}</p>
-				<ul class="mt-2 list-inside list-disc">
-					{#each [...questionnaireState.errors] as [linkId, message]}
-						<li class="text-destructive-foreground">{message}</li>
-					{/each}
-				</ul>
-			</div>
-		{/if}
 	</div>
 	<QuestionnaireProgress
 		currentIndex={questionnaireState.currentIndex}
-		totalSteps={questionnaireState.flattenedGroups.length}
+		totalSteps={questionnaireState.getTotalSteps()}
 		answers={questionnaireState.answers}
 	/>
 </div>

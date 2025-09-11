@@ -14,7 +14,7 @@
 	import * as Sidebar from "$ui/sidebar";
 	import { Separator } from "$ui/separator";
 
-	import ChevronUp from "lucide-svelte/icons/chevron-up";
+	import ChevronUp from "@lucide/svelte/icons/chevron-up";
 
 	import AppSidebar from "$components/AppSidebar.svelte";
 	import ScrollToTop from "$components/ScrollToTop.svelte";
@@ -50,7 +50,7 @@
 		<main class="m-4 flex w-full flex-col md:mx-6">
 			<div
 				class={[
-					"sticky top-4 z-10 flex items-center rounded-lg border border-sidebar-border bg-sidebar py-6 shadow transition-all ease-linear md:top-2 md:-mr-4 md:-mt-2",
+					"sticky top-4 z-10 flex items-center rounded-lg border border-sidebar-border bg-sidebar py-6 shadow-sm transition-all ease-linear md:top-2 md:-mr-4 md:-mt-2",
 					sidebar.open ? "md:-ml-6" : "md:-ml-4",
 				]}
 			>

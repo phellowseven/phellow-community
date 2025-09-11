@@ -5,19 +5,24 @@
 	import { route } from "$lib/ROUTES";
 	import * as m from "$lib/paraglide/messages";
 
-	import ChevronRight from "lucide-svelte/icons/chevron-right";
+	import ChevronRight from "@lucide/svelte/icons/chevron-right";
 	import { statusColor, statusText } from ".";
 	import { localizeHref } from "$lib/paraglide/runtime";
 
-	export let task: Task;
-	export let clickable: boolean = true;
+	interface Props {
+		task: Task;
+		clickable?: boolean;
+	}
+
+	let { task, clickable = true }: Props = $props();
 </script>
 
 <svelte:element
 	this={clickable ? "a" : "div"}
+	data-testid="task_item"
 	class={[
-		"flex w-full max-w-full items-center rounded-lg px-4 py-2 shadow md:px-6 md:py-6",
-		clickable ? "cursor-pointer bg-card/70 hover:bg-card hover:shadow-lg" : "bg-card",
+		"flex w-full max-w-full items-center rounded-lg px-4 py-2 shadow-sm md:px-6 md:py-6",
+		clickable ? "bg-card/70 hover:bg-card cursor-pointer hover:shadow-lg" : "bg-card",
 	]}
 	href={clickable && task.id
 		? localizeHref(route("/tasks/[id]", { id: encodeBase64url(new TextEncoder().encode(task.id)) }))
@@ -37,7 +42,7 @@
 				>
 			{/if}
 		</div>
-		<div class="mt-1 flex flex-col gap-1 text-sm text-muted-foreground">
+		<div class="text-muted-foreground mt-1 flex flex-col gap-1 text-sm">
 			{#if task.requester?.display}
 				<span>{m.task_item_requested_by_name({ name: task.requester.display })}</span>
 			{/if}
@@ -47,6 +52,6 @@
 		</div>
 	</div>
 	{#if clickable}
-		<ChevronRight class="h-5 w-5 flex-shrink-0 " />
+		<ChevronRight class="size-5 shrink-0 " />
 	{/if}
 </svelte:element>

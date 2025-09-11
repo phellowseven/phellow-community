@@ -1,6 +1,8 @@
+import { env } from 'node:process';
 import { OAuth2Server } from 'oauth2-mock-server';
 
 let server = new OAuth2Server();
+server.issuer.url = env.IDP_BASE_URL || 'http://mock-oidc:8080';
 
 // Generate a new RSA key and add it to the keystore
 await server.issuer.keys.generate('RS256');

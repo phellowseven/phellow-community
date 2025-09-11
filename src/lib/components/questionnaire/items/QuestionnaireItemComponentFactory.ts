@@ -8,6 +8,7 @@ import DateTimeQuestion from "./DateTimeQuestion.svelte";
 import DecimalQuestion from "./DecimalQuestion.svelte";
 import IntegerQuestion from "./IntegerQuestion.svelte";
 import OpenChoiceQuestion from "./OpenChoiceQuestion.svelte";
+import QuantityQuestion from "./QuantityQuestion.svelte";
 import TextQuestion from "./TextQuestion.svelte";
 import TimeQuestion from "./TimeQuestion.svelte";
 import Unsupported from "./Unsupported.svelte";
@@ -30,7 +31,7 @@ const componentMap: Record<QuestionnaireItem["type"], any> = {
 	question: Unsupported,
 	attachment: Unsupported,
 	reference: Unsupported,
-	quantity: Unsupported,
+	quantity: QuantityQuestion,
 } as const;
 
 export function getQuestionComponent(type: QuestionnaireItem["type"]) {

@@ -1,7 +1,7 @@
 <script module lang="ts">
 	import * as m from "$lib/paraglide/messages";
 
-	import FileUp from "lucide-svelte/icons/file-up";
+	import FileUp from "@lucide/svelte/icons/file-up";
 	import { sheet } from "../sheet.svelte";
 
 	export function getPageTitle() {
@@ -47,7 +47,7 @@
 	import * as Popover from "$ui/popover";
 	import * as Sidebar from "$ui/sidebar";
 
-	import Ellipsis from "lucide-svelte/icons/ellipsis";
+	import Ellipsis from "@lucide/svelte/icons/ellipsis";
 
 	import Searchbar from "$components/Searchbar.svelte";
 	import Document from "$components/document/Document.svelte";
@@ -92,7 +92,7 @@
 			class="align-center hidden justify-center md:inline-flex "
 			color="primary"
 			onclick={() => (sheet.open = true)}
-			><FileUp class="mr-2 h-4 w-4" />{m.document_upload_button()}</Button
+			><FileUp class="mr-2 size-4" />{m.document_upload_button()}</Button
 		>
 		<div class="md:hidden">
 			<Popover.Root bind:open={menuOpen}>
@@ -102,7 +102,7 @@
 							{...props}
 							variant="ghost"
 							size="icon"
-							class="h-7 w-7 data-[state=open]:bg-accent"
+							class="data-[state=open]:bg-accent size-7"
 						>
 							<Ellipsis />
 						</Button>
@@ -144,7 +144,7 @@
 		<div class="flex flex-1 flex-col items-start space-y-4 md:space-y-8">
 			{#await data.entries}
 				{#each { length: 2 }}
-					<Skeleton class="h-10 w-32 rounded-lg bg-secondary" />
+					<Skeleton class="bg-secondary h-10 w-32 rounded-lg" />
 					{#each { length: 3 }}
 						<Skeleton class="h-20 w-full rounded-lg bg-white" />
 					{/each}
@@ -158,7 +158,7 @@
 						{@const month = dayjs(group)}
 						<section class="w-full" aria-describedby="month-grouping">
 							<h2
-								class="mb-2 inline-flex rounded-lg border border-secondary-foreground bg-secondary p-2 text-lg font-bold text-secondary-foreground md:mb-4"
+								class="border-secondary-foreground bg-secondary text-secondary-foreground mb-2 inline-flex rounded-lg border p-2 text-lg font-bold md:mb-4"
 								id="month-grouping"
 							>
 								<time datetime={month.format("YYYY-MM")}>
@@ -169,7 +169,7 @@
 								{#each documents as document (document.id)}
 									<li>
 										<Document
-											class="block rounded-lg bg-card/70 px-4 py-2 shadow hover:bg-card hover:shadow-lg md:px-6 md:py-6"
+											class="bg-card/70 hover:bg-card block rounded-lg px-4 py-2 shadow-sm hover:shadow-lg md:px-6 md:py-6"
 											title={document.description}
 											createdAt={document.date ? dayjs(document.date) : undefined}
 											author={extractAuthorFullName(document) ?? undefined}

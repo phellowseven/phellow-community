@@ -1,0 +1,128 @@
+# Testing Environment
+# Isolated environment with test data and configuration
+# Usage: docker-compose -f docker-compose.test.yml up
+
+name: phellow-community-test
+
+services:
+  # Test PostgreSQL Database
+  db-test:
+    container_name: phellow.community-db-test
+    image: postgres:17
+    restart: no
+    ports:
+      - "5433:5432"  # Different port for testing
+    environment:
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: test_password
+      POSTGRES_DB: phellow_test
+    volumes:
+      - ./samples/test-data:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d phellow_test -U test_user"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # Mockoon with test data
+  mockoon-test:
+    container_name: phellow.community-mockoon-test
+    image: mockoon/cli:latest
+    command: --data "/data/mockoon-test-config.json" --port 3000
+    volumes:
+      - ./samples/test/mockoon-test.json:/data/mockoon-test-config.json:ro
+      - ./samples/test/fhir:/data/fhir:ro
+    ports:
+      - "3002:3000"
+    restart: no
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+  # OIDC Mock for testing
+  oidc-mock-test:
+    container_name: phellow.community-oidc-test
+    build:
+      context: .
+      dockerfile: docker/oidc-mock.Dockerfile
+    ports:
+      - "8081:8080"
+    restart: no
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/.well-known/openid_configuration"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+  # Database Migration for testing
+  migrate-test:
+    container_name: phellow.community-migrate-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      db-test:
+        condition: service_healthy
+    environment:
+      - POSTGRES_URL=postgresql://test_user:test_password@db-test:5432/phellow_test
+      - POSTGRES_HOST=db-test
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=test_user
+      - POSTGRES_DB=phellow_test
+    env_file:
+      - .env.test
+    volumes:
+      - ./scripts/migrate.sh:/app/migrate.sh:ro
+      - ./drizzle:/app/drizzle:ro
+    command: ["/bin/sh", "/app/migrate.sh"]
+    restart: "no"
+
+  # Application for testing
+  web-test:
+    container_name: phellow.community-app-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      db-test:
+        condition: service_healthy
+      mockoon-test:
+        condition: service_healthy
+      oidc-mock-test:
+        condition: service_healthy
+      migrate-test:
+        condition: service_completed_successfully
+    ports:
+      - "3003:3000"
+    environment:
+      - NODE_ENV=test
+      - DATABASE_URL=postgresql://test_user:test_password@db-test:5432/phellow_test
+      - VITE_API_URL=http://mockoon-test:3000
+      - VITE_OIDC_URL=http://oidc-mock-test:8080
+    env_file:
+      - .env.test
+    restart: no
+    command: ["pnpm", "test"]
+
+  # Test runner service
+  test-runner:
+    container_name: phellow.community-test-runner
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      web-test:
+        condition: service_started
+    environment:
+      - NODE_ENV=test
+      - TEST_URL=http://web-test:3000
+    volumes:
+      - ./tests:/app/tests:ro
+      - ./playwright.config.ts:/app/playwright.config.ts:ro
+    restart: no
+    command: ["pnpm", "test:e2e"]

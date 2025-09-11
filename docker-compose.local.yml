@@ -1,0 +1,65 @@
+# Local Development Environment
+# Mix of containerized and local services
+# App runs locally, only infrastructure in containers
+# Usage: docker-compose -f docker-compose.local.yml up
+
+name: phellow-community-local
+
+services:
+  # PostgreSQL Database
+  db:
+    container_name: phellow.community-db-local
+    image: postgres:17
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-phellow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-phellow_local}
+    volumes:
+      - postgres_local_data:/var/lib/postgresql/data
+      - ./samples/db-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test:
+        ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB:-phellow_local} -U ${POSTGRES_USER:-phellow}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Mockoon API Server
+  mockoon:
+    container_name: phellow.community-mockoon-local
+    image: mockoon/cli:latest
+    command: --data "/data/mockoon-config.json" --port 3000
+    volumes:
+      - ./samples/mockoon.json:/data/mockoon-config.json:ro
+      - ./samples/fhir:/data/fhir:ro
+    ports:
+      - "3001:3000" # Different port to avoid conflicts
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # OIDC Mock Server
+  oidc-mock:
+    container_name: phellow.community-oidc-local
+    build:
+      context: .
+      dockerfile: docker/oidc-mock.Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      IDP_BASE_URL: ${IDP_BASE_URL:-http://localhost:8080}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/.well-known/openid_configuration"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  postgres_local_data:

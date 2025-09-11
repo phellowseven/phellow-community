@@ -1,4 +1,5 @@
 import { env } from "$env/dynamic/private";
+import { FHIR_BASE_URL } from "$env/static/private";
 import { addQueryParamsToUrl } from "$lib/utils";
 import type { Bundle } from "fhir/r4";
 import type { PageServerLoad } from "../$types";
@@ -11,10 +12,10 @@ export const load = (async ({ locals }) => {
 	};
 
 	// Observations
-	let observationUrl = new URL(env.FHIR_OBSERVATION_URL!);
+	let observationUrl = new URL(env.FHIR_OBSERVATION_URL ?? `${env.FHIR_BASE_URL}/Observation`);
 	if (env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS) {
 		observationUrl = addQueryParamsToUrl(
-			env.FHIR_OBSERVATION_URL!,
+			observationUrl.href,
 			env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS
 		);
 	}
@@ -27,12 +28,11 @@ export const load = (async ({ locals }) => {
 	});
 
 	// Documents
-	let documentUrl = new URL(env.FHIR_DOCUMENT_REFERENCE_URL!);
-	if (env.FHIR_DOCUMENT_REFERENCE_DEFAULT_SEARCH_PARAMS) {
-		documentUrl = addQueryParamsToUrl(
-			env.FHIR_DOCUMENT_REFERENCE_URL!,
-			env.FHIR_DOCUMENT_REFERENCE_DEFAULT_SEARCH_PARAMS
-		);
+	let documentUrl = new URL(
+		env.FHIR_DOCUMENT_REFERENCE_URL ?? `${env.FHIR_BASE_URL}/DocumentReference`
+	);
+	if (env.FHIR_DOCUMENT_DEFAULT_SEARCH_PARAMS) {
+		documentUrl = addQueryParamsToUrl(documentUrl.href, env.FHIR_DOCUMENT_DEFAULT_SEARCH_PARAMS);
 	}
 	documentUrl.searchParams.set("_format", "json");
 
@@ -43,10 +43,10 @@ export const load = (async ({ locals }) => {
 	});
 
 	// Appointments
-	let appointmentUrl = new URL(env.FHIR_APPOINTMENT_URL!);
+	let appointmentUrl = new URL(env.FHIR_APPOINTMENT_URL ?? `${FHIR_BASE_URL}/Appointment`);
 	if (env.FHIR_APPOINTMENT_DEFAULT_SEARCH_PARAMS) {
 		appointmentUrl = addQueryParamsToUrl(
-			env.FHIR_APPOINTMENT_URL!,
+			appointmentUrl.href,
 			env.FHIR_APPOINTMENT_DEFAULT_SEARCH_PARAMS
 		);
 	}
@@ -59,9 +59,9 @@ export const load = (async ({ locals }) => {
 	});
 
 	// Tasks
-	let taskUrl = new URL(env.FHIR_TASK_URL!);
+	let taskUrl = new URL(env.FHIR_TASK_URL ?? `${FHIR_BASE_URL}/Task`);
 	if (env.FHIR_TASK_DEFAULT_SEARCH_PARAMS) {
-		taskUrl = addQueryParamsToUrl(env.FHIR_TASK_URL!, env.FHIR_TASK_DEFAULT_SEARCH_PARAMS);
+		taskUrl = addQueryParamsToUrl(taskUrl.href, env.FHIR_TASK_DEFAULT_SEARCH_PARAMS);
 	}
 	taskUrl.searchParams.set("_format", "json");
 

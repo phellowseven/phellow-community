@@ -15,7 +15,7 @@
 
 	import { Button } from "$ui/button";
 
-	import Download from "lucide-svelte/icons/download";
+	import Download from "@lucide/svelte/icons/download";
 
 	import { Skeleton } from "$components/ui/skeleton";
 	import DocumentMetadataTable from "$components/document/DocumentMetadataTable.svelte";
@@ -62,7 +62,7 @@
 			href={objectURL}
 			disabled={!objectURL}
 		>
-			<Download class="sr mr-2 h-4 w-4" />{m.documents_document_download_button()}
+			<Download class="sr mr-2 size-4" />{m.documents_document_download_button()}
 		</Button>
 	{/snippet}
 	{#snippet children()}
@@ -74,7 +74,7 @@
 			<DocumentMetadataTable document={data.document} />
 
 			{#if loading}
-				<Skeleton class="min-h-svh w-full bg-secondary" />
+				<Skeleton class="bg-secondary min-h-svh w-full" />
 			{:else if objectURL}
 				{#if contentType == "application/pdf"}
 					<div class="relative flex min-h-svh">

@@ -94,7 +94,7 @@
 								{#each appointments as appointment (appointment.id)}
 									<li>
 										<AppointmentComponent
-											class="block rounded-lg bg-card/70 px-4 py-2 shadow hover:bg-card hover:shadow-lg md:px-6 md:py-6"
+											class="block rounded-lg bg-card/70 px-4 py-2 shadow-sm hover:bg-card hover:shadow-lg md:px-6 md:py-6"
 											title={appointment.description}
 											duration={appointment.minutesDuration}
 											startDate={appointment.start ? dayjs(appointment.start) : undefined}

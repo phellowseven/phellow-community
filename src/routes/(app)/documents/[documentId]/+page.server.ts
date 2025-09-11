@@ -12,7 +12,10 @@ export const load = (async ({ params, locals, fetch }) => {
 		Authorization: "Bearer " + accessToken,
 	};
 
-	const documentURL = appendPathToUrl(new URL(env.FHIR_DOCUMENT_REFERENCE_URL), documentId);
+	const documentURL = appendPathToUrl(
+		new URL(env.FHIR_DOCUMENT_REFERENCE_URL ?? `${env.FHIR_BASE_URL}/DocumentReference`),
+		documentId
+	);
 	const response = await fetch(documentURL, {
 		method: "GET",
 		headers,

@@ -1,0 +1,2 @@
+# Exclude sensitive test JSON files containing patient data
+inkapp/

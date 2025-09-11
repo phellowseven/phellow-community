@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm/expressions";
+import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { sessions, type NewSession, type Session, type User } from "../db/schema";
 import { logger } from "../logger";

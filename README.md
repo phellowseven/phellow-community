@@ -91,6 +91,12 @@ the config at `samples/mockooon.json`.
 You can use one of the `.env.mockoon.*` files for the environment variables, depending on how you
 launch the demo (either locally or via docker).
 
+The database needs to be initialised with a schema, so run the push command:
+
+```bash
+pnpm run db:push
+```
+
 Then start the development server:
 
 ```bash

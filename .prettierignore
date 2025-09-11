@@ -4,8 +4,7 @@
 drizzle/meta
 package-lock.json
 pnpm-lock.yaml
-postcss.config.js
-samples
+samples/oidc-mock-server
 src/codings
 src/lib/components/ui
 src/lib/ROUTES.ts

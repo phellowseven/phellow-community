@@ -20,9 +20,9 @@
 	import { Checkbox } from "$ui/checkbox";
 	import { Label } from "$ui/label";
 
-	import Search from "lucide-svelte/icons/search";
-	import Filter from "lucide-svelte/icons/filter";
-	import XMark from "lucide-svelte/icons/x";
+	import Search from "@lucide/svelte/icons/search";
+	import Filter from "@lucide/svelte/icons/filter";
+	import XMark from "@lucide/svelte/icons/x";
 
 	import LabResultsTable from "$components/observations/LabResultsTable.svelte";
 
@@ -114,12 +114,12 @@
 <AppLayout title={getPageTitle()}>
 	{#snippet children()}
 		<!-- Filters -->
-		<div class="rounded-lg bg-card p-4 shadow">
+		<div class="bg-card rounded-lg p-4 shadow-sm">
 			<div class="grid gap-4 lg:grid-cols-3">
 				<!-- Search -->
 				<div class="relative">
 					<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-						<Search class="h-5 w-5 text-muted-foreground" />
+						<Search class="text-muted-foreground size-5" />
 					</div>
 					<Input
 						type="text"
@@ -133,7 +133,7 @@
 							class="absolute inset-y-0 right-0 flex items-center pr-3"
 							onclick={() => updateFilters({ searchTerm: undefined })}
 						>
-							<XMark class="h-5 w-5 text-muted-foreground" />
+							<XMark class="text-muted-foreground size-5" />
 						</button>
 					{/if}
 				</div>
@@ -141,7 +141,7 @@
 				<!-- Category Filter -->
 				<div class="relative">
 					<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-						<Filter class="h-5 w-5 text-muted-foreground" />
+						<Filter class="text-muted-foreground size-5" />
 					</div>
 					<Select.Root
 						type="single"

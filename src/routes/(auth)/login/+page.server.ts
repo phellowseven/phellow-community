@@ -1,3 +1,4 @@
+import { dev } from "$app/environment";
 import { sessionCookieName, validateSessionToken } from "$lib/server/auth/auth";
 import { codeChallengeMethod, config, redirectURI, scopes } from "$lib/server/auth/oauth";
 import { redirect } from "@sveltejs/kit";
@@ -39,6 +40,10 @@ export const actions: Actions = {
 
 		let redirectTo = client.buildAuthorizationUrl(config, parameters);
 
-		redirect(307, redirectTo.toString());
+		if (dev) {
+			redirect(303, redirectTo.toString().replace("oidc-mock:8080", "localhost:8080"));
+		} else {
+			redirect(303, redirectTo.toString());
+		}
 	},
 };

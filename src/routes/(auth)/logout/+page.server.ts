@@ -1,3 +1,4 @@
+import { dev } from "$app/environment";
 import { route } from "$lib/ROUTES";
 import {
 	deleteSessionEncryptionKeyCookie,
@@ -14,7 +15,11 @@ export const load = (async ({ locals, cookies }) => {
 		deleteSessionTokenCookie(cookies);
 		deleteSessionEncryptionKeyCookie(cookies);
 		const url = await logoutURL(locals.encryptionKey!, locals.session!.encryptedIdToken!);
-		return redirect(302, url);
+		if (dev) {
+			redirect(302, url.toString().replace("oidc-mock:8080", "localhost:8080"));
+		} else {
+			redirect(302, url);
+		}
 	}
 	redirect(302, route("/login"));
 }) satisfies PageServerLoad;

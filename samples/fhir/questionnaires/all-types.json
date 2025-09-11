@@ -96,7 +96,21 @@
 			"linkId": "quantity-item",
 			"text": "Quantity Item",
 			"type": "quantity",
-			"prefix": "15."
+			"prefix": "15.",
+			"initial": {
+				"value": 0,
+				"unit": "kg"
+			},
+			"extension": [
+				{
+					"url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+					"valueCoding": {
+						"code": "kg",
+						"display": "Kilogram",
+						"system": "http://unitsofmeasure.org"
+					}
+				}
+			]
 		},
 		{
 			"linkId": "group",

@@ -18,7 +18,7 @@
 <div class="flex min-h-full flex-col justify-center bg-background px-6 py-12 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
 		<div class="flex justify-center">
-			{#if $mode === "light"}
+			{#if mode.current === "light"}
 				<LogoLight class="" />
 			{:else}
 				<LogoDark class="" />

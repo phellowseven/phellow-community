@@ -1,29 +1,84 @@
-# Builder stage
-FROM node:20-alpine AS builder
+# Main application Dockerfile - supports both development and production
+# Usage:
+#   Development: docker build --target development -t app:dev .
+#   Production:  docker build --target production -t app:prod .
 
-WORKDIR /app
+FROM node:22-alpine AS base
+
+# Install system dependencies
+RUN apk add --no-cache \
+    tini \
+    curl
+
+# Install pnpm globally
+RUN npm install -g pnpm@9.15.4
+
+RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
+
+# Copy dependency files
+COPY package.json pnpm-lock.yaml ./
+COPY patches/ ./patches/
+COPY project.inlang/ ./project.inlang/
 
 # Install dependencies
-# Copy source files and build the application
+RUN pnpm install --frozen-lockfile
+
+#####################
+# Development stage #
+#####################
+FROM base AS development
+
+COPY drizzle.config.ts ./
+
+# Set development environment
+ENV NODE_ENV=development
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
+EXPOSE 5173
+
+# Use tini for proper signal handling
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["pnpm", "dev", "--host", "0.0.0.0"]
+
+###############
+# Build stage #
+###############
+FROM base AS builder
+
+# Copy source code
 COPY . .
-RUN npm install  --legacy-peer-deps
-RUN npm run build
 
-# /Builder stage
+# Set build environment
+ENV NODE_ENV=production
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
-# Final stage
-FROM node:20-alpine
+# Build the application
+RUN pnpm run build
 
-# RUN apk add --no-cache tini
+# Remove development dependencies
+RUN pnpm prune --prod
 
-WORKDIR /dist
+####################
+# Production stage #
+####################
+FROM node:22-alpine AS production
 
-# Copy built files from the builder stage
-COPY --from=builder /app/build /dist
-COPY --from=builder /app/package.json /dist/package.json
-COPY --from=builder /app/node_modules /dist/node_modules
+# Install system dependencies
+RUN apk add --no-cache tini
+
+WORKDIR /home/node/app
+
+# Copy built application and production dependencies
+COPY --from=builder /home/node/app/build ./build
+COPY --from=builder /home/node/app/node_modules ./node_modules
+COPY --from=builder /home/node/app/package.json ./package.json
+
+# Set production environment
+ENV NODE_ENV=production
 
 EXPOSE 3000
 
+# Use tini for proper signal handling
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["node", "/dist"]
+CMD ["node", "build/index.js"]

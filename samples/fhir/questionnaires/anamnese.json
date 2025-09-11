@@ -1,0 +1,100 @@
+{
+	"resourceType": "Questionnaire",
+	"id": "anamnesebogen-1",
+	"status": "active",
+	"subjectType": ["Patient"],
+	"date": "2025-04-29",
+	"title": "Anamnesebogen",
+	"description": "Standardisierte Anamneseerhebung",
+	"item": [
+		{
+			"linkId": "1",
+			"text": "Rauchen Sie?",
+			"type": "choice",
+			"answerOption": [
+				{ "valueString": "Ja, regelmäßig" },
+				{ "valueString": "Ja, gelegentlich" },
+				{ "valueString": "Nein" },
+				{ "valueString": "Früher, jetzt nicht mehr" }
+			]
+		},
+		{
+			"linkId": "2",
+			"text": "Bestehen bekannte Vorerkrankungen?",
+			"type": "boolean"
+		},
+		{
+			"linkId": "3",
+			"text": "Bitte listen Sie Ihre Vorerkrankungen auf.",
+			"type": "string",
+			"enableWhen": [
+				{
+					"question": "2",
+					"operator": "=",
+					"answerBoolean": true
+				}
+			]
+		},
+		{
+			"linkId": "4",
+			"text": "Nehmen Sie aktuell Medikamente ein?",
+			"type": "boolean"
+		},
+		{
+			"linkId": "5",
+			"text": "Welche Medikamente nehmen Sie ein?",
+			"type": "string",
+			"enableWhen": [
+				{
+					"question": "4",
+					"operator": "=",
+					"answerBoolean": true
+				}
+			]
+		},
+		{
+			"linkId": "6",
+			"text": "Gibt es bekannte Allergien oder Unverträglichkeiten?",
+			"type": "boolean"
+		},
+		{
+			"linkId": "7",
+			"text": "Bitte spezifizieren Sie Ihre Allergien oder Unverträglichkeiten.",
+			"type": "string",
+			"enableWhen": [
+				{
+					"question": "6",
+					"operator": "=",
+					"answerBoolean": true
+				}
+			]
+		},
+		{
+			"linkId": "8",
+			"text": "Trinken Sie Alkohol?",
+			"type": "choice",
+			"answerOption": [
+				{ "valueString": "Ja, regelmäßig" },
+				{ "valueString": "Ja, gelegentlich" },
+				{ "valueString": "Nein" }
+			]
+		},
+		{
+			"linkId": "9",
+			"text": "Haben Sie aktuell Beschwerden?",
+			"type": "boolean"
+		},
+		{
+			"linkId": "10",
+			"text": "Welche Beschwerden haben Sie?",
+			"type": "string",
+			"enableWhen": [
+				{
+					"question": "9",
+					"operator": "=",
+					"answerBoolean": true
+				}
+			]
+		}
+	]
+}

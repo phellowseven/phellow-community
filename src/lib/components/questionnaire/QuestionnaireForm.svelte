@@ -8,15 +8,16 @@
 	import * as Alert from "$components/ui/alert";
 	import { Button } from "$components/ui/button";
 
-	import CheckCircle from "lucide-svelte/icons/check-circle";
-	import RefreshCw from "lucide-svelte/icons/refresh-cw";
+	import CheckCircle from "@lucide/svelte/icons/check-circle";
+	import RefreshCw from "@lucide/svelte/icons/refresh-cw";
 
 	interface Props {
 		resource: Questionnaire;
 		onSubmit?: (response: QuestionnaireResponse) => void;
+		canStartOver?: boolean;
 	}
 
-	let { resource, onSubmit }: Props = $props();
+	let { resource, onSubmit, canStartOver = false }: Props = $props();
 
 	let submitted = $state(false);
 	let response = $state<QuestionnaireResponse | null>(null);
@@ -36,8 +37,8 @@
 	}
 </script>
 
-<div class="flex flex-1 flex-col space-y-4">
-	<h2 class="mt-0 pb-0">{resource.title}</h2>
+<div class="flex flex-1 flex-col gap-8">
+	<h3 class="mt-0 pb-0">{resource.title}</h3>
 
 	{#if resource.description}
 		<p class="text-muted-foreground">{resource.description}</p>
@@ -48,23 +49,25 @@
 			<QuestionnaireRenderer questionnaire={resource} onSubmit={handleSubmit} />
 		</div>
 	{:else}
-		<Alert.Root class="my-8 bg-sidebar">
-			<CheckCircle class="h-5 w-5" />
+		<Alert.Root class="bg-sidebar">
+			<CheckCircle class="size-5" />
 			<Alert.Title>{m.questionnaire_submission_complete()}</Alert.Title>
 			<Alert.Description>
 				{m.questionnaire_submission_received()}
 			</Alert.Description>
 		</Alert.Root>
 
-		<div class="flex justify-center">
-			<Button onclick={startOver} variant="outline">
-				<RefreshCw class="mr-2 h-4 w-4" />
-				{m.questionnaire_start_over()}
-			</Button>
-		</div>
+		{#if canStartOver}
+			<div class="flex justify-center">
+				<Button onclick={startOver} variant="outline">
+					<RefreshCw class="mr-2 size-4" />
+					{m.questionnaire_start_over()}
+				</Button>
+			</div>
+		{/if}
 
-		{#if import.meta.env.DEV}
-			<div class="mt-8 rounded-lg border bg-card p-4">
+		{#if import.meta.env.APP_ENV === "development"}
+			<div class="bg-card rounded-lg border p-4">
 				<h3 class="mt-0">QuestionnaireResponse (Debug)</h3>
 				<pre class="overflow-auto text-xs">{JSON.stringify(response, null, 2)}</pre>
 			</div>

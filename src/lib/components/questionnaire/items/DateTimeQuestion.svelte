@@ -16,7 +16,7 @@
 	import { Calendar } from "$ui/calendar";
 	import * as Popover from "$ui/popover";
 
-	import CalendarIcon from "lucide-svelte/icons/calendar";
+	import CalendarIcon from "@lucide/svelte/icons/calendar";
 	import TimePicker from "$components/ui/time-picker/time-picker.svelte";
 	import { getLocale } from "$lib/paraglide/runtime";
 
