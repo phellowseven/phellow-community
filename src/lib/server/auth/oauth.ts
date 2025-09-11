@@ -16,7 +16,7 @@ export async function connectOAuth2Client() {
 		env.OAUTH_CLIENT_SECRET,
 		undefined,
 		{
-			execute: env.NODE_ENV == "development" ? [client.allowInsecureRequests] : [],
+			execute: env.APP_ENV == "development" ? [client.allowInsecureRequests] : [],
 		}
 	);
 

@@ -3,8 +3,8 @@
 	import { Button } from "$ui/button";
 	import { Input } from "$ui/input";
 
-	import Check from "lucide-svelte/icons/check";
-	import Plus from "lucide-svelte/icons/plus";
+	import Check from "@lucide/svelte/icons/check";
+	import Plus from "@lucide/svelte/icons/plus";
 	import type { ItemComponentInterface } from "./itemComponentInterface";
 	import { tick, type SvelteComponent } from "svelte";
 
@@ -67,12 +67,12 @@
 		>
 			<div
 				class={[
-					"flex h-5 w-5 items-center justify-center rounded-full border",
+					"flex size-5 items-center justify-center rounded-full border",
 					value?.code === optionCode ? "border-primary-foreground" : "border-muted-foreground",
 				]}
 			>
 				{#if value?.code === optionCode}
-					<Check class="h-4 w-4" />
+					<Check class="size-4" />
 				{/if}
 			</div>
 			<span>{display}</span>
@@ -83,9 +83,9 @@
 	{#if !showCustomInput}
 		<Button variant="default" onclick={addOption}>
 			<div
-				class="flex h-5 w-5 items-center justify-center rounded-full border border-primary-foreground"
+				class="border-primary-foreground flex size-5 items-center justify-center rounded-full border"
 			>
-				<Plus class="h-4 w-4" />
+				<Plus class="size-4" />
 			</div>
 			<span>Add other option...</span>
 		</Button>

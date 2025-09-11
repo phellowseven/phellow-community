@@ -18,9 +18,9 @@
 	import { FileInput } from "$ui/input";
 	import { CalendarYearMonth } from "$ui/calendar";
 
-	import Loader from "lucide-svelte/icons/loader";
-	import CalendarIcon from "lucide-svelte/icons/calendar";
-	import Upload from "lucide-svelte/icons/upload";
+	import Loader from "@lucide/svelte/icons/loader";
+	import CalendarIcon from "@lucide/svelte/icons/calendar";
+	import Upload from "@lucide/svelte/icons/upload";
 
 	import { sheet } from "../../../routes/(app)/sheet.svelte";
 	import { uploadDocumentSchema, type UploadDocumentSchema } from "$lib/fhir/document/form";
@@ -86,7 +86,7 @@
 			method="POST"
 			use:enhance
 			action={route("uploadDocument /documents")}
-			class="mb-6 mt-6 space-y-4"
+			class="mt-6 mb-6 space-y-4"
 			enctype="multipart/form-data"
 		>
 			<Form.Field {form} name="category">
@@ -168,8 +168,8 @@
 				<Form.FieldErrors />
 			</Form.Field>
 			<Form.Button type="submit" class="w-full" disabled={$delayed}>
-				{#if $delayed}<Loader class="mr-3 h-4 w-4" />
-				{:else}<Upload class="mr-3 h-4 w-4" />
+				{#if $delayed}<Loader class="mr-3 size-4" />
+				{:else}<Upload class="mr-3 size-4" />
 				{/if}
 				{m.uploadDocument_sheet_form_submit()}
 			</Form.Button>

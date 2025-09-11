@@ -1,6 +1,6 @@
 <script lang="ts" module>
 	import type { HTMLInputAttributes } from "svelte/elements";
-	import type { WithElementRef } from "bits-ui";
+	import type { WithElementRef } from "$lib/utils.ts";
 	import type { Time as TimeType } from "@internationalized/date";
 
 	export type TimePickerInputProps = WithElementRef<HTMLInputAttributes> & {

@@ -12,7 +12,10 @@ export const load = (async ({ locals, params }) => {
 		Authorization: "Bearer " + accessToken,
 	};
 
-	const appointmentURL = appendPathToUrl(new URL(env.FHIR_APPOINTMENT_URL), appointmentId);
+	const appointmentURL = appendPathToUrl(
+		new URL(env.FHIR_APPOINTMENT_URL ?? `${env.FHIR_BASE_URL}/Appointment`),
+		appointmentId
+	);
 	const response = await fetch(appointmentURL, {
 		method: "GET",
 		headers,

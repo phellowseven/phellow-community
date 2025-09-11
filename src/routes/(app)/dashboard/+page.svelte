@@ -15,10 +15,10 @@
 
 	import OverviewCard from "$components/dashboard/OverviewCard.svelte";
 
-	import File from "lucide-svelte/icons/file";
-	import Calendar from "lucide-svelte/icons/calendar";
-	import Todo from "lucide-svelte/icons/list-todo";
-	import Flask from "lucide-svelte/icons/flask-conical";
+	import File from "@lucide/svelte/icons/file";
+	import Calendar from "@lucide/svelte/icons/calendar";
+	import Todo from "@lucide/svelte/icons/list-todo";
+	import Flask from "@lucide/svelte/icons/flask-conical";
 	import { localizeHref } from "$lib/paraglide/runtime";
 
 	interface Props {

@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import type { Time as TimeType } from "@internationalized/date";
 	import type { Period } from "./time-picker-utils";
-	import type { WithElementRef } from "bits-ui";
+	import type { WithElementRef } from "$lib/utils.ts";
 	import type { HTMLButtonAttributes } from "svelte/elements";
 
 	export type PeriodSelectorProps = WithElementRef<HTMLButtonAttributes> & {

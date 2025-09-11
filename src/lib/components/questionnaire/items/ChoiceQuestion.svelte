@@ -1,29 +1,70 @@
 <!-- src/lib/components/questionnaire/items/ChoiceQuestion.svelte -->
 <script lang="ts">
-	import Check from "lucide-svelte/icons/check";
+	import Check from "@lucide/svelte/icons/check";
 	import type { ItemComponentInterface } from "./itemComponentInterface";
 	import Button from "$ui/button/button.svelte";
+	import type { Coding } from "fhir/r4";
 
-	let { item, value = undefined, onAnswer }: ItemComponentInterface<string> = $props();
+	let {
+		item,
+		value = undefined,
+		onAnswer,
+		disabled = false,
+	}: ItemComponentInterface<string | Coding> = $props();
 
-	const options = item.answerOption ?? [];
+	let options = $derived(item.answerOption ?? []);
+
+	let isMultiple = $derived(item.repeats === true);
+
+	function handleSelect(optionValue: string | Coding) {
+		if (isMultiple) {
+			let selected = Array.isArray(value) ? [...value] : [];
+			const idx = selected.findIndex((v) =>
+				typeof v === "object"
+					? JSON.stringify(v) === JSON.stringify(optionValue)
+					: v === optionValue
+			);
+			if (idx > -1) {
+				selected.splice(idx, 1);
+			} else {
+				selected.push(optionValue);
+			}
+			onAnswer(selected);
+		} else {
+			onAnswer(optionValue);
+		}
+	}
+
+	function isSelected(optionValue: string | Coding) {
+		if (isMultiple) {
+			return Array.isArray(value)
+				? value.some((v) =>
+						typeof v === "object"
+							? JSON.stringify(v) === JSON.stringify(optionValue)
+							: v === optionValue
+					)
+				: false;
+		}
+		return value === optionValue;
+	}
 </script>
 
 <div class="flex flex-col gap-2">
 	{#each options as option}
-		{@const optionValue = option.valueString ?? option.valueCoding?.code ?? ""}
+		{@const optionValue = option.valueString ?? option.valueCoding ?? ""}
 		{@const display = option.valueString ?? option.valueCoding?.display ?? optionValue}
 
 		<Button
-			variant={value === optionValue ? "default" : "outline"}
+			variant={isSelected(optionValue) ? "default" : "outline"}
 			class={[]}
-			onclick={() => onAnswer(optionValue)}
+			onclick={() => handleSelect(optionValue)}
+			{disabled}
 		>
 			<div
-				class="flex h-5 w-5 items-center justify-center rounded-full border border-secondary-foreground"
+				class="border-secondary-foreground flex size-5 items-center justify-center rounded-full border"
 			>
-				{#if value === optionValue}
-					<Check class="h-4 w-4 " />
+				{#if isSelected(optionValue)}
+					<Check class="size-4 " />
 				{/if}
 			</div>
 			<span>{display}</span>

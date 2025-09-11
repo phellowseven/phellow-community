@@ -9,16 +9,25 @@
 		item: QuestionnaireItem;
 		answer?: QuestionnaireAnswer;
 		onAnswer: (value: any) => void;
+		isItemEnabled: (linkId: string) => boolean;
+		globalError?: string;
 	}
 
-	let { item, answer, onAnswer }: Props = $props();
+	let { item, answer, onAnswer, isItemEnabled, globalError }: Props = $props();
 
 	let QuestionTypeComponent = $derived(getQuestionComponent(item.type));
 
 	let error = $state<string | undefined>();
+	let enabled = $derived(isItemEnabled(item.linkId));
+	let displayError = $derived(globalError || error);
 
 	function handleAnswer(value: any) {
-		const validationResult = validateQuestionnaireItem(item, value);
+		// Don't allow answers for disabled items
+		if (!enabled) {
+			return;
+		}
+
+		const validationResult = validateQuestionnaireItem(item, value, enabled);
 		error = validationResult.message;
 
 		if (validationResult.isValid) {
@@ -30,27 +39,33 @@
 <div
 	class={[
 		"space-y-2",
-		item.type !== "display" ? "rounded-lg border bg-card p-4" : undefined,
-		error ? "border-destructive-foreground bg-destructive" : undefined,
+		item.type !== "display" ? "bg-card rounded-lg border p-4" : undefined,
+		displayError ? "border-destructive bg-destructive-foreground" : undefined,
+		!enabled ? "pointer-events-none opacity-50" : undefined,
 	]}
 >
-	<p class={["block", error ? "text-destructive-foreground" : undefined]}>
+	<p class={["block", displayError ? "text-destructive" : undefined]}>
 		{#if item.prefix}
 			<span class="mr-1">{item.prefix}</span>
 		{/if}
 		{item.text}
 		{#if item.required}
-			<span class="ml-1 text-destructive-foreground">*</span>
+			<span class="text-destructive ml-1">*</span>
 		{/if}
 	</p>
 
 	{#if item.type !== "display"}
-		<div class="mt-2">
-			<QuestionTypeComponent {item} value={answer?.value} onAnswer={handleAnswer} />
+		<div class="mt-2" data-testid="questionnaire-component">
+			<QuestionTypeComponent
+				{item}
+				value={answer?.value}
+				onAnswer={handleAnswer}
+				disabled={!enabled}
+			/>
 		</div>
 	{/if}
 
-	{#if error}
-		<p class="mt-2 text-sm text-destructive-foreground">{error}</p>
+	{#if displayError}
+		<p class="text-destructive mt-2 text-sm">{displayError}</p>
 	{/if}
 </div>

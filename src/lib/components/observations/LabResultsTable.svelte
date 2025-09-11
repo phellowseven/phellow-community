@@ -2,13 +2,13 @@
 	import { stopPropagation, createBubbler } from "svelte/legacy";
 
 	const bubble = createBubbler();
-	import ArrowDown from "lucide-svelte/icons/arrow-down";
-	import ArrowUp from "lucide-svelte/icons/arrow-up";
-	import Minus from "lucide-svelte/icons/minus";
-	import ChevronUp from "lucide-svelte/icons/chevron-up";
-	import ChevronDown from "lucide-svelte/icons/chevron-down";
-	import CircleHelp from "lucide-svelte/icons/circle-help";
-	import Chart from "lucide-svelte/icons/chart-column";
+	import ArrowDown from "@lucide/svelte/icons/arrow-down";
+	import ArrowUp from "@lucide/svelte/icons/arrow-up";
+	import Minus from "@lucide/svelte/icons/minus";
+	import ChevronUp from "@lucide/svelte/icons/chevron-up";
+	import ChevronDown from "@lucide/svelte/icons/chevron-down";
+	import CircleHelp from "@lucide/svelte/icons/circle-help";
+	import Chart from "@lucide/svelte/icons/chart-column";
 
 	import type { Observation } from "fhir/r4";
 	import dayjs from "dayjs";
@@ -89,29 +89,29 @@
 	onClose={() => (selectedObservation = null)}
 />
 
-<div class="overflow-x-auto rounded-lg bg-card shadow">
-	<table class="min-w-full divide-y divide-border">
+<div class="bg-card overflow-x-auto rounded-lg shadow-sm">
+	<table class="divide-border min-w-full divide-y">
 		<thead class="bg-primary/70">
 			<tr>
 				{#each columns as column (column.label)}
 					{#if isInteractive || (!isInteractive && column.id !== "graph")}
 						<th
 							class={[
-								"select-none px-6 py-3 text-left text-xs font-medium uppercase tracking-wider",
-								column.sortable && isInteractive ? "cursor-pointer hover:bg-primary" : undefined,
+								"px-6 py-3 text-left text-xs font-medium tracking-wider uppercase select-none",
+								column.sortable && isInteractive ? "hover:bg-primary cursor-pointer" : undefined,
 							]}
 							onclick={() => isInteractive && column.sortable && onSort(column.id)}
 						>
 							<span class="inline-flex items-center" title={column.tooltip && column.tooltip}>
 								{#if column.tooltip}
-									<CircleHelp class="mr-1 inline-block h-4 w-4 cursor-pointer" />
+									<CircleHelp class="mr-1 inline-block size-4 cursor-pointer" />
 								{/if}
 								{column.label}
 								{#if column.sortable && column.id === sortBy}
 									{#if sortOrder === "asc"}
-										<ChevronUp class="ml-1 inline-block h-4 w-4" />
+										<ChevronUp class="ml-1 inline-block size-4" />
 									{:else}
-										<ChevronDown class="ml-1 inline-block h-4 w-4" />
+										<ChevronDown class="ml-1 inline-block size-4" />
 									{/if}
 								{/if}
 							</span>
@@ -120,7 +120,7 @@
 				{/each}
 			</tr>
 		</thead>
-		<tbody class="divide-y divide-border bg-card/70">
+		<tbody class="divide-border bg-card/70 divide-y">
 			{#each observations as observation}
 				{@const outOfRange = isOutOfRange(observation)}
 				{@const value = observation.valueQuantity?.value}
@@ -142,7 +142,7 @@
 					class={[
 						"cursor-pointer",
 						outOfRange
-							? "bg-red-50 hover:bg-red-100 dark:bg-red-900 hover:dark:bg-red-800"
+							? "bg-red-50 hover:bg-red-100 dark:bg-red-900 dark:hover:bg-red-800"
 							: "hover:bg-muted",
 					]}
 					onclick={() => handleRowClick(observation)}
@@ -157,7 +157,7 @@
 					</td>
 					<td class="px-6 py-4 text-sm">
 						{#if value}
-							<span class={outOfRange ? "font-bold text-red-600 dark:text-foreground" : ""}>
+							<span class={outOfRange ? "dark:text-foreground font-bold text-red-600" : ""}>
 								{value}
 								{unit}
 							</span>
@@ -165,7 +165,7 @@
 							–
 						{/if}
 					</td>
-					<td class="whitespace-nowrap px-6 py-4 text-sm text-muted-foreground">
+					<td class="text-muted-foreground px-6 py-4 text-sm whitespace-nowrap">
 						{#if range}
 							{#if range.high?.value && range.low?.value}
 								{range.low?.value} - {range.high?.value}
@@ -179,20 +179,20 @@
 							{/if}
 						{/if}
 					</td>
-					<td class="whitespace-nowrap px-6 py-4 text-sm text-muted-foreground">
+					<td class="text-muted-foreground px-6 py-4 text-sm whitespace-nowrap">
 						{formatDate(observation.effectiveDateTime || "")}
 					</td>
-					<td class="whitespace-nowrap px-6 py-4 text-sm">
+					<td class="px-6 py-4 text-sm whitespace-nowrap">
 						{#if trend === "up"}
-							<ArrowUp class="h-5 w-5 text-red-500 dark:text-red-400" />
+							<ArrowUp class="size-5 text-red-500 dark:text-red-400" />
 						{:else if trend === "down"}
-							<ArrowDown class="h-5 w-5 text-green-500" />
+							<ArrowDown class="size-5 text-green-500" />
 						{:else}
-							<Minus class="h-5 w-5 text-muted-foreground" />
+							<Minus class="text-muted-foreground size-5" />
 						{/if}
 					</td>
 					{#if isInteractive}
-						<td class="whitespace-nowrap px-6 py-4 text-sm">
+						<td class="px-6 py-4 text-sm whitespace-nowrap">
 							{#if code}
 								<a
 									href={localizeHref(
@@ -202,7 +202,7 @@
 									)}
 									onclick={stopPropagation(bubble("click"))}
 								>
-									<Chart class="h-5 w-5 " /></a
+									<Chart class="size-5 " /></a
 								>
 							{/if}
 						</td>

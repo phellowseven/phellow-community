@@ -1,4 +1,3 @@
-// src/routes/structured/+page.server.ts
 import { extractObservations } from "$components/observations";
 import { env } from "$env/dynamic/private";
 import { addQueryParamsToUrl } from "$lib/utils";
@@ -58,12 +57,9 @@ export const load = (async ({ locals, url }) => {
 	};
 
 	// Construct FHIR URL with search parameters
-	let fhirUrl = new URL(env.FHIR_OBSERVATION_URL!);
+	let fhirUrl = new URL(env.FHIR_OBSERVATION_URL ?? `${env.FHIR_BASE_URL}/Observation`);
 	if (env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS) {
-		fhirUrl = addQueryParamsToUrl(
-			env.FHIR_OBSERVATION_URL!,
-			env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS
-		);
+		fhirUrl = addQueryParamsToUrl(fhirUrl.href, env.FHIR_OBSERVATION_DEFAULT_SEARCH_PARAMS);
 	}
 	fhirUrl.searchParams.set("_format", "json");
 

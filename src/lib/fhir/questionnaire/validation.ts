@@ -67,9 +67,41 @@ export function validateURL(value: string): ValidationResult {
 	}
 }
 
-export function validateQuestionnaireItem(item: QuestionnaireItem, value: any): ValidationResult {
-	// Check required first
-	if (item.required) {
+export function validateQuantity(value: any): ValidationResult {
+	if (!value || typeof value !== "object") {
+		return { isValid: true }; // Empty is valid unless required
+	}
+
+	// Check if value property exists and is a valid number
+	if (value.value === undefined || value.value === null || value.value === "") {
+		return {
+			isValid: false,
+			message: "Please enter a valid numeric value",
+		};
+	}
+
+	const numValue = Number(value.value);
+	if (isNaN(numValue)) {
+		return {
+			isValid: false,
+			message: "Please enter a valid numeric value",
+		};
+	}
+
+	// Check if unit is provided (usually required for quantities)
+	if (!value.unit && !value.code) {
+		return {
+			isValid: false,
+			message: "Please select a unit",
+		};
+	}
+
+	return { isValid: true };
+}
+
+export function validateQuestionnaireItem(item: QuestionnaireItem, value: any, isEnabled: boolean = true): ValidationResult {
+	// Check required first, but only if the item is enabled
+	if (item.required && isEnabled) {
 		const requiredResult = validateRequired(value);
 		if (!requiredResult.isValid) {
 			return requiredResult;
@@ -94,6 +126,8 @@ export function validateQuestionnaireItem(item: QuestionnaireItem, value: any): 
 			return validateInteger(value);
 		case "date":
 			return validateDate(value);
+		case "quantity":
+			return validateQuantity(value);
 		case "string":
 		case "text":
 			return { isValid: true };

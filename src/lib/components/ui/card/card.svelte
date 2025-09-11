@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { WithElementRef } from "bits-ui";
+	import type { WithElementRef } from "$lib/utils.ts";
 	import type { HTMLAttributes } from "svelte/elements";
 	import { cn } from "$lib/utils.js";
 
@@ -13,7 +13,7 @@
 
 <div
 	bind:this={ref}
-	class={cn("bg-card text-card-foreground rounded-lg border shadow-sm", className)}
+	class={cn("bg-card text-card-foreground rounded-lg border shadow-xs", className)}
 	{...restProps}
 >
 	{@render children?.()}

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Dayjs } from "dayjs";
-	import Calendar from "lucide-svelte/icons/calendar";
-	import Clock from "lucide-svelte/icons/clock";
-	import MapPin from "lucide-svelte/icons/map-pin";
+	import Calendar from "@lucide/svelte/icons/calendar";
+	import Clock from "@lucide/svelte/icons/clock";
+	import MapPin from "@lucide/svelte/icons/map-pin";
 
 	import * as m from "$lib/paraglide/messages";
 	import { statusColor, statusText } from ".";
@@ -44,14 +44,14 @@
 			</p>
 			{#if locationReference}
 				{#await resolveLocationName(locationReference) then locationName}
-					<div class="mt-2 flex flex-row justify-start text-muted-foreground">
-						<MapPin class="mr-2 h-6 w-6 shrink-0" />
+					<div class="text-muted-foreground mt-2 flex flex-row justify-start">
+						<MapPin class="mr-2 size-6 shrink-0" />
 						<span class="truncate text-wrap">{locationName}</span>
 					</div>
 				{/await}
 			{/if}
 		</div>
-		<div class="flex flex-col items-start text-muted-foreground sm:w-1/3 sm:items-end">
+		<div class="text-muted-foreground flex flex-col items-start sm:w-1/3 sm:items-end">
 			<div class="flex flex-row items-center">
 				<div
 					class="order-2 flex flex-col sm:order-1 {status === 'cancelled' ? 'line-through ' : ''}"
@@ -69,7 +69,7 @@
 						{/if}
 					{/if}
 				</div>
-				<Calendar class="order-1 ml-0 mr-2 h-6 w-6 sm:order-2 sm:ml-2 sm:mr-0" />
+				<Calendar class="order-1 mr-2 ml-0 size-6 sm:order-2 sm:mr-0 sm:ml-2" />
 			</div>
 			{#if duration}
 				<div class="mt-2 flex flex-row">
@@ -78,7 +78,7 @@
 						class="order-2 sm:order-1 {status === 'cancelled' ? 'line-through ' : ''}"
 						>{duration} min</time
 					>
-					<Clock class="order-1 ml-0 mr-2 h-6 w-6 sm:order-2 sm:ml-2 sm:mr-0" />
+					<Clock class="order-1 mr-2 ml-0 size-6 sm:order-2 sm:mr-0 sm:ml-2" />
 				</div>
 			{/if}
 		</div>

@@ -1,0 +1,97 @@
+# Default Docker Compose (Production-Ready)
+# This is the main docker-compose.yml file that gets used when you run `docker-compose up`
+# It provides a production-ready setup with database and optimized app container
+#
+# For other environments, use:
+#   Development: docker-compose -f docker-compose.development.yml up
+#   Local:       docker-compose -f docker-compose.local.yml up
+#   Testing:     docker-compose -f docker-compose.test.yml up
+
+name: phellow-community-prod
+
+services:
+  # PostgreSQL Database
+  db:
+    container_name: phellow.community-db-prod
+    image: postgres:17
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-phellow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-phellow}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB:-phellow} -U ${POSTGRES_USER:-phellow}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Database Migration
+  migrate:
+    container_name: phellow.community-migrate-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - POSTGRES_URL=postgresql://${POSTGRES_USER:-phellow}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-phellow}
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER:-phellow}
+      - POSTGRES_DB=${POSTGRES_DB:-phellow}
+    env_file:
+      - .env.production
+    volumes:
+      - ./scripts/migrate.sh:/app/migrate.sh:ro
+      - ./drizzle:/app/drizzle:ro
+    command: ["/bin/sh", "/app/migrate.sh"]
+    restart: "no"
+
+  # Main Application (Production)
+  web:
+    container_name: phellow.community-app-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    depends_on:
+      db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env.production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # Security settings
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+        reservations:
+          cpus: "0.25"
+          memory: 256M
+
+volumes:
+  postgres_data:

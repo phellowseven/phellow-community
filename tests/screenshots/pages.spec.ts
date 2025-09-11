@@ -187,31 +187,69 @@ test("Capture 05 tasks page", async ({ authenticatedPage }, testInfo) => {
 	});
 });
 
-test("Capture 06 labs page", async ({ authenticatedPage }, testInfo) => {
+test("Capture 06 questionnaires", async ({ authenticatedPage }, testInfo) => {
+	await authenticatedPage.goto("/tasks");
+	await authenticatedPage.waitForLoadState("networkidle");
+	await authenticatedPage.waitForTimeout(500); // Wait for blur duration
+
+	await authenticatedPage.locator("[data-testid='task_item']").first().click();
+	await authenticatedPage.waitForLoadState("networkidle");
+	await authenticatedPage.waitForTimeout(250); // Wait for fade-in
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/light/06.1_questionnaire_01.png`,
+		fullPage: false,
+	});
+
+	await authenticatedPage.emulateMedia({ colorScheme: "dark" });
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/dark/06.1_questionnaire_01.png`,
+		fullPage: false,
+	});
+
+	// Select the first answer option
+
+	await authenticatedPage.locator('[data-testid="questionnaire-component"] button').nth(2).click();
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/dark/06.1_questionnaire_01.selected.png`,
+		fullPage: false,
+	});
+
+	await authenticatedPage.emulateMedia({ colorScheme: "light" });
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/light/06.1_questionnaire_01.selected.png`,
+		fullPage: false,
+	});
+});
+
+test("Capture 07 labs page", async ({ authenticatedPage }, testInfo) => {
 	await authenticatedPage.goto("/labs");
 	await authenticatedPage.waitForLoadState("networkidle");
 
 	await authenticatedPage.screenshot({
-		path: `./screenshots/${testInfo.project.name}/light/06.1_labs.png`,
+		path: `./screenshots/${testInfo.project.name}/light/07.1_labs.png`,
 		fullPage: false,
 	});
 
 	// Takes a screenshot of the full page instead of just the viewport
 	await authenticatedPage.screenshot({
-		path: `./screenshots/${testInfo.project.name}/light/06.2_labs_full.png`,
+		path: `./screenshots/${testInfo.project.name}/light/07.2_labs_full.png`,
 		fullPage: true,
 	});
 
 	await authenticatedPage.emulateMedia({ colorScheme: "dark" });
 
 	await authenticatedPage.screenshot({
-		path: `./screenshots/${testInfo.project.name}/dark/06.1_labs.png`,
+		path: `./screenshots/${testInfo.project.name}/dark/07.1_labs.png`,
 		fullPage: false,
 	});
 
 	// Takes a screenshot of the full page instead of just the viewport
 	await authenticatedPage.screenshot({
-		path: `./screenshots/${testInfo.project.name}/dark/06.2_labs_full.png`,
+		path: `./screenshots/${testInfo.project.name}/dark/07.2_labs_full.png`,
 		fullPage: true,
 	});
 
@@ -221,14 +259,14 @@ test("Capture 06 labs page", async ({ authenticatedPage }, testInfo) => {
 	await authenticatedPage.waitForTimeout(500); // Wait for fade-in
 
 	await authenticatedPage.screenshot({
-		path: `./screenshots/${testInfo.project.name}/light/06.3_labs_temperatur.png`,
+		path: `./screenshots/${testInfo.project.name}/light/07.3_labs_temperatur.png`,
 		fullPage: false,
 	});
 
 	await authenticatedPage.emulateMedia({ colorScheme: "dark" });
 
 	await authenticatedPage.screenshot({
-		path: `./screenshots/${testInfo.project.name}/dark/06.3_labs_temperatur.png`,
+		path: `./screenshots/${testInfo.project.name}/dark/07.3_labs_temperatur.png`,
 		fullPage: false,
 	});
 
@@ -238,14 +276,14 @@ test("Capture 06 labs page", async ({ authenticatedPage }, testInfo) => {
 	await authenticatedPage.waitForTimeout(500); // Wait for fade-in
 
 	await authenticatedPage.screenshot({
-		path: `./screenshots/${testInfo.project.name}/light/06.4_labs_temperatur_details.png`,
+		path: `./screenshots/${testInfo.project.name}/light/07.4_labs_temperatur_details.png`,
 		fullPage: false,
 	});
 
 	await authenticatedPage.emulateMedia({ colorScheme: "dark" });
 
 	await authenticatedPage.screenshot({
-		path: `./screenshots/${testInfo.project.name}/dark/06.4_labs_temperatur_details.png`,
+		path: `./screenshots/${testInfo.project.name}/dark/07.4_labs_temperatur_details.png`,
 		fullPage: false,
 	});
 });

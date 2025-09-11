@@ -11,7 +11,7 @@ export const load = (async ({ locals, params }) => {
 		"Content-Type": "application/json; charset=utf-8",
 	};
 	let fhirID = new TextDecoder().decode(decodeBase64url(params.id));
-	let url = appendPathToUrl(new URL(env.FHIR_TASK_URL), fhirID);
+	let url = appendPathToUrl(new URL(env.FHIR_TASK_URL ?? `${env.FHIR_BASE_URL}/Task`), fhirID);
 	url.searchParams.set("_format", "json");
 
 	return {

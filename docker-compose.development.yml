@@ -1,0 +1,119 @@
+# Development Environment
+# Full stack with mocks and hot reloading
+# Usage: docker-compose -f docker-compose.development.yml up
+
+name: phellow-community-dev
+
+services:
+  # PostgreSQL Database
+  db:
+    container_name: phellow.community-db-dev
+    image: postgres:17
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-phellow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-phellow_dev}
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB:-phellow_dev} -U ${POSTGRES_USER:-phellow}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Mockoon API Server
+  mockoon:
+    container_name: phellow.community-mockoon-dev
+    image: mockoon/cli:latest
+    command: --data "/data/mockoon-config.json" --port 3000
+    volumes:
+      - ./samples/mockoon.json:/data/mockoon-config.json:ro
+      - ./samples/fhir:/data/fhir:ro
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # OIDC Mock Server
+  oidc-mock:
+    container_name: phellow.community-oidc-dev
+    build:
+      context: .
+      dockerfile: docker/oidc-mock.Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - IDP_BASE_URL=${IDP_BASE_URL:-http://oidc-mock:8080}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/.well-known/openid_configuration"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Database Migration
+  migrate:
+    container_name: phellow.community-migrate-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - POSTGRES_URL=postgresql://${POSTGRES_USER:-phellow}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-phellow_dev}
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER:-phellow}
+      - POSTGRES_DB=${POSTGRES_DB:-phellow_dev}
+    env_file:
+      - .env.development
+    volumes:
+      - ./scripts/migrate.sh:/home/node/app/migrate.sh:ro
+      - ./drizzle:/home/node/app/drizzle:ro
+    command: ["/bin/sh", "/home/node/app/migrate.sh"]
+    restart: "no"
+
+  # Main Application (Development Mode)
+  web:
+    container_name: phellow.community-app-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      db:
+        condition: service_healthy
+      mockoon:
+        condition: service_healthy
+      # oidc-mock:
+      #   condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - "5173:5173" # Vite dev server
+    volumes:
+      # Hot reloading - mount source code
+      - ./src:/home/node/app/src
+      - ./static:/home/node/app/static
+      - ./vite.config.ts:/home/node/app/vite.config.ts
+      - ./svelte.config.js:/home/node/app/svelte.config.js
+      - ./tsconfig.ts:/home/node/app/tsconfig.ts
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://mockoon:3000
+      - VITE_OIDC_URL=http://oidc-mock:8080
+    env_file:
+      - .env.development
+    restart: unless-stopped
+
+volumes:
+  postgres_dev_data:

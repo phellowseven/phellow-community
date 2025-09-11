@@ -1,68 +1,106 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
 
-@layer base {
-	:root {
-		--background: 200 10% 94%;
-		--foreground: 203 100% 8%;
-		--muted: 220 14.3% 95.9%;
-		--muted-foreground: 220 8.9% 46.1%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 224 71.4% 4.1%;
-		--card: 0 0% 100%;
-		--card-foreground: 224 71.4% 4.1%;
-		--border: 220 13% 91%;
-		--input: 202 17% 63%;
-		--primary: 164 81% 45%;
-		--primary-foreground: 210 20% 98%;
-		--secondary: 165 65% 89%;
-		--secondary-foreground: 164 81% 34%;
-		--accent: 200 10% 94%;
-		--accent-foreground: 203 100% 8%;
-		--destructive: 10 100% 92%;
-		--destructive-foreground: 9 100% 58%;
-		--ring: 164 81% 45%;
-		--radius: 0.5rem;
-		--sidebar-background: 0 0% 100%;
-		--sidebar-foreground: 203 100% 8%;
-		--sidebar-primary: 164 81% 45%;
-		--sidebar-primary-foreground: 210 20% 98%;
-		--sidebar-accent: 200 10% 94%;
-		--sidebar-accent-foreground: 203 100% 8%;
-		--sidebar-border: 220 13% 91%;
-		--sidebar-ring: 164 81% 45%;
-	}
+@custom-variant dark (&:is(.dark *));
 
-	.dark {
-		--background: 203 100% 8%;
-		--foreground: 200 10% 100%;
-		--muted: 202 39% 33%;
-		--muted-foreground: 217.9 10.6% 64.9%;
-		--popover: 203 100% 4%;
-		--popover-foreground: 210 20% 98%;
-		--card: 202 100% 12%;
-		--card-foreground: 210 20% 98%;
-		--border: 215 27.9% 16.9%;
-		--input: 202 17% 63%;
-		--primary: 164 81% 45%;
-		--primary-foreground: 164 81% 100%;
-		--secondary: 165 65% 89%;
-		--secondary-foreground: 164 81% 34%;
-		--accent: 202 100% 12%;
-		--accent-foreground: 210 20% 98%;
-		--destructive: 9 100% 83%;
-		--destructive-foreground: 9 71% 44%;
-		--ring: 164 81% 45%;
-		--sidebar-background: 202 100% 12%;
-		--sidebar-foreground: 200 10% 100%;
-		--sidebar-primary: 164 81% 45%;
-		--sidebar-primary-foreground: 164 81% 100%;
-		--sidebar-accent: 202 39% 33%;
-		--sidebar-accent-foreground: 210 20% 98%;
-		--sidebar-border: 202 39% 33%;
-		--sidebar-ring: 164 81% 45%;
-	}
+:root {
+	--background: hsl(200 10% 94%);
+	--foreground: hsl(203 100% 8%);
+	--muted: hsl(220 14.3% 95.9%);
+	--muted-foreground: hsl(220 8.9% 46.1%);
+	--popover: hsl(0 0% 100%);
+	--popover-foreground: hsl(224 71.4% 4.1%);
+	--card: hsl(0 0% 100%);
+	--card-foreground: hsl(224 71.4% 4.1%);
+	--border: hsl(220 13% 91%);
+	--input: hsl(202 17% 63%);
+	--primary: hsl(164 81% 45%);
+	--primary-foreground: hsl(210 20% 98%);
+	--secondary: hsl(165 65% 89%);
+	--secondary-foreground: hsl(164 81% 34%);
+	--accent: hsl(200 10% 94%);
+	--accent-foreground: hsl(203 100% 8%);
+	--destructive: hsl(9 100% 58%);
+	--destructive-foreground: hsl(10 100% 92%);
+	--ring: hsl(164 81% 45%);
+	--sidebar: hsl(0 0% 100%);
+	--sidebar-foreground: hsl(203 100% 8%);
+	--sidebar-primary: hsl(164 81% 45%);
+	--sidebar-primary-foreground: hsl(210 20% 98%);
+	--sidebar-accent: hsl(200 10% 94%);
+	--sidebar-accent-foreground: hsl(203 100% 8%);
+	--sidebar-border: hsl(220 13% 91%);
+	--sidebar-ring: hsl(164 81% 45%);
+
+	--radius: 0.5rem;
+}
+
+.dark {
+	--background: hsl(203 100% 8%);
+	--foreground: hsl(200 10% 100%);
+	--muted: hsl(202 39% 33%);
+	--muted-foreground: hsl(217.9 10.6% 64.9%);
+	--popover: hsl(203 100% 4%);
+	--popover-foreground: hsl(210 20% 98%);
+	--card: hsl(202 100% 12%);
+	--card-foreground: hsl(210 20% 98%);
+	--border: hsl(215 27.9% 16.9%);
+	--input: hsl(202 17% 63%);
+	--primary: hsl(164 81% 45%);
+	--primary-foreground: hsl(164 81% 100%);
+	--secondary: hsl(165 65% 89%);
+	--secondary-foreground: hsl(164 81% 34%);
+	--accent: hsl(202 100% 12%);
+	--accent-foreground: hsl(210 20% 98%);
+	--destructive: hsl(9 100% 83%);
+	--destructive-foreground: hsl(9 71% 44%);
+	--ring: hsl(164 81% 45%);
+	--sidebar: hsl(202 100% 12%);
+	--sidebar-foreground: hsl(200 10% 100%);
+	--sidebar-primary: hsl(164 81% 45%);
+	--sidebar-primary-foreground: hsl(164 81% 100%);
+	--sidebar-accent: hsl(202 39% 33%);
+	--sidebar-accent-foreground: hsl(210 20% 98%);
+	--sidebar-border: hsl(202 39% 33%);
+	--sidebar-ring: hsl(164 81% 45%);
+}
+
+@theme inline {
+	/* Radius (for rounded-*) */
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+
+	/* Colors */
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-ring: var(--ring);
+	--color-radius: var(--radius);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
@@ -85,7 +123,7 @@
 		@apply scroll-m-20 text-xl font-semibold tracking-tight;
 	}
 	p  {
-		@apply leading-7 [&:not(:first-child)]:mt-6;
+		@apply leading-7 not-first:mt-6;
 	}
 	blockquote {
 		@apply mt-6 border-l-2 pl-6 italic;
@@ -94,7 +132,7 @@
 		@apply my-6 ml-6 list-disc [&>li]:mt-2;
 	} */
 	code {
-		@apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+		@apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
 	}
 	/* a {
 		@apply font-medium text-primary underline underline-offset-4;

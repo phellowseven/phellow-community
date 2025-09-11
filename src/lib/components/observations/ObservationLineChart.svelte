@@ -141,7 +141,7 @@
 </script>
 
 {#if chartData.length > 0}
-	<div class="min-h-80 w-full rounded-lg bg-white p-8 shadow">
+	<div class="min-h-80 w-full rounded-lg bg-white p-8 shadow-sm">
 		<!-- <h3 class="mb-4 text-lg font-semibold">
 			{observations[0].code?.text ||
 				observations[0].code?.coding?.[0]?.display ||
@@ -182,7 +182,7 @@
 			<VisTooltip />
 		</VisXYContainer>
 
-		<div class="mb-4 mt-8">
+		<div class="mt-8 mb-4">
 			<VisXYContainer
 				data={chartData}
 				xDomain={[xDomainMinBrush, xDomainMaxBrush]}
@@ -210,7 +210,7 @@
 				</div>
 			{/if}
 			<div class="flex items-center gap-2">
-				<div class="h-2 w-2 rounded-full bg-blue-500"></div>
+				<div class="size-2 rounded-full bg-blue-500"></div>
 				<span>{m.observation_current_value()}</span>
 			</div>
 		</div>

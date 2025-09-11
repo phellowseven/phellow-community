@@ -4,7 +4,7 @@
 
 	import * as m from "$lib/paraglide/messages";
 
-	import XMark from "lucide-svelte/icons/x";
+	import XMark from "@lucide/svelte/icons/x";
 
 	interface Props {
 		observation: Observation | null;
@@ -61,13 +61,13 @@
 	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<div
 		role="dialog"
-		class="fixed inset-0 z-50 !mt-0 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50"
+		class="bg-opacity-50 fixed inset-0 z-50 mt-0! flex items-center justify-center overflow-x-hidden overflow-y-auto bg-black"
 		onclick={onClose}
 	>
-		<div class="relative mx-4 w-full max-w-2xl rounded-lg bg-card p-6 shadow-xl">
+		<div class="bg-card relative mx-4 w-full max-w-2xl rounded-lg p-6 shadow-xl">
 			<!-- Close button -->
-			<button class="absolute right-4 top-4 hover:text-muted-foreground" onclick={onClose}>
-				<XMark class="h-6 w-6" />
+			<button class="hover:text-muted-foreground absolute top-4 right-4" onclick={onClose}>
+				<XMark class="size-6" />
 			</button>
 
 			<!-- Header -->
@@ -80,7 +80,7 @@
 			<!-- Content -->
 			<div class="space-y-4">
 				<!-- Value -->
-				<div class="rounded-lg bg-muted p-4">
+				<div class="bg-muted rounded-lg p-4">
 					<h3 class="mt-0">{m.observation_current_value()}</h3>
 					<p class={["", outOfRange ? "text-red-600" : undefined]}>
 						{observation.valueQuantity?.value}
@@ -93,7 +93,7 @@
 
 				<!-- Reference Range -->
 				{#if observation.referenceRange?.[0]}
-					<div class="rounded-lg bg-muted p-4">
+					<div class="bg-muted rounded-lg p-4">
 						<h3 class="mt-0">{m.observation_reference_range()}</h3>
 						<p>
 							{#if observation.referenceRange[0].low?.value && observation.referenceRange[0].high?.value}
@@ -112,13 +112,13 @@
 				<!-- Additional Details -->
 				<div class="grid gap-4 md:grid-cols-2">
 					<!-- Status -->
-					<div class="rounded-lg bg-muted p-4">
+					<div class="bg-muted rounded-lg p-4">
 						<h3 class="mt-0">{m.observation_status()}</h3>
 						<p>{getStatusDisplay(observation.status || "unknown")}</p>
 					</div>
 
 					<!-- Date/Time -->
-					<div class="rounded-lg bg-muted p-4">
+					<div class="bg-muted rounded-lg p-4">
 						<h3 class="mt-0">{m.observation_datetime()}</h3>
 						<p>{formatDateTime(observation.effectiveDateTime || "")}</p>
 					</div>
@@ -126,7 +126,7 @@
 
 				<!-- Notes -->
 				{#if observation.note?.length}
-					<div class="rounded-lg bg-muted p-4">
+					<div class="bg-muted rounded-lg p-4">
 						<h3 class="mt-0">{m.observation_notes()}</h3>
 						{#each observation.note as note}
 							<p class="text-sm">{note.text}</p>
@@ -136,7 +136,7 @@
 
 				<!-- Method -->
 				{#if observation.method?.coding?.[0]?.display}
-					<div class="rounded-lg bg-muted p-4">
+					<div class="bg-muted rounded-lg p-4">
 						<h3 class="mt-0">{m.observation_method()}</h3>
 						<p>{observation.method.coding[0].display}</p>
 					</div>
