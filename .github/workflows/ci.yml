@@ -165,7 +165,10 @@ jobs:
     env:
       NODE_ENV: production
       POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+      IDP_BASE_URL: ${{ secrets.IDP_BASE_URL }}
       OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
+      OAUTH_CALLBACK: ${{ secrets.OAUTH_CALLBACK }}
+      OAUTH_LOGOUT_REDIRECT_URI: ${{ secrets.OAUTH_LOGOUT_REDIRECT_URI }}
 
     steps:
       - name: Check env vars
