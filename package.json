@@ -59,6 +59,8 @@
 		"drizzle-orm": "^0.44.2",
 		"eslint-plugin-storybook": "^9.0.15",
 		"formsnap": "^2.0.1",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.6",
 		"lodash-es": "^4.17.21",
 		"oauth2-mock-server": "^7.2.0",
 		"openid-client": "^6.6.2",
@@ -108,5 +110,8 @@
 		"onlyBuiltDependencies": [
 			"esbuild"
 		]
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,md,html,css}": "prettier --write"
 	}
 }

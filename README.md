@@ -2,7 +2,7 @@
 
 **Your open source patient portal using FHIR.**
 
-[![version](https://img.shields.io/badge/version-2.0.0-green.svg)](https://github.com/phellowseven/phellow-community)
+[![version](https://img.shields.io/badge/version-2.1.0-green.svg)](https://github.com/phellowseven/phellow-community)
 
 Welcome to **phellow•community**, an open-source patient portal designed to streamline creating a
 frontend for your healthcare project needs. This project aims to provide a user-friendly interface
