@@ -1,4 +1,4 @@
-import { test as base, type Page } from "@playwright/test";
+import { test as base, expect, type Page } from "@playwright/test";
 
 // Defines a custom fixture that extends the base test with auth state
 type AuthFixtures = {
@@ -284,6 +284,75 @@ test("Capture 07 labs page", async ({ authenticatedPage }, testInfo) => {
 
 	await authenticatedPage.screenshot({
 		path: `./screenshots/${testInfo.project.name}/dark/07.4_labs_temperatur_details.png`,
+		fullPage: false,
+	});
+});
+
+test("Capture 08 onco", async ({ authenticatedPage }, testInfo) => {
+	await authenticatedPage.goto("/module/oncology");
+	await authenticatedPage.waitForLoadState("networkidle");
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/light/08_onco.png`,
+		fullPage: false,
+	});
+
+	await expect(authenticatedPage.getByRole("button", { name: "Diagnose" })).toBeVisible();
+	await authenticatedPage.getByRole("button", { name: "Diagnose" }).click();
+	await authenticatedPage.waitForTimeout(500); // Wait for fade-in
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/light/08.1_onco_diagnose.png`,
+		fullPage: false,
+	});
+
+	await authenticatedPage.locator("[data-dialog-close]").click();
+	await authenticatedPage.waitForTimeout(500); // Wait for fade-out
+
+	await expect(authenticatedPage.getByRole("button", { name: "Operation" })).toBeVisible();
+	await authenticatedPage.getByRole("button", { name: "Operation" }).click();
+	await authenticatedPage.waitForTimeout(500); // Wait for fade-in
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/light/08.2_onco_operation.png`,
+		fullPage: false,
+	});
+
+	await authenticatedPage.locator("[data-dialog-close]").click();
+	await authenticatedPage.waitForTimeout(500); // Wait for fade-out
+
+	await expect(authenticatedPage.getByRole("button", { name: "Strahlentherapie" })).toBeVisible();
+	await authenticatedPage.getByRole("button", { name: "Strahlentherapie" }).click();
+	await authenticatedPage.waitForTimeout(500); // Wait for fade-in
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/light/08.3_onco_strahlentherapie.png`,
+		fullPage: false,
+	});
+
+	await authenticatedPage.locator("[data-dialog-close]").click();
+	await authenticatedPage.waitForTimeout(500); // Wait for fade-out
+
+	await expect(
+		authenticatedPage.getByRole("button", { name: "Systemische Therapie" })
+	).toBeVisible();
+	await authenticatedPage.getByRole("button", { name: "Systemische Therapie" }).click();
+	await authenticatedPage.waitForTimeout(500); // Wait for fade-in
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/light/08.4_onco_systemische_therapie.png`,
+		fullPage: false,
+	});
+
+	await authenticatedPage.locator("[data-dialog-close]").click();
+	await authenticatedPage.waitForTimeout(500); // Wait for fade-out
+
+	await expect(authenticatedPage.getByRole("button", { name: "Verlauf" })).toBeVisible();
+	await authenticatedPage.getByRole("button", { name: "Verlauf" }).click();
+	await authenticatedPage.waitForTimeout(500); // Wait for fade-in
+
+	await authenticatedPage.screenshot({
+		path: `./screenshots/${testInfo.project.name}/light/08.5_onco_verlauf.png`,
 		fullPage: false,
 	});
 });
