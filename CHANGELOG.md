@@ -7,6 +7,14 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.2.1] – 2026-09-16
+
+### Changed
+
+- CI: GitHub Actions moved to the Node 24 runtime releases (`actions/checkout@v7`,
+  `actions/setup-node@v7`, `actions/cache@v6`, `pnpm/action-setup@v6`, `actions/upload-artifact@v7`)
+  to resolve the Node 20 deprecation warning.
+
 ## [2.2.0] – 2026-09-16
 
 ### Changed
