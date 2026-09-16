@@ -30,7 +30,7 @@
 		"@chromatic-com/storybook": "^5.3.1",
 		"@inlang/paraglide-js": "^2.25.2",
 		"@internationalized/date": "^3.12.4",
-		"@lucide/svelte": "^0.525.0",
+		"@lucide/svelte": "^1.46.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@oslojs/jwt": "^0.3.0",

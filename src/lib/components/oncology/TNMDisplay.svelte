@@ -2,7 +2,7 @@
 	import { buttonVariants } from "$ui/button";
 	import type { hoverMarker, TNMStaging } from "$lib/types/oncology_types";
 
-	import CircleHelp from "@lucide/svelte/icons/circle-help";
+	import CircleHelp from "@lucide/svelte/icons/circle-question-mark";
 	import X from "@lucide/svelte/icons/x";
 
 	import * as Drawer from "$ui/drawer";

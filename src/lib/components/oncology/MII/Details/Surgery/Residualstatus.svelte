@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { Observation } from "fhir/r4";
 	import Calendar from "@lucide/svelte/icons/calendar";
-	import CheckCircle from "@lucide/svelte/icons/check-circle";
+	import CheckCircle from "@lucide/svelte/icons/circle-check";
 	import Activity from "@lucide/svelte/icons/activity";
-	import AlertCircle from "@lucide/svelte/icons/alert-circle";
+	import AlertCircle from "@lucide/svelte/icons/circle-alert";
 	import Info from "@lucide/svelte/icons/info";
 	import X from "@lucide/svelte/icons/x";
-	import CircleHelp from "@lucide/svelte/icons/circle-help";
+	import CircleHelp from "@lucide/svelte/icons/circle-question-mark";
 
 	import * as Drawer from "$ui/drawer";
 	import { buttonVariants } from "$components/ui/button";

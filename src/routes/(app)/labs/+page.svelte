@@ -21,7 +21,7 @@
 	import { Label } from "$ui/label";
 
 	import Search from "@lucide/svelte/icons/search";
-	import Filter from "@lucide/svelte/icons/filter";
+	import Filter from "@lucide/svelte/icons/funnel";
 	import XMark from "@lucide/svelte/icons/x";
 
 	import LabResultsTable from "$components/observations/LabResultsTable.svelte";

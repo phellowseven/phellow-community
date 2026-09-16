@@ -9,7 +9,7 @@
 
 	import { Button } from "$components/ui/button";
 
-	import CheckCircle from "@lucide/svelte/icons/check-circle";
+	import CheckCircle from "@lucide/svelte/icons/circle-check";
 
 	import QuestionnaireNavigation from "./QuestionnaireNavigation.svelte";
 	import QuestionGroup from "./QuestionGroup.svelte";

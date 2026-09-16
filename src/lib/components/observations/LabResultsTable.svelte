@@ -7,7 +7,7 @@
 	import Minus from "@lucide/svelte/icons/minus";
 	import ChevronUp from "@lucide/svelte/icons/chevron-up";
 	import ChevronDown from "@lucide/svelte/icons/chevron-down";
-	import CircleHelp from "@lucide/svelte/icons/circle-help";
+	import CircleHelp from "@lucide/svelte/icons/circle-question-mark";
 	import Chart from "@lucide/svelte/icons/chart-column";
 
 	import type { Observation } from "fhir/r4";
