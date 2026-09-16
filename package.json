@@ -43,7 +43,7 @@
 		"@storybook/sveltekit": "^9.1.6",
 		"@sveltejs/adapter-node": "^5.5.7",
 		"@sveltejs/kit": "^2.70.3",
-		"@sveltejs/vite-plugin-svelte": "^5.1.1",
+		"@sveltejs/vite-plugin-svelte": "^7.3.0",
 		"@tailwindcss/vite": "^4.3.3",
 		"@types/fhir": "^0.0.44",
 		"@types/lodash-es": "^4.17.12",
@@ -85,9 +85,9 @@
 		"typescript": "^5.9.3",
 		"uuid": "^11.1.0",
 		"vaul-svelte": "1.0.0-next.7",
-		"vite": "^6.3.6",
+		"vite": "^8.3.0",
 		"vite-plugin-kit-routes": "^1.0.6",
-		"vitest": "^3.2.4",
+		"vitest": "^5.0.1",
 		"zod": "^4.6.5"
 	},
 	"dependencies": {
