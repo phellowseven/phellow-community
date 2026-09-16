@@ -34,7 +34,7 @@
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@oslojs/jwt": "^0.3.0",
-		"@pdfslick/core": "^2.3.0",
+		"@pdfslick/core": "^4.0.2",
 		"@playwright/test": "^1.63.0",
 		"@storybook/addon-a11y": "^10.6.0",
 		"@storybook/addon-docs": "^10.6.0",
