@@ -1,5 +1,4 @@
 # Ignore files for PNPM, NPM and YARN
-.eslintrc.cjs
 .vscode
 drizzle/meta
 package-lock.json
