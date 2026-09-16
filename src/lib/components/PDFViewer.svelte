@@ -51,6 +51,18 @@
 		const { create, PDFSlick } = await import("@pdfslick/core");
 
 		/**
+		 * @pdfslick/core ships its own copy of the pdf.js worker, which can lag behind the
+		 * pdfjs-dist API version it resolves at install time. pdf.js refuses mismatched
+		 * API/worker versions, so always use the worker that belongs to the installed
+		 * pdfjs-dist.
+		 */
+		const [{ GlobalWorkerOptions }, { default: workerSrc }] = await Promise.all([
+			import("pdfjs-dist"),
+			import("pdfjs-dist/build/pdf.worker.min.mjs?url"),
+		]);
+		GlobalWorkerOptions.workerSrc = workerSrc;
+
+		/**
 		 * Create the PDF Slick store
 		 */
 		const store = create();
@@ -61,6 +73,7 @@
 			options: {
 				scaleValue: "page-fit",
 			},
+			onError: (err) => console.error("[PDFViewer] failed to load document", err),
 		});
 
 		/**

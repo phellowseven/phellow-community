@@ -125,6 +125,9 @@ importers:
       openid-client:
         specifier: ^6.8.8
         version: 6.8.8
+      pdfjs-dist:
+        specifier: ^6.3.289
+        version: 6.3.289
       pg:
         specifier: ^8.23.0
         version: 8.23.0

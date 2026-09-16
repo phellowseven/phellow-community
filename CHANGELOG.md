@@ -18,6 +18,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   3.9 with prettier-plugin-svelte 4 and prettier-plugin-tailwindcss 0.8.
 - `parseFHIRBundle` narrows bundle entries to `FhirResource` (required by @types/fhir 0.0.44).
 
+### Fixed
+
+- PDF viewer: `@pdfslick/core` 4 bundles a pdf.js worker that can be older than the `pdfjs-dist` API
+  it resolves, which pdf.js rejects ("API version does not match the Worker version") and left the
+  viewer blank. `PDFViewer.svelte` now points the worker at the installed `pdfjs-dist` build (added
+  as an explicit dependency) and logs load errors via `onError`.
+- `Diagnosis.svelte` module script declared TypeScript without `lang="ts"`, which broke Vite 8's
+  dependency scan.
+
 ### Removed
 
 - Unused `@storybook/addon-vitest` (was never wired up), orphaned `eslint-plugin-storybook` and
