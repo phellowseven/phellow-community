@@ -128,6 +128,6 @@
 	);
 </script>
 
-<div class={cn("rounded-lg border border-border bg-card", classes)}>
+<div class={cn("border-border bg-card rounded-lg border", classes)}>
 	<MetadataTable {metadata} />
 </div>

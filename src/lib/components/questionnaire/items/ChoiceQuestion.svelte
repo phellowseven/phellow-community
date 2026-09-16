@@ -1,4 +1,3 @@
-<!-- src/lib/components/questionnaire/items/ChoiceQuestion.svelte -->
 <script lang="ts">
 	import Check from "@lucide/svelte/icons/check";
 	import type { ItemComponentInterface } from "./itemComponentInterface";
@@ -50,24 +49,24 @@
 </script>
 
 <div class="flex flex-col gap-2">
-	{#each options as option}
+	{#each options as option (option.valueString ?? option.valueCoding?.code ?? option.valueCoding?.display ?? option)}
 		{@const optionValue = option.valueString ?? option.valueCoding ?? ""}
 		{@const display = option.valueString ?? option.valueCoding?.display ?? optionValue}
 
 		<Button
 			variant={isSelected(optionValue) ? "default" : "outline"}
-			class={[]}
+			class="flex h-auto w-full items-center justify-start gap-2 text-left whitespace-normal"
 			onclick={() => handleSelect(optionValue)}
 			{disabled}
 		>
 			<div
-				class="border-secondary-foreground flex size-5 items-center justify-center rounded-full border"
+				class="border-secondary-foreground flex size-5 flex-shrink-0 items-center justify-center rounded-full border"
 			>
 				{#if isSelected(optionValue)}
 					<Check class="size-4 " />
 				{/if}
 			</div>
-			<span>{display}</span>
+			<span class="leading-relaxed break-words">{display}</span>
 		</Button>
 	{/each}
 </div>

@@ -78,7 +78,7 @@
 			{:else if objectURL}
 				{#if contentType == "application/pdf"}
 					<div class="relative flex min-h-svh">
-						<PdfViewer url={objectURL} />
+						<PdfViewer url={objectURL} name={data.document.description} />
 					</div>
 				{/if}
 			{/if}

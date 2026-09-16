@@ -1,487 +1,487 @@
 {
-  "resourceType": "Questionnaire",
-  "id": "kccq12",
-  "language": "de-DE",
-  "contained": [
-    {
-      "status": "active",
-      "id": "LL4532-9",
-      "compose": {
-        "include": [
-          {
-            "system": "http://loinc.org",
-            "concept": [
-              {
-                "display": "Sehr beeinträchtigt",
-                "code": "LA27701-4"
-              },
-              {
-                "display": "Ziemlich beeinträchtigt",
-                "code": "LA27702-2"
-              },
-              {
-                "display": "Mäßig beeinträchtigt",
-                "code": "LA6460-5"
-              },
-              {
-                "display": "Ein wenig beeinträchtigt",
-                "code": "LA9605-2"
-              },
-              {
-                "display": "Überhaupt nicht beeinträchtigt",
-                "code": "LA27707-1"
-              },
-              {
-                "display": "Aus anderen Gründen beeinträchtigt oder Tätigkeit nicht ausgeführt",
-                "code": "LA27708-9"
-              }
-            ]
-          }
-        ]
-      },
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL4532-9"
-        }
-      ],
-      "description": "Kansas City Cardiomyopathy Questionnaire - Question 1 (Limited)",
-      "resourceType": "ValueSet",
-      "name": "KCCQ- Limited by HF"
-    },
-    {
-      "status": "active",
-      "id": "LL4534-5",
-      "compose": {
-        "include": [
-          {
-            "system": "http://loinc.org",
-            "concept": [
-              {
-                "display": "Jeden Morgen",
-                "code": "LA27719-6"
-              },
-              {
-                "display": "3-mal pro Woche oder öfter, aber nicht jeden Tag",
-                "code": "LA27720-4"
-              },
-              {
-                "display": "1- bis 2-mal pro Woche",
-                "code": "LA14506-2"
-              },
-              {
-                "display": "Weniger als einmal pro Woche",
-                "code": "LA27722-0"
-              },
-              {
-                "display": "Niemals während der letzten 2 Wochen",
-                "code": "LA27723-8"
-              }
-            ]
-          }
-        ]
-      },
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL4534-5"
-        }
-      ],
-      "description": "Kansas City Cardiomyopathy Questionnaire - Question 3 (Times in morning over 2 weeks)",
-      "resourceType": "ValueSet",
-      "name": "KCCQ - HF Times in morning"
-    },
-    {
-      "status": "active",
-      "id": "LL4536-0",
-      "compose": {
-        "include": [
-          {
-            "system": "http://loinc.org",
-            "concept": [
-              {
-                "display": "Ständig",
-                "code": "LA6154-4"
-              },
-              {
-                "display": "Mehrmals am Tag",
-                "code": "LA27729-5"
-              },
-              {
-                "display": "Mindestens einmal am Tag",
-                "code": "LA27730-3"
-              },
-              {
-                "display": "3-mal pro Woche oder öfter, aber nicht jeden Tag",
-                "code": "LA27770-9"
-              },
-              {
-                "display": "1- bis 2-mal pro Woche",
-                "code": "LA13834-9"
-              },
-              {
-                "display": "Weniger als einmal pro Woche",
-                "code": "LA27722-0"
-              },
-              {
-                "display": "Niemals während der letzten 2 Wochen",
-                "code": "LA27723-8"
-              }
-            ]
-          }
-        ]
-      },
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL4536-0"
-        }
-      ],
-      "description": "Kansas City Cardiomyopathy Questionnaire (Times per day over 2 weeks)",
-      "resourceType": "ValueSet",
-      "name": "KCCQ - HF Times during day"
-    },
-    {
-      "status": "active",
-      "id": "LL4539-4",
-      "compose": {
-        "include": [
-          {
-            "system": "http://loinc.org",
-            "concept": [
-              {
-                "display": "Jede Nacht",
-                "code": "LA14806-6"
-              },
-              {
-                "display": "3-mal pro Woche oder öfter, aber nicht jeden Tag",
-                "code": "LA27720-4"
-              },
-              {
-                "display": "1- bis 2-mal pro Woche",
-                "code": "LA14506-2"
-              },
-              {
-                "display": "Weniger als einmal pro Woche",
-                "code": "LA27722-0"
-              },
-              {
-                "display": "Niemals während der letzten 2 Wochen",
-                "code": "LA27723-8"
-              }
-            ]
-          }
-        ]
-      },
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL4539-4"
-        }
-      ],
-      "description": "Kansas City Cardiomyopathy Questionnaire - Q9 (Times at night over 2 weeks)",
-      "resourceType": "ValueSet",
-      "name": "KCCQ - HF Night|Sleeping"
-    },
-    {
-      "status": "active",
-      "id": "LL4542-8",
-      "compose": {
-        "include": [
-          {
-            "system": "http://loinc.org",
-            "concept": [
-              {
-                "display": "Sehr beeinträchtigt",
-                "code": "LA27745-1"
-              },
-              {
-                "display": "Ziemlich beeinträchtigt",
-                "code": "LA27746-9"
-              },
-              {
-                "display": "Mäßig beeinträchtigt",
-                "code": "LA27747-7"
-              },
-              {
-                "display": "Ein wenig beeinträchtigt",
-                "code": "LA27748-5"
-              },
-              {
-                "display": "Überhaupt nicht beeinträchtigt",
-                "code": "LA27749-3"
-              }
-            ]
-          }
-        ]
-      },
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL4542-8"
-        }
-      ],
-      "description": "Kansas City Cardiomyopathy Questionnaire - Question 12 (Limited enjoyment)",
-      "resourceType": "ValueSet",
-      "name": "KCCQ - HF Enjoyment Limited"
-    },
-    {
-      "status": "active",
-      "id": "LL4543-6",
-      "compose": {
-        "include": [
-          {
-            "system": "http://loinc.org",
-            "concept": [
-              {
-                "display": "Vollkommen unzufrieden",
-                "code": "LA27750-1"
-              },
-              {
-                "display": "Größtenteils unzufrieden",
-                "code": "LA24976-5"
-              },
-              {
-                "display": "Weder zufrieden noch unzufrieden",
-                "code": "LA27752-7"
-              },
-              {
-                "display": "Größtenteils zufrieden",
-                "code": "LA24974-0"
-              },
-              {
-                "display": "Vollkommen zufrieden",
-                "code": "LA27754-3"
-              }
-            ]
-          }
-        ]
-      },
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL4543-6"
-        }
-      ],
-      "description": "Kansas City Cardiomyopathy Questionnaire - Satisfaction",
-      "resourceType": "ValueSet",
-      "name": "KCCQ - HF Satisfied"
-    },
-    {
-      "status": "active",
-      "id": "LL4545-1",
-      "compose": {
-        "include": [
-          {
-            "system": "http://loinc.org",
-            "concept": [
-              {
-                "display": "Sehr beeinträchtigt",
-                "code": "LA27761-8"
-              },
-              {
-                "display": "Ziemlich beeinträchtigt",
-                "code": "LA27760-0"
-              },
-              {
-                "display": "Mäßig beeinträchtigt",
-                "code": "LA6460-5"
-              },
-              {
-                "display": "Ein wenig beeinträchtigt",
-                "code": "LA9605-2"
-              },
-              {
-                "display": "Überhaupt nicht beeinträchtigt",
-                "code": "LA27764-2"
-              },
-              {
-                "display": "Aus anderen Gründen beeinträchtigt oder Tätigkeit nicht ausgeführt",
-                "code": "LA27765-9"
-              }
-            ]
-          }
-        ]
-      },
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL4545-1"
-        }
-      ],
-      "description": "Kansas City Cardiomyopathy Questionnaire - Question 15 (Limited by HF 2)",
-      "resourceType": "ValueSet",
-      "name": "KCCQ - Limited by HF 2"
-    }
-  ],
-  "title": "Herzinsuffizienz-Fragebogen (Kansas City) (KCCQ-12)",
-  "status": "active",
-  "description": "Folgende Fragen beziehen sich auf Ihre Herzschwäche und wie sich diese auf Ihr Leben auswirkt. Wir bitten Sie, folgende Fragen zu lesen und zu beantworten. Dabei gibt es keine richtigen oder falschen Antworten. Bitte geben Sie die Antwort an, die am besten auf Sie zutrifft.",
-  "name": "KCCQ-12",
-  "code": [
-    {
-      "system": "http://loinc.org",
-      "code": "86923-0"
-    }
-  ],
-  "item": [
-    {
-      "linkId": "1",
-      "type": "group",
-      "text": "Herzschwäche wirkt sich auf verschiedene Menschen unterschiedlich aus. Manche spüren eher Kurzatmigkeit, während andere eher Müdigkeit empfinden. Bitte geben Sie an, in welchem Ausmaß Herzbeschwerden (zum Beispiel Kurzatmigkeit oder Müdigkeit) während der letzten 2 Wochen Ihre Fähigkeit beeinträchtigt haben, die folgenden Tätigkeiten auszuführen.",
-      "item": [
-        {
-          "code": [
-            {
-              "system": "http://loinc.org",
-              "code": "86483-5"
-            }
-          ],
-          "answerValueSet": "#LL4532-9",
-          "linkId": "1.a",
-          "type": "choice",
-          "text": "Duschen/Baden"
-        },
-        {
-          "code": [
-            {
-              "system": "http://loinc.org",
-              "code": "86474-4"
-            }
-          ],
-          "answerValueSet": "#LL4532-9",
-          "linkId": "1.b",
-          "type": "choice",
-          "text": "Ca. 100 m auf ebener Strecke gehen"
-        },
-        {
-          "code": [
-            {
-              "system": "http://loinc.org",
-              "code": "86477-7"
-            }
-          ],
-          "answerValueSet": "#LL4532-9",
-          "linkId": "1.c",
-          "type": "choice",
-          "text": "Schnell laufen oder sich beeilen (z.B. wenn Sie den Bus erreichen wollen)"
-        }
-      ]
-    },
-    {
-      "code": [
-        {
-          "system": "http://loinc.org",
-          "code": "86479-3"
-        }
-      ],
-      "answerValueSet": "#LL4534-5",
-      "linkId": "2",
-      "type": "choice",
-      "text": "Wie oft waren während der letzten 2 Wochen Ihre Füße, Knöchel oder Beine morgens beim Aufwachen geschwollen?"
-    },
-    {
-      "code": [
-        {
-          "system": "http://loinc.org",
-          "code": "86481-9"
-        }
-      ],
-      "answerValueSet": "#LL4536-0",
-      "linkId": "3",
-      "type": "choice",
-      "text": "Wie oft hat Müdigkeit während der letzten 2 Wochen im Durchschnitt Ihre Fähigkeit beeinträchtigt, das zu tun, was Sie tun wollten?"
-    },
-    {
-      "code": [
-        {
-          "system": "http://loinc.org",
-          "code": "86472-8"
-        }
-      ],
-      "answerValueSet": "#LL4536-0",
-      "linkId": "4",
-      "type": "choice",
-      "text": "Wie oft hat Kurzatmigkeit während der letzten 2 Wochen im Durchschnitt Ihre Fähigkeit beeinträchtigt, das zu tun, was Sie tun wollten?"
-    },
-    {
-      "code": [
-        {
-          "system": "http://loinc.org",
-          "code": "86485-0"
-        }
-      ],
-      "answerValueSet": "#LL4539-4",
-      "linkId": "5",
-      "type": "choice",
-      "text": "Wie oft waren Sie während der letzten 2 Wochen im Durchschnitt gezwungen, wegen Kurzatmigkeit im Sitzen oder von mindestens 3 Kissen gestützt zu schlafen?"
-    },
-    {
-      "code": [
-        {
-          "system": "http://loinc.org",
-          "code": "86488-4"
-        }
-      ],
-      "answerValueSet": "#LL4542-8",
-      "linkId": "6",
-      "type": "choice",
-      "text": "In welchem Ausmaß hat Ihre Herzschwäche während der letzten 2 Wochen Ihre Lebensfreude beeinträchtigt?"
-    },
-    {
-      "code": [
-        {
-          "system": "http://loinc.org",
-          "code": "86489-2"
-        }
-      ],
-      "answerValueSet": "#LL4543-6",
-      "linkId": "7",
-      "type": "choice",
-      "text": "Wie würden Sie sich fühlen, wenn Sie den Rest Ihres Lebens mit Ihrer Herzschwäche, so wie sie jetzt gerade ist, verbringen müssten?"
-    },
-    {
-      "linkId": "8",
-      "type": "group",
-      "text": "In welchem Ausmaß hat sich Ihre Herzschwäche auf Ihre Lebensweise ausgewirkt? Bitte geben Sie an, wie Ihre Herzschwäche Ihre Teilnahme an folgenden Tätigkeiten während der letzten 2 Wochen beeinträchtigt haben könnte.",
-      "item": [
-        {
-          "code": [
-            {
-              "system": "http://loinc.org",
-              "code": "86491-8"
-            }
-          ],
-          "answerValueSet": "#LL4545-1",
-          "linkId": "8.a",
-          "type": "choice",
-          "text": "Hobbys, Freizeitaktivitäten"
-        },
-        {
-          "code": [
-            {
-              "system": "http://loinc.org",
-              "code": "86492-6"
-            }
-          ],
-          "answerValueSet": "#LL4545-1",
-          "linkId": "8.b",
-          "type": "choice",
-          "text": "Arbeit / Tätigkeiten im und um das Haus"
-        },
-        {
-          "code": [
-            {
-              "system": "http://loinc.org",
-              "code": "86493-4"
-            }
-          ],
-          "answerValueSet": "#LL4545-1",
-          "linkId": "8.c",
-          "type": "choice",
-          "text": "Besuche bei Familienmitgliedern oder Freunden"
-        }
-      ]
-    }
-  ]
+	"resourceType": "Questionnaire",
+	"id": "kccq12",
+	"language": "de-DE",
+	"contained": [
+		{
+			"status": "active",
+			"id": "LL4532-9",
+			"compose": {
+				"include": [
+					{
+						"system": "http://loinc.org",
+						"concept": [
+							{
+								"display": "Sehr beeinträchtigt",
+								"code": "LA27701-4"
+							},
+							{
+								"display": "Ziemlich beeinträchtigt",
+								"code": "LA27702-2"
+							},
+							{
+								"display": "Mäßig beeinträchtigt",
+								"code": "LA6460-5"
+							},
+							{
+								"display": "Ein wenig beeinträchtigt",
+								"code": "LA9605-2"
+							},
+							{
+								"display": "Überhaupt nicht beeinträchtigt",
+								"code": "LA27707-1"
+							},
+							{
+								"display": "Aus anderen Gründen beeinträchtigt oder Tätigkeit nicht ausgeführt",
+								"code": "LA27708-9"
+							}
+						]
+					}
+				]
+			},
+			"identifier": [
+				{
+					"system": "http://loinc.org",
+					"value": "http://loinc.org/ValueSet/LL4532-9"
+				}
+			],
+			"description": "Kansas City Cardiomyopathy Questionnaire - Question 1 (Limited)",
+			"resourceType": "ValueSet",
+			"name": "KCCQ- Limited by HF"
+		},
+		{
+			"status": "active",
+			"id": "LL4534-5",
+			"compose": {
+				"include": [
+					{
+						"system": "http://loinc.org",
+						"concept": [
+							{
+								"display": "Jeden Morgen",
+								"code": "LA27719-6"
+							},
+							{
+								"display": "3-mal pro Woche oder öfter, aber nicht jeden Tag",
+								"code": "LA27720-4"
+							},
+							{
+								"display": "1- bis 2-mal pro Woche",
+								"code": "LA14506-2"
+							},
+							{
+								"display": "Weniger als einmal pro Woche",
+								"code": "LA27722-0"
+							},
+							{
+								"display": "Niemals während der letzten 2 Wochen",
+								"code": "LA27723-8"
+							}
+						]
+					}
+				]
+			},
+			"identifier": [
+				{
+					"system": "http://loinc.org",
+					"value": "http://loinc.org/ValueSet/LL4534-5"
+				}
+			],
+			"description": "Kansas City Cardiomyopathy Questionnaire - Question 3 (Times in morning over 2 weeks)",
+			"resourceType": "ValueSet",
+			"name": "KCCQ - HF Times in morning"
+		},
+		{
+			"status": "active",
+			"id": "LL4536-0",
+			"compose": {
+				"include": [
+					{
+						"system": "http://loinc.org",
+						"concept": [
+							{
+								"display": "Ständig",
+								"code": "LA6154-4"
+							},
+							{
+								"display": "Mehrmals am Tag",
+								"code": "LA27729-5"
+							},
+							{
+								"display": "Mindestens einmal am Tag",
+								"code": "LA27730-3"
+							},
+							{
+								"display": "3-mal pro Woche oder öfter, aber nicht jeden Tag",
+								"code": "LA27770-9"
+							},
+							{
+								"display": "1- bis 2-mal pro Woche",
+								"code": "LA13834-9"
+							},
+							{
+								"display": "Weniger als einmal pro Woche",
+								"code": "LA27722-0"
+							},
+							{
+								"display": "Niemals während der letzten 2 Wochen",
+								"code": "LA27723-8"
+							}
+						]
+					}
+				]
+			},
+			"identifier": [
+				{
+					"system": "http://loinc.org",
+					"value": "http://loinc.org/ValueSet/LL4536-0"
+				}
+			],
+			"description": "Kansas City Cardiomyopathy Questionnaire (Times per day over 2 weeks)",
+			"resourceType": "ValueSet",
+			"name": "KCCQ - HF Times during day"
+		},
+		{
+			"status": "active",
+			"id": "LL4539-4",
+			"compose": {
+				"include": [
+					{
+						"system": "http://loinc.org",
+						"concept": [
+							{
+								"display": "Jede Nacht",
+								"code": "LA14806-6"
+							},
+							{
+								"display": "3-mal pro Woche oder öfter, aber nicht jeden Tag",
+								"code": "LA27720-4"
+							},
+							{
+								"display": "1- bis 2-mal pro Woche",
+								"code": "LA14506-2"
+							},
+							{
+								"display": "Weniger als einmal pro Woche",
+								"code": "LA27722-0"
+							},
+							{
+								"display": "Niemals während der letzten 2 Wochen",
+								"code": "LA27723-8"
+							}
+						]
+					}
+				]
+			},
+			"identifier": [
+				{
+					"system": "http://loinc.org",
+					"value": "http://loinc.org/ValueSet/LL4539-4"
+				}
+			],
+			"description": "Kansas City Cardiomyopathy Questionnaire - Q9 (Times at night over 2 weeks)",
+			"resourceType": "ValueSet",
+			"name": "KCCQ - HF Night|Sleeping"
+		},
+		{
+			"status": "active",
+			"id": "LL4542-8",
+			"compose": {
+				"include": [
+					{
+						"system": "http://loinc.org",
+						"concept": [
+							{
+								"display": "Sehr beeinträchtigt",
+								"code": "LA27745-1"
+							},
+							{
+								"display": "Ziemlich beeinträchtigt",
+								"code": "LA27746-9"
+							},
+							{
+								"display": "Mäßig beeinträchtigt",
+								"code": "LA27747-7"
+							},
+							{
+								"display": "Ein wenig beeinträchtigt",
+								"code": "LA27748-5"
+							},
+							{
+								"display": "Überhaupt nicht beeinträchtigt",
+								"code": "LA27749-3"
+							}
+						]
+					}
+				]
+			},
+			"identifier": [
+				{
+					"system": "http://loinc.org",
+					"value": "http://loinc.org/ValueSet/LL4542-8"
+				}
+			],
+			"description": "Kansas City Cardiomyopathy Questionnaire - Question 12 (Limited enjoyment)",
+			"resourceType": "ValueSet",
+			"name": "KCCQ - HF Enjoyment Limited"
+		},
+		{
+			"status": "active",
+			"id": "LL4543-6",
+			"compose": {
+				"include": [
+					{
+						"system": "http://loinc.org",
+						"concept": [
+							{
+								"display": "Vollkommen unzufrieden",
+								"code": "LA27750-1"
+							},
+							{
+								"display": "Größtenteils unzufrieden",
+								"code": "LA24976-5"
+							},
+							{
+								"display": "Weder zufrieden noch unzufrieden",
+								"code": "LA27752-7"
+							},
+							{
+								"display": "Größtenteils zufrieden",
+								"code": "LA24974-0"
+							},
+							{
+								"display": "Vollkommen zufrieden",
+								"code": "LA27754-3"
+							}
+						]
+					}
+				]
+			},
+			"identifier": [
+				{
+					"system": "http://loinc.org",
+					"value": "http://loinc.org/ValueSet/LL4543-6"
+				}
+			],
+			"description": "Kansas City Cardiomyopathy Questionnaire - Satisfaction",
+			"resourceType": "ValueSet",
+			"name": "KCCQ - HF Satisfied"
+		},
+		{
+			"status": "active",
+			"id": "LL4545-1",
+			"compose": {
+				"include": [
+					{
+						"system": "http://loinc.org",
+						"concept": [
+							{
+								"display": "Sehr beeinträchtigt",
+								"code": "LA27761-8"
+							},
+							{
+								"display": "Ziemlich beeinträchtigt",
+								"code": "LA27760-0"
+							},
+							{
+								"display": "Mäßig beeinträchtigt",
+								"code": "LA6460-5"
+							},
+							{
+								"display": "Ein wenig beeinträchtigt",
+								"code": "LA9605-2"
+							},
+							{
+								"display": "Überhaupt nicht beeinträchtigt",
+								"code": "LA27764-2"
+							},
+							{
+								"display": "Aus anderen Gründen beeinträchtigt oder Tätigkeit nicht ausgeführt",
+								"code": "LA27765-9"
+							}
+						]
+					}
+				]
+			},
+			"identifier": [
+				{
+					"system": "http://loinc.org",
+					"value": "http://loinc.org/ValueSet/LL4545-1"
+				}
+			],
+			"description": "Kansas City Cardiomyopathy Questionnaire - Question 15 (Limited by HF 2)",
+			"resourceType": "ValueSet",
+			"name": "KCCQ - Limited by HF 2"
+		}
+	],
+	"title": "Herzinsuffizienz-Fragebogen (Kansas City) (KCCQ-12)",
+	"status": "active",
+	"description": "Folgende Fragen beziehen sich auf Ihre Herzschwäche und wie sich diese auf Ihr Leben auswirkt. Wir bitten Sie, folgende Fragen zu lesen und zu beantworten. Dabei gibt es keine richtigen oder falschen Antworten. Bitte geben Sie die Antwort an, die am besten auf Sie zutrifft.",
+	"name": "KCCQ-12",
+	"code": [
+		{
+			"system": "http://loinc.org",
+			"code": "86923-0"
+		}
+	],
+	"item": [
+		{
+			"linkId": "1",
+			"type": "group",
+			"text": "Herzschwäche wirkt sich auf verschiedene Menschen unterschiedlich aus. Manche spüren eher Kurzatmigkeit, während andere eher Müdigkeit empfinden. Bitte geben Sie an, in welchem Ausmaß Herzbeschwerden (zum Beispiel Kurzatmigkeit oder Müdigkeit) während der letzten 2 Wochen Ihre Fähigkeit beeinträchtigt haben, die folgenden Tätigkeiten auszuführen.",
+			"item": [
+				{
+					"code": [
+						{
+							"system": "http://loinc.org",
+							"code": "86483-5"
+						}
+					],
+					"answerValueSet": "#LL4532-9",
+					"linkId": "1.a",
+					"type": "choice",
+					"text": "Duschen/Baden"
+				},
+				{
+					"code": [
+						{
+							"system": "http://loinc.org",
+							"code": "86474-4"
+						}
+					],
+					"answerValueSet": "#LL4532-9",
+					"linkId": "1.b",
+					"type": "choice",
+					"text": "Ca. 100 m auf ebener Strecke gehen"
+				},
+				{
+					"code": [
+						{
+							"system": "http://loinc.org",
+							"code": "86477-7"
+						}
+					],
+					"answerValueSet": "#LL4532-9",
+					"linkId": "1.c",
+					"type": "choice",
+					"text": "Schnell laufen oder sich beeilen (z.B. wenn Sie den Bus erreichen wollen)"
+				}
+			]
+		},
+		{
+			"code": [
+				{
+					"system": "http://loinc.org",
+					"code": "86479-3"
+				}
+			],
+			"answerValueSet": "#LL4534-5",
+			"linkId": "2",
+			"type": "choice",
+			"text": "Wie oft waren während der letzten 2 Wochen Ihre Füße, Knöchel oder Beine morgens beim Aufwachen geschwollen?"
+		},
+		{
+			"code": [
+				{
+					"system": "http://loinc.org",
+					"code": "86481-9"
+				}
+			],
+			"answerValueSet": "#LL4536-0",
+			"linkId": "3",
+			"type": "choice",
+			"text": "Wie oft hat Müdigkeit während der letzten 2 Wochen im Durchschnitt Ihre Fähigkeit beeinträchtigt, das zu tun, was Sie tun wollten?"
+		},
+		{
+			"code": [
+				{
+					"system": "http://loinc.org",
+					"code": "86472-8"
+				}
+			],
+			"answerValueSet": "#LL4536-0",
+			"linkId": "4",
+			"type": "choice",
+			"text": "Wie oft hat Kurzatmigkeit während der letzten 2 Wochen im Durchschnitt Ihre Fähigkeit beeinträchtigt, das zu tun, was Sie tun wollten?"
+		},
+		{
+			"code": [
+				{
+					"system": "http://loinc.org",
+					"code": "86485-0"
+				}
+			],
+			"answerValueSet": "#LL4539-4",
+			"linkId": "5",
+			"type": "choice",
+			"text": "Wie oft waren Sie während der letzten 2 Wochen im Durchschnitt gezwungen, wegen Kurzatmigkeit im Sitzen oder von mindestens 3 Kissen gestützt zu schlafen?"
+		},
+		{
+			"code": [
+				{
+					"system": "http://loinc.org",
+					"code": "86488-4"
+				}
+			],
+			"answerValueSet": "#LL4542-8",
+			"linkId": "6",
+			"type": "choice",
+			"text": "In welchem Ausmaß hat Ihre Herzschwäche während der letzten 2 Wochen Ihre Lebensfreude beeinträchtigt?"
+		},
+		{
+			"code": [
+				{
+					"system": "http://loinc.org",
+					"code": "86489-2"
+				}
+			],
+			"answerValueSet": "#LL4543-6",
+			"linkId": "7",
+			"type": "choice",
+			"text": "Wie würden Sie sich fühlen, wenn Sie den Rest Ihres Lebens mit Ihrer Herzschwäche, so wie sie jetzt gerade ist, verbringen müssten?"
+		},
+		{
+			"linkId": "8",
+			"type": "group",
+			"text": "In welchem Ausmaß hat sich Ihre Herzschwäche auf Ihre Lebensweise ausgewirkt? Bitte geben Sie an, wie Ihre Herzschwäche Ihre Teilnahme an folgenden Tätigkeiten während der letzten 2 Wochen beeinträchtigt haben könnte.",
+			"item": [
+				{
+					"code": [
+						{
+							"system": "http://loinc.org",
+							"code": "86491-8"
+						}
+					],
+					"answerValueSet": "#LL4545-1",
+					"linkId": "8.a",
+					"type": "choice",
+					"text": "Hobbys, Freizeitaktivitäten"
+				},
+				{
+					"code": [
+						{
+							"system": "http://loinc.org",
+							"code": "86492-6"
+						}
+					],
+					"answerValueSet": "#LL4545-1",
+					"linkId": "8.b",
+					"type": "choice",
+					"text": "Arbeit / Tätigkeiten im und um das Haus"
+				},
+				{
+					"code": [
+						{
+							"system": "http://loinc.org",
+							"code": "86493-4"
+						}
+					],
+					"answerValueSet": "#LL4545-1",
+					"linkId": "8.c",
+					"type": "choice",
+					"text": "Besuche bei Familienmitgliedern oder Freunden"
+				}
+			]
+		}
+	]
 }

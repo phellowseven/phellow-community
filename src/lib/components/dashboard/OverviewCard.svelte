@@ -14,12 +14,12 @@
 	let { count, description, href, icon: Icon }: Props = $props();
 </script>
 
-<div class="relative overflow-hidden rounded-lg bg-card px-4 pb-12 pt-5 shadow-sm sm:px-6 sm:pt-6">
+<div class="bg-card relative overflow-hidden rounded-lg px-4 pt-5 pb-12 shadow-sm sm:px-6 sm:pt-6">
 	<dt>
-		<div class="absolute transform rounded-md bg-primary p-3 transition-transform hover:scale-105">
+		<div class="bg-primary absolute transform rounded-md p-3 transition-transform hover:scale-105">
 			{@render Icon()}
 		</div>
-		<p class="ml-16 truncate text-sm font-medium text-muted-foreground">{description}</p>
+		<p class="text-muted-foreground ml-16 truncate text-sm font-medium">{description}</p>
 	</dt>
 	<dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
 		{#await count}
@@ -27,7 +27,7 @@
 		{:then number}
 			<p class="text-2xl font-semibold">{number ?? 0}</p>
 		{/await}
-		<div class="absolute inset-x-0 bottom-0 bg-primary px-4 py-4 sm:px-6">
+		<div class="bg-primary absolute inset-x-0 bottom-0 px-4 py-4 sm:px-6">
 			<div class="text-sm">
 				<a {href} class="inline-flex items-center font-medium text-white/90 hover:text-white">
 					{m.dashboard_show_all()}

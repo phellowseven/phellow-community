@@ -1,5 +1,4 @@
 import { env } from "$env/dynamic/private";
-import { FHIR_BASE_URL } from "$env/static/private";
 import { addQueryParamsToUrl } from "$lib/utils";
 import type { Bundle } from "fhir/r4";
 import type { PageServerLoad } from "../$types";
@@ -43,7 +42,7 @@ export const load = (async ({ locals }) => {
 	});
 
 	// Appointments
-	let appointmentUrl = new URL(env.FHIR_APPOINTMENT_URL ?? `${FHIR_BASE_URL}/Appointment`);
+	let appointmentUrl = new URL(env.FHIR_APPOINTMENT_URL ?? `${env.FHIR_BASE_URL!}/Appointment`);
 	if (env.FHIR_APPOINTMENT_DEFAULT_SEARCH_PARAMS) {
 		appointmentUrl = addQueryParamsToUrl(
 			appointmentUrl.href,
@@ -59,7 +58,7 @@ export const load = (async ({ locals }) => {
 	});
 
 	// Tasks
-	let taskUrl = new URL(env.FHIR_TASK_URL ?? `${FHIR_BASE_URL}/Task`);
+	let taskUrl = new URL(env.FHIR_TASK_URL ?? `${env.FHIR_BASE_URL!}/Task`);
 	if (env.FHIR_TASK_DEFAULT_SEARCH_PARAMS) {
 		taskUrl = addQueryParamsToUrl(taskUrl.href, env.FHIR_TASK_DEFAULT_SEARCH_PARAMS);
 	}

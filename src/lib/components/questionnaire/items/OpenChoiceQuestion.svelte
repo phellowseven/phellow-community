@@ -56,26 +56,27 @@
 
 <div class="flex flex-col gap-2">
 	<!-- Predefined options -->
-	{#each options as option}
+	{#each options as option (option.valueString ?? option.valueCoding?.code ?? option.valueCoding?.display ?? option)}
 		{@const optionCode = option.valueCoding?.code ?? option.valueString ?? ""}
 		{@const display = option.valueString ?? option.valueCoding?.display ?? optionCode}
 
 		<Button
 			variant={value?.code === optionCode ? "default" : "outline"}
+			class="flex h-auto w-full items-center justify-start gap-2 text-left whitespace-normal"
 			onclick={() => selectOption({ code: optionCode, text: display })}
 			type="button"
 		>
 			<div
 				class={[
-					"flex size-5 items-center justify-center rounded-full border",
-					value?.code === optionCode ? "border-primary-foreground" : "border-muted-foreground",
+					"flex size-5 flex-shrink-0 items-center justify-center rounded-full border",
+					value?.code === optionCode ? "border-secondary-foreground" : "border-muted-foreground",
 				]}
 			>
 				{#if value?.code === optionCode}
 					<Check class="size-4" />
 				{/if}
 			</div>
-			<span>{display}</span>
+			<span class="leading-relaxed break-words">{display}</span>
 		</Button>
 	{/each}
 

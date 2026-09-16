@@ -11,7 +11,7 @@ RUN apk add --no-cache \
     curl
 
 # Install pnpm globally
-RUN npm install -g pnpm@9.15.4
+RUN npm install -g pnpm@10.34.5
 
 RUN mkdir -p /home/node/app
 WORKDIR /home/node/app

@@ -32,6 +32,6 @@
 		<Input type="text" {value} oninput={handleInput} maxlength={item.maxLength} />
 	{/if}
 	{#if error}
-		<span class="text-sm text-destructive-foreground">{error}</span>
+		<span class="text-destructive-foreground text-sm">{error}</span>
 	{/if}
 </div>

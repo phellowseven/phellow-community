@@ -11,7 +11,7 @@
 	import * as Table from "$ui/table";
 
 	import CircleCheck from "@lucide/svelte/icons/circle-check";
-	import CircleHelp from "@lucide/svelte/icons/circle-help";
+	import CircleHelp from "@lucide/svelte/icons/circle-question-mark";
 	import CircleX from "@lucide/svelte/icons/circle-x";
 	import Calendar from "@lucide/svelte/icons/calendar";
 	import Clock from "@lucide/svelte/icons/clock";
@@ -78,7 +78,7 @@
 	const StatusIcon = statusIcon(appointment.status);
 </script>
 
-<div class={cn("rounded-lg border border-sidebar-border bg-sidebar shadow-sm", classes)}>
+<div class={cn("border-sidebar-border bg-sidebar rounded-lg border shadow-sm", classes)}>
 	<Table.Root>
 		<Table.Body>
 			<!-- Date & Time -->

@@ -68,7 +68,7 @@
 		<div class="flex flex-1 flex-col items-start space-y-4 md:space-y-8">
 			{#await data.entries}
 				{#each { length: 2 }}
-					<Skeleton class="h-10 w-32 rounded-lg bg-secondary" />
+					<Skeleton class="bg-secondary h-10 w-32 rounded-lg" />
 					{#each { length: 3 }}
 						<Skeleton class="h-20 w-full rounded-lg bg-white" />
 					{/each}
@@ -83,7 +83,7 @@
 						{@const month = dayjs(group)}
 						<section class="w-full" aria-describedby="month-grouping">
 							<h2
-								class="mb-2 inline-flex rounded-lg border border-secondary-foreground bg-secondary p-2 text-lg font-bold text-secondary-foreground md:mb-4"
+								class="border-secondary-foreground bg-secondary text-secondary-foreground mb-2 inline-flex rounded-lg border p-2 text-lg font-bold md:mb-4"
 								id="month-grouping"
 							>
 								<time datetime={month.format("YYYY-MM")}>
@@ -94,7 +94,7 @@
 								{#each appointments as appointment (appointment.id)}
 									<li>
 										<AppointmentComponent
-											class="block rounded-lg bg-card/70 px-4 py-2 shadow-sm hover:bg-card hover:shadow-lg md:px-6 md:py-6"
+											class="bg-card/70 hover:bg-card block rounded-lg px-4 py-2 shadow-sm hover:shadow-lg md:px-6 md:py-6"
 											title={appointment.description}
 											duration={appointment.minutesDuration}
 											startDate={appointment.start ? dayjs(appointment.start) : undefined}

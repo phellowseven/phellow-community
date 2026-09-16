@@ -1,4 +1,4 @@
-import type { Bundle } from "fhir/r4";
+import type { Bundle, FhirResource } from "fhir/r4";
 import type { Event } from "./Timeline/timelineHelper";
 
 /**
@@ -27,7 +27,7 @@ export function parseFHIRBundle(bundle: Bundle): Event[] {
 	for (const entry of bundle.entry) {
 		if (!entry.resource) continue;
 
-		const resource = entry.resource;
+		const resource = entry.resource as FhirResource;
 
 		switch (resource.resourceType) {
 			case "Condition":

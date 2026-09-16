@@ -1,38 +1,29 @@
 <script lang="ts">
-	import "@pdfslick/core/dist/pdf_viewer.css";
-
-	import type { PDFSlick } from "@pdfslick/core";
 	import { onMount, onDestroy } from "svelte";
-	import { ZoomOut, ChevronLeft, ChevronRight, ZoomIn } from "@lucide/svelte/icons";
-	import Button from "$lib/components/ui/button/button.svelte";
-	import { onClickOutside, useResizeObserver } from "runed";
-	import * as m from "$lib/paraglide/messages";
+	import { onClickOutside } from "runed";
+	import { mode } from "mode-watcher";
+	import pdfiumWasmUrl from "@embedpdf/pdfium/pdfium.wasm?url";
+	import type {
+		PDFViewer as EmbedPDFViewer,
+		PDFViewerConfig,
+		ZoomMode,
+	} from "@embedpdf/svelte-pdf-viewer";
+	import { getLocale } from "$lib/paraglide/runtime";
+	import { Skeleton } from "$components/ui/skeleton";
 
 	interface Props {
+		/** URL (typically a blob object URL) the PDF bytes are fetched from */
 		url: string;
+		/** Display name of the document */
+		name?: string;
 	}
 
-	const { url }: Props = $props();
+	const { url, name }: Props = $props();
 
-	let container: HTMLDivElement | null = $state(null);
-	let pdfSlick: PDFSlick | null = $state(null);
-	let unsubscribe: () => void = () => {};
-
-	/**
-	 * We keep PDF Slick state portions of interest in reactive Svelte vars
-	 */
-	let pageNumber = $state(1);
-	let numPages = $state(0);
-	let scaleValue = $state<string | undefined>(undefined);
-
-	const { stop: stopResizeObserver } = useResizeObserver(
-		() => container,
-		() => {
-			if (scaleValue && ["page-width", "page-fit", "auto"].includes(scaleValue)) {
-				pdfSlick!.viewer.currentScaleValue = scaleValue;
-			}
-		}
-	);
+	let container = $state<HTMLDivElement | null>(null);
+	let Viewer = $state<typeof EmbedPDFViewer | null>(null);
+	let buffer = $state<ArrayBuffer | null>(null);
+	let error = $state<unknown>(null);
 
 	/**
 	 * Clear selection when clicking outside the viewer so that drawers can be dragged.
@@ -45,96 +36,71 @@
 	);
 
 	onMount(async () => {
-		/**
-		 * This is all happening on client side, so make sure we load it only there
-		 */
-		const { create, PDFSlick } = await import("@pdfslick/core");
-
-		/**
-		 * Create the PDF Slick store
-		 */
-		const store = create();
-
-		pdfSlick = new PDFSlick({
-			container: container!,
-			store,
-			options: {
-				scaleValue: "page-fit",
-			},
-		});
-
-		/**
-		 * Load the PDF document
-		 */
-		pdfSlick.loadDocument(url);
-		store.setState({ pdfSlick });
-
-		/**
-		 * We can subscribe to state changes, and keep values of interest as reactive Svelte vars,
-		 * or alternatively we could hook these to a Svelte store
-		 *
-		 * Also keep reference of the unsubscribe function we call on component destroy
-		 */
-		unsubscribe = store.subscribe((s) => {
-			pageNumber = s.pageNumber;
-			numPages = s.numPages;
-			scaleValue = s.scaleValue;
-		});
+		try {
+			/**
+			 * EmbedPDF touches `window` on init, so load it on the client only.
+			 */
+			const [module, response] = await Promise.all([
+				import("@embedpdf/svelte-pdf-viewer"),
+				fetch(url),
+			]);
+			buffer = await response.arrayBuffer();
+			Viewer = module.PDFViewer;
+		} catch (err) {
+			console.error("[PDFViewer] failed to load document", err);
+			error = err;
+		}
 	});
 
 	onDestroy(() => {
-		unsubscribe();
-		stopResizeObserver();
 		stopClickOutside();
 	});
 
-	const onGotoNext = () => pdfSlick?.gotoPage(Math.min(pageNumber + 1, numPages));
-	const onGotoPrevious = () => pdfSlick?.gotoPage(Math.max(pageNumber - 1, 1));
-	const zoomOut = () => pdfSlick?.decreaseScale();
-	const zoomIn = () => pdfSlick?.increaseScale();
+	const config = $derived<PDFViewerConfig>({
+		// Self-host the PDFium engine instead of pulling it from jsDelivr. The engine worker runs
+		// from a blob: URL, so the WASM URL has to be absolute to resolve from inside the worker.
+		wasmUrl: new URL(pdfiumWasmUrl, window.location.href).href,
+		// No CDN fallback fonts and no Google Fonts for the UI.
+		fontFallback: null,
+		fonts: { ui: null, signature: null },
+		// The stamp plugin would otherwise fetch its default library manifest from jsDelivr.
+		stamp: { defaultLibrary: false, manifests: [] },
+		documentManager: {
+			initialDocuments: buffer
+				? // The engine transfers the buffer to its worker, so hand over a copy per mount.
+					[{ buffer: buffer.slice(0), name: name ?? "document.pdf", documentId: "preview" }]
+				: [],
+		},
+		tabBar: "never",
+		theme: { preference: mode.current === "dark" ? "dark" : "light" },
+		i18n: { defaultLocale: getLocale(), fallbackLocale: "en" },
+		// ZoomMode is a string enum; only the type is imported to keep the module SSR-safe.
+		zoom: { defaultZoomLevel: "fit-page" as unknown as ZoomMode },
+		disabledCategories: [
+			"annotation",
+			"redaction",
+			"form",
+			"insert",
+			"history",
+			"document-open",
+			"document-close",
+			"document-protect",
+			"document-capture",
+			"panel-comment",
+			"security",
+			"tools",
+		],
+	});
 </script>
 
-<div class="pdfSlick absolute inset-0 px-2 py-6" data-vaul-no-drag>
-	<div class="relative h-full flex-1">
-		<div class="pdfSlickContainer absolute inset-0 overflow-auto" bind:this={container}>
-			<div id="viewer" class="pdfSlickViewer pdfViewer"></div>
-		</div>
-	</div>
-
-	<div class="absolute right-0 bottom-0 z-50 mb-8 h-12 w-full">
-		<div class="flex justify-center">
-			<div class="bg-muted/70 flex gap-2 rounded-xl shadow-xs backdrop-blur-lg">
-				<Button
-					onclick={onGotoPrevious}
-					size="icon"
-					variant="ghost"
-					disabled={pageNumber <= 1}
-					type="button"
-					class="group"
-				>
-					<span class="sr-only">Vorherige Seite</span>
-					<ChevronLeft class="size-5 transition-transform duration-200 group-hover:scale-110" />
-				</Button>
-				<Button onclick={zoomOut} size="icon" variant="ghost" type="button" class="group">
-					<span class="sr-only">verkleinern</span>
-					<ZoomOut class="size-5 transition-transform duration-200 group-hover:scale-110" />
-				</Button>
-				<Button onclick={zoomIn} size="icon" variant="ghost" type="button" class="group">
-					<span class="sr-only">vergrößern</span>
-					<ZoomIn class="size-5 transition-transform duration-200 group-hover:scale-110" />
-				</Button>
-				<Button
-					onclick={onGotoNext}
-					size="icon"
-					variant="ghost"
-					disabled={pageNumber >= numPages}
-					type="button"
-					class="group"
-				>
-					<span class="sr-only">Nächste Seite</span>
-					<ChevronRight class="size-5 transition-transform duration-200 group-hover:scale-110" />
-				</Button>
-			</div>
-		</div>
-	</div>
+<div class="absolute inset-0" data-vaul-no-drag data-testid="pdf-viewer" bind:this={container}>
+	{#if Viewer && buffer}
+		{#key mode.current}
+			<Viewer {config} style="width: 100%; height: 100%;" />
+		{/key}
+	{:else if error}
+		<p class="text-destructive p-4">Das Dokument konnte nicht geladen werden.</p>
+	{:else}
+		<Skeleton class="bg-secondary h-full w-full" />
+	{/if}
 </div>

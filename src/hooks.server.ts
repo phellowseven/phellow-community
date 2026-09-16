@@ -1,4 +1,4 @@
-import { dev } from "$app/environment";
+import { building, dev } from "$app/environment";
 import { paraglideMiddleware } from "$lib/paraglide/server";
 import { route } from "$lib/ROUTES";
 import {
@@ -29,6 +29,12 @@ const paraglideHandle: Handle = ({ event, resolve }) =>
 
 // This is called once when the server starts
 export const init: ServerInit = async () => {
+	// Skip OAuth2 initialization during build/prerender to avoid connection errors
+	if (building) {
+		hooksLogger.info("Skipping OAuth2 initialization during build process");
+		return;
+	}
+
 	await connectOAuth2Client();
 };
 

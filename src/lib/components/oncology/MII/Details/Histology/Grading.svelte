@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Calendar from "@lucide/svelte/icons/calendar";
-	import BarChart from "@lucide/svelte/icons/bar-chart";
+	import BarChart from "@lucide/svelte/icons/chart-no-axes-column-increasing";
 
 	interface Props {
 		grade: string;

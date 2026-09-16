@@ -15,7 +15,7 @@
 	<title>{headPageTitle(m.title_login())}</title>
 </svelte:head>
 
-<div class="flex min-h-full flex-col justify-center bg-background px-6 py-12 lg:px-8">
+<div class="bg-background flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
 		<div class="flex justify-center">
 			{#if mode.current === "light"}

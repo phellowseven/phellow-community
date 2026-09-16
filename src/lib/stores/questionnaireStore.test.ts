@@ -1,9 +1,9 @@
-import { describe, test, expect } from 'vitest';
-import { createQuestionnaireState } from './questionnaireStore.svelte';
-import type { Questionnaire } from 'fhir/r4';
+import type { Questionnaire } from "fhir/r4";
+import { describe, expect, test } from "vitest";
+import { createQuestionnaireState } from "./questionnaireStore.svelte";
 
-describe('questionnaireStore pagination with enableWhen', () => {
-	test('filters out pages with disabled items', () => {
+describe("questionnaireStore pagination with enableWhen", () => {
+	test("filters out pages with disabled items", () => {
 		const questionnaire: Questionnaire = {
 			resourceType: "Questionnaire",
 			status: "active",
@@ -65,7 +65,7 @@ describe('questionnaireStore pagination with enableWhen', () => {
 		expect(store.currentGroup?.parentItem.linkId).toBe("first_question");
 	});
 
-	test('handles diagnosis feedback questionnaire scenario', () => {
+	test("handles diagnosis feedback questionnaire scenario", () => {
 		const diagnosisFeedback: Questionnaire = {
 			resourceType: "Questionnaire",
 			status: "active",
@@ -135,7 +135,7 @@ describe('questionnaireStore pagination with enableWhen', () => {
 		expect(store.currentIndex).toBe(0);
 	});
 
-	test('handles navigation bounds correctly with dynamic pages', () => {
+	test("handles navigation bounds correctly with dynamic pages", () => {
 		const questionnaire: Questionnaire = {
 			resourceType: "Questionnaire",
 			status: "active",
@@ -205,7 +205,7 @@ describe('questionnaireStore pagination with enableWhen', () => {
 		expect(store.currentGroup?.parentItem.linkId).toBe("step3");
 	});
 
-	test('handles group enableWhen conditions correctly', () => {
+	test("handles group enableWhen conditions correctly", () => {
 		const questionnaire: Questionnaire = {
 			resourceType: "Questionnaire",
 			status: "active",
@@ -265,13 +265,17 @@ describe('questionnaireStore pagination with enableWhen', () => {
 		expect(store.isItemEnabled("1_1_1_Fd_Diag_Entitaet_f")).toBe(false);
 
 		// Select "missingInformation" - group should still be disabled
-		store.setAnswer("0_1_Fd_Diag_ins_nein", [{ code: "missingInformation", display: "Fehlende Angabe" }]);
+		store.setAnswer("0_1_Fd_Diag_ins_nein", [
+			{ code: "missingInformation", display: "Fehlende Angabe" },
+		]);
 		expect(store.enabledGroups.length).toBe(1);
 		expect(store.getTotalSteps()).toBe(1);
 		expect(store.isItemEnabled("1_1_1_Fd_Diag_Entitaet_group")).toBe(false);
 
 		// Select "missingDiagnosis" - group and its children should be enabled
-		store.setAnswer("0_1_Fd_Diag_ins_nein", [{ code: "missingDiagnosis", display: "Fehlende Diagnose" }]);
+		store.setAnswer("0_1_Fd_Diag_ins_nein", [
+			{ code: "missingDiagnosis", display: "Fehlende Diagnose" },
+		]);
 		expect(store.enabledGroups.length).toBe(2);
 		expect(store.getTotalSteps()).toBe(2);
 		expect(store.isItemEnabled("1_1_1_Fd_Diag_Entitaet_group")).toBe(true);
@@ -286,14 +290,16 @@ describe('questionnaireStore pagination with enableWhen', () => {
 		// Select both options - group should still be enabled
 		store.setAnswer("0_1_Fd_Diag_ins_nein", [
 			{ code: "missingDiagnosis", display: "Fehlende Diagnose" },
-			{ code: "missingInformation", display: "Fehlende Angabe" }
+			{ code: "missingInformation", display: "Fehlende Angabe" },
 		]);
 		expect(store.enabledGroups.length).toBe(2);
 		expect(store.getTotalSteps()).toBe(2);
 		expect(store.isItemEnabled("1_1_1_Fd_Diag_Entitaet_group")).toBe(true);
 
 		// Remove "missingDiagnosis" from selection - group should be disabled
-		store.setAnswer("0_1_Fd_Diag_ins_nein", [{ code: "missingInformation", display: "Fehlende Angabe" }]);
+		store.setAnswer("0_1_Fd_Diag_ins_nein", [
+			{ code: "missingInformation", display: "Fehlende Angabe" },
+		]);
 		expect(store.enabledGroups.length).toBe(1);
 		expect(store.getTotalSteps()).toBe(1);
 		expect(store.isItemEnabled("1_1_1_Fd_Diag_Entitaet_group")).toBe(false);
@@ -301,7 +307,7 @@ describe('questionnaireStore pagination with enableWhen', () => {
 		expect(store.currentIndex).toBe(0);
 	});
 
-	test('getItemByLinkId returns correct item', () => {
+	test("getItemByLinkId returns correct item", () => {
 		const questionnaire: Questionnaire = {
 			resourceType: "Questionnaire",
 			status: "active",

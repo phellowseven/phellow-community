@@ -64,11 +64,11 @@ export function createQuestionnaireState(questionnaire: Questionnaire) {
 	// Re-evaluate all enableWhen conditions when answers change
 	function updateEnabledItems() {
 		state.enabledItems.clear();
-		
+
 		// Build a map of parent-child relationships
 		const parentChildMap = new Map<string, string[]>();
 		state.flattenedGroups.forEach((group) => {
-			const childIds = group.children.map(child => child.linkId);
+			const childIds = group.children.map((child) => child.linkId);
 			parentChildMap.set(group.parentItem.linkId, childIds);
 		});
 
@@ -248,7 +248,7 @@ export function createQuestionnaireState(questionnaire: Questionnaire) {
 			return getEnabledGroups().length;
 		},
 		getItemByLinkId(linkId: string): QuestionnaireItem | undefined {
-			return state.allItems.find(item => item.linkId === linkId);
+			return state.allItems.find((item) => item.linkId === linkId);
 		},
 		validateAllItems,
 		validateCurrentGroup,

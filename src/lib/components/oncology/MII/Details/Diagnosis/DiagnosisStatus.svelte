@@ -1,6 +1,6 @@
 <script lang="ts">
-	import CheckCircle from "@lucide/svelte/icons/check-circle";
-	import AlertCircle from "@lucide/svelte/icons/alert-circle";
+	import CheckCircle from "@lucide/svelte/icons/circle-check";
+	import AlertCircle from "@lucide/svelte/icons/circle-alert";
 	import { twMerge } from "tailwind-merge";
 
 	interface Props {

@@ -1,4 +1,4 @@
-import type { Icon as IconType } from "@lucide/svelte";
+import type { LucideIcon } from "@lucide/svelte";
 import { format } from "date-fns";
 
 import Progression from "@lucide/svelte/icons/chart-gantt";
@@ -9,12 +9,7 @@ import RectangleEllipsis from "@lucide/svelte/icons/rectangle-ellipsis";
 import Scissors from "@lucide/svelte/icons/scissors";
 
 export type EventType =
-	| "surgery"
-	| "radiation"
-	| "systemicTherapy"
-	| "diagnosis"
-	| "progression"
-	| "tnm";
+	"surgery" | "radiation" | "systemicTherapy" | "diagnosis" | "progression" | "tnm";
 
 export interface Event {
 	startDate: Date;
@@ -38,7 +33,7 @@ export function getEventColor(type: EventType): string {
 	return colors[type] || "bg-gray-100";
 }
 
-export function getEventIcon(type: EventType): typeof IconType | null {
+export function getEventIcon(type: EventType): LucideIcon | null {
 	switch (type) {
 		case "surgery":
 			return Scissors;

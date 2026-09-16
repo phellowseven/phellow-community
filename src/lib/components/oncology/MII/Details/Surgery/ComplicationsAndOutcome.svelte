@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Activity from "@lucide/svelte/icons/activity";
-	import AlertTriangle from "@lucide/svelte/icons/alert-triangle";
-	import CheckCircle from "@lucide/svelte/icons/check-circle";
+	import AlertTriangle from "@lucide/svelte/icons/triangle-alert";
+	import CheckCircle from "@lucide/svelte/icons/circle-check";
 
 	interface Props {
 		complications: string[];

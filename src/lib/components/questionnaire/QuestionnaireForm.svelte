@@ -8,7 +8,7 @@
 	import * as Alert from "$components/ui/alert";
 	import { Button } from "$components/ui/button";
 
-	import CheckCircle from "@lucide/svelte/icons/check-circle";
+	import CheckCircle from "@lucide/svelte/icons/circle-check";
 	import RefreshCw from "@lucide/svelte/icons/refresh-cw";
 
 	interface Props {

@@ -40,7 +40,7 @@
 	<button
 		in:fade
 		class={cn(
-			"fixed bottom-4 right-4 z-50 mx-auto flex select-none items-center justify-center rounded-lg bg-primary/50 text-center text-primary-foreground shadow-md transition duration-300 ease-in-out hover:bg-primary hover:shadow-lg md:right-6",
+			"bg-primary/50 text-primary-foreground hover:bg-primary fixed right-4 bottom-4 z-50 mx-auto flex items-center justify-center rounded-lg text-center shadow-md transition duration-300 ease-in-out select-none hover:shadow-lg md:right-6",
 			classes
 		)}
 		onclick={goToTop}

@@ -7,7 +7,7 @@
 	import Minus from "@lucide/svelte/icons/minus";
 	import ChevronUp from "@lucide/svelte/icons/chevron-up";
 	import ChevronDown from "@lucide/svelte/icons/chevron-down";
-	import CircleHelp from "@lucide/svelte/icons/circle-help";
+	import CircleHelp from "@lucide/svelte/icons/circle-question-mark";
 	import Chart from "@lucide/svelte/icons/chart-column";
 
 	import type { Observation } from "fhir/r4";
@@ -210,7 +210,7 @@
 				</tr>
 			{:else}
 				<tr>
-					<td colspan="6" class="px-6 py-4 text-center text-sm text-muted-foreground">
+					<td colspan="6" class="text-muted-foreground px-6 py-4 text-center text-sm">
 						{m.comp_obs_labresulttable_noresults()}
 					</td>
 				</tr>

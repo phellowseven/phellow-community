@@ -24,13 +24,4 @@ export type TNMStaging = {
 };
 
 export type hoverMarker =
-	| "t"
-	| "n"
-	| "m"
-	| "tPrefix"
-	| "nPrefix"
-	| "mPrefix"
-	| "l"
-	| "v"
-	| "pn"
-	| "s";
+	"t" | "n" | "m" | "tPrefix" | "nPrefix" | "mPrefix" | "l" | "v" | "pn" | "s";
