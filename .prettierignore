@@ -13,3 +13,5 @@ tailwind.config.ts
 utilities/
 yarn.lock
 node_modules/
+project.inlang/
+storybook-static/
