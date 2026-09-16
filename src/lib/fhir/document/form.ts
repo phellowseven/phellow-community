@@ -2,7 +2,7 @@ import { z } from "zod";
 import { UploadCategory } from "./uploadMappings";
 
 export const uploadDocumentSchema = z.object({
-	category: z.nativeEnum(UploadCategory),
+	category: z.enum(UploadCategory),
 	date: z.string().refine((v) => v, { message: "A creation date is required." }),
 	file: z.instanceof(File).refine((v) => v.size > 0, { message: "A file is required." }),
 });

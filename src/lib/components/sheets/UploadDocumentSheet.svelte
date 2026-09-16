@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fileProxy, superForm, type Infer, type SuperValidated } from "sveltekit-superforms";
-	import { zodClient } from "sveltekit-superforms/adapters";
+	import { zod4Client } from "sveltekit-superforms/adapters";
 	import {
 		type DateValue,
 		parseDate,
@@ -41,7 +41,7 @@
 			if (result.type == "success") sheet.open = false;
 		},
 		resetForm: true,
-		validators: zodClient(uploadDocumentSchema),
+		validators: zod4Client(uploadDocumentSchema),
 	});
 
 	const { form: formData, enhance, delayed } = form;

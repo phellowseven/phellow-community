@@ -17,8 +17,8 @@
 	{#snippet children()}
 		<p class="text-muted-foreground leading-7 tracking-tight">
 			<strong>Hinweis:</strong> Diese Seite befindet sich noch in der Entwicklung und die dargestellten
-			Daten können Fehler enthalten. Für verlässliche und individuelle Informationen wenden Sie sich
-			bitte an Ihre behandelnde Fachperson.
+			Daten können Fehler enthalten. Für verlässliche und individuelle Informationen wenden Sie sich bitte
+			an Ihre behandelnde Fachperson.
 		</p>
 		<Timeline events={data.events} bundle={data.bundle} />
 	{/snippet}

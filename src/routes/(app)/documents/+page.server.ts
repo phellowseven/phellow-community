@@ -4,7 +4,7 @@ import { uploadDocumentSchema } from "$lib/fhir/document/form";
 import { addQueryParamsToUrl } from "$lib/utils";
 import type { Bundle } from "fhir/r4";
 import { fail, message, superValidate } from "sveltekit-superforms";
-import { zod } from "sveltekit-superforms/adapters";
+import { zod4 } from "sveltekit-superforms/adapters";
 import type { Actions, PageServerLoad } from "./$types";
 
 export const load = (async ({ locals }) => {
@@ -14,7 +14,7 @@ export const load = (async ({ locals }) => {
 	}
 	url.searchParams.set("_format", "json");
 
-	const uploadDocumentForm = await superValidate(zod(uploadDocumentSchema));
+	const uploadDocumentForm = await superValidate(zod4(uploadDocumentSchema));
 
 	const accessToken = await locals.validAccessToken();
 	const headers = {
@@ -36,7 +36,7 @@ export const load = (async ({ locals }) => {
 
 export const actions: Actions = {
 	uploadDocument: async ({ request }) => {
-		const form = await superValidate(request, zod(uploadDocumentSchema));
+		const form = await superValidate(request, zod4(uploadDocumentSchema));
 		if (!form.valid) {
 			return fail(400, { form });
 		}

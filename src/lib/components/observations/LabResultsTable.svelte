@@ -210,7 +210,7 @@
 				</tr>
 			{:else}
 				<tr>
-					<td colspan="6" class="px-6 py-4 text-center text-sm text-muted-foreground">
+					<td colspan="6" class="text-muted-foreground px-6 py-4 text-center text-sm">
 						{m.comp_obs_labresulttable_noresults()}
 					</td>
 				</tr>

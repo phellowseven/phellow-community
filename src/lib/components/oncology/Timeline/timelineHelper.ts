@@ -9,12 +9,7 @@ import RectangleEllipsis from "@lucide/svelte/icons/rectangle-ellipsis";
 import Scissors from "@lucide/svelte/icons/scissors";
 
 export type EventType =
-	| "surgery"
-	| "radiation"
-	| "systemicTherapy"
-	| "diagnosis"
-	| "progression"
-	| "tnm";
+	"surgery" | "radiation" | "systemicTherapy" | "diagnosis" | "progression" | "tnm";
 
 export interface Event {
 	startDate: Date;
