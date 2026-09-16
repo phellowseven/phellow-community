@@ -1,7 +1,7 @@
 {
 	"name": "frontend-github",
 	"private": true,
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
@@ -28,13 +28,14 @@
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^5.3.1",
+		"@embedpdf/pdfium": "2.15.0",
+		"@embedpdf/svelte-pdf-viewer": "2.15.0",
 		"@inlang/paraglide-js": "^2.25.2",
 		"@internationalized/date": "^3.12.4",
 		"@lucide/svelte": "^1.46.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@oslojs/jwt": "^0.3.0",
-		"@pdfslick/core": "^4.0.2",
 		"@playwright/test": "^1.63.0",
 		"@storybook/addon-a11y": "^10.6.0",
 		"@storybook/addon-docs": "^10.6.0",
@@ -63,7 +64,6 @@
 		"lodash-es": "^4.18.1",
 		"oauth2-mock-server": "^9.2.0",
 		"openid-client": "^6.8.8",
-		"pdfjs-dist": "^6.3.289",
 		"pg": "^8.23.0",
 		"pino": "^10.3.1",
 		"pino-pretty": "^13.1.3",

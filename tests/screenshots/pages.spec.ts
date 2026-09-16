@@ -94,9 +94,11 @@ test("Capture 03 documents page", async ({ authenticatedPage }, testInfo) => {
 
 	await authenticatedPage.getByRole("link", { name: "Psychologischer Bericht" }).click();
 	await authenticatedPage.locator("td", { hasText: "Erstellt am" }).waitFor();
-	const pdfViewer = authenticatedPage.locator(".pdfSlickViewer");
+	const pdfViewer = authenticatedPage.getByTestId("pdf-viewer");
 	await pdfViewer.waitFor();
-	await pdfViewer.locator('div[data-loaded="true"]').waitFor();
+	// EmbedPDF renders inside a shadow root and only paints pages that are in view.
+	await pdfViewer.scrollIntoViewIfNeeded();
+	await pdfViewer.locator("img").first().waitFor({ state: "visible" });
 
 	await authenticatedPage.screenshot({
 		path: `./screenshots/${testInfo.project.name}/light/03.3_document.png`,
