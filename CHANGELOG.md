@@ -7,6 +7,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.2.2] – 2026-10-06
+
 ### Added
 
 - `scripts/smoke-dev-stack.sh`: starts the dev stack from the example env file and asserts the login
