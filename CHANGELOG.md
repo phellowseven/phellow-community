@@ -23,6 +23,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `curl` installed, and `web` waits for it again. Removed the unused `VITE_API_URL` /
   `VITE_OIDC_URL` variables and the stray `tsconfig.ts` mount.
 - README pointed at non-existent `.env.example` and `docker-compose.sample.yaml`.
+- Mockoon sample config answered 404 for `fhir/Patient/$oncology`, so the oncology module page
+  showed a 404 with the demo data: removed the leftover 404 route and pointed the bundle route at
+  the literal `$oncology` path.
 
 ## [2.2.1] – 2026-09-16
 
