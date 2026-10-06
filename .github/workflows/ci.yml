@@ -158,6 +158,19 @@ jobs:
       - name: Run tests
         run: pnpm run test
 
+  docker-smoke:
+    name: Docker dev stack smoke test
+    # Independent of the pnpm cache; runs alongside lint/type-check.
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Run smoke test against docker-compose.development.yml
+        run: scripts/smoke-dev-stack.sh
+
   build:
     name: Build
     needs: [test]

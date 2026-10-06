@@ -20,6 +20,8 @@ WORKDIR /home/node/app
 COPY package.json pnpm-lock.yaml ./
 COPY patches/ ./patches/
 COPY project.inlang/ ./project.inlang/
+# Translations: the postinstall step compiles them into src/lib/paraglide
+COPY messages/ ./messages/
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile

@@ -68,7 +68,9 @@ Ensure you have the following installed:
    pnpm install
    ```
 3. Set up environment variables:
-   - Copy `.env.example` to `.env` and configure the variables as needed.
+   - Copy `.env.development.example` to `.env.development`. It works as-is with the mock services
+     described below; adjust it only when pointing at a real FHIR server or identity provider (see
+     `.env.schema` for every variable).
 4. Start the development server:
    ```bash
    pnpm run dev
@@ -86,10 +88,10 @@ pnpm run mock:oidc
 ```
 
 To provide sample FHIR data to the application, you can launch [Mockoon](https://mockoon.com/) with
-the config at `samples/mockooon.json`.
+the config at `samples/mockoon.json`.
 
-You can use one of the `.env.mockoon.*` files for the environment variables, depending on how you
-launch the demo (either locally or via docker).
+`.env.development.example` already points at these mock services on `localhost`, so it works as-is
+for this local setup.
 
 The database needs to be initialised with a schema, so run the push command:
 
@@ -103,12 +105,15 @@ Then start the development server:
 pnpm run dev
 ```
 
-If you have Docker available on your system, you can use `docker-compose` with the
-`docker-compose.sample.yaml` config to quickly launch a demo system:
+If you have Docker available on your system, you can launch the whole demo stack (app, mock OIDC
+provider, Mockoon and Postgres) with the development compose file:
 
 ```bash
-docker-compose -f docker-compose.sample.yaml up -d
+cp .env.development.example .env.development
+docker compose -f docker-compose.development.yml up
 ```
+
+See [DOCKER.md](DOCKER.md) for the other compose setups and troubleshooting.
 
 ## Usage
 

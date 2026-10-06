@@ -3,8 +3,8 @@
 
 FROM node:22-alpine
 
-# Install tini for proper signal handling
-RUN apk add --no-cache tini \
+# Install tini for proper signal handling and curl for the health check
+RUN apk add --no-cache tini curl \
     && addgroup -g 1001 -S nodejs \
     && adduser -S mockuser -u 1001
 
@@ -27,7 +27,7 @@ USER mockuser
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8080/.well-known/openid_configuration || exit 1
+    CMD curl -f http://localhost:8080/.well-known/openid-configuration || exit 1
 
 # Use tini for proper signal handling
 ENTRYPOINT ["/sbin/tini", "--"]

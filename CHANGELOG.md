@@ -7,6 +7,23 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- `scripts/smoke-dev-stack.sh`: starts the dev stack from the example env file and asserts the login
+  page, OIDC discovery, the IdP redirect and a full mock login round trip; runs in CI as the
+  `docker-smoke` job.
+
+### Fixed
+
+- Docker development stack (`docker-compose.development.yml`) answered HTTP 500 on every request
+  when started from `.env.development.example` (#1, #2): the `web` container now receives the
+  compose hostnames for the OIDC mock, Mockoon and Postgres instead of `localhost`; the `messages/`
+  folder is copied into the image and mounted into the dev container so the Paraglide catalog is no
+  longer empty; the OIDC mock health check probes the correct `openid-configuration` path with
+  `curl` installed, and `web` waits for it again. Removed the unused `VITE_API_URL` /
+  `VITE_OIDC_URL` variables and the stray `tsconfig.ts` mount.
+- README pointed at non-existent `.env.example` and `docker-compose.sample.yaml`.
+
 ## [2.2.1] – 2026-09-16
 
 ### Changed
