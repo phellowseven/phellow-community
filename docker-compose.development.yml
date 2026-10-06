@@ -50,13 +50,15 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - IDP_BASE_URL=${IDP_BASE_URL:-http://oidc-mock:8080}
+      # Issuer URL as seen from inside the compose network. The app's login action
+      # rewrites oidc-mock:8080 -> localhost:8080 for the browser redirect in dev.
+      - IDP_BASE_URL=http://oidc-mock:8080
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/.well-known/openid_configuration"]
-      interval: 10s
+      test: ["CMD", "curl", "-f", "http://localhost:8080/.well-known/openid-configuration"]
+      interval: 5s
       timeout: 5s
-      retries: 3
+      retries: 6
 
   # Database Migration
   migrate:
@@ -94,23 +96,34 @@ services:
         condition: service_healthy
       mockoon:
         condition: service_healthy
-      # oidc-mock:
-      #   condition: service_healthy
+      oidc-mock:
+        condition: service_healthy
       migrate:
         condition: service_completed_successfully
     ports:
       - "5173:5173" # Vite dev server
     volumes:
-      # Hot reloading - mount source code
+      # Hot reloading - mount source code and translations
       - ./src:/home/node/app/src
       - ./static:/home/node/app/static
+      - ./messages:/home/node/app/messages:ro
       - ./vite.config.ts:/home/node/app/vite.config.ts
       - ./svelte.config.js:/home/node/app/svelte.config.js
-      - ./tsconfig.ts:/home/node/app/tsconfig.ts
+      - ./tsconfig.json:/home/node/app/tsconfig.json
     environment:
       - NODE_ENV=development
-      - VITE_API_URL=http://mockoon:3000
-      - VITE_OIDC_URL=http://oidc-mock:8080
+      # .env.development uses localhost URLs so it also works for `pnpm dev` on the
+      # host. Inside this container "localhost" is the container itself, so point the
+      # app at the compose services instead. These override the env_file values.
+      - IDP_BASE_URL=http://oidc-mock:8080
+      - FHIR_BASE_URL=http://mockoon:3000/fhir
+      - FHIR_DOCUMENT_REFERENCE_URL=http://mockoon:3000/fhir/DocumentReference
+      - FHIR_APPOINTMENT_URL=http://mockoon:3000/fhir/Appointment
+      - FHIR_OBSERVATION_URL=http://mockoon:3000/fhir/Observation
+      - FHIR_QUESTIONNAIRE_URL=http://mockoon:3000/fhir/Questionnaire
+      - FHIR_TASK_URL=http://mockoon:3000/fhir/Task
+      - FHIR_ONCOLOGY_URL=http://mockoon:3000/fhir/Patient/$$oncology
+      - POSTGRES_URL=postgresql://${POSTGRES_USER:-phellow}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-phellow_dev}
     env_file:
       - .env.development
     restart: unless-stopped

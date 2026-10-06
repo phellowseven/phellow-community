@@ -51,7 +51,7 @@ services:
       - "8081:8080"
     restart: no
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/.well-known/openid_configuration"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/.well-known/openid-configuration"]
       interval: 5s
       timeout: 3s
       retries: 3

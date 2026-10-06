@@ -56,7 +56,7 @@ services:
       IDP_BASE_URL: ${IDP_BASE_URL:-http://localhost:8080}
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/.well-known/openid_configuration"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/.well-known/openid-configuration"]
       interval: 10s
       timeout: 5s
       retries: 3

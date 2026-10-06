@@ -47,6 +47,17 @@ docker-compose -f docker-compose.development.yml up
 
 Full development stack with hot reloading at <http://localhost:5173>
 
+The example file uses `localhost` URLs so it also works for running the app outside Docker. Inside
+the `web` container those would point at the container itself, so `docker-compose.development.yml`
+overrides the service URLs with the compose hostnames (`oidc-mock:8080`, `mockoon:3000`, `db:5432`).
+You do not need to edit the env file for Docker.
+
+To verify the stack from a clean checkout (this is what CI runs):
+
+```bash
+scripts/smoke-dev-stack.sh            # SMOKE_WEB_PORT=5174 if 5173 is busy
+```
+
 ## 📋 Deployment Scenarios
 
 ### 1. Default Production-Ready (`docker-compose.yml`)
@@ -185,6 +196,22 @@ docker-compose run --rm migrate
 - **Migration fails**: Check logs with `docker-compose logs migrate`
 - **Schema changes**: Ensure you've run `pnpm run db:generate` locally first
 - **Permission issues**: Migration script is mounted read-only for security
+
+## 🩺 Troubleshooting the Development Stack
+
+- **Every page answers HTTP 500**: the app resolves its OIDC provider once at startup. Check
+  `docker-compose -f docker-compose.development.yml logs web` for `ECONNREFUSED` (the app cannot
+  reach `oidc-mock`) or `... is not a function` from `$lib/paraglide/messages` (the translation
+  catalog was compiled without the `messages/` folder). Both indicate a broken setup, not a broken
+  identity provider; `docker-compose ... down -v` and `up --build` again.
+- **<http://localhost:8080> shows "404 Not Found"**: that is expected. The OIDC mock has no page at
+  its root. The real endpoint is <http://localhost:8080/.well-known/openid-configuration>, which
+  must answer 200. The `oidc-mock` container's health check probes exactly that URL.
+- **`web` never starts**: it waits for `db`, `mockoon` and `oidc-mock` to be healthy and for
+  `migrate` to finish. `docker-compose ... ps` shows which one is stuck.
+- **Port already in use**: the dev stack binds host ports 5173, 3000, 8080 and 5432. Stop the
+  conflicting process, or for the smoke test set `SMOKE_WEB_PORT`. Port 8080 cannot be remapped
+  because the browser is redirected to `localhost:8080` for login.
 
 ## 🛠️ Build Targets
 

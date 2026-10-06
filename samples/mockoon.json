@@ -450,7 +450,7 @@
 			"type": "http",
 			"documentation": "",
 			"method": "get",
-			"endpoint": "fhir/Patient/[$]oncology",
+			"endpoint": "fhir/Patient/$oncology",
 			"responses": [
 				{
 					"uuid": "d92b5c79-c6d3-412e-bdeb-4bf6c6e0eb35",
@@ -475,62 +475,6 @@
 			"responseMode": null,
 			"streamingMode": null,
 			"streamingInterval": 0
-		},
-		{
-			"uuid": "9ce5d7a1-16ed-4737-ba4b-5197776cc883",
-			"type": "http",
-			"documentation": "",
-			"method": "get",
-			"endpoint": "fhir/Patient/$oncology",
-			"responses": [
-				{
-					"uuid": "9690a256-6f9d-4102-890a-be69754bfce1",
-					"latency": 0,
-					"statusCode": 404,
-					"label": "",
-					"headers": [
-						{
-							"key": "access-control-allow-headers",
-							"value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
-						},
-						{
-							"key": "access-control-allow-methods",
-							"value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
-						},
-						{
-							"key": "access-control-allow-origin",
-							"value": "*"
-						},
-						{
-							"key": "content-security-policy",
-							"value": "default-src 'none'"
-						},
-						{
-							"key": "content-type",
-							"value": "text/html; charset=utf-8"
-						},
-						{
-							"key": "x-content-type-options",
-							"value": "nosniff"
-						}
-					],
-					"bodyType": "INLINE",
-					"filePath": "",
-					"databucketID": "",
-					"sendFileAsBody": false,
-					"rules": [],
-					"rulesOperator": "OR",
-					"disableTemplating": false,
-					"fallbackTo404": false,
-					"default": false,
-					"crudKey": "id",
-					"callbacks": [],
-					"body": "{}"
-				}
-			],
-			"responseMode": null,
-			"streamingMode": null,
-			"streamingInterval": 0
 		}
 	],
 	"rootChildren": [
@@ -541,10 +485,6 @@
 		{
 			"type": "route",
 			"uuid": "5a02da0c-450b-4c65-8e3f-67b0e24993a1"
-		},
-		{
-			"type": "route",
-			"uuid": "9ce5d7a1-16ed-4737-ba4b-5197776cc883"
 		}
 	],
 	"proxyMode": false,
